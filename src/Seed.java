@@ -1,8 +1,8 @@
-public class QuizData<T> {
+public class Seed<T> {
     private T value;
 
-    public QuizData(T value) {
-        this.value = value;
+    public Seed(T value) {
+        this.value = (T)value;
     }
     <T> T get() {
         return (T)value;

@@ -1,95 +1,120 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Question {
-    private String questionTitle;
-    private String questionText;
+/**
+ * Abstract class intended to form the basis of new question types
+ */
 
-    private String generalFeedback;
-    private String correctAnswerFeedback;
-    private String incorrectAnswerFeedback;
+public abstract class Question {
 
-    private int points;
-    private final HashMap<String, Answer> answerList;
+    private QuestionData question = new QuestionData();
+    private HashMap<String, Seed> seedList = new HashMap<>();
 
-    private final SeedList questionData;
+    public abstract String createQuestionTitle();
+    public abstract String createQuestionText();
 
-    public Question() {
-        answerList = new HashMap<>();
-        questionData = new SeedList();
+    public abstract void createDataSeeds();
+
+    public abstract Answer createCorrectAnswer();
+
+    public abstract Answer createIncorrectAnswer();
+
+    public int createQuestionPoints() {
+        return 1;
     }
 
-    public void addQuestionTitle(final String questionTitle) {
-        this.questionTitle = questionTitle;
-    }
-    public void addQuestionText(final String questionText) {
-        this.questionText = questionText;
+    public String createGeneralFeedback() {
+        return null;
     }
 
-    public void addQuestionPoints(final int points) {
-        this.points = points;
+    public String createCorrectFeedback() {
+        return null;
     }
 
-    public void addGeneralFeedback(final String feedback) {
-        this.generalFeedback = feedback;
+    public String createIncorrectFeedback() {
+        return null;
     }
 
-    public void addCorrectFeedback(final String feedback) {
-        this.correctAnswerFeedback = feedback;
-    }
-
-    public void addIncorrectAnswerFeedback(final String feedback) {
-        this.incorrectAnswerFeedback = feedback;
-    }
-
-    public boolean addAnswer(final Answer answer) {
-        if (getAnswerList().containsKey(answer.getAnswer())) {
+    public final boolean createMcqAnswerSet(final int numAnswers) {
+        createDataSeeds();
+        question.addQuestionTitle(createQuestionTitle());
+        question.addQuestionText(createQuestionText());
+        //Prevent questions having zero/negative points
+        question.addQuestionPoints(createQuestionPoints() < 1 ? 1 : createQuestionPoints());
+        question.addGeneralFeedback(createGeneralFeedback());
+        question.addCorrectFeedback(createCorrectFeedback());
+        question.addIncorrectAnswerFeedback(createIncorrectFeedback());
+        if (!question.addAnswer(createCorrectAnswer())) {
             return false;
-        } else {
-            getAnswerList().put(answer.getAnswer().valueOf(), answer);
-            return true;
         }
-    }
 
-    public String getQuestionTitle() {
-        return questionTitle;
-    }
-
-    public String getQuestionText() {
-        return questionText;
-    }
-
-    public int getQuestionPoints() {
-        return points;
-    }
-
-    public HashMap<String, Answer> getAnswerList() {
-        return answerList;
-    }
-
-
-    public String getGeneralFeedback() {
-        return generalFeedback;
-    }
-
-    public String getCorrectAnswerFeedback() {
-        return correctAnswerFeedback;
-    }
-
-    public String getIncorrectAnswerFeedback() {
-        return incorrectAnswerFeedback;
-    }
-
-    public QuizData getQuestionDataItem(final String key) {
-            return questionData.getSeedItem(key);
-    }
-
-    public boolean setQuestionDataItem(final String key,
-                                       final QuizData value) {
-        if (questionData.containsSeedKey(key)) {
-            return false;
-        } else {
-            questionData.addSeedItem(key, value);
-            return true;
+        int incorrectCount = 0;
+        while (incorrectCount < numAnswers) {
+            if (question.addAnswer(createIncorrectAnswer())) {
+                incorrectCount++;
+            }
         }
+        return true;
+    }
+
+    public final void addQuizDataItem(final String key, final Seed val) {
+        seedList.putIfAbsent(key, val);
+    }
+
+    public final Seed getQuizDataItem(final String key) {
+        return seedList.getOrDefault(key, null);
+    }
+
+    @Override
+    public final String toString() {
+        ArrayList<Answer> list = randomize();
+        StringBuilder builder = new StringBuilder(question.getQuestionTitle());
+        builder.append("\n");
+        builder.append(question.getQuestionText());
+        builder.append("\n");
+        builder.append("Points: " + question.getQuestionPoints() + "\n");
+        for (Answer ans: list) {
+            builder.append(ans.getAnswer());
+            if (ans.isCorrect()) {
+                builder.append(" *");
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
+    }
+
+    public final String toText2Qti(final int qNum) {
+        StringBuilder builder = new StringBuilder("Title: " + question.getQuestionTitle() + "\n");
+        builder.append("Points: " + question.getQuestionPoints() + "\n");
+        builder.append(qNum + ". " + question.getQuestionText() + "\n");
+        if (question.getGeneralFeedback() != null) {
+            builder.append("... " + question.getGeneralFeedback() + "\n");
+        }
+        if (question.getCorrectAnswerFeedback() != null) {
+            builder.append("+ " + question.getCorrectAnswerFeedback() + "\n");
+        }
+        if (question.getIncorrectAnswerFeedback() != null) {
+            builder.append("- " + question.getIncorrectAnswerFeedback() + "\n");
+        }
+        ArrayList<Answer> list = randomize();
+        char qItem = 'a';
+        for (Answer ans: list) {
+            if (ans.isCorrect()) {
+                builder.append("*");
+            }
+            builder.append(qItem + ") " + ans.getAnswer());
+            builder.append("\n");
+            if (ans.getFeedback() != null) {
+                builder.append("... " + ans.getFeedback() + "\n");
+            }
+            qItem++;
+        }
+        return builder.toString();
+    }
+
+    private ArrayList<Answer> randomize() {
+        ArrayList<Answer> list = new ArrayList<>(question.getAnswerList());
+        java.util.Collections.shuffle(list);
+        return list;
     }
 }

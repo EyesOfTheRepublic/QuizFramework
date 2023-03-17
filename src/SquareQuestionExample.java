@@ -1,50 +1,58 @@
 
 import java.util.Random;
 
-public class SquareQuestionExample extends CreateQuestion {
+public class SquareQuestionExample extends Question {
 
     private final Random rnd = new Random();
 
+    @Override
     public String createQuestionTitle() {
         return "Squaring Numbers";
     }
+
+    @Override
     public String createQuestionText() {
-        QuizData<Integer> item = getQuizDataItem("number");
+        Seed<Integer> item = getQuizDataItem("number");
         int seedVal = item.get();
         return "What is the square of " + seedVal + " ?";
     }
 
+    @Override
     public String createGeneralFeedback() {
         return "Some generic feedback";
     }
 
+    @Override
     public String createCorrectFeedback() {
         return "Some feedback for the correct answer";
     }
 
+    @Override
     public String createIncorrectFeedback() {
         return "Some general feedback for incorrect answers";
     }
 
     public void createDataSeeds() {
-        QuizData<Integer> val1 = new QuizData<Integer>(rnd.nextInt(15));
+        Seed<Integer> val1 = new Seed<>(rnd.nextInt(15));
         addQuizDataItem("number", val1);
     }
 
+    @Override
     public int createQuestionPoints() {
         return 3;
     }
 
+    @Override
     public Answer createCorrectAnswer() {
-        QuizData<Integer> item = getQuizDataItem("number");
+        Seed<Integer> item = getQuizDataItem("number");
         int seedVal = item.get();
-        //int seedVal = (int)getSeedItem("number").get();
-        return Answer.makeCorrectAnswerWithFeedback(new QuizData<Integer>(seedVal * seedVal),
+        return Answer.makeCorrectAnswerWithFeedback(Integer.toString(seedVal * seedVal),
                 "some correct feedback");
     }
 
+    @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(new QuizData<Integer>(rnd.nextInt(20)),
+        return Answer.makeIncorrectAnswerWithFeedback(Integer.toString(rnd.nextInt(20)),
                 "some incorrect feedback");
     }
 }

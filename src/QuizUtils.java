@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Static methods generally useful in generating quiz data and incorrect answers
@@ -6,6 +6,25 @@ import java.util.Random;
  */
 
 public class QuizUtils {
+
+    //Prevent instance of this class being (pointlessly) created
+    private QuizUtils(){}
+
+    /**
+     * Generate a new long from one that is provided, that has the same number of digits and is the same sign. Like
+     * {@code permuteString}, if you ask for variations on a very short long (that is, one with few digits), then it
+     * may be impossible to generate enough incorrect answers (e.g. you want 11 options based on a 1-digit number) which
+     * will lead to an infinite loop.
+     *
+     * @param arg an arbitrary long - note that there are limited options if this has very few digits
+     * @return a new long that is the same number of (decimal) digits as the argument and the same sign
+     */
+    public static final long similarLong(Long arg) {
+        int digits = String.valueOf(arg).length();
+        int base = (int) Math.pow(10, digits - 1);
+        long positiveVal = ThreadLocalRandom.current().nextLong(9 * base);
+        return arg < 0 ? -positiveVal : positiveVal;
+    }
 
     /**
      * Generate a random string from a specified range of characters, with a specified minimum length.
@@ -25,16 +44,9 @@ public class QuizUtils {
      *  made up of lower-case latin characters.</p>
      */
 
-    /*Controls the range over which random permutations of strings will be attempted in
-     * {@code permuteString} - make it smaller at your peril!
-     */
-    private static final double MIN_PERMUTATION_RNG = 0.2;
-
     public static final String genRandomString(final int minLen, final int sizeRng,
                                                char low, char high) {
 
-        //Create Random object and ensure low >= high
-        Random random = new Random();
         if (low > high) {
             final char temp = low;
             low = high;
@@ -42,20 +54,25 @@ public class QuizUtils {
         }
 
         //Generate target string length and prep buffer
-        final int targetStringLength = random.nextInt(sizeRng) + minLen;
+        final int targetStringLength = ThreadLocalRandom.current().nextInt(sizeRng) + minLen;
         StringBuilder buffer = new StringBuilder(targetStringLength);
 
         //use the low and high characters to set the random generation range
         final int leftLmt = low;
-        final int limLen = ((int) high - low);
+        final int limLen = high - low + 1;
 
         //Generate and return the string
         for (int i = 0; i < targetStringLength; i++) {
-            final int randomLimitedInt = leftLmt + (int) (random.nextFloat() * (limLen));
+            final int randomLimitedInt = leftLmt + ThreadLocalRandom.current().nextInt(limLen);// * (limLen);
             buffer.append((char) randomLimitedInt);
         }
         return buffer.toString();
     }
+
+    /*Controls the range over which random permutations of strings will be attempted in
+     * {@code permuteString} - make it smaller at your peril!
+     */
+    public static final double MIN_PERMUTATION_RNG = 0.2;
 
     /**
      * Make random permutations to a string - this is useful when generating <strong>wrong</strong> answers that
@@ -66,14 +83,16 @@ public class QuizUtils {
      * to swap characters when the provided parameters don't allow that to happen because they don't give
      * enough freedom to make changes - by returning the original string if no permutations are possible.
      * <strong>HOWEVER</strong> it is possible to force it to effectively do this when generating wrong answers - if
-     * the supplied parameters do not allow enough different incorrect answers to be generated.</p>
+     * the supplied parameters do not allow enough different incorrect answers to be generated. This is because
+     * generation of wrong answers will continue until they are all unique - so if it's not possible to generate
+     * enough unique wrong answers, the process won't terminate.</p>
      * @param dataString The string to be permuted
-     * @param location The centre point of the change expressed as a fraction 0.0 to 1.0 - 0.0 represents the
+     * @param locationDecimal The centre point of the change expressed as a fraction 0.0 to 1.0 - 0.0 represents the
      *                 start of the string; 0.5 the middle; 1.0 the end
-     * @param range The amount of variation from {@code location} allowed - so 0.5 means +/1 half of the string. Must
+     * @param rangeDecimal The amount of variation from {@code locationDecimal} allowed - so 0.5 means +/1 half of the string. Must
      *              be at least MIN_PERMUTATION_RNG = 0.2
      * @param permutations The number of permutations attempted - note these are NOT guaranteed to be unique and picking
-     *                     a small value for {@code range} will make it less likely they are, especially if the string
+     *                     a small value for {@code rangeDecimal} will make it less likely they are, especially if the string
      *                     to permute is relatively short.
      * @return The permuted or original string - the original string is returned if no permutations are possible, or the
      * number of permutations requested is negative.
@@ -82,33 +101,33 @@ public class QuizUtils {
      * {@code String val = permuteString(myString, 0.5, 0.3, 5); //5 permutations between 20% from the start & end of myString}
      * {@code String val = permuteString(myString, 1.0, 0.2, 1); //1 permutation within 20% of the end of myString}
      */
-    public  final static String permuteString(final String dataString, final double location,
-                                              final double range, final int permutations) {
 
-        /*We only make changes if the number of permutations is +ve and if the range is large enough to avoid
+    public static final String permuteString(final String dataString, final double locationDecimal,
+                                              final double rangeDecimal, final int permutations) {
+
+        /*We only make changes if the number of permutations is +ve and if the rangeDecimal is large enough to avoid
         a high chance that no permutations will be possible
         */
-        if (permutations < 1 || range < 0.2) {
+        if (permutations < 1 || rangeDecimal < MIN_PERMUTATION_RNG) {
             return dataString;
         }
 
-        Random rnd = new Random();
-
-        /* Generate lower and upper bounds - lowRange and highRange - between 0 and dataString.length() -1, based on
-        the values of location and range
+        /* Transform the supplied decimal 0.0 - 1.0 location and range of changes into positions in the string,
+        taking care to avoid values > strlen - 1 and < 0
          */
-        final int strLen = dataString.length();
-        final long rawLowRange = Math.min(Math.round((location - range) * strLen), strLen - 1);
-        final int lowRange = (int)(rawLowRange < 0 ? 0 : rawLowRange);
-        final long rawHighRange = Math.round((location + range) * strLen);
+        final long strLen = dataString.length();
+        final long rawLowRange = Math.min(Math.round((locationDecimal - rangeDecimal) * strLen), strLen - 1);
+        final long rawHighRange = Math.round((locationDecimal + rangeDecimal) * strLen);
         final int highRange = (int)(rawHighRange > strLen - 1 ? strLen - 1 : rawHighRange);
-        final int randomRng = (int)(highRange - lowRange);
-        System.out.println(lowRange + " " + randomRng);
+
+        //We will make random changes between lowRange and lowRange + range
+        final int lowRange = (int)(rawLowRange < 0 ? 0 : rawLowRange);
+        final int range = highRange - lowRange;
+
         /*
-        If the range of characters is not at least two, then no permutations are possible so return original string
+        If the rangeDecimal of characters is not at least two, then no permutations are possible so return original string
          */
-        if (randomRng < 2) {
-            System.out.println("random range too small");
+        if (range < 2) {
             return dataString;
         }
 
@@ -117,14 +136,14 @@ public class QuizUtils {
         for (int i = 0; i < permutations; i++) {
 
             /*Generate two random locations to swap, ensuring they are not the same
-            Note that if the range of characters to swap is not at least 1, we will
+            Note that if the rangeDecimal of characters to swap is not at least 2, we will
             have returned the original string above - otherwise this could be an
             infinite loop
              */
-            int loc1 = rnd.nextInt(randomRng) + lowRange;
+            int loc1 = ThreadLocalRandom.current().nextInt(range) + lowRange;
             int loc2;
             do {
-                loc2 = rnd.nextInt(randomRng) + lowRange;
+                loc2 = ThreadLocalRandom.current().nextInt(range) + lowRange;
             } while (loc2 == loc1);
 
             //perform the swap.
