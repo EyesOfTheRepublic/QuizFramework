@@ -3,7 +3,7 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
     private String correctAnswer;
     @Override
     public String createQuestionText() {
-        Seed<Long> item = getQuizDataItem("checkSum");
+        CalcData<Long> item = getQuizDataItem("checkSum");
         long seedVal = item.get();
 
         return "Which of the following strings generates the simple checksum " + seedVal + " ?";
@@ -25,9 +25,9 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
     }
 
     @Override
-    public void createDataSeeds() {
+    public void createCalcData() {
         this.correctAnswer = QuizUtils.genRandomString(65, 20, 'a', 'z');
-        Seed<Long> val = new Seed<>(simpleCheckSum(this.correctAnswer));
+        CalcData<Long> val = new CalcData<>(simpleCheckSum(this.correctAnswer));
         addQuizDataItem("checkSum", val);
     }
 

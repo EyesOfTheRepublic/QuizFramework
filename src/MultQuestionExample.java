@@ -9,9 +9,9 @@ public class MultQuestionExample extends Question {
         return "Multiplying Numbers";
     }
     public String createQuestionText() {
-        Seed<Integer> item1 = getQuizDataItem("number1");
+        CalcData<Integer> item1 = getQuizDataItem("number1");
         int seedVal1 = item1.get();
-        Seed<Integer> item2 = getQuizDataItem("number2");
+        CalcData<Integer> item2 = getQuizDataItem("number2");
         int seedVal2 = item2.get();
         return "What is " + seedVal1 + " * " + seedVal2 + " ?";
     }
@@ -28,10 +28,10 @@ public class MultQuestionExample extends Question {
         return "Some general feedback for incorrect answers";
     }
 
-    public void createDataSeeds() {
-        Seed<Integer> val = new Seed<Integer>(rnd.nextInt(15));
+    public void createCalcData() {
+        CalcData<Integer> val = new CalcData<Integer>(rnd.nextInt(15));
         addQuizDataItem("number1", val);
-        Seed<Integer> val2 = new Seed<Integer>(rnd.nextInt(15));
+        CalcData<Integer> val2 = new CalcData<Integer>(rnd.nextInt(15));
         addQuizDataItem("number2", val2);
     }
 
@@ -40,9 +40,9 @@ public class MultQuestionExample extends Question {
     }
 
     public Answer createCorrectAnswer() {
-        Seed<Integer> item1 = getQuizDataItem("number1");
+        CalcData<Integer> item1 = getQuizDataItem("number1");
         int seedVal1 = item1.get();
-        Seed<Integer> item2 = getQuizDataItem("number2");
+        CalcData<Integer> item2 = getQuizDataItem("number2");
         int seedVal2 = item2.get();
         //int seedVal = (int)getSeedItem("number").get();
         return Answer.makeCorrectAnswerWithFeedback(Long.toString(seedVal1 * seedVal2),

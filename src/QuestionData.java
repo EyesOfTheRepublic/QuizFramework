@@ -81,7 +81,7 @@ public class QuestionData {
 
     /**
      * Add a new answer if and only if that answer is not already present. An answer is present if and only if the answer
-     * text matches an existing answer (feedback or correctness of the answer is not considered
+     * text matches an existing answer (feedback or correctness of the answer is not considered)
      * @param answer the {@Answer} object to be added
      * @return true if the {@Answer} was added, false if was already present (and not added)
      */

@@ -12,7 +12,7 @@ public class SquareQuestionExample extends Question {
 
     @Override
     public String createQuestionText() {
-        Seed<Integer> item = getQuizDataItem("number");
+        CalcData<Integer> item = getQuizDataItem("number");
         int seedVal = item.get();
         return "What is the square of " + seedVal + " ?";
     }
@@ -32,8 +32,8 @@ public class SquareQuestionExample extends Question {
         return "Some general feedback for incorrect answers";
     }
 
-    public void createDataSeeds() {
-        Seed<Integer> val1 = new Seed<>(rnd.nextInt(15));
+    public void createCalcData() {
+        CalcData<Integer> val1 = new CalcData<>(rnd.nextInt(15));
         addQuizDataItem("number", val1);
     }
 
@@ -44,7 +44,7 @@ public class SquareQuestionExample extends Question {
 
     @Override
     public Answer createCorrectAnswer() {
-        Seed<Integer> item = getQuizDataItem("number");
+        CalcData<Integer> item = getQuizDataItem("number");
         int seedVal = item.get();
         return Answer.makeCorrectAnswerWithFeedback(Integer.toString(seedVal * seedVal),
                 "some correct feedback");

@@ -2,7 +2,7 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
 
     @Override
     public String createQuestionText() {
-        Seed<String> item = getQuizDataItem("checkString");
+        CalcData<String> item = getQuizDataItem("checkString");
         String seedVal = item.get();
 
         return "What is the result of running the simple checksum algorithm on the string " + seedVal + " ?";
@@ -24,14 +24,14 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
     }
 
     @Override
-    public void createDataSeeds() {
-        Seed<String> val = new Seed<>(QuizUtils.genRandomString(65, 20, 'a', 'z'));
+    public void createCalcData() {
+        CalcData<String> val = new CalcData<>(QuizUtils.genRandomString(65, 20, 'a', 'z'));
         addQuizDataItem("checkString", val);
     }
 
     @Override
     public Answer createCorrectAnswer() {
-        Seed<String> item = getQuizDataItem("checkString");
+        CalcData<String> item = getQuizDataItem("checkString");
         String seedVal = item.get();
 
         return Answer.makeCorrectAnswerWithFeedback(Long.toString(simpleCheckSum(seedVal)),

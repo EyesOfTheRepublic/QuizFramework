@@ -21,14 +21,14 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
     }
 
     @Override
-    public void createDataSeeds() {
+    public void createCalcData() {
         /* We don't really need to store these in QuizData objects because they don't appear in the question text,
         but this is consistent with other questions */
         String dataString = QuizUtils.genRandomString(65, 20, 'a', 'z');
         addQuizDataItem("checkedString",
-                new Seed<>(dataString));
+                new CalcData<>(dataString));
         addQuizDataItem("checkSum",
-                new Seed<>(simpleCheckSum(dataString)));
+                new CalcData<>(simpleCheckSum(dataString)));
     }
 
     @Override
