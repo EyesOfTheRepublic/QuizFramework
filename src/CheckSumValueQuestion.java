@@ -1,11 +1,10 @@
 public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
 
+    private String checkString;
+
     @Override
     public String createQuestionText() {
-        CalcData<String> item = getQuizDataItem("checkString");
-        String seedVal = item.get();
-
-        return "What is the result of running the simple checksum algorithm on the string " + seedVal + " ?";
+        return "What is the result of running the simple checksum algorithm on the string " + checkString + " ?";
     }
 
     @Override
@@ -25,16 +24,13 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
 
     @Override
     public void createCalcData() {
-        CalcData<String> val = new CalcData<>(QuizUtils.genRandomString(65, 20, 'a', 'z'));
-        addQuizDataItem("checkString", val);
+        checkString = QuizUtils.genRandomString(65, 20, 'a', 'z');
     }
 
     @Override
     public Answer createCorrectAnswer() {
-        CalcData<String> item = getQuizDataItem("checkString");
-        String seedVal = item.get();
 
-        return Answer.makeCorrectAnswerWithFeedback(Long.toString(simpleCheckSum(seedVal)),
+        return Answer.makeCorrectAnswerWithFeedback(Long.toString(simpleCheckSum(checkString)),
                 "some correct feedback");
     }
 

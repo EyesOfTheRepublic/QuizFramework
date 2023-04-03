@@ -5,15 +5,14 @@ public class MultQuestionExample extends Question {
 
     private final Random rnd = new Random();
 
+    private int val1;
+    private int val2;
+
     public String createQuestionTitle() {
         return "Multiplying Numbers";
     }
     public String createQuestionText() {
-        CalcData<Integer> item1 = getQuizDataItem("number1");
-        int seedVal1 = item1.get();
-        CalcData<Integer> item2 = getQuizDataItem("number2");
-        int seedVal2 = item2.get();
-        return "What is " + seedVal1 + " * " + seedVal2 + " ?";
+        return "What is " + val1 + " * " + val2 + " ?";
     }
 
     public String createGeneralFeedback() {
@@ -29,10 +28,8 @@ public class MultQuestionExample extends Question {
     }
 
     public void createCalcData() {
-        CalcData<Integer> val = new CalcData<Integer>(rnd.nextInt(15));
-        addQuizDataItem("number1", val);
-        CalcData<Integer> val2 = new CalcData<Integer>(rnd.nextInt(15));
-        addQuizDataItem("number2", val2);
+        val1 = rnd.nextInt(15);
+        val2 = rnd.nextInt(15);
     }
 
     public int createQuestionPoints() {
@@ -40,12 +37,7 @@ public class MultQuestionExample extends Question {
     }
 
     public Answer createCorrectAnswer() {
-        CalcData<Integer> item1 = getQuizDataItem("number1");
-        int seedVal1 = item1.get();
-        CalcData<Integer> item2 = getQuizDataItem("number2");
-        int seedVal2 = item2.get();
-        //int seedVal = (int)getSeedItem("number").get();
-        return Answer.makeCorrectAnswerWithFeedback(Long.toString(seedVal1 * seedVal2),
+        return Answer.makeCorrectAnswerWithFeedback(Long.toString(val1 * val2),
                 "some correct feedback");
     }
 

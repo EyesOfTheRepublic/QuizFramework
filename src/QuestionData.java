@@ -18,14 +18,11 @@ public class QuestionData {
     private int points;
     private final ArrayList<Answer> answerList; //may be more complex than required
 
-    private final SeedList questionData;
-
     /**
-     * Create a new empty Question objecg
+     * Create a new empty Question object
      */
     public QuestionData() {
         answerList = new ArrayList<>();
-        questionData = new SeedList();
     }
 
     /**

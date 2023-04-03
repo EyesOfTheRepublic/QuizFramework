@@ -5,6 +5,8 @@ public class SquareQuestionExample extends Question {
 
     private final Random rnd = new Random();
 
+    private int number;
+
     @Override
     public String createQuestionTitle() {
         return "Squaring Numbers";
@@ -12,9 +14,7 @@ public class SquareQuestionExample extends Question {
 
     @Override
     public String createQuestionText() {
-        CalcData<Integer> item = getQuizDataItem("number");
-        int seedVal = item.get();
-        return "What is the square of " + seedVal + " ?";
+        return "What is the square of " + number + " ?";
     }
 
     @Override
@@ -33,8 +33,7 @@ public class SquareQuestionExample extends Question {
     }
 
     public void createCalcData() {
-        CalcData<Integer> val1 = new CalcData<>(rnd.nextInt(15));
-        addQuizDataItem("number", val1);
+        number = rnd.nextInt(15);
     }
 
     @Override
@@ -44,9 +43,7 @@ public class SquareQuestionExample extends Question {
 
     @Override
     public Answer createCorrectAnswer() {
-        CalcData<Integer> item = getQuizDataItem("number");
-        int seedVal = item.get();
-        return Answer.makeCorrectAnswerWithFeedback(Integer.toString(seedVal * seedVal),
+        return Answer.makeCorrectAnswerWithFeedback(Integer.toString(number * number),
                 "some correct feedback");
     }
 

@@ -1,4 +1,7 @@
 public class CheckSumPairQuestion extends CheckSumQuestionCore {
+
+    private String checkedString;
+    private long checkSum;
     @Override
     public String createQuestionText() {
 
@@ -25,25 +28,22 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
         /* We don't really need to store these in QuizData objects because they don't appear in the question text,
         but this is consistent with other questions */
         String dataString = QuizUtils.genRandomString(65, 20, 'a', 'z');
-        addQuizDataItem("checkedString",
-                new CalcData<>(dataString));
-        addQuizDataItem("checkSum",
-                new CalcData<>(simpleCheckSum(dataString)));
+        checkedString = dataString;
+        checkSum = simpleCheckSum(dataString);
     }
 
     @Override
     public Answer createCorrectAnswer() {
 
-        return Answer.makeCorrectAnswerWithFeedback(getQuizDataItem("checkedString").get()
-                        + " " + getQuizDataItem("checkSum"),
+        return Answer.makeCorrectAnswerWithFeedback(checkedString
+                        + " " + checkSum,
                 "some correct feedback");
     }
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(QuizUtils.permuteString(getQuizDataItem("checkedString").valueOf(),
+        return Answer.makeIncorrectAnswerWithFeedback(QuizUtils.permuteString(checkedString,
                         0.5, QuizUtils.MIN_PERMUTATION_RNG, 2) + " "
-                + QuizUtils.similarLong((long)getQuizDataItem("checkSum").get()),
-                "some incorrect feedback");
+                + checkSum, "some incorrect feedback");
     }
 }
