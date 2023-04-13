@@ -1,12 +1,13 @@
+/*
+Generate a simple checksum question - create a random string and a corresponding checksum. Then create a set of
+(incorrect) strings - the question asks which string the checksum belongs to.
+ */
 public class CheckSumStringQuestion extends CheckSumQuestionCore {
 
     private String correctAnswer;
     @Override
     public String createQuestionText() {
-        CalcData<Long> item = getQuizDataItem("checkSum");
-        long seedVal = item.get();
-
-        return "Which of the following strings generates the simple checksum " + seedVal + " ?";
+        return "Which of the following strings generates the simple checksum " + correctAnswer + " ?";
     }
 
     @Override
@@ -26,9 +27,7 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
 
     @Override
     public void createCalcData() {
-        this.correctAnswer = QuizUtils.genRandomString(65, 20, 'a', 'z');
-        CalcData<Long> val = new CalcData<>(simpleCheckSum(this.correctAnswer));
-        addQuizDataItem("checkSum", val);
+        correctAnswer = QuizUtils.genRandomString(65, 20, 'a', 'z');
     }
 
     @Override

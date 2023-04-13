@@ -46,6 +46,6 @@ public class Main {
         That can generate QTI format - which Canvas can import. Ideally, (but not yet) there would be other output formats.
          */
         quiz.generateText2Qti(System.out);
-
+        System.out.close(); //makes more sense if this is a file
     }
 }

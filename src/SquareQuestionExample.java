@@ -1,4 +1,6 @@
-
+/*
+Simple example question asking what is the square of a (random) number
+ */
 import java.util.Random;
 
 public class SquareQuestionExample extends Question {

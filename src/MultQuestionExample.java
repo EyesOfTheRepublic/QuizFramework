@@ -1,4 +1,7 @@
-
+/*
+A (trivial) multiplication question - asks what is the product of two (random) numbers. Generates one correct and a set of random
+incorrect answers.
+ */
 import java.util.Random;
 
 public class MultQuestionExample extends Question {
@@ -42,7 +45,7 @@ public class MultQuestionExample extends Question {
     }
 
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(20)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(30)),
                 "some incorrect feedback");
     }
 }

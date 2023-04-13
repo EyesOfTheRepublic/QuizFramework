@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Abstract class intended to form the basis of new question types. Some methods are abstract (and need to implementations);
  * others have default implementations that you can override if you choose.
  * Questions need a title, description, data seeds (data used to generate the question which can appear in the description),
  * a way to compute the correct answer and a way to compute incorrect answers. Optionally you can also override the number of
- * points avaiable (this defaults to 1) and the general, correct and incorrect feedback (these default to null, which should
+ * points available (this defaults to 1) and the general, correct and incorrect feedback (these default to null, which should
  * ideally be changed). NOTE you may well first implement another abstract class, if you wish to develop several questions
  * based on the same concept - so avoiding repeating common code.
  */
@@ -14,7 +13,6 @@ import java.util.HashMap;
 public abstract class Question {
 
     private QuestionData question = new QuestionData();
-    private HashMap<String, CalcData> calcDataList = new HashMap<>();
 
     /**
      * Abstract method to return a question title. A typical implementation will just return a constant string
@@ -117,27 +115,6 @@ public abstract class Question {
             }
         }
         return true;
-    }
-
-    /**
-     * Add a new data calculation item to the stored list. This is data used to compute the correct answer, and can
-     * appear in e.g. the question text. You can just use fields in your implementing class instead. Or you can create
-     * them and add them, with a key, to this list (actually HashMap). Will only add an item if the key is not already
-     * present (TODO change to return a boolean).
-     * @param key the key used to identify the item
-     * @param val the stored data item
-     */
-    protected final void addQuizDataItem(final String key, final CalcData val) {
-        calcDataList.putIfAbsent(key, val);
-    }
-
-    /**
-     * Retrieve a stored data item, based on it's key (or null if the key is not present)
-     * @param key the key used to identify the item
-     * @return the corresponding stored data item.
-     */
-    protected final CalcData getQuizDataItem(final String key) {
-        return calcDataList.getOrDefault(key, null);
     }
 
     /**

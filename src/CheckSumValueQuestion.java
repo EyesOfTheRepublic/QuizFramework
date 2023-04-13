@@ -1,3 +1,6 @@
+/*
+Generate a random string, the correct checksum, and a set of random incorrect checksums. The question asks which checksum is correct
+ */
 public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
 
     private String checkString;

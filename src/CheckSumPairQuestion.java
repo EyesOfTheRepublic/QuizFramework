@@ -1,10 +1,14 @@
+/*
+An example checksum question - generate a list of pairs of strings and checksums (using the algorithm in
+CheckSumQuestionCore) - one of which will be correct and the others incorrect
+ */
 public class CheckSumPairQuestion extends CheckSumQuestionCore {
 
     private String checkedString;
     private long checkSum;
+
     @Override
     public String createQuestionText() {
-
         return "Which of the following pairs represents a string and it's simple checksum?";
     }
 
@@ -25,8 +29,6 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
 
     @Override
     public void createCalcData() {
-        /* We don't really need to store these in QuizData objects because they don't appear in the question text,
-        but this is consistent with other questions */
         String dataString = QuizUtils.genRandomString(65, 20, 'a', 'z');
         checkedString = dataString;
         checkSum = simpleCheckSum(dataString);
@@ -34,7 +36,6 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
 
     @Override
     public Answer createCorrectAnswer() {
-
         return Answer.makeCorrectAnswerWithFeedback(checkedString
                         + " " + checkSum,
                 "some correct feedback");
