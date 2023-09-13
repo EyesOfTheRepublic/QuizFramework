@@ -1,3 +1,5 @@
+package quizframework;
+
 import java.util.Objects;
 
 /**
@@ -44,7 +46,7 @@ public class Answer {
      * Factory method to create a correct answer without feedback
      *
      * @param answer the (correct) answer)
-     * @return the constructed Answer object (with feedback == null)
+     * @return the constructed quizframework.Answer object (with feedback == null)
      */
     public static Answer makeCorrectAnswer(final String answer) {
         return new Answer(answer, null, true);
@@ -54,7 +56,7 @@ public class Answer {
      * Factory method to create an incorrect answer without feedback
      *
      * @param answer the (incorrect) answer
-     * @return the constructed Answer object (with feedback == null)
+     * @return the constructed quizframework.Answer object (with feedback == null)
      */
     public static Answer makeIncorrectAnswer(final String answer) {
         return new Answer(answer, null, false);
@@ -65,7 +67,7 @@ public class Answer {
      *
      * @param answer   the (correct) answer)
      * @param feedback the answer-specific feedback
-     * @return the constructed Answer object
+     * @return the constructed quizframework.Answer object
      */
     public static Answer makeCorrectAnswerWithFeedback(final String answer,
                                                        final String feedback) {
@@ -77,7 +79,7 @@ public class Answer {
      *
      * @param answer   the (incorrect) answer)
      * @param feedback the answer-specific feedback
-     * @return the constructed Answer object
+     * @return the constructed quizframework.Answer object
      */
     public static Answer makeIncorrectAnswerWithFeedback(final String answer,
                                                          final String feedback) {
@@ -85,7 +87,7 @@ public class Answer {
     }
 
     /*
-    Constructor for Answer - private - you should always use the factory methods above
+    Constructor for quizframework.Answer - private - you should always use the factory methods above
      */
     private Answer(final String answer, final String feedback,
                    final boolean isCorrect) {
@@ -105,8 +107,8 @@ public class Answer {
     }
 
     /**
-     * Implement the equals method to allow us to consider and object to be equal to an Answer object if and only if
-     * it is an instance of Answer and the answer text is
+     * Implement the equals method to allow us to consider and object to be equal to an quizframework.Answer object if and only if
+     * it is an instance of quizframework.Answer and the answer text is
      * the same
      *
      * @param obj the object to check for equality

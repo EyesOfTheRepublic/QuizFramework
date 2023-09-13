@@ -1,8 +1,10 @@
+package quizframework;
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 
 /**
- * Class representing a quiz - A Quiz object is created with a title and a description (there is currently no other
+ * Class representing a quiz - A quizframework.Quiz object is created with a title and a description (there is currently no other
  * constructor so these must be supplied). Once created, question objects can be added, and the quiz can be output in
  * a format compatible with <a href="https://github.com/gpoore/text2qti">text2qti</a>(which will generate a QTI file).
  */
@@ -41,7 +43,7 @@ public class Quiz {
      */
     public void generateText2Qti(final PrintStream stream) {
         stream.println("Title: " + quizTitle);
-        stream.println("Quiz description: " + quizDesc + "\n");
+        stream.println("quizframework.Quiz description: " + quizDesc + "\n");
         int qNum = 1;
         for(Question question: questionList) {
             stream.println(question.toText2Qti(qNum));

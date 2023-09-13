@@ -1,3 +1,5 @@
+package quizframework;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -44,7 +46,7 @@ public class QuizUtils {
      *  made up of lower-case latin characters.</p>
      */
 
-    public static final String genRandomString(final int minLen, final int sizeRng,
+    public static final String genRandomString(int minLen, int maxLen,
                                                char low, char high) {
 
         if (low > high) {
@@ -53,8 +55,14 @@ public class QuizUtils {
             high = temp;
         }
 
+        if (minLen > maxLen) {
+            final int temp = minLen;
+            minLen = maxLen;
+            maxLen = temp;
+        }
+
         //Generate target string length and prep buffer
-        final int targetStringLength = ThreadLocalRandom.current().nextInt(sizeRng) + minLen;
+        final int targetStringLength = ThreadLocalRandom.current().nextInt(minLen, maxLen);
         StringBuilder buffer = new StringBuilder(targetStringLength);
 
         //use the low and high characters to set the random generation range
@@ -153,5 +161,25 @@ public class QuizUtils {
         }
 
         return String.valueOf(strList);
+    }
+
+    /**
+     * Generate a random integer between min (inclusive) and max (exclusive)
+     * @param min minimum (inclusive) value
+     * @param max maximum (exclusive) value
+     * @return random integer between min (inclusive) and max (exclusive)
+     */
+    public static int genRandomInt(final int min, final int max) {
+        return ThreadLocalRandom.current().nextInt(min, max);
+    }
+
+    /**
+     * Generate a random long between min (inclusive) and max (exclusive)
+     * @param min minimum (inclusive) value
+     * @param max maximum (exclusive) value
+     * @return random long between min (inclusive) and max (exclusive)
+     */
+    public static long genRandomLong(final long min, final long max) {
+        return ThreadLocalRandom.current().nextLong(min, max);
     }
 }

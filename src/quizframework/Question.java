@@ -1,3 +1,5 @@
+package quizframework;
+
 import java.util.ArrayList;
 
 /**
@@ -108,8 +110,9 @@ public abstract class Question {
         }
 
         //Add the required number of incorrect answers, ensuring they are unique
+        final int incorrectAnswers = Math.max(1, numAnswers - 1);
         int incorrectCount = 0;
-        while (incorrectCount < numAnswers) {
+        while (incorrectCount < incorrectAnswers) {
             if (question.addAnswer(createIncorrectAnswer())) {
                 incorrectCount++;
             }
@@ -142,7 +145,7 @@ public abstract class Question {
     }
 
     /**
-     * Generate the question test in a format suitable for text2qti (https://github.com/gpoore/text2qti). Answer order
+     * Generate the question test in a format suitable for text2qti (https://github.com/gpoore/text2qti). quizframework.Answer order
      * is randomized. The format is a restricted form of markDown.
      * @param qNum the number that should appear in the questions
      * @return the (markDown) format string suitable for text2qti

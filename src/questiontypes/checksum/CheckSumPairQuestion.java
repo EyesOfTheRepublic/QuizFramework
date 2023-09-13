@@ -1,6 +1,11 @@
+package questiontypes.checksum;
+
+import quizframework.Answer;
+import quizframework.QuizUtils;
+
 /*
 An example checksum question - generate a list of pairs of strings and checksums (using the algorithm in
-CheckSumQuestionCore) - one of which will be correct and the others incorrect
+questiontypes.checksum.CheckSumQuestionCore) - one of which will be correct and the others incorrect
  */
 public class CheckSumPairQuestion extends CheckSumQuestionCore {
 

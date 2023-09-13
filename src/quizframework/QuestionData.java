@@ -1,3 +1,7 @@
+package quizframework;
+
+import quizframework.Answer;
+
 import java.util.ArrayList;
 
 /**
@@ -19,7 +23,7 @@ public class QuestionData {
     private final ArrayList<Answer> answerList; //may be more complex than required
 
     /**
-     * Create a new empty Question object
+     * Create a new empty quizframework.Question object
      */
     public QuestionData() {
         answerList = new ArrayList<>();
