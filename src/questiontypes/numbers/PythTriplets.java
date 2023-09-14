@@ -86,6 +86,18 @@ public class PythTriplets extends Question {
                 pythList.size() : candidate));
     }
 
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        int pythCount = 0;
+        for(Integer[] elt : pythList) {
+            if (elt[0] * elt[0] + elt[1] * elt[1] == elt[2] * elt[2]) {
+                pythCount++;
+            }
+        }
+
+        return pythCount == Integer.parseInt(answer.getAnswer());
+    }
+
     /*Generate wong answers - triplets that are not pythagorean - that are not already present in the question list */
     private Integer[] genWrong(ArrayList<Integer[]> wrongList) {
         int a;

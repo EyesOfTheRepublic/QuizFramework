@@ -14,7 +14,10 @@ import java.util.ArrayList;
 
 public abstract class Question {
 
-    private QuestionData question = new QuestionData();
+    private final QuestionData question = new QuestionData();
+    private final ArrayList<Answer> faultList = new ArrayList<>();
+
+    /* Abstract Methods - MUST be implemented */
 
     /**
      * Abstract method to return a question title. A typical implementation will just return a constant string
@@ -54,6 +57,8 @@ public abstract class Question {
      */
     public abstract Answer createIncorrectAnswer();
 
+    /* Overridable Methods - CAN be implemented */
+
     /**
      * Return the number of points for the question. By default this returns 1 (but can be optionally overridden)
      * @return the number of points (defaults to 1)
@@ -85,6 +90,25 @@ public abstract class Question {
     public String createIncorrectFeedback() {
         return null;
     }
+
+    /**
+     * Check that the answer is correctly either correct or wrong - defaults to returning true if the answer is marked correct
+     * and false otherwise. Can be overridden to compute the correctness of the tested answer. The rationale is that an implementation
+     * of this method should contain an example of how to solve the problem as a test and sample solution. Note this would not
+     * normally be called directly but by the {@link #checkAnswerSet() checkAnswerSet} method.
+     *
+     * @param answer The answer being tested for correctness
+     * @return true if the answer is correct, false otherwise.
+     */
+    public boolean checkAnswer(final Answer answer) {
+        if (answer.isCorrect()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /* Operational Methods - CANNOT be overridden */
 
     /**
      * Create a multiple choice (MCQ) question with the specified number of answers (including both correct and incorrect
@@ -121,26 +145,75 @@ public abstract class Question {
     }
 
     /**
-     * Used to represent the question as a readable string - answers are returned in a random order (this may not make
-     * sense here as this is used to generate readable output for developing questions. Only meaningfully called
-     * after you have called {@createMcqAnswerSet} (or possible future methods generating different question types).
+     * Check the correctness of all the recorded answers by calling {@link #checkAnswer(Answer answer) checkAnswer} for
+     * each one. For debugging returns a list of answers that do not match the expected result.
+     * By default, checkAnswer just uses the correct/incorrect stored in each {@link Answer Answer} and so
+     * will always return an empty list. Override {@link #checkAnswer(Answer answer) checkAnswer} with a sample/reference
+     * implementation of the answer to the question to check it's correctness.
+     *
+     * @return
+     */
+    public final boolean checkAnswerSet() {
+
+        for(Answer answer : question.getAnswerList()) {
+            //If checkAnswer does not agree with the recorded correctness of the answer
+            if (answer.isCorrect() && !checkAnswer(answer)
+            || !answer.isCorrect() && checkAnswer(answer)) {
+                faultList.add(answer);
+            }
+        }
+        return faultList.isEmpty();
+    }
+
+    /**
+     * Get the list of non-matching answers based on running {@link #checkAnswerSet() checkAnswerSet} - correct answer
+     * marked wrong on incorrect answers marked correct.
+     *
+     * @return the list of faulty answers.
+     */
+    public ArrayList<Answer> getFaultList() {
+        return faultList;
+    }
+
+    /**
+     * Used to represent the question as a readable string - <emph>provided the question is fault free</emph>,
+     * answers are returned in a random order (This may not make
+     * sense here as this is used to generate readable output for developing questions.)
+     *
+     * If there are faults in the question, only those answers which are not correct (do not pass the fault testing)
+     * are output, with the correct answer first.
+     *
+     * Only meaningfully called
+     * after you have called {@link #createMcqAnswerSet(int answers) createMcqAnswerSet} (or possible future methods
+     * generating different question types.
      * @return the String representation of the
      */
     @Override
     public final String toString() {
-        ArrayList<Answer> list = randomize();
         StringBuilder builder = new StringBuilder(question.getQuestionTitle());
         builder.append("\n");
         builder.append(question.getQuestionText());
         builder.append("\n");
         builder.append("Points: " + question.getQuestionPoints() + "\n");
-        for (Answer ans: list) {
-            builder.append(ans.getAnswer());
-            if (ans.isCorrect()) {
-                builder.append(" *");
+
+        if (!faultList.isEmpty()) {
+            builder.append("QUESTION DOES NOT PASS FAULT CHECKING\n");
+            builder.append("The following answers do not match the expected value:\n");
+            for(Answer ans: faultList) {
+                builder.append(ans.getAnswer() + " should be: " + (ans.isCorrect() ? "correct\n" : "incorrect\n"));
             }
-            builder.append("\n");
+        } else {
+
+            ArrayList<Answer> list = randomize();
+            for (Answer ans : list) {
+                builder.append(ans.getAnswer());
+                if (ans.isCorrect()) {
+                    builder.append(" *");
+                }
+                builder.append("\n");
+            }
         }
+
         return builder.toString();
     }
 
@@ -179,8 +252,10 @@ public abstract class Question {
         return builder.toString();
     }
 
+    /* Private Methods */
+
     /*Shuffle an arraylist - used to randomize the order of answers in the list of possible answers (by default, in
-    MCQ example, the correct answer will always be added first and will always be at the front, so this shuffle the order */
+    MCQ example, the correct answer will always be added first and will always be at the front, so this shuffles the order) */
     private ArrayList<Answer> randomize() {
         ArrayList<Answer> list = new ArrayList<>(question.getAnswerList());
         java.util.Collections.shuffle(list);

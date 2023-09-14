@@ -62,4 +62,26 @@ public class AltRewriting extends Question {
     public Answer createIncorrectAnswer() {
         return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerString,0.5, 0.4, 5));
     }
+
+    @Override
+    public boolean checkAnswer(final Answer answer) {
+        String finalValue = answer.getAnswer();
+        String workingString = questionString;
+
+        boolean done = false;
+        boolean isSet1 = true;
+        while (!done) {
+            String startVal = workingString;
+            if (isSet1) {
+                workingString = RewritingUtils.replaceAll(workingString, CoreRewritingData.rewriteMap);
+            } else {
+                workingString = RewritingUtils.replaceAll(workingString, CoreRewritingData.altRewriteMap);
+            }
+            isSet1 = !isSet1;
+            if (workingString.equals(startVal)) {
+                done = true;
+            }
+        }
+        return workingString.equals(finalValue);
+    }
 }

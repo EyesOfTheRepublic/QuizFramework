@@ -97,4 +97,22 @@ public class Fibonacci extends Question {
         int candidate = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, questionList.size())));
     }
+
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        int fibCount = 0;
+        for (long elt : questionList) {
+            long f1 = 1;
+            long f2 = 1;
+            while (f2 <= elt) {
+                long temp = f2;
+                f2 += f1;
+                f1 = temp;
+            }
+            if (f1 == elt) {
+                fibCount++;
+            }
+        }
+        return fibCount == Integer.parseInt(answer.getAnswer());
+    }
 }

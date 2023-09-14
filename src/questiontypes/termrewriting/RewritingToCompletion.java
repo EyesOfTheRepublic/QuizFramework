@@ -37,10 +37,10 @@ public class RewritingToCompletion extends Question {
         //Run the rules until no more changes happen
         do {
             String rewrittenString = RewritingUtils.runOneStep(tempString, CoreRewritingData.rewriteMap);
+            steps++;
             if (rewrittenString.equals(tempString)) {
                 done = true;
             } else {
-                steps++;
                 tempString = rewrittenString;
             }
         } while (!done);
@@ -57,5 +57,19 @@ public class RewritingToCompletion extends Question {
         int min = numSteps < CoreRewritingData.STEP_MIN ? CoreRewritingData.STEP_MIN : numSteps;
         int max = numSteps + CoreRewritingData.STEP_MAX;
         return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
+    }
+
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        String startingString = sourceString;
+        boolean done = false;
+        int count = 0;
+        while (!done) {
+            String tempString = startingString;
+            startingString = RewritingUtils.runOneStep(startingString, CoreRewritingData.rewriteMap);
+            done = startingString.equals(tempString);
+            count++;
+        }
+        return count == Integer.parseInt(answer.getAnswer());
     }
 }

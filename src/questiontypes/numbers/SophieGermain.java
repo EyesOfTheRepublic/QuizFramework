@@ -52,8 +52,9 @@ public class SophieGermain extends Question {
         //Check if each one is a Sophie Germain prime
         for(int i = 0; i < numPrimes; i++) {
             int loc = ThreadLocalRandom.current().nextInt(primeList.size());
-            dataSet.add(primeList.get(loc));
-            if (isPrime(primeList.get(loc) * 2 + 1)) {
+            int val = primeList.get(loc);
+            dataSet.add(val);
+            if (isPrime(val * 2 + 1)) {
                 numGermainPrimes ++;
             }
             primeList.remove(loc);
@@ -69,6 +70,24 @@ public class SophieGermain extends Question {
     public Answer createIncorrectAnswer() {
         //Note zero is a plausible answer to this question.
         return Answer.makeIncorrectAnswer(Integer.toString(ThreadLocalRandom.current().nextInt(MAX_ANS)));
+    }
+
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        int count = 0;
+        for (int elt: dataSet) {
+            boolean sg = true;
+            for (int i = 2; i < elt; i++) {
+                if ((2 * elt + 1) % i == 0) {
+                    sg = false;
+                    break;
+                }
+            }
+            if (sg) {
+                count++;
+            }
+        }
+        return count == Integer.parseInt(answer.getAnswer());
     }
 
     private static boolean isPrime(int n){

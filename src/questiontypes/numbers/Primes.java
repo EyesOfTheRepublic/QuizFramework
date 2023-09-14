@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * This question has a large list of numbers some prime and some note. The question is to identify how many are prime.
+ * This question has a large list of numbers some prime and some not. The question is to identify how many are prime.
  */
 public class Primes extends Question {
 
@@ -80,5 +80,24 @@ public class Primes extends Question {
         int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
         //dataSet.size() won't be > MAX_NUM for current values but just in case...
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, dataSet.size())));
+    }
+
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        int primeCount = 0;
+        for(int i = 0; i < dataSet.size(); i++) {
+            boolean prime = true;
+            for (int j = 2; j < dataSet.get(i) - 1; j++) {
+                if (dataSet.get(i) % j == 0) {
+                    prime = false;
+                    break;
+                }
+            }
+            if (prime) {
+                primeCount++;
+            }
+        }
+
+        return primeCount == Integer.parseInt(answer.getAnswer());
     }
 }

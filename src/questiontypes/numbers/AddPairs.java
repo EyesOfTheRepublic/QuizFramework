@@ -62,10 +62,9 @@ public class AddPairs extends Question {
         */
         for (int i = 0; i < numPairs; i++) {
             int splitPoint = QuizUtils.genRandomInt(MIN_LIST_VAL, sumTarget - MIN_LIST_VAL);
-            int remainder = sumTarget - splitPoint;
             if (!listOfPairs.contains(splitPoint)) {
                 listOfPairs.add(splitPoint);
-                listOfPairs.add(remainder);
+                listOfPairs.add(sumTarget - splitPoint);
             }
         }
 
@@ -88,6 +87,28 @@ public class AddPairs extends Question {
         return Answer.makeIncorrectAnswer(Integer.toString(listOfPairs.get(index)));
     }
 
+    @Override
+    public boolean checkAnswer(Answer answer) {
+       int ans = Integer.parseInt(answer.getAnswer());
+
+       for(int i = 0; i < listOfPairs.size(); i++) {
+           int candidate = listOfPairs.get(i);
+           boolean found = false;
+           for (int j = 0; j < listOfPairs.size(); j++) {
+               if (i != j) {
+                   if (candidate + listOfPairs.get(j) == sumTarget) {
+                       found = true;
+                       break;
+                   }
+               }
+           }
+           if (!found) {
+               return candidate == ans;
+           }
+       }
+        return false;
+    }
+
     //Generate  number in the required range that doesn't sum with any other numbers in the list to make the target
     private int genCorrectAnswer(ArrayList<Integer> curList) {
         int target;
@@ -97,7 +118,7 @@ public class AddPairs extends Question {
             done = true;
             target = QuizUtils.genRandomInt(LIM_VAL / 2, LIM_VAL);
             for (int elt : curList) {
-                if (elt == target) {
+                if (elt == target || elt + target == sumTarget) {
                     done = false;
                 }
             }

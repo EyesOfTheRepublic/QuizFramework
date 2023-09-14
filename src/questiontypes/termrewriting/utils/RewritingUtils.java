@@ -15,7 +15,7 @@ public class RewritingUtils {
 
 
     //Method that generates a random string and then runs until no more rewriting changes occure
-    public static String genString(final String inString, final String[][] rewriteMap) {
+    public static String runToCompletion(final String inString, final String[][] rewriteMap) {
         String tempString = inString;
         boolean done = false;
         //Generate a random string and term rewrite until no more changes happen
@@ -28,5 +28,13 @@ public class RewritingUtils {
             }
         } while (!done);
         return tempString;
+    }
+
+    //USED FOR SAMPLE SOLUTION TESTING
+    public static String replaceAll(String workingString, String[][] rewriteMap) {
+        for(String[] elt : rewriteMap) {
+            workingString = workingString.replaceAll(elt[0], elt[1]);
+        }
+        return workingString;
     }
 }

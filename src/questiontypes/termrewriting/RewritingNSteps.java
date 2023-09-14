@@ -13,7 +13,7 @@ import quizframework.QuizUtils;
 public class RewritingNSteps extends Question {
 
     private int numSteps;
-    private String sourceString;
+    private String sourceString = "";
     private String answerString;
 
     @Override
@@ -53,4 +53,12 @@ public class RewritingNSteps extends Question {
         return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerString,0.5, 0.4, 5));
     }
 
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        String answerVal = sourceString;
+        for(int i = 0; i < numSteps; i++) {
+            answerVal = RewritingUtils.runOneStep(answerVal,CoreRewritingData.rewriteMap);
+        }
+        return answerVal.equals(answer.getAnswer());
+    }
 }

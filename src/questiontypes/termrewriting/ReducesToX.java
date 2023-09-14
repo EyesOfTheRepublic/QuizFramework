@@ -11,7 +11,7 @@ import quizframework.QuizUtils;
  */
 public class ReducesToX extends Question {
 
-    private String answerString;
+    private String answerString = "";
 
     @Override
     public String createQuestionTitle() {
@@ -31,7 +31,7 @@ public class ReducesToX extends Question {
         do {
             inString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                     CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
-            tempString = RewritingUtils.genString(inString, CoreRewritingData.rewriteMap);
+            tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.rewriteMap);
         } while (!tempString.equals("X"));
         answerString = inString;
     }
@@ -49,8 +49,24 @@ public class ReducesToX extends Question {
         do {
             inString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                     CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
-            tempString = RewritingUtils.genString(inString, CoreRewritingData.rewriteMap);
+            tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.rewriteMap);
         } while (tempString.equals("X"));
         return Answer.makeIncorrectAnswer(inString);
+    }
+
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        String answerString = answer.getAnswer();
+        boolean done = false;
+
+        while (!done) {
+            String startVal = answerString;
+            answerString = RewritingUtils.replaceAll(startVal, CoreRewritingData.rewriteMap);
+            if (answerString.equals(startVal)) {
+                done = true;
+            }
+        }
+
+        return answerString.equals("X");
     }
 }

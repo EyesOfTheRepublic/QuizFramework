@@ -73,4 +73,16 @@ public class Factors extends Question {
         //listOfPosFactors.size() won't be > MAX_NUM for current values but just in case...
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, listOfPosFactors.size())));
     }
+
+    @Override
+    public boolean checkAnswer(Answer answer) {
+        int factorCount = 0;
+        for(int elt: listOfPosFactors) {
+            if (elt % ansFactor == 0) {
+                factorCount ++;
+            }
+        }
+
+        return factorCount == Integer.parseInt(answer.getAnswer());
+    }
 }

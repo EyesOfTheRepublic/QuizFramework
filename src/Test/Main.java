@@ -42,7 +42,7 @@ public class Main {
 
         /*The remaining questions are created in a similar way below - note that they all include their own
         implementations of the abstract quizframework.Question class */
-        Question multExample = new MultQuestionExample();
+  /*      Question multExample = new MultQuestionExample();
         multExample.createMcqAnswerSet(6);
         quiz.addQuestion(multExample);
 
@@ -58,7 +58,7 @@ public class Main {
         Question checkPairQuestion = new CheckSumPairQuestion();
         checkPairQuestion.createMcqAnswerSet(6);
         quiz.addQuestion(checkPairQuestion);
-
+*/
         //Real Questions...
 
         Question factorsQuestion = new Factors();
@@ -107,7 +107,8 @@ public class Main {
         https://github.com/gpoore/text2qti
         That can generate QTI format - which Canvas can import. Ideally, (but not yet) there would be other output formats.
          */
-        quiz.generateText2Qti(System.out);
+        //quiz.generateText2Qti(System.out);
+        System.out.println(quiz);
         System.out.close(); //makes more sense if this is a file
     }
 }

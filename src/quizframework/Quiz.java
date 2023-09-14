@@ -10,10 +10,13 @@ import java.util.ArrayList;
  */
 public class Quiz {
 
-    private ArrayList<Question> questionList = new ArrayList<>();
-    private String quizTitle;
+    private final ArrayList<Question> questionList = new ArrayList<>();
 
-    private String quizDesc;
+    //Questions that fail fault checking - answers do not match expectations
+    private final ArrayList<Question> faultyQuestions = new ArrayList<>();
+    private final String quizTitle;
+
+    private final String quizDesc;
 
     /**
      * Create a quiz object with a title and a description
@@ -27,13 +30,27 @@ public class Quiz {
 
     /**
      * Add a question to the quiz - questions must be added in order (there is currently no way to add questions
-     * at other points in the quiz
+     * at other points in the quiz)
      * @param question the {@link Question} to be added
-     * @return currently returns true
+     * @return true if all the answers pass the correctness test and false otherwise
      */
     public boolean addQuestion(final Question question) {
         questionList.add(question); //Note adding duplicates is allowed!
-        return true; //until we think of appropriate data validation...
+        if(!question.checkAnswerSet()) {
+            faultyQuestions.add(question);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Check to see if the quiz has questions that do not pass the fault checking process
+     *
+     * @return true if there are faults, false otherwise
+     */
+    public boolean hasFaults() {
+        return !faultyQuestions.isEmpty();
     }
 
     /**
@@ -43,12 +60,28 @@ public class Quiz {
      */
     public void generateText2Qti(final PrintStream stream) {
         stream.println("Title: " + quizTitle);
-        stream.println("quizframework.Quiz description: " + quizDesc + "\n");
+        stream.println("Quiz description: " + quizDesc + "\n");
         int qNum = 1;
         for(Question question: questionList) {
             stream.println(question.toText2Qti(qNum));
             qNum++;
         }
+    }
+
+    /**
+     * Format the quiz as a readable string
+     *
+     * @return the quiz as a readable string
+     */
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Title: " + quizTitle + "\n");
+        builder.append("Quiz description: " + quizDesc + "\n");
+        for (Question question: questionList) {
+            builder.append("\n" + question);
+        }
+        return builder.toString();
     }
 
 }
