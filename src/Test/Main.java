@@ -3,6 +3,10 @@ package Test;
 import questiontypes.checksum.CheckSumPairQuestion;
 import questiontypes.checksum.CheckSumStringQuestion;
 import questiontypes.checksum.CheckSumValueQuestion;
+import questiontypes.crypto.Decryption;
+import questiontypes.crypto.DoubleEncrypt;
+import questiontypes.crypto.Encryption;
+import questiontypes.crypto.NumCols;
 import questiontypes.example.MultQuestionExample;
 import questiontypes.example.SquareQuestionExample;
 import questiontypes.numbers.AddPairs;
@@ -100,6 +104,22 @@ public class Main {
         Question altSets = new AltRewriting();
         altSets.createMcqAnswerSet(6);
         quiz.addQuestion(altSets);
+
+        Question encode = new Encryption();
+        encode.createMcqAnswerSet(6);
+        quiz.addQuestion(encode);
+
+        Question numCols = new NumCols();
+        numCols.createMcqAnswerSet(6);
+        quiz.addQuestion(numCols);
+
+        Question decode = new Decryption();
+        decode.createMcqAnswerSet(6);
+        quiz.addQuestion(decode);
+
+        Question doubleEncode = new DoubleEncrypt();
+        doubleEncode.createMcqAnswerSet(6);
+        quiz.addQuestion(doubleEncode);
 
         /*
         The generateText2Qti method outputs a quiz in *markdown* format to the specified PrintStream - in this case,
