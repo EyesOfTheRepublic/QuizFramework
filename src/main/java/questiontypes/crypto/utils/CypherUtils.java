@@ -13,6 +13,7 @@ public class CypherUtils {
     public static final char LOW_CHAR = 'a';
 
 
+
     /*
      * Prints an array of characters row-by-row in a readable way.
      * You may need to add the keyword static after public

@@ -174,6 +174,22 @@ public class QuizUtils {
     }
 
     /**
+     * Generate a random double in a specific range, optionally with a specific precision
+     * @param min the minimum value
+     * @param max the maximum value
+     * @param decimals the number of decimal places (if zero or negative this is ignored)
+     * @return the generated double
+     */
+    public static double getRandomDouble(final double min, final double max, final int decimals) {
+        if (max < min) {
+            System.out.println(min + " " + max);
+        }
+        final double val = ThreadLocalRandom.current().nextDouble(min, max);
+        final double factor = Math.pow(10, decimals);
+        return decimals > 0 ?  val * decimals / decimals : val ;
+    }
+
+    /**
      * Generate a random long between min (inclusive) and max (exclusive)
      * @param min minimum (inclusive) value
      * @param max maximum (exclusive) value

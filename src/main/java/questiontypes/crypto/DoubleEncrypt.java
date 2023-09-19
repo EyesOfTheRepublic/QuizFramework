@@ -12,7 +12,6 @@ public class DoubleEncrypt extends Question {
 
     private String sourceString;
     private int key;
-    private int key2;
     private String answerText;
 
     @Override
@@ -23,23 +22,27 @@ public class DoubleEncrypt extends Question {
     @Override
     public String createQuestionText() {
         return "What is the result of encrypting the string with a transposition cypher " + sourceString + " using an array"
-                + " with " + key + " columns, and then encrypting it again withe an array with " + key2 + "columns?";
+                + " with " + key + " columns, and then encrypting it again withe an array with <emph>the same number</emph>"
+                + " of columns?";
     }
 
     @Override
     public void createCalcData() {
-        //Create a random key
-        key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
-        key2 = QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
-        //Create random plain text whose length is multiple of the key
+        /*We need to produce a pair consisting of a string and an integer (key) such that:
+        1. The length of the string is a multiple of the key;
+        2. The length of the string is not equal to key * key - because the double encrypted text would be the same
+        as the original plaintext in that case (does this matter?)
+         */
+
         do {
+            key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY,CypherUtils.MAX_KEY);
             sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
-        } while (sourceString.length() % key != 0 && sourceString.length() % key2 != 0);
+        } while (sourceString.length() % key != 0 || sourceString.length() == key * key);
 
         //Encode it twice
         String tempText = CypherUtils.encode(sourceString, key);
-        answerText = CypherUtils.encode(tempText, key2);
+        answerText = CypherUtils.encode(tempText, key);
     }
 
     @Override
@@ -58,7 +61,7 @@ public class DoubleEncrypt extends Question {
     public boolean checkAnswer(Answer answer) {
 
         String tempVal =  encode(sourceString, key);
-        String result = encode(tempVal, key2);
+        String result = encode(tempVal, key);
         return result.equals(answer.getAnswer());
     }
 

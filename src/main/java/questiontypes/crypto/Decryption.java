@@ -64,7 +64,7 @@ public class Decryption extends Question {
                 charLoc++;
             }
         }
-        CypherUtils.formatArray(encryptArray);
+        //CypherUtils.formatArray(encryptArray);
 
         for (int i = 0; i < sourceString.length() / key; i++) {
             for (int j = 0; j < key; j++) {

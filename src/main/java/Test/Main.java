@@ -9,6 +9,10 @@ import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
 import questiontypes.example.MultQuestionExample;
 import questiontypes.example.SquareQuestionExample;
+import questiontypes.location.DistanceTwoPoints;
+import questiontypes.location.MinSecDistance;
+import questiontypes.location.TotalDistance;
+import questiontypes.location.WhichDistance;
 import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
@@ -120,6 +124,22 @@ public class Main {
         Question doubleEncode = new DoubleEncrypt();
         doubleEncode.createMcqAnswerSet(6);
         quiz.addQuestion(doubleEncode);
+
+        Question singleDistance = new DistanceTwoPoints();
+        singleDistance.createMcqAnswerSet(6);
+        quiz.addQuestion(singleDistance);
+
+        Question whichDistance = new WhichDistance();
+        whichDistance.createMcqAnswerSet(6);
+        quiz.addQuestion(whichDistance);
+
+        Question totalDistance = new TotalDistance();
+        totalDistance.createMcqAnswerSet(6);
+        quiz.addQuestion(totalDistance);
+
+        Question minSec = new MinSecDistance();
+        minSec.createMcqAnswerSet(6);
+        quiz.addQuestion(minSec);
 
         /*
         The generateText2Qti method outputs a quiz in *markdown* format to the specified PrintStream - in this case,

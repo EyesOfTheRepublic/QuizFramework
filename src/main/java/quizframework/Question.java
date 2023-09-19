@@ -176,9 +176,9 @@ public abstract class Question {
     }
 
     /**
-     * Used to represent the question as a readable string - <emph>provided the question is fault free</emph>,
-     * answers are returned in a random order (This may not make
-     * sense here as this is used to generate readable output for developing questions.)
+     * Used to represent the question as a readable string - <emph>provided the question is fault free</emph>.
+     * The correct answer is always returend <emph>first</emph> - unlike {@link #toText2Qti(int) toText2Qti} where
+     * the orders are random (this is because this method is mainly used for question checking.
      *
      * If there are faults in the question, only those answers which are not correct (do not pass the fault testing)
      * are output, with the correct answer first.
@@ -204,7 +204,7 @@ public abstract class Question {
             }
         } else {
 
-            ArrayList<Answer> list = randomize();
+            ArrayList<Answer> list = question.getAnswerList();//randomize();
             for (Answer ans : list) {
                 builder.append(ans.getAnswer());
                 if (ans.isCorrect()) {
