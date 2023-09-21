@@ -29,12 +29,12 @@ public class SophieGermain extends Question {
 
     @Override
     public String createQuestionText() {
-        String qText = "A Sophie Germain prime number is a prime number <pre>p</pre> where <pre>2 * p + 1</pre> is also "
+        String qText = "A Sophie Germain prime number is a prime number p where 2 * p + 1 is also "
                 + "prime. How many of the following are Sophie Germain numbers? <pre>int[] primes = {";
         for(int i = 0; i < dataSet.size() - 1; i++) {
             qText += dataSet.get(i) + ", ";
         }
-        qText += dataSet.get(dataSet.size() - 1) + "};";
+        qText += dataSet.get(dataSet.size() - 1) + "};</pre>";
         return qText;
     }
 

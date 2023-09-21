@@ -6,13 +6,18 @@ import quizframework.QuizUtils;
 /*
 Generate a random string, the correct checksum, and a set of random incorrect checksums. The question asks which checksum is correct
  */
-public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
+public class CheckSumValueQuestion extends CheckSumQuestionCore {
 
     private String checkString;
 
     @Override
+    public String createQuestionTitle() {
+        return "Basic checksum";
+    }
+
+    @Override
     public String createQuestionText() {
-        return "What is the result of running the simple checksum algorithm on the string " + checkString + " ?";
+        return "What is the result of running the simple checksum algorithm on the string <kbd>" + checkString + "</kbd>?";
     }
 
     @Override
@@ -44,7 +49,7 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore { ;
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextLong()),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomLong(Long.MIN_VALUE, Long.MAX_VALUE)),
                 "some incorrect feedback");
     }
 }

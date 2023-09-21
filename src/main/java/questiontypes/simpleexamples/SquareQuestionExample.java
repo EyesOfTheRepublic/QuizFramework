@@ -1,4 +1,4 @@
-package questiontypes.example;/*
+package questiontypes.simpleexamples;/*
 Simple example question asking what is the square of a (random) number
  */
 import quizframework.Answer;

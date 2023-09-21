@@ -33,7 +33,7 @@ public class PythTriplets extends Question {
     @Override
     public String createQuestionText() {
         String qText =  "How many of the groups of three numbers in the list are Pythagorean Triples? "
-                + "That is, for each {a, b, c}, a*a + b*b == c*c. <pre>int[][] possTriples = {";
+                + "That is, for each <kbd>{a, b, c}</kbd>, <kbd>a\\*a + b\\*b == c\\*c</kbd>. <pre>int[][] possTriples = {";
         for (int j = 0; j < pythList.size() - 1; j++) {
             qText += "{" + pythList.get(j)[0] + ", " + pythList.get(j)[1] + ", " + pythList.get(j)[2] + "}, ";
         }

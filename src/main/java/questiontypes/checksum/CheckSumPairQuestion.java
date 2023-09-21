@@ -13,6 +13,11 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
     private long checkSum;
 
     @Override
+    public String createQuestionTitle() {
+        return "Matching string checksum pair";
+    }
+
+    @Override
     public String createQuestionText() {
         return "Which of the following pairs represents a string and it's simple checksum?";
     }

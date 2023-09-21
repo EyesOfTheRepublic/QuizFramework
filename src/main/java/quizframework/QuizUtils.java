@@ -9,6 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class QuizUtils {
 
+    /**
+     *
+     */
+    public static final int OBS_STR_LEN = 7;
+
     //Prevent instance of this class being (pointlessly) created
     private QuizUtils(){}
 
@@ -197,5 +202,10 @@ public class QuizUtils {
      */
     public static long genRandomLong(final long min, final long max) {
         return ThreadLocalRandom.current().nextLong(min, max);
+    }
+
+    public static String genObsName(final String baseName, final int seqNum) {
+        String obsStr = genRandomString(OBS_STR_LEN, OBS_STR_LEN+1, 'a', 'z');
+        return baseName + "-"+obsStr + "-" + seqNum;
     }
 }

@@ -4,21 +4,16 @@ import quizframework.Question;
 
 import java.util.Random;
 /*
-Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithm
+Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithms
+This approach probably doesn't make any sense now given changes elsewhere
  */
 public abstract class CheckSumQuestionCore extends Question {
 
-    protected Random rnd = new Random();
+    protected static final int MIN_LEN = 65;
+    protected static final int MAX_LEN = 85;
 
-    @Override
-    public String createQuestionTitle() {
-        return "Basic Checksum";
-    }
-
-    @Override
-    public int createQuestionPoints() {
-        return 8;
-    }
+    protected static final char HIGH_RNG = 'z';
+    protected static final char LOW_RNG = 'a';
 
     protected long simpleCheckSum(String str) {
         long k = 7;//7
@@ -29,5 +24,15 @@ public abstract class CheckSumQuestionCore extends Question {
             k %= 1000000009;
         }
         return k;
+    }
+
+    protected byte bitwiseCheckSum(String str) {
+        byte[] input = str.getBytes();
+        byte checksum = 0;
+        for (byte cur_byte : input) {
+            checksum = (byte) (((checksum & 255) >>> 1) + ((checksum & 1) << 7));
+            checksum = (byte) ((checksum + cur_byte) & 255);
+        }
+        return checksum;
     }
 }

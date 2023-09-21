@@ -21,9 +21,9 @@ public class DoubleEncrypt extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of encrypting the string with a transposition cypher " + sourceString + " using an array"
-                + " with " + key + " columns, and then encrypting it again withe an array with <emph>the same number</emph>"
-                + " of columns?";
+        return "What is the result of encrypting the string <pre>" + sourceString + "</pre> with a transposition cypher using an array"
+                + " with " + key + " columns, and then encrypting it AGAIN with an array WITH THE SAME NUMBER ("
+                + key + ") OF COLUMNS?";
     }
 
     @Override

@@ -20,7 +20,7 @@ public class ReducesToX extends Question {
 
     @Override
     public String createQuestionText() {
-        return "Which of the following string reduces to X when the term rewriting rule set 1 is run until no more changes occur?";
+        return "Which of the following strings reduces to <kbd>X</kbd> when the term rewriting rule set 1 is run until no more changes occur?";
     }
 
     @Override

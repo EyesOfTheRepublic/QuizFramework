@@ -59,7 +59,7 @@ public class Quiz {
      * @param stream the output stream to write the text2Qti format text to.
      */
     public void generateText2Qti(final PrintStream stream) {
-        stream.println("Title: " + quizTitle);
+        stream.println("Quiz title: " + quizTitle);
         stream.println("Quiz description: " + quizDesc + "\n");
         int qNum = 1;
         for(Question question: questionList) {

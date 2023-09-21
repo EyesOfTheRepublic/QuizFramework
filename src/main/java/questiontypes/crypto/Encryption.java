@@ -21,7 +21,7 @@ public class Encryption extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of encrypting the string with a transposition cypher " + sourceString + " using an array"
+        return "What is the result of encrypting the string <pre>" + sourceString + "</pre> with a transposition cypher using an array"
                 + " with " + key + " columns?";
     }
 

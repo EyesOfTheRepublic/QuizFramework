@@ -21,8 +21,8 @@ public class AltRewriting extends Question {
 
     @Override
     public String createQuestionText() {
-        return "Which of the following is the result of alternately running term rewriting rule sets 1 and 2 on the string "
-                + questionString + "? That is, you run rule set 1 once, then you run rule set 2 once, then you rur"
+        return "Which of the following is the result of alternately running term rewriting rule sets 1 and 2 on the string <kbd>"
+                + questionString + "</kbd>? That is, you run rule set 1 once, then you run rule set 2 once, then you rur"
                 + " rule set 1 again - and you alternate until there are no more changes.";
     }
 

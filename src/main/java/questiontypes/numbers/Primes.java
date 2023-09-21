@@ -34,7 +34,7 @@ public class Primes extends Question {
         for(int i = 0; i < dataSet.size() - 1; i++) {
             qText += dataSet.get(i) + ", ";
         }
-        qText += dataSet.get(dataSet.size() - 1) + "};";
+        qText += dataSet.get(dataSet.size() - 1) + "};</pre>";
         return qText;
 
     }

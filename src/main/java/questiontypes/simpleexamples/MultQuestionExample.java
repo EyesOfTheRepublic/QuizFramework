@@ -1,4 +1,4 @@
-package questiontypes.example;/*
+package questiontypes.simpleexamples;/*
 A (trivial) multiplication question - asks what is the product of two (random) numbers. Generates one correct and a set of random
 incorrect answers.
  */

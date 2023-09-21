@@ -23,8 +23,8 @@ public class RewritingNSteps extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of running term rewriting rule set 1 " + numSteps + " times on the string "
-                + sourceString + "?";
+        return "What is the result of running term rewriting rule set 1 for " + numSteps + " times on the string <kbd>"
+                + sourceString + "</kbd>?";
     }
 
     /*Generate the number of steps the rewriting should run for; the source string; and the correct answer string */

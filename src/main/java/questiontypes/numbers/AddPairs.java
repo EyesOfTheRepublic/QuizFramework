@@ -41,7 +41,7 @@ public class AddPairs extends Question {
 
     public String createQuestionText() {
         String qText = "In the following list of numbers, every number EXCEPT ONE can be added to another number "
-                + "in the list to make " + sumTarget + ". What is the position of that number in the list? <pre>int listNums[] = {";
+                + "in the list to make " + sumTarget + ". What is that number? <pre>int listNums[] = {";
 
         for (int j = 0; j < listOfPairs.size() - 1; j++) {
             qText += listOfPairs.get(j) + ", ";

@@ -10,6 +10,11 @@ Generate a simple checksum question - create a random string and a corresponding
 public class CheckSumStringQuestion extends CheckSumQuestionCore {
 
     private String correctAnswer;
+
+    @Override
+    public String createQuestionTitle(){
+        return "Which string matches checksum?";
+    }
     @Override
     public String createQuestionText() {
         return "Which of the following strings generates the simple checksum " + correctAnswer + " ?";

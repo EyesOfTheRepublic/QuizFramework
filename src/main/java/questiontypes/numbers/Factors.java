@@ -26,7 +26,7 @@ public class Factors extends Question {
 
     @Override
     public String createQuestionText() {
-        String retVal = "How many numbers in the following sequence have " + ansFactor + " as a factor? <pre>int[] numbers = ";
+        String retVal = "How many numbers in the following sequence have " + ansFactor + " as a factor? <pre>int[] numbers = {";
         for (int j = 0; j < listOfPosFactors.size() - 1; j++) {
             retVal += listOfPosFactors.get(j) + ", ";
         }
