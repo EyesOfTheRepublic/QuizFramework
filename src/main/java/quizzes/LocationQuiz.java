@@ -26,7 +26,7 @@ public class LocationQuiz {
 
     private static final String quizDesc = """
               <h3>Coordinate Sytems</h3><p>The first four questions in this quiz are based on Coordinate Systems. \
-              You can find (and should already have read) background information on Coordinate Systems in the January Assessment Information module \
+              You can find (and should already have read) background information on Coordinate Systems in the  In-Class Test Information module \
               on Canvas.</p><p>NOTE there are some fragments of code in the algorithms below, but you are responsible for implementing them in Java.</p>\
               <h4>Algorithm to Measure Distance</h4><p>The algorithm to measure the distance between one point and another, when represented as \
               as latitude and longitude is as follows:</p>\

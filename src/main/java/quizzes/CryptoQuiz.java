@@ -22,7 +22,7 @@ public class CryptoQuiz {
     private static final String quizDesc = """
             <h3>Transposition Cyphers</h3> \
             <p>The first four questions in this quiz are based on Transposition Cyphers. \
-            You can find (and should already have read) background information on Transposition Cyphers in the January Assessment Information module \
+            You can find (and should already have read) background information on Transposition Cyphers in the In-Class Test Information module \
             n Canvas. You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays.</p> \
             <p>Remember: cut-and-paste long strings from the questions; do not try to type them in.</p> \
             <pre> \
