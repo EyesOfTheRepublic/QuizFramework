@@ -11,6 +11,7 @@ import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 /**
  * Generate quizzes based on the time questions and two of the numbers questions
@@ -28,7 +29,7 @@ public class TimeQuiz {
             <h3>Prime Numbers</h3> \
             <p>The next two questions relate to prime numbers.</p>""";
     public static void main(String[] args) {
-        Quiz quiz = new Quiz("Time and Numbers 1",
+        Quiz quiz = new Quiz("Time and Numbers 2",
                 GenQuizData.HEADER + quizDesc + GenQuizData.RESOURCES);
 
         //Time questions
@@ -61,7 +62,7 @@ public class TimeQuiz {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);
         } else {
-            final String fileName = "Time1";
+            final String fileName = "Time2";
             try {
                 PrintStream stream = new PrintStream(fileName + ".txt");
                 quiz.generateText2Qti(stream);

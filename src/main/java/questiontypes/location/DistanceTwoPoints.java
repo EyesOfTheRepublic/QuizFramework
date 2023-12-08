@@ -22,8 +22,8 @@ public class DistanceTwoPoints extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the distance in Km between coordinates " + point1.lat() + ", " + point2.lat()
-                + " and " + point1.lon() + ", " + point2.lon() + "?";
+        return "What is the distance in Km between coordinates " + point1.lat() + ", " + point1.lon()
+                + " and " + point2.lat() + ", " + point2.lon() + "?";
     }
 
     @Override
