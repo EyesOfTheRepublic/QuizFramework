@@ -22,7 +22,7 @@ public class Decryption extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of decrypting the string <pre>" + sourceString + "</pre> with a transposition cypher that has" +
+        return "What is the result of decrypting the string ``" + sourceString + "`` with a transposition cypher that has" +
                 " been encrypted using an array with " + key + " columns?";
     }
 

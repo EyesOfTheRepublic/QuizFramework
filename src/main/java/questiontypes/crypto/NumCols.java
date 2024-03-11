@@ -21,8 +21,8 @@ public class NumCols extends Question {
 
     @Override
     public String createQuestionText() {
-        return "How many columns were used to encrypt the string <pre>" + sourceString + "</pre> to the following string?<pre>"
-                + answerText + "</pre>";
+        return "How many columns were used to encrypt the string ``" + sourceString + "`` to the following string? ``"
+                + answerText + "``";
     }
 
     @Override

@@ -21,7 +21,7 @@ public class Quiz {
     /**
      * Create a quiz object with a title and a description
      * @param title the quiz title
-     * @param desc the quiz description
+     * @param desc the quiz description (in HTML format)
      */
     public Quiz(final String title, final String desc) {
         this.quizTitle = title;

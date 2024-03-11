@@ -25,19 +25,19 @@ public class CryptoQuiz {
             You can find (and should already have read) background information on Transposition Cyphers in the In-Class Test Information module \
             n Canvas. You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays.</p> \
             <p>Remember: cut-and-paste long strings from the questions; do not try to type them in.</p> \
-            <pre> \
-            /* \
-             * Prints an array of characters row-by-row in a readable way. \
-             * You may need to add the keyword static after public \
-             */ \
-            public void formatArray(char[][] charArray) { \
-            	for (char[] row : charArray) { \
-            		for (char item : row) { \
-            			System.out.print(" " + item); \
-            		} \
-            		System.out.println(); \
-            	} \
-            } \
+            <pre>\
+            /*<br/>\
+             * Prints an array of characters row-by-row in a readable way. <br/>\
+             * You may need to add the keyword static after public <br/>\
+             */ <br/>\
+            public void formatArray(char[][] charArray) { <br/>\
+            	for (char[] row : charArray) { <br/>\
+            		for (char item : row) { <br/>\
+            			System.out.print(" " + item); <br/>\
+            		} <br/>\
+            		System.out.println(); <br/>\
+            	} <br/>\
+            } <br/>\
             </pre> \
             <h3>Prime Numbers</h3> \
             <p>The next two questions relate to prime numbers.</p>""";
@@ -63,13 +63,13 @@ public class CryptoQuiz {
         quiz.addQuestion(doubleEncrypt);
 
         //Prime number questions
-        Question prime = new Primes();
+      /*  Question prime = new Primes();
         prime.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(prime);
 
         Question sophieG = new SophieGermain();
         sophieG.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(sophieG);
+        quiz.addQuestion(sophieG);*/
 
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");

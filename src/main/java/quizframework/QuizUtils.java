@@ -1,21 +1,43 @@
 package quizframework;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Static methods generally useful in generating quiz data and incorrect answers
+ * Static methods and constants generally useful in generating quiz data and incorrect answers
  * to questions.
  */
 
 public class QuizUtils {
 
-    /**
-     *
-     */
-    public static final int OBS_STR_LEN = 7;
-
     //Prevent instance of this class being (pointlessly) created
     private QuizUtils(){}
+
+    /**
+     * Standard indent using Markdown. Text2Qti requires markdown content to be systematically indented within questions.
+     * The (minimum) size of the indent is a function of the number of questions - it needs to be minimally question number
+     * plus a '.' plus a space (so e.g. 5 for up to 999 questions.)
+     */
+    public static final int MARKDOWN_INDENT = 5;
+
+    /**
+     * Generate an appropriately-indented (by MARKDOWN_INDENT) block of text, with an initial unindented label
+     * All lines of content must be consistently indented and the label (question number or answer number) must fit
+     * within that indenting (i.e. the label is *not* indented). This means that the indenting must be strictly >
+     * than the length of the label (because text2qti doesn't work if there is space after the question number).
+     *
+     * @param label  The label that appears at the start of the first line - either the question or answer number
+     * @param text   List of lines of text
+     * @return
+     */
+    public static String outputTextBlock(final String label, final String text) {
+        final StringBuilder builder = new StringBuilder();
+        List<String> textByLine = Arrays.asList(text.split("\n"));
+        builder.append(label).append(" ".repeat(MARKDOWN_INDENT - label.length())).append(textByLine.get(0)).append("\n");
+        textByLine.stream().skip(1).forEach(item -> builder.append(" ".repeat(MARKDOWN_INDENT)).append(item).append("\n"));
+        return builder.toString();
+    }
 
     /**
      * Generate a new long from one that is provided, that has the same number of digits and is the same sign. Like
@@ -202,10 +224,5 @@ public class QuizUtils {
      */
     public static long genRandomLong(final long min, final long max) {
         return ThreadLocalRandom.current().nextLong(min, max);
-    }
-
-    public static String genObsName(final String baseName, final int seqNum) {
-        String obsStr = genRandomString(OBS_STR_LEN, OBS_STR_LEN+1, 'a', 'z');
-        return baseName + "-"+obsStr + "-" + seqNum;
     }
 }

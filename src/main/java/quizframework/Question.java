@@ -226,26 +226,24 @@ public abstract class Question {
     public final String toText2Qti(final int qNum) {
         StringBuilder builder = new StringBuilder("Title: " + question.getQuestionTitle() + "\n");
         builder.append("Points: " + question.getQuestionPoints() + "\n");
-        builder.append(qNum + ". " + question.getQuestionText() + "\n");
+        builder.append(QuizUtils.outputTextBlock(qNum + ". ", question.getQuestionText()));
         if (question.getGeneralFeedback() != null) {
-            builder.append("... " + question.getGeneralFeedback() + "\n");
+            builder.append(QuizUtils.outputTextBlock("... ",question.getGeneralFeedback()));
         }
         if (question.getCorrectAnswerFeedback() != null) {
-            builder.append("+ " + question.getCorrectAnswerFeedback() + "\n");
+            builder.append(QuizUtils.outputTextBlock("+ ", question.getCorrectAnswerFeedback()));
         }
         if (question.getIncorrectAnswerFeedback() != null) {
-            builder.append("- " + question.getIncorrectAnswerFeedback() + "\n");
+            builder.append(QuizUtils.outputTextBlock("- ", question.getIncorrectAnswerFeedback()));
         }
         ArrayList<Answer> list = randomize();
         char qItem = 'a';
         for (Answer ans: list) {
-            if (ans.isCorrect()) {
-                builder.append("*");
-            }
-            builder.append(qItem + ") " + ans.getAnswer());
-            builder.append("\n");
+            String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
+            builder.append(QuizUtils.outputTextBlock(qLabel, ans.getAnswer()));
+            //builder.append("\n");
             if (ans.getFeedback() != null) {
-                builder.append("... " + ans.getFeedback() + "\n");
+                builder.append(QuizUtils.outputTextBlock("... ", ans.getFeedback()));
             }
             qItem++;
         }
