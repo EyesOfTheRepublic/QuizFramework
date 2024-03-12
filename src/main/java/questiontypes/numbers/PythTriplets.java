@@ -3,6 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
+import quizframework.FormatArrayOutput;
 import quizframework.Question;
 import quizframework.QuizUtils;
 
@@ -12,7 +13,7 @@ import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * How many of a list of triplets are Pythagorean: a * a + b * b = c * c
+ * How many of a list of triplets are Pythagorean: a * a + b * b == c * c
  *
  */
 public class PythTriplets extends Question {
@@ -20,6 +21,8 @@ public class PythTriplets extends Question {
     private ArrayList<Integer[]> triples = new ArrayList<>();
 
     private ArrayList<Integer[]> pythList = new ArrayList<>();
+
+    private record PythTriplet(int a, int b, int c) {}
 
     int numCorrect;
 
@@ -32,14 +35,19 @@ public class PythTriplets extends Question {
 
     @Override
     public String createQuestionText() {
-        String qText =  "How many of the groups of three numbers in the list are Pythagorean Triples? "
-                + "That is, for each <kbd>{a, b, c}</kbd>, <kbd>a\\*a + b\\*b == c\\*c</kbd>. <pre>int[][] possTriples = {";
+        String qText =  """
+                How many of the groups of three numbers in the list are Pythagorean Triples?
+                That is, for each ``{a, b, c}``, ``a*a + b*b == c*c``.
+                
+                ```
+                int[][] possTriples = {""";
         for (int j = 0; j < pythList.size() - 1; j++) {
-            qText += "{" + pythList.get(j)[0] + ", " + pythList.get(j)[1] + ", " + pythList.get(j)[2] + "}, ";
+            qText += QuizUtils.formattedItem(j, "{" + pythList.get(j)[0] + ", " + pythList.get(j)[1] + ", " + pythList.get(j)[2] + "}, ");
         }
         qText += "{" + pythList.get(pythList.size() - 1)[0] + ", "
                 + pythList.get(pythList.size() - 1)[1] + ", "
-                + pythList.get(pythList.size() - 1)[2] + "}};</pre>";
+                + pythList.get(pythList.size() - 1)[2] + "}};\n```\n";
+
         return qText;
     }
 

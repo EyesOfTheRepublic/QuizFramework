@@ -21,11 +21,11 @@ public class OddNumberExample extends Question {
 
     @Override
     public String createQuestionText() {
-        String val = "How many numbers in the following array are odd?<pre>int[] nums = {";
+        String val = "How many numbers in the following array are odd?\n```\nint[] nums = {";
         for(int i = 0; i < list.size() - 1; i++) {
             val += i + ", ";
         }
-        val += list.get(list.size() - 1) + "};</pre>";
+        val += list.get(list.size() - 1) + "};\n```\n'";
         return val;
     }
 

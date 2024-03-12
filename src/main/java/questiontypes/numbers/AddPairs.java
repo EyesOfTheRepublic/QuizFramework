@@ -32,7 +32,7 @@ public class AddPairs extends Question {
     private int numPairs; //The number of 'pairs'
     private int correctAns; //The correct answer (which does not sum to any of the others to make sumTarget
 
-    private ArrayList<Integer> listOfPairs = new ArrayList<>();
+    private ArrayList<Integer> numList = new ArrayList<>();
 
    @Override
     public String createQuestionTitle() {
@@ -41,12 +41,13 @@ public class AddPairs extends Question {
 
     public String createQuestionText() {
         String qText = "In the following list of numbers, every number EXCEPT ONE can be added to another number "
-                + "in the list to make " + sumTarget + ". What is that number? <pre>int listNums[] = {";
+                + "in the list to make " + sumTarget + ". What is that number?\n\n"
+                + "```\n\n int listNums[] = {";
 
-        for (int j = 0; j < listOfPairs.size() - 1; j++) {
-            qText += listOfPairs.get(j) + ", ";
+        for (int j = 0; j < numList.size() - 1; j++) {
+            qText += numList.get(j) + ", ";
         }
-        qText += listOfPairs.get(listOfPairs.size() - 1) + "};</pre>";
+        qText += numList.get(numList.size() - 1) + "};\n```\n";
         return qText;
     }
 
@@ -62,17 +63,17 @@ public class AddPairs extends Question {
         */
         for (int i = 0; i < numPairs; i++) {
             int splitPoint = QuizUtils.genRandomInt(MIN_LIST_VAL, sumTarget - MIN_LIST_VAL);
-            if (!listOfPairs.contains(splitPoint)) {
-                listOfPairs.add(splitPoint);
-                listOfPairs.add(sumTarget - splitPoint);
+            if (!numList.contains(splitPoint)) {
+                numList.add(splitPoint);
+                numList.add(sumTarget - splitPoint);
             }
         }
 
         //Generate the correct answer - one that does not sum to any of others to make the target value
-        correctAns = genCorrectAnswer(listOfPairs);
-        listOfPairs.add(correctAns);
+        correctAns = genCorrectAnswer(numList);
+        numList.add(correctAns);
 
-        Collections.shuffle(listOfPairs);
+        Collections.shuffle(numList);
     }
 
     @Override
@@ -83,20 +84,20 @@ public class AddPairs extends Question {
     //Question generation automatically handles checking that wrong answers are unique and don't match the correct one
     @Override
     public Answer createIncorrectAnswer() {
-        int index = ThreadLocalRandom.current().nextInt(listOfPairs.size());
-        return Answer.makeIncorrectAnswer(Integer.toString(listOfPairs.get(index)));
+        int index = ThreadLocalRandom.current().nextInt(numList.size());
+        return Answer.makeIncorrectAnswer(Integer.toString(numList.get(index)));
     }
 
     @Override
     public boolean checkAnswer(Answer answer) {
        int ans = Integer.parseInt(answer.getAnswer());
 
-       for(int i = 0; i < listOfPairs.size(); i++) {
-           int candidate = listOfPairs.get(i);
+       for(int i = 0; i < numList.size(); i++) {
+           int candidate = numList.get(i);
            boolean found = false;
-           for (int j = 0; j < listOfPairs.size(); j++) {
+           for (int j = 0; j < numList.size(); j++) {
                if (i != j) {
-                   if (candidate + listOfPairs.get(j) == sumTarget) {
+                   if (candidate + numList.get(j) == sumTarget) {
                        found = true;
                        break;
                    }

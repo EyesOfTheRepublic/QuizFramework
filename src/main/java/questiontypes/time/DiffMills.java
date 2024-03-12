@@ -22,7 +22,7 @@ public class DiffMills extends Question {
 
     @Override
     public String createQuestionText() {
-        return "Which of the dates below is <kbd>" + millsDiff + "L</kbd> milliseconds from the "
+        return "Which of the dates below is ``" + millsDiff + "L`` milliseconds from the "
                 + "date " + baseDate + "?";
     }
 

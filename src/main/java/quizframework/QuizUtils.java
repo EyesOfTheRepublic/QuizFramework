@@ -22,6 +22,11 @@ public class QuizUtils {
     public static final int MARKDOWN_INDENT = 5;
 
     /**
+     * How many 'items' appear on a line when outputting an array? A slightly arbitrary number...
+     */
+    public static final int BLOCK_SIZE = 6;
+
+    /**
      * Generate an appropriately-indented (by MARKDOWN_INDENT) block of text, with an initial unindented label
      * All lines of content must be consistently indented and the label (question number or answer number) must fit
      * within that indenting (i.e. the label is *not* indented). This means that the indenting must be strictly >
@@ -37,6 +42,18 @@ public class QuizUtils {
         builder.append(label).append(" ".repeat(MARKDOWN_INDENT - label.length())).append(textByLine.get(0)).append("\n");
         textByLine.stream().skip(1).forEach(item -> builder.append(" ".repeat(MARKDOWN_INDENT)).append(item).append("\n"));
         return builder.toString();
+    }
+
+    /**
+     * A slightly clumsy way to generate formatted text output by inserting line breaks and indents - used in formatting
+     * array output.
+     * (TODO - rethink this)
+     * @param count
+     * @param item
+     * @return
+     */
+    public static String formattedItem(final int count, final String item) {
+        return count % BLOCK_SIZE == 0 ? "\n" + " ".repeat(MARKDOWN_INDENT) + item : item;
     }
 
     /**

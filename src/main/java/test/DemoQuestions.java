@@ -195,7 +195,7 @@ public class DemoQuestions {
         https://github.com/gpoore/text2qti
         That can generate QTI format - which Canvas can import. Ideally, (but not yet) there would be other output formats.
          */
-        //quiz.generateText2Qti(System.out);
-        System.out.println(quiz);
+        quiz.generateText2Qti(System.out);
+        //System.out.println(quiz);
     }
 }

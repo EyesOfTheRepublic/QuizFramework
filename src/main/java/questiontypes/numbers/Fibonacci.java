@@ -34,14 +34,17 @@ public class Fibonacci extends Question {
     @Override
     public String createQuestionText() {
 
-        String qText = "Numbers: How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long"
-                + "for the Fibonacci numbers you calculate and NOT int"
-                + " <pre>long[] posFibNumbers = {";
+        String qText = """
+                Numbers: How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
+                for the Fibonacci numbers you calculate and NOT int
+                
+                ```
+                long[] posFibNumbers = {""";
 
         for (int j = 0; j < questionList.size() - 1; j++) {
             qText += questionList.get(j) + "L, ";
         }
-        qText += questionList.get(questionList.size() - 1) + "L};</pre>";
+        qText += questionList.get(questionList.size() - 1) + "L};\n```\n";
 
         return qText;
     }

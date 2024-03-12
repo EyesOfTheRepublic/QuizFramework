@@ -21,8 +21,8 @@ public class RewritingToCompletion extends Question {
 
     @Override
     public String createQuestionText() {
-        return "How many times does term rewriting rule set 1 need to be run on the string <kbd>"
-                + sourceString + "</kbd> before no more changes happen?";
+        return "How many times does term rewriting rule set 1 need to be run on the string ``"
+                + sourceString + "`` before no more changes happen?";
     }
 
     @Override

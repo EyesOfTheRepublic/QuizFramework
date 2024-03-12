@@ -30,12 +30,16 @@ public class TimeTraveller extends Question {
                 how many milliseconds would you have travelled through? Note that going backwards in time does not mean you 'subtract' \
                 milliseconds - the time you travel through (forwards or backwards) always adds on to the time you have travelled through up to that point. \
                 For example, if you travelled from 1st Jan 2021 to 1st Jan 2022, and then back to 1st Jan 2021 you would have travelled through two years \
-                of time (note though that the question is asking for an answer in milliseconds). <pre>String dateList[] = {""");
+                of time (note though that the question is asking for an answer in milliseconds).
+                
+                ```
+                String dateList[] = {""");
         //Trad for loop because last one is special case
-        for(int i = 0; i < dateSeq.size() - 1; i++) {
+        /*for(int i = 0; i < dateSeq.size() - 1; i++) {
             val.append(dateSeq.get(i) + ", ");
-        }
-        val.append(dateSeq.get(dateSeq.size() - 1) + "};");
+        }*/
+        dateSeq.stream().limit(dateSeq.size() - 1).forEach(date -> val.append("\"" + date + "\", "));
+        val.append(dateSeq.get(dateSeq.size() - 1) + "};\n```\n");
         return val.toString();
     }
 

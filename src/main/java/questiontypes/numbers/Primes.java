@@ -30,11 +30,18 @@ public class Primes extends Question {
 
     @Override
     public String createQuestionText() {
-        String qText = "How many of the following numbers are prime? <pre>int[] primes={";
+        String qText = """
+        How many of the following numbers are prime?
+        
+        ```
+        int[] primes={""";
         for(int i = 0; i < dataSet.size() - 1; i++) {
             qText += dataSet.get(i) + ", ";
+            if (i % 4 == 0) {
+                qText += "\n";
+            }
         }
-        qText += dataSet.get(dataSet.size() - 1) + "};</pre>";
+        qText += dataSet.get(dataSet.size() - 1) + "};\n```\n";
         return qText;
 
     }

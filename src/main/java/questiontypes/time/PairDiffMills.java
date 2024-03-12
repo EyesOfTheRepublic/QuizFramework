@@ -21,7 +21,7 @@ public class PairDiffMills extends Question {
 
     @Override
     public String createQuestionText() {
-        return "Which of the pairs of dates below is separated by <kbd>" + millsDiff + "L</kbd> milliseconds?";
+        return "Which of the pairs of dates below is separated by ``" + millsDiff + "L`` milliseconds?";
     }
 
     @Override

@@ -17,7 +17,7 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
     }
     @Override
     public String createQuestionText() {
-        return "Which of the following strings generates the simple checksum " + correctAnswer + " ?";
+        return "Which of the following strings generates the simple checksum ``" + correctAnswer + "`` ?";
     }
 
     @Override

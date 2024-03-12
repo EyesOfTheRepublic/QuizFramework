@@ -16,7 +16,7 @@ public class BitwiseChecksum extends CheckSumQuestionCore {
 
     @Override
     public String createQuestionText() {
-        return "Which of the following strings generates the bitwise checksum " + checkSum + "?";
+        return "Which of the following strings generates the bitwise checksum ``" + checkSum + "``?";
     }
 
     @Override

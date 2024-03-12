@@ -7,6 +7,10 @@ public class LocationUtils {
     public record Point(double lat, double lon) {
         @Override
         public String toString() {
+            return "``" + lat + "``, ``" + lon + "``";
+        }
+
+        public String rawString() {
             return lat + ", " + lon;
         }
     }

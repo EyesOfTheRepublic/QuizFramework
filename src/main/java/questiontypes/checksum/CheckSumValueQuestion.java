@@ -17,7 +17,7 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of running the simple checksum algorithm on the string <kbd>" + checkString + "</kbd>?";
+        return "What is the result of running the simple checksum algorithm on the string ``" + checkString + "``?";
     }
 
     @Override

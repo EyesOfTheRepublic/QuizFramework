@@ -23,14 +23,18 @@ public class TotalDistance extends Question {
 
     @Override
     public String createQuestionText() {
-        StringBuilder res = new StringBuilder("What is the TOTAL distance in km if you travel between all"
-                + " the coordinates in the following Java array?: "
-                + "<pre>double[][] coordArray = {\"");
+        StringBuilder res = new StringBuilder("""
+                What is the TOTAL distance in km if you travel between all the coordinates in the following Java array?:
+                
+                ```
+                double[][] coordArray = {
+                """);
         //Use a 'trad' for loop because last entry is a special case
-        for(int i = 0; i < points.size() - 1; i++) {
+        /*for(int i = 0; i < points.size() - 1; i++) {
             res.append("{" + points.get(i) + "}, ");
-        }
-        res.append("{" + points.get(points.size() - 1) + "}};");
+        }*/
+        points.stream().limit(points.size() - 1).forEach(point -> res.append("{" + point.rawString() + "}, "));
+        res.append("{" + points.get(points.size() - 1) + "}};\n```\n");
         return res.toString();
     }
 

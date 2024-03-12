@@ -109,3 +109,7 @@ c
 3src/main/java/questiontypes/time/TimeTraveller.java,a/8/a8e61024696b639266200cf6d67e44bb666a1746
 U
 %src/main/java/test/DemoQuestions.java,5/f/5f2175f7cba97e0d69e4447625ab547519f93902
+B
+Transposition3.txt,e/8/e851f24eae8e8e08c896e4009cfb151daf32acac
+b
+2src/main/java/quizframework/FormatArrayOutput.java,b/e/bece3ff0be74ce00377b6b625e8842c899d5507c
