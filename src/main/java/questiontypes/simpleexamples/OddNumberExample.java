@@ -2,7 +2,7 @@ package questiontypes.simpleexamples;
 
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 

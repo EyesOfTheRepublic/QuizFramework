@@ -3,7 +3,7 @@ package questiontypes.time;
 import questiontypes.time.timeutils.TimeUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /*
 Generate a random string, the correct checksum, and a set of random incorrect checksums. The question asks which checksum is correct

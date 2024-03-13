@@ -3,7 +3,7 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /**
  * How far is it between two points (lat, long) on a globe?

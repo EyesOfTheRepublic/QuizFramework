@@ -3,7 +3,7 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /**
  * Distance between two points using minutes/seconds representation

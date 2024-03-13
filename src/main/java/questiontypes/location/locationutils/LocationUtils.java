@@ -1,6 +1,6 @@
 package questiontypes.location.locationutils;
 
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 public class LocationUtils {
 

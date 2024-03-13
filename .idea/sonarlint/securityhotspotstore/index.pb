@@ -27,8 +27,6 @@ h
 8src/main/java/questiontypes/location/MinSecDistance.java,f/c/fc2038b95f3dd74a54fecbeebfd86ee909640ba7
 g
 7src/main/java/questiontypes/location/WhichDistance.java,2/6/267b60efc27042ec5280c13973ef0fe97bccce5b
-]
--src/main/java/questiontypes/crypto/Point.java,f/f/fff2f9b158e3c7deeb6732012e1e272e22648b69
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 A
@@ -113,3 +111,5 @@ B
 Transposition3.txt,e/8/e851f24eae8e8e08c896e4009cfb151daf32acac
 b
 2src/main/java/quizframework/FormatArrayOutput.java,b/e/bece3ff0be74ce00377b6b625e8842c899d5507c
+`
+0src/main/java/quizframework/utils/QuizUtils.java,9/c/9cb23a76720094e661f07bce959d3dfaa09ca913

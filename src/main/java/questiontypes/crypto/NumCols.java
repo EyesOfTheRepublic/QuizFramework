@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /**
  * How many columns did the array have that encrypted a particular string

@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' - array size?

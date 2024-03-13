@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /*
 An example checksum question - generate a list of pairs of strings and checksums (using the algorithm in

@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /**
  * Which of a set of strings reduces to X using the first set of rewrite rules?

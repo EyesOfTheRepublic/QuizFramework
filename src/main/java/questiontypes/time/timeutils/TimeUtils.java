@@ -3,7 +3,7 @@ package questiontypes.time.timeutils;
 Basic operations etc. used in the time based questions
  */
 
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

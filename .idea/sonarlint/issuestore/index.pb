@@ -13,8 +13,6 @@ j
 :src/main/java/questiontypes/numbers/utils/FibSequence.java,d/a/da7c38b6a1543413dd862c6411ab053f6cd0942f
 u
 Esrc/main/java/questiontypes/location/locationutils/LocationUtils.java,0/d/0d8da741356364294dfddad8c00c1e985d578255
-]
--src/main/java/questiontypes/crypto/Point.java,f/f/fff2f9b158e3c7deeb6732012e1e272e22648b69
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 h
@@ -113,3 +111,5 @@ B
 Transposition3.txt,e/8/e851f24eae8e8e08c896e4009cfb151daf32acac
 b
 2src/main/java/quizframework/FormatArrayOutput.java,b/e/bece3ff0be74ce00377b6b625e8842c899d5507c
+`
+0src/main/java/quizframework/utils/QuizUtils.java,9/c/9cb23a76720094e661f07bce959d3dfaa09ca913

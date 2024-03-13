@@ -1,5 +1,7 @@
 package quizframework;
 
+import quizframework.utils.QuizUtils;
+
 import java.util.ArrayList;
 
 /**

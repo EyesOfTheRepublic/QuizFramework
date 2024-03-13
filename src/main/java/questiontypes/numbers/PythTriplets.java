@@ -3,9 +3,8 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
-import quizframework.FormatArrayOutput;
 import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

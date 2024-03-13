@@ -1,8 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.Question;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 public class BitwiseChecksum extends CheckSumQuestionCore {
 

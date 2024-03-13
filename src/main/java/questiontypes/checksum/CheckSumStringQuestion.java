@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.QuizUtils;
+import quizframework.utils.QuizUtils;
 
 /*
 Generate a simple checksum question - create a random string and a corresponding checksum. Then create a set of
