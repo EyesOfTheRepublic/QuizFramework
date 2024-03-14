@@ -2,7 +2,7 @@ package questiontypes.simpleexamples;
 
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 
@@ -48,7 +48,7 @@ public class OddNumberExample extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        final int wrongAnswer = Utils.genRandomInt(0, 25);
+        final int wrongAnswer = QuizUtils.genRandomInt(0, 25);
         return Answer.makeIncorrectAnswer(Integer.toString(wrongAnswer));
     }
 }

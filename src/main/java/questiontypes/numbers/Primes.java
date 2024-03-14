@@ -5,7 +5,8 @@ import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,15 +33,15 @@ public class Primes extends Question {
     public String createQuestionText() {
         StringBuilder questionText = new StringBuilder("How many of the following numbers are prime?");
         ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] primes", dataSet);
-        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
+        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
 
         //Generate the number of primes (the correct answer) and non primes to add to the list of data
-        numPrimes = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        final int numNonPrimes = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numPrimes = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numNonPrimes = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //copy the prime and non prime data to generate the data list
         for(int elt : PrimeData.PRIMES) {
@@ -73,7 +74,7 @@ public class Primes extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
         //dataSet.size() won't be > MAX_NUM for current values but just in case...
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, dataSet.size())));
     }
@@ -94,6 +95,6 @@ public class Primes extends Question {
             }
         }
 
-        return primeCount == Integer.parseInt(answer.getAnswer());
+        return primeCount == Integer.parseInt(answer.getQuestionAnswer());
     }
 }

@@ -5,7 +5,8 @@ import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,14 +46,14 @@ public class PythTriplets extends Question {
         return  new StringBuilder("""
                 How many of the groups of three numbers in the list are Pythagorean Triples?
                 That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.""")
-                .append(Utils.toCodeBlock(formatter.format())).toString();
+                .append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         //Generate number of correct and incorrect triplets
-        numCorrect = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        numWrong = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numCorrect = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numWrong = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy of list of triples to choose correct values from
         for(Integer[] elt: PythTripletsData.TRIPLETS) {
@@ -85,7 +86,7 @@ public class PythTriplets extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
         //Just in case...
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, pythList.size())));
     }
@@ -99,7 +100,7 @@ public class PythTriplets extends Question {
             }
         }
 
-        return pythCount == Integer.parseInt(answer.getAnswer());
+        return pythCount == Integer.parseInt(answer.getQuestionAnswer());
     }
 
     /*Generate wong answers - triplets that are not pythagorean - that are not already present in the question list */

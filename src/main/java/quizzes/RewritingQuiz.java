@@ -1,9 +1,7 @@
 package quizzes;
 
 import questiontypes.numbers.AddPairs;
-import questiontypes.numbers.Primes;
 import questiontypes.numbers.PythTriplets;
-import questiontypes.numbers.SophieGermain;
 import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
@@ -20,7 +18,7 @@ import java.io.PrintStream;
 
 public class RewritingQuiz {
 
-    private static final String quizDesc = """
+    private static final String QUIZ_DESC = """
           <h3>Term Rewriting</h3><p>The first four questions in this test are based on based on Term Rewriting. \
           You can find (and should already have read) background information on Term Rewriting in the In-Class Test Information module \
           on Canvas.</p>\
@@ -36,7 +34,7 @@ public class RewritingQuiz {
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Rewriting and Numbers 3",
-                GenQuizData.HEADER + quizDesc + GenQuizData.RESOURCES);
+                GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Rewriting questions
         Question rewriteN = new RewritingNSteps();

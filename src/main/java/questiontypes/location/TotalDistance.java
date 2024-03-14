@@ -4,7 +4,8 @@ import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 
@@ -33,13 +34,13 @@ public class TotalDistance extends Question {
                 return "{" + point + "}";
             }
         };
-        return res.append(Utils.toCodeBlock(formatter.format())).toString();
+        return res.append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         distance = 0;
-        numSteps = Utils.genRandomInt(LocationUtils.MIN_STEPS, LocationUtils.MAX_STEPS);
+        numSteps = QuizUtils.genRandomInt(LocationUtils.MIN_STEPS, LocationUtils.MAX_STEPS);
         LocationUtils.Point currPoint = LocationUtils.randomPoint();
         for(int i = 0; i < numSteps; i++) {
             points.add(currPoint);
@@ -59,7 +60,7 @@ public class TotalDistance extends Question {
         /*The range of wrong answers cannot be outside 0 to circumference of the Earth multiplied by half
         the number of steps (empirically determined as looking 'OK')
          */
-        return Answer.makeIncorrectAnswer(Double.toString(Utils.getRandomDouble(0,
+        return Answer.makeIncorrectAnswer(Double.toString(QuizUtils.genRandomDouble(0,
                 LocationUtils.EARTH_CIRC * numSteps /2 , 0)));
     }
 
@@ -69,7 +70,7 @@ public class TotalDistance extends Question {
 
     @Override
     public boolean checkAnswer(Answer answer) {
-        final double expectedAns = Double.parseDouble(answer.getAnswer());
+        final double expectedAns = Double.parseDouble(answer.getQuestionAnswer());
         double answerDistance = 0;
         for(int i = 1; i < points.size(); i++) {
             answerDistance += LocationUtils.getDistance(points.get(i-1), points.get(i));

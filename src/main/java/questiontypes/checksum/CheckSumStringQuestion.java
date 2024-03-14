@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /*
 Generate a simple checksum question - create a random string and a corresponding checksum. Then create a set of
@@ -37,7 +37,7 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
 
     @Override
     public void createCalcData() {
-        correctAnswer = Utils.genRandomString(65, 20, 'a', 'z');
+        correctAnswer = QuizUtils.genRandomString(65, 20, 'a', 'z');
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Utils.permuteString(this.correctAnswer,
-                        0.5, Utils.MIN_PERMUTATION_RNG, 2), "some incorrect feedback");
+        return Answer.makeIncorrectAnswerWithFeedback(QuizUtils.permuteString(this.correctAnswer,
+                        0.5, QuizUtils.MIN_PERMUTATION_RNG, 2), "some incorrect feedback");
     }
 }

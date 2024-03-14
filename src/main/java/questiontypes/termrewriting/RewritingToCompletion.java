@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * When run until no more changes happen, how many term rewriting steps are needed?
@@ -29,14 +29,14 @@ public class RewritingToCompletion extends Question {
     public void createCalcData() {
 
         //Create the source string
-        sourceString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+        sourceString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                 CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
-        String tempString = new String(sourceString);
+        String tempString = sourceString;
         int steps = 0;
         boolean done = false;
         //Run the rules until no more changes happen
         do {
-            String rewrittenString = RewritingUtils.runOneStep(tempString, CoreRewritingData.rewriteMap);
+            String rewrittenString = RewritingUtils.runOneStep(tempString, CoreRewritingData.REWRITE_MAP);
             steps++;
             if (rewrittenString.equals(tempString)) {
                 done = true;
@@ -54,9 +54,8 @@ public class RewritingToCompletion extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int min = numSteps < CoreRewritingData.STEP_MIN ? CoreRewritingData.STEP_MIN : numSteps;
         int max = numSteps + CoreRewritingData.STEP_MAX;
-        return Answer.makeIncorrectAnswer(Integer.toString(Utils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
     }
 
     @Override
@@ -66,10 +65,10 @@ public class RewritingToCompletion extends Question {
         int count = 0;
         while (!done) {
             String tempString = startingString;
-            startingString = RewritingUtils.runOneStep(startingString, CoreRewritingData.rewriteMap);
+            startingString = RewritingUtils.runOneStep(startingString, CoreRewritingData.REWRITE_MAP);
             done = startingString.equals(tempString);
             count++;
         }
-        return count == Integer.parseInt(answer.getAnswer());
+        return count == Integer.parseInt(answer.getQuestionAnswer());
     }
 }

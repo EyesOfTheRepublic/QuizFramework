@@ -4,7 +4,8 @@ import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,21 +45,21 @@ public class AddPairs extends Question {
                 + "in the list to make " + sumTarget + ". What is that number?");
 
         ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] numList", numList);
-        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
+        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         //Generate the number the pairs sum to, and the number of pairs in the list
-        final int sumTargetVal = Utils.genRandomInt(LIM_VAL, LIM_VAL * 2);
-        final int numPairs = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int sumTargetVal = QuizUtils.genRandomInt(LIM_VAL, LIM_VAL * 2);
+        final int numPairs = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         /*Generate the numbers - create a random number between the minimum acceptable (MIN_LIST_VAL) and the
         sum target minus MIN_LIST_VAL. Provided that number is not already in the list, add it and it's value
         minus sumTargetVal
         */
         for (int i = 0; i < numPairs; i++) {
-            int splitPoint = Utils.genRandomInt(MIN_LIST_VAL, sumTargetVal - MIN_LIST_VAL);
+            int splitPoint = QuizUtils.genRandomInt(MIN_LIST_VAL, sumTargetVal - MIN_LIST_VAL);
             if (!numList.contains(splitPoint)) {
                 numList.add(splitPoint);
                 numList.add(sumTargetVal - splitPoint);
@@ -86,7 +87,7 @@ public class AddPairs extends Question {
 
     @Override
     public boolean checkAnswer(Answer answer) {
-        int ans = Integer.parseInt(answer.getAnswer());
+        int ans = Integer.parseInt(answer.getQuestionAnswer());
 
         for (int i = 0; i < numList.size(); i++) {
             int candidate = numList.get(i);
@@ -111,7 +112,7 @@ public class AddPairs extends Question {
 
         do {
             done = true;
-            target = Utils.genRandomInt(LIM_VAL / 2, LIM_VAL);
+            target = QuizUtils.genRandomInt(LIM_VAL / 2, LIM_VAL);
             for (int elt : curList) {
                 if (elt == target || elt + target == sumTarget) {
                     done = false;

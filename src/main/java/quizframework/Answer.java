@@ -11,7 +11,7 @@ import java.util.Objects;
  * should be fixed.
  */
 public class Answer {
-    private final String answer;
+    private final String questionAnswer;
     private final boolean isCorrect;
     private final String feedback;
 
@@ -20,8 +20,8 @@ public class Answer {
      *
      * @return the question's answer
      */
-    public String getAnswer() {
-        return answer;
+    public String getQuestionAnswer() {
+        return questionAnswer;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Answer {
     /**
      * Factory method to create a correct answer without feedback
      *
-     * @param answer the (correct) answer)
+     * @param answer the (correct) answer
      * @return the constructed quizframework.Answer object (with feedback == null)
      */
     public static Answer makeCorrectAnswer(final String answer) {
@@ -65,7 +65,7 @@ public class Answer {
     /**
      * Factory method to create a correct answer with feedback
      *
-     * @param answer   the (correct) answer)
+     * @param answer   the (correct) answer
      * @param feedback the answer-specific feedback
      * @return the constructed quizframework.Answer object
      */
@@ -77,7 +77,7 @@ public class Answer {
     /**
      * Factory method to create an incorrect answer with feedback
      *
-     * @param answer   the (incorrect) answer)
+     * @param answer   the (incorrect) answer
      * @param feedback the answer-specific feedback
      * @return the constructed quizframework.Answer object
      */
@@ -91,7 +91,7 @@ public class Answer {
      */
     private Answer(final String answer, final String feedback,
                    final boolean isCorrect) {
-        this.answer = answer;
+        this.questionAnswer = answer;
         this.isCorrect = isCorrect;
         this.feedback = feedback;
     }
@@ -103,11 +103,11 @@ public class Answer {
      */
     @Override
     public String toString() {
-        return answer;
+        return questionAnswer;
     }
 
     /**
-     * Implement the equals method to allow us to consider and object to be equal to an quizframework.Answer object if and only if
+     * Implement the equals method to allow us to consider and object to be equal to a quizframework.Answer object if and only if
      * it is an instance of quizframework.Answer and the answer text is
      * the same
      *
@@ -116,14 +116,13 @@ public class Answer {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (!(obj instanceof Answer)) {
+        if (!(obj instanceof Answer ans)) {
             return false;
         }
-        Answer ans = (Answer) obj;
         if (obj == this) {
             return true;
         }
-        return (ans.getAnswer().equals(this.answer));
+        return (ans.getQuestionAnswer().equals(this.questionAnswer));
     }
 
     /**
@@ -133,6 +132,6 @@ public class Answer {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(this.answer);
+        return Objects.hash(this.questionAnswer);
     }
 }

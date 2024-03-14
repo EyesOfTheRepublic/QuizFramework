@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of running the main set of rewriting rules once? (We could make this more generic and able to
@@ -31,14 +31,14 @@ public class RewritingNSteps extends Question {
     @Override
     public void createCalcData() {
         //Generate the number of steps and the source string
-        numSteps = Utils.genRandomInt(CoreRewritingData.STEP_MIN, CoreRewritingData.STEP_MAX);
-        sourceString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+        numSteps = QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, CoreRewritingData.STEP_MAX);
+        sourceString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                 CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
 
         //Run the rules for the number of steps to generate the correct answer
-        String tempString = new String(sourceString);
+        String tempString = sourceString;
         for(int i = 0; i < numSteps; i++) {
-            tempString = RewritingUtils.runOneStep(tempString, CoreRewritingData.rewriteMap);
+            tempString = RewritingUtils.runOneStep(tempString, CoreRewritingData.REWRITE_MAP);
         }
         answerString = tempString;
     }
@@ -50,15 +50,15 @@ public class RewritingNSteps extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(Utils.permuteString(answerString,0.5, 0.4, 5));
+        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerString,0.5, 0.4, 5));
     }
 
     @Override
     public boolean checkAnswer(Answer answer) {
         String answerVal = sourceString;
         for(int i = 0; i < numSteps; i++) {
-            answerVal = RewritingUtils.runOneStep(answerVal,CoreRewritingData.rewriteMap);
+            answerVal = RewritingUtils.runOneStep(answerVal,CoreRewritingData.REWRITE_MAP);
         }
-        return answerVal.equals(answer.getAnswer());
+        return answerVal.equals(answer.getQuestionAnswer());
     }
 }

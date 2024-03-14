@@ -4,7 +4,8 @@ import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,20 +32,20 @@ public class Factors extends Question {
                 + ansFactor + " as a factor?");
 
         ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] numbers", listOfPosFactors);
-        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
+        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         //Generate the factor and the number of correct and incorrect ones in the generated list
-        ansFactor = Utils.genRandomInt(CoreData.MULT_LIM, CoreData.MULT_LIM * 2);
-        numCorrect = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        int numIncorrect = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        ansFactor = QuizUtils.genRandomInt(CoreData.MULT_LIM, CoreData.MULT_LIM * 2);
+        numCorrect = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int numIncorrect = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Create the numbers that have ansFactor as a factor
         for (int i = 0; i < numCorrect; i++) {
             int multFactor;
-            multFactor = Utils.genRandomInt(CoreData.MULT_LIM, CoreData.MULT_LIM * 2);
+            multFactor = QuizUtils.genRandomInt(CoreData.MULT_LIM, CoreData.MULT_LIM * 2);
             int correctAnswer = ansFactor * multFactor;
             listOfPosFactors.add(correctAnswer);
         }
@@ -52,9 +53,9 @@ public class Factors extends Question {
         //Generate the ones that do not have ansFactor as a factor
         int j = 0;
         do {
-            int candidate = Utils.genRandomInt(CoreData.LIM_VAL, CoreData.LIM_VAL * 2);
+            int candidate = QuizUtils.genRandomInt(CoreData.LIM_VAL, CoreData.LIM_VAL * 2);
             if( candidate % ansFactor != 0) {
-                listOfPosFactors.add(Utils.genRandomInt(CoreData.LIM_VAL, CoreData.LIM_VAL * 2));
+                listOfPosFactors.add(QuizUtils.genRandomInt(CoreData.LIM_VAL, CoreData.LIM_VAL * 2));
                 j++;
             }
         } while (j < numIncorrect);
@@ -69,7 +70,7 @@ public class Factors extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
         //listOfPosFactors.size() won't be > MAX_NUM for current values but just in case...
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, listOfPosFactors.size())));
     }
@@ -83,6 +84,6 @@ public class Factors extends Question {
             }
         }
 
-        return factorCount == Integer.parseInt(answer.getAnswer());
+        return factorCount == Integer.parseInt(answer.getQuestionAnswer());
     }
 }

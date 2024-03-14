@@ -5,7 +5,8 @@ import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -34,13 +35,13 @@ public class SophieGermain extends Question {
         return new StringBuilder("""
                 A Sophie Germain prime number is a prime number p where 2 * p + 1 is
                 also prime. How many of the following are Sophie Germain numbers?""")
-                .append(Utils.toCodeBlock(formatter.format())).toString();
+                .append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         numGermainPrimes = 0;
-        final int numPrimes = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numPrimes = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy the list of primes
         for(int elt : PrimeData.PRIMES) {
@@ -86,7 +87,7 @@ public class SophieGermain extends Question {
                 count++;
             }
         }
-        return count == Integer.parseInt(answer.getAnswer());
+        return count == Integer.parseInt(answer.getQuestionAnswer());
     }
 
     private static boolean isPrime(int n){

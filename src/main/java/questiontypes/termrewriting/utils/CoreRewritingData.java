@@ -5,6 +5,11 @@ package questiontypes.termrewriting.utils;
  */
 public class CoreRewritingData {
 
+    /*
+    Prevent inadvertent instantiation
+     */
+    private CoreRewritingData() {}
+
     public static final int MIN_LEN = 60;
     public static final int MAX_LEN = 80;
 
@@ -15,7 +20,7 @@ public class CoreRewritingData {
     public static final int STEP_MIN = 3;
 
     //The standard set of rewrite rules
-    public static final String rewriteMap[][]
+    public static final String[][] REWRITE_MAP
             = {{"bYb", "Y"},
             {"c", "Y"},
             {"XXbYaX", "X"},
@@ -25,7 +30,7 @@ public class CoreRewritingData {
             {"bb", "X"}};
 
     //The alternate set of rewrite rules
-    public static final String altRewriteMap[][]
+    public static final String[][] ALT_REWRITE_MAP
             = {{"aYb", "Y"},
             {"cY", "Y"},
             {"XabYa", "X"},

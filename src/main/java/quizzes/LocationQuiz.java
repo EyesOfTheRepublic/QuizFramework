@@ -1,17 +1,11 @@
 package quizzes;
 
-import questiontypes.crypto.Decryption;
-import questiontypes.crypto.DoubleEncrypt;
-import questiontypes.crypto.Encryption;
-import questiontypes.crypto.NumCols;
 import questiontypes.location.DistanceTwoPoints;
 import questiontypes.location.MinSecDistance;
 import questiontypes.location.TotalDistance;
 import questiontypes.location.WhichDistance;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
-import questiontypes.numbers.Primes;
-import questiontypes.numbers.SophieGermain;
 import quizframework.Question;
 import quizframework.Quiz;
 
@@ -24,7 +18,7 @@ import java.io.PrintStream;
 
 public class LocationQuiz {
 
-    private static final String quizDesc = """
+    private static final String QUIZ_DESC = """
               <h3>Coordinate Sytems</h3><p>The first four questions in this quiz are based on Coordinate Systems. \
               You can find (and should already have read) background information on Coordinate Systems in the  In-Class Test Information module \
               on Canvas.</p><p>NOTE there are some fragments of code in the algorithms below, but you are responsible for implementing them in Java.</p>\
@@ -51,7 +45,7 @@ public class LocationQuiz {
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Location and Numbers 3",
-                GenQuizData.HEADER + quizDesc + GenQuizData.RESOURCES);
+                GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Location questions
         Question distTwoPoints = new DistanceTwoPoints();

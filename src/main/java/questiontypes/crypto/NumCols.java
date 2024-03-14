@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * How many columns did the array have that encrypted a particular string
@@ -28,10 +28,10 @@ public class NumCols extends Question {
     @Override
     public void createCalcData() {
         //Create a random key
-        key = Utils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
+        key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
         //Create random plain text whose length is multiple of the key
         do {
-            sourceString = Utils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
+            sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
         } while (sourceString.length() % key != 0);
 
@@ -46,13 +46,13 @@ public class NumCols extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(Integer.toString(Utils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY)));
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY)));
     }
 
     //We don't use the utilities we have written to more accurately check what a student might write
     @Override
     public boolean checkAnswer(Answer answer) {
-        int answerKey = Integer.parseInt(answer.getAnswer());
+        int answerKey = Integer.parseInt(answer.getQuestionAnswer());
         char[][] encryptArray = new char[sourceString.length() / answerKey][answerKey];
         StringBuilder result = new StringBuilder();
 

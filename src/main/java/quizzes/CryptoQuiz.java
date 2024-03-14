@@ -9,7 +9,6 @@ import questiontypes.numbers.SophieGermain;
 import quizframework.Question;
 import quizframework.Quiz;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
@@ -19,7 +18,7 @@ import java.io.PrintStream;
 
 public class CryptoQuiz {
 
-    private static final String quizDesc = """
+    private static final String QUIZ_DESC = """
             <h3>Transposition Cyphers</h3> \
             <p>The first four questions in this quiz are based on Transposition Cyphers. \
             You can find (and should already have read) background information on Transposition Cyphers in the In-Class Test Information module \
@@ -31,19 +30,19 @@ public class CryptoQuiz {
              * You may need to add the keyword static after public <br/>\
              */ <br/>\
             public void formatArray(char[][] charArray) { <br/>\
-            	for (char[] row : charArray) { <br/>\
-            		for (char item : row) { <br/>\
-            			System.out.print(" " + item); <br/>\
-            		} <br/>\
-            		System.out.println(); <br/>\
-            	} <br/>\
+                for (char[] row : charArray) { <br/>\
+                    for (char item : row) { <br/>\
+                        System.out.print(" " + item); <br/>\
+                    } <br/>\
+                    System.out.println(); <br/>\
+                } <br/>\
             } <br/>\
             </pre> \
             <h3>Prime Numbers</h3> \
             <p>The next two questions relate to prime numbers.</p>""";
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Transposition Cyphers and Numbers 3",
-                GenQuizData.HEADER + quizDesc + GenQuizData.RESOURCES);
+                GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Transposition questions
         Question encrypt = new Encryption();
@@ -63,13 +62,13 @@ public class CryptoQuiz {
         quiz.addQuestion(doubleEncrypt);
 
         //Prime number questions
-      /*  Question prime = new Primes();
+        Question prime = new Primes();
         prime.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(prime);
 
         Question sophieG = new SophieGermain();
         sophieG.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(sophieG);*/
+        quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");

@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' then again with another key?
@@ -35,8 +35,8 @@ public class DoubleEncrypt extends Question {
          */
 
         do {
-            key = Utils.genRandomInt(CypherUtils.MIN_KEY,CypherUtils.MAX_KEY);
-            sourceString = Utils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
+            key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY,CypherUtils.MAX_KEY);
+            sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
         } while (sourceString.length() % key != 0 || sourceString.length() == key * key);
 
@@ -52,7 +52,7 @@ public class DoubleEncrypt extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(Utils.permuteString(answerText,
+        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerText,
                 0.5, 0.4, 3));
     }
 
@@ -62,7 +62,7 @@ public class DoubleEncrypt extends Question {
 
         String tempVal =  encode(sourceString, key);
         String result = encode(tempVal, key);
-        return result.equals(answer.getAnswer());
+        return result.equals(answer.getQuestionAnswer());
     }
 
     private String encode(String sourceString, int key) {

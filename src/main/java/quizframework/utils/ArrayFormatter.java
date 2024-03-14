@@ -21,15 +21,13 @@ public class ArrayFormatter<T> {
         final Iterator<T> iter = dataList.iterator();
         final StringBuilder builder = new StringBuilder(header + " = {\n");
         while(iter.hasNext()) {
-            final StringBuilder lineBuilder = new StringBuilder(" ".repeat(Utils.MARKDOWN_INDENT));
+            final StringBuilder lineBuilder = new StringBuilder(" ".repeat(CodeUtils.MARKDOWN_INDENT));
             do {
                lineBuilder.append(outputItem(iter.next()));
-               //lineBuilder.append(iter.next());
                if (iter.hasNext()) {
                    lineBuilder.append(", ");
                }
                if (lineBuilder.length() > 80) {
-                   //builder.append(lineBuilder).append("\n");
                    break;
                }
             } while(iter.hasNext());

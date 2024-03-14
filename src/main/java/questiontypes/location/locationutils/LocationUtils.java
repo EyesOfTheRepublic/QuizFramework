@@ -1,6 +1,6 @@
 package questiontypes.location.locationutils;
 
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 public class LocationUtils {
 
@@ -24,8 +24,8 @@ public class LocationUtils {
     Create a new random point
      */
     public static Point randomPoint() {
-        return new LocationUtils.Point(Utils.getRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0),
-                Utils.getRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0));
+        return new LocationUtils.Point(QuizUtils.genRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0),
+                QuizUtils.genRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0));
     }
 
     /*

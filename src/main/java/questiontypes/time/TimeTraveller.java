@@ -4,7 +4,8 @@ import questiontypes.time.timeutils.TimeUtils;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,6 @@ import java.util.ArrayList;
  */
 public class TimeTraveller extends Question {
 
-    private int numDates;
     private long numMillis;
     private ArrayList<String> dateSeq = new ArrayList<>();
 
@@ -39,12 +39,12 @@ public class TimeTraveller extends Question {
             }
         };
 
-        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
+        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
-        numDates = Utils.genRandomInt(TimeUtils.MIN_DATE_SEQ, TimeUtils.MAX_DATE_SEQ);
+        final int numDates = QuizUtils.genRandomInt(TimeUtils.MIN_DATE_SEQ, TimeUtils.MAX_DATE_SEQ);
         numMillis = 0;
         String date = timeUtils.genRandomDate();
         for (int i = 0; i < numDates; i++) {
@@ -53,7 +53,6 @@ public class TimeTraveller extends Question {
             numMillis += Math.abs(timeUtils.getMillis(date) - timeUtils.getMillis(dateSeq.get(i)));
         }
         numMillis += Math.abs(timeUtils.getMillis(date) - timeUtils.getMillis(dateSeq.get(dateSeq.size() - 1)));
-        ;
     }
 
     @Override
@@ -64,7 +63,7 @@ public class TimeTraveller extends Question {
     @Override
     public Answer createIncorrectAnswer() {
         return Answer.makeIncorrectAnswer(Long.toString(
-                Utils.genRandomLong(numMillis / TimeUtils.TIME_TRAVEL_MIN_FACTOR,
+                QuizUtils.genRandomLong(numMillis / TimeUtils.TIME_TRAVEL_MIN_FACTOR,
                         Long.MAX_VALUE / TimeUtils.TIME_TRAVEL_MAX_FACTOR)));
     }
 }

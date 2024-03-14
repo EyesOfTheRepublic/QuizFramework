@@ -1,8 +1,7 @@
 package quizframework;
 
-import quizframework.Answer;
-
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains all data relating to a question - note that it is never necessary to directly deal with this: all user
@@ -20,7 +19,7 @@ public class QuestionData {
     private String incorrectAnswerFeedback;
 
     private int points;
-    private final ArrayList<Answer> answerList; //may be more complex than required
+    private final List<Answer> answerList; //may be more complex than required
 
     /**
      * Create a new empty quizframework.Question object
@@ -123,7 +122,7 @@ public class QuestionData {
      * Return the list of answers
      * @return a list of {@Answer} objects representing the correct and incorrect question answers
      */
-    public ArrayList<Answer> getAnswerList() {
+    public List<Answer> getAnswerList() {
         return answerList;
     }
 

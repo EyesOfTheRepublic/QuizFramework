@@ -5,7 +5,8 @@ import questiontypes.numbers.utils.FibSequence;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +44,7 @@ public class Fibonacci extends Question {
                 return item + "L";
             }
         };
-        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
+        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
     }
 
 
@@ -56,8 +57,8 @@ public class Fibonacci extends Question {
             baseList.add(elt);
         }
 
-        numCorrect = Utils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
-        final int numWrong = Utils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numCorrect = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numWrong = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy actual fibonaacci numbers to the list for the question, deleting them from the source to avoid duplicates
         for (int i = 0; i < numCorrect; i++) {
@@ -74,7 +75,7 @@ public class Fibonacci extends Question {
                 //Pick a random fibonacci number and 'adjust' it by a random amount
                 fakeFibIndex = ThreadLocalRandom.current().nextInt(FibSequence.FIB_ARRAY.length);
                 fakeFib = FibSequence.FIB_ARRAY[fakeFibIndex]
-                        + Utils.genRandomInt(FAKE_FIB_OFFSET, FAKE_FIB_OFFSET * 2);
+                        + QuizUtils.genRandomInt(FAKE_FIB_OFFSET, FAKE_FIB_OFFSET * 2);
                 //If it's negative, also a fibonacci number, or in the list of fibonacci numbers for the question, skip it
             } while (fakeFib < FibSequence.FIB_ARRAY[0]
                     || fakeFibs.contains(fakeFib)
@@ -94,7 +95,7 @@ public class Fibonacci extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = Utils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, questionList.size())));
     }
 
@@ -113,6 +114,6 @@ public class Fibonacci extends Question {
                 fibCount++;
             }
         }
-        return fibCount == Integer.parseInt(answer.getAnswer());
+        return fibCount == Integer.parseInt(answer.getQuestionAnswer());
     }
 }

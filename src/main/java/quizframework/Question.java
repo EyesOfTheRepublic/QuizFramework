@@ -1,8 +1,9 @@
 package quizframework;
 
-import quizframework.utils.Utils;
+import quizframework.utils.CodeUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Abstract class intended to form the basis of new question types. Some methods are abstract (and need to implementations);
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 
 public abstract class Question {
 
-    private final QuestionData question = new QuestionData();
-    private final ArrayList<Answer> faultList = new ArrayList<>();
+    private final QuestionData questData = new QuestionData();
+    private final List<Answer> faultList = new ArrayList<>();
 
     /* Abstract Methods - MUST be implemented */
 
@@ -62,7 +63,7 @@ public abstract class Question {
     /* Overridable Methods - CAN be implemented */
 
     /**
-     * Return the number of points for the question. By default this returns 1 (but can be optionally overridden)
+     * Return the number of points for the question. By default, this returns 1 (but can be optionally overridden)
      * @return the number of points (defaults to 1)
      */
     public int createQuestionPoints() {
@@ -103,11 +104,7 @@ public abstract class Question {
      * @return true if the answer is correct, false otherwise.
      */
     public boolean checkAnswer(final Answer answer) {
-        if (answer.isCorrect()) {
-            return true;
-        } else {
-            return false;
-        }
+        return answer.isCorrect();
     }
 
     /* Operational Methods - CANNOT be overridden */
@@ -123,15 +120,15 @@ public abstract class Question {
      */
     public final boolean createMcqAnswerSet(final int numAnswers) {
         createCalcData();//This needs to be first to ensure the data is available to compute question text and answers
-        question.addQuestionTitle(createQuestionTitle());
-        question.addQuestionText(createQuestionText());
+        questData.addQuestionTitle(createQuestionTitle());
+        questData.addQuestionText(createQuestionText());
         //Prevent questions having zero/negative points
-        question.addQuestionPoints(createQuestionPoints() < 1 ? 1 : createQuestionPoints());
-        question.addGeneralFeedback(createGeneralFeedback());
-        question.addCorrectFeedback(createCorrectFeedback());
-        question.addIncorrectAnswerFeedback(createIncorrectFeedback());
+        questData.addQuestionPoints(createQuestionPoints() < 1 ? 1 : createQuestionPoints());
+        questData.addGeneralFeedback(createGeneralFeedback());
+        questData.addCorrectFeedback(createCorrectFeedback());
+        questData.addIncorrectAnswerFeedback(createIncorrectFeedback());
         //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
-        if (!question.addAnswer(createCorrectAnswer())) {
+        if (!questData.addAnswer(createCorrectAnswer())) {
             return false;
         }
 
@@ -139,7 +136,7 @@ public abstract class Question {
         final int incorrectAnswers = Math.max(1, numAnswers - 1);
         int incorrectCount = 0;
         while (incorrectCount < incorrectAnswers) {
-            if (question.addAnswer(createIncorrectAnswer())) {
+            if (questData.addAnswer(createIncorrectAnswer())) {
                 incorrectCount++;
             }
         }
@@ -157,7 +154,7 @@ public abstract class Question {
      */
     public final boolean checkAnswerSet() {
 
-        for(Answer answer : question.getAnswerList()) {
+        for(Answer answer : questData.getAnswerList()) {
             //If checkAnswer does not agree with the recorded correctness of the answer
             if (answer.isCorrect() && !checkAnswer(answer)
             || !answer.isCorrect() && checkAnswer(answer)) {
@@ -173,7 +170,7 @@ public abstract class Question {
      *
      * @return the list of faulty answers.
      */
-    public ArrayList<Answer> getFaultList() {
+    public List<Answer> getFaultList() {
         return faultList;
     }
 
@@ -192,23 +189,23 @@ public abstract class Question {
      */
     @Override
     public final String toString() {
-        StringBuilder builder = new StringBuilder(question.getQuestionTitle());
+        StringBuilder builder = new StringBuilder(questData.getQuestionTitle());
         builder.append("\n");
-        builder.append(question.getQuestionText());
+        builder.append(questData.getQuestionText());
         builder.append("\n");
-        builder.append("Points: " + question.getQuestionPoints() + "\n");
+        builder.append("Points: " + questData.getQuestionPoints() + "\n");
 
         if (!faultList.isEmpty()) {
             builder.append("QUESTION DOES NOT PASS FAULT CHECKING\n");
             builder.append("The following answers do not match the expected value:\n");
             for(Answer ans: faultList) {
-                builder.append(ans.getAnswer() + " should be: " + (ans.isCorrect() ? "correct\n" : "incorrect\n"));
+                builder.append(ans.getQuestionAnswer() + " should be: " + (ans.isCorrect() ? "correct\n" : "incorrect\n"));
             }
         } else {
 
-            ArrayList<Answer> list = question.getAnswerList();//randomize();
+            List<Answer> list = questData.getAnswerList();
             for (Answer ans : list) {
-                builder.append(ans.getAnswer());
+                builder.append(ans.getQuestionAnswer());
                 if (ans.isCorrect()) {
                     builder.append(" *");
                 }
@@ -226,26 +223,25 @@ public abstract class Question {
      * @return the (markDown) format string suitable for text2qti
      */
     public final String toText2Qti(final int qNum) {
-        StringBuilder builder = new StringBuilder("Title: " + question.getQuestionTitle() + "\n");
-        builder.append("Points: " + question.getQuestionPoints() + "\n");
-        builder.append(Utils.outputTextBlock(qNum + ". ", question.getQuestionText()));
-        if (question.getGeneralFeedback() != null) {
-            builder.append(Utils.outputTextBlock("... ",question.getGeneralFeedback()));
+        StringBuilder builder = new StringBuilder("Title: " + questData.getQuestionTitle() + "\n");
+        builder.append("Points: " + questData.getQuestionPoints() + "\n");
+        builder.append(CodeUtils.outputTextBlock(qNum + ". ", questData.getQuestionText()));
+        if (questData.getGeneralFeedback() != null) {
+            builder.append(CodeUtils.outputTextBlock("... ", questData.getGeneralFeedback()));
         }
-        if (question.getCorrectAnswerFeedback() != null) {
-            builder.append(Utils.outputTextBlock("+ ", question.getCorrectAnswerFeedback()));
+        if (questData.getCorrectAnswerFeedback() != null) {
+            builder.append(CodeUtils.outputTextBlock("+ ", questData.getCorrectAnswerFeedback()));
         }
-        if (question.getIncorrectAnswerFeedback() != null) {
-            builder.append(Utils.outputTextBlock("- ", question.getIncorrectAnswerFeedback()));
+        if (questData.getIncorrectAnswerFeedback() != null) {
+            builder.append(CodeUtils.outputTextBlock("- ", questData.getIncorrectAnswerFeedback()));
         }
         ArrayList<Answer> list = randomize();
         char qItem = 'a';
         for (Answer ans: list) {
             String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
-            builder.append(Utils.outputTextBlock(qLabel, ans.getAnswer()));
-            //builder.append("\n");
+            builder.append(CodeUtils.outputTextBlock(qLabel, ans.getQuestionAnswer()));
             if (ans.getFeedback() != null) {
-                builder.append(Utils.outputTextBlock("... ", ans.getFeedback()));
+                builder.append(CodeUtils.outputTextBlock("... ", ans.getFeedback()));
             }
             qItem++;
         }
@@ -257,7 +253,7 @@ public abstract class Question {
     /*Shuffle an arraylist - used to randomize the order of answers in the list of possible answers (by default, in
     MCQ example, the correct answer will always be added first and will always be at the front, so this shuffles the order) */
     private ArrayList<Answer> randomize() {
-        ArrayList<Answer> list = new ArrayList<>(question.getAnswerList());
+        ArrayList<Answer> list = new ArrayList<>(questData.getAnswerList());
         java.util.Collections.shuffle(list);
         return list;
     }

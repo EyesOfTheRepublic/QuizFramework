@@ -3,7 +3,7 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * How far is it between two points (lat, long) on a globe?
@@ -46,7 +46,7 @@ public class DistanceTwoPoints extends Question {
         final double minVal = (distance - LocationUtils.MAX_DIST_VARIATION < 0) ? 0 : distance - LocationUtils.MAX_DIST_VARIATION;
         final double maxVal = (distance + LocationUtils.MAX_DIST_VARIATION > LocationUtils.EARTH_CIRC) ?
                 LocationUtils.EARTH_CIRC : distance + LocationUtils.MAX_DIST_VARIATION;
-        return Answer.makeIncorrectAnswer(Double.toString(Utils.getRandomDouble(minVal, maxVal, 0)));
+        return Answer.makeIncorrectAnswer(Double.toString(QuizUtils.genRandomDouble(minVal, maxVal, 0)));
     }
 
     @Override
@@ -63,6 +63,6 @@ public class DistanceTwoPoints extends Question {
         double c = 2 * Math.asin(Math.sqrt(a));
         double answerDistance = LocationUtils.EARTH_RAD * c;
 
-        return answerDistance == Double.parseDouble(answer.getAnswer());
+        return answerDistance == Double.parseDouble(answer.getQuestionAnswer());
     }
 }

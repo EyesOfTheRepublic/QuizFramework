@@ -1,51 +1,28 @@
 package quizframework.utils;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Static methods and constants generally useful in generating quiz data and incorrect answers
  * to questions.
+ * <ul>
+ *     <li>{@link #similarLong} - generate a new long with the same number of digits.</li>
+ *     <li>{@link #genRandomString} - generate a random string with a specified length range and a specified character
+ *     range.</li>
+ *     <li>{@link #MIN_PERMUTATION_RNG} - the minimum viable value for the permutation range when permuting strings.</li>
+ *     <li>{@link #permuteString} - permute a specified String a specified number of times within a specified
+ *     'range' between the start and end.</li>
+ *     <li>{@link #genRandomInt} - generate a random int within a specified range.</li>
+ *     <li>{@link #genRandomDouble} - generate a random double within a specified range.</li>
+ *     <li>{@link #genRandomLong} - generate a random long within a specified range.</li>
+ * </ul>
  */
 
-public class Utils {
+public class QuizUtils {
 
     //Prevent instance of this class being (pointlessly) created
-    private Utils(){}
-
-    /**
-     * Standard indent using Markdown. Text2Qti requires markdown content to be systematically indented within questions.
-     * The (minimum) size of the indent is a function of the number of questions - it needs to be minimally question number
-     * plus a '.' plus a space (so e.g. 5 for up to 999 questions.)
-     */
-    public static final int MARKDOWN_INDENT = 5;
-
-    /**
-     * How many 'items' appear on a line when outputting an array? A slightly arbitrary number...
-     */
-    public static final int BLOCK_SIZE = 6;
-
-    /**
-     * Generate an appropriately-indented (by MARKDOWN_INDENT) block of text, with an initial unindented label
-     * All lines of content must be consistently indented and the label (question number or answer number) must fit
-     * within that indenting (i.e. the label is *not* indented). This means that the indenting must be strictly >
-     * than the length of the label (because text2qti doesn't work if there is space after the question number).
-     *
-     * @param label  The label that appears at the start of the first line - either the question or answer number
-     * @param text   List of lines of text
-     * @return
-     */
-    public static String outputTextBlock(final String label, final String text) {
-        final StringBuilder builder = new StringBuilder();
-        List<String> textByLine = Arrays.asList(text.split("\n"));
-        builder.append(label).append(" ".repeat(MARKDOWN_INDENT - label.length())).append(textByLine.get(0)).append("\n");
-        textByLine.stream().skip(1).forEach(item -> builder.append(" ".repeat(MARKDOWN_INDENT)).append(item).append("\n"));
-        return builder.toString();
-    }
-
-    public static StringBuilder toCodeBlock(final StringBuilder code) {
-        return new StringBuilder().append("\n\n```\n").append(code).append("\n```\n\n");
+    private QuizUtils() {
     }
 
     /**
@@ -57,10 +34,10 @@ public class Utils {
      * @param arg an arbitrary long - note that there are limited options if this has very few digits
      * @return a new long that is the same number of (decimal) digits as the argument and the same sign
      */
-    public static final long similarLong(Long arg) {
-        int digits = String.valueOf(arg).length();
-        int base = (int) Math.pow(10, digits - 1);
-        long positiveVal = ThreadLocalRandom.current().nextLong(9 * base);
+    public static final long similarLong(final long arg) {
+        final int digits = String.valueOf(arg).length();
+        final int base = (int) Math.pow(10, digits - 1);
+        final long positiveVal = ThreadLocalRandom.current().nextLong(9L * base);
         return arg < 0 ? -positiveVal : positiveVal;
     }
 
@@ -68,8 +45,6 @@ public class Utils {
      * Generate a random string from a specified range of characters, with a specified minimum length.
      * + some range.
      * @param minLen The generated string will be at least this long.
-     * @param sizeRng The final string will be between {@code minLen} and {@code minLen + sizeRng} in
-     *                length ({@code sizeRng} can be zero - in which case the string will be {@code minLen} long).
      * @param low The low end of the range of characters used in the string. If {@code low > high},
      *           {@code low} and {@code high} will be swapped.
      * @param high The low end of the range of characters used in the string. If {@code low > high},
@@ -82,39 +57,30 @@ public class Utils {
      *  made up of lower-case latin characters.</p>
      */
 
-    public static final String genRandomString(int minLen, int maxLen,
-                                               char low, char high) {
+    public static final String genRandomString(final int minLen, final int maxLen,
+                                               final char low, final char high) {
 
-        if (low > high) {
-            final char temp = low;
-            low = high;
-            high = temp;
-        }
-
-        if (minLen > maxLen) {
-            final int temp = minLen;
-            minLen = maxLen;
-            maxLen = temp;
-        }
+        final int minLenVal = Math.min(minLen, maxLen);
+        final int maxLenVal = Math.max(minLen, maxLen);
+        final char lowVal = low <= high ? low : high;
+        final char highVal = low <= high ? high : low;
 
         //Generate target string length and prep buffer
-        final int targetStringLength = ThreadLocalRandom.current().nextInt(minLen, maxLen);
-        StringBuilder buffer = new StringBuilder(targetStringLength);
+        final int targetStringLength = genRandomInt(minLenVal, maxLenVal);
 
-        //use the low and high characters to set the random generation range
-        final int leftLmt = low;
-        final int limLen = high - low + 1;
-
-        //Generate and return the string
-        for (int i = 0; i < targetStringLength; i++) {
-            final int randomLimitedInt = leftLmt + ThreadLocalRandom.current().nextInt(limLen);// * (limLen);
-            buffer.append((char) randomLimitedInt);
-        }
-        return buffer.toString();
+        final Random random = new Random();
+        return random
+                .ints(lowVal, highVal + 1)
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
-    /*Controls the range over which random permutations of strings will be attempted in
-     * {@code permuteString} - make it smaller at your peril!
+    /**Controls the range over which random permutations of strings will be attempted in
+     * {@code permuteString} - make it smaller at your peril! This is public so it can be used as the rangeDecimal
+     * argument in {@link #permuteString}. Represents the faction of the string that will be permuted - the smaller it
+     * is, the less likely (and ultimately impossible) it is to generate a new string that is actually different to
+     * the old one. Value chosen empirically based on experiments with the typical random string seen in questions.
      */
     public static final double MIN_PERMUTATION_RNG = 0.2;
 
@@ -126,18 +92,19 @@ public class Utils {
      * <p>{@code permuteString} goes to some trouble to avoid ending up in an infinite loop - "randomly" trying
      * to swap characters when the provided parameters don't allow that to happen because they don't give
      * enough freedom to make changes - by returning the original string if no permutations are possible.
-     * <strong>HOWEVER</strong> it is possible to force it to effectively do this when generating wrong answers - if
-     * the supplied parameters do not allow enough different incorrect answers to be generated. This is because
+     * <strong>HOWEVER</strong> it is possible to force it to effectively indirectly do this when generating wrong answers
+     * - if the supplied parameters do not allow enough different incorrect answers to be generated. This is because
      * generation of wrong answers will continue until they are all unique - so if it's not possible to generate
      * enough unique wrong answers, the process won't terminate.</p>
-     * @param dataString The string to be permuted
+     *
+     * @param dataString      The string to be permuted
      * @param locationDecimal The centre point of the change expressed as a fraction 0.0 to 1.0 - 0.0 represents the
-     *                 start of the string; 0.5 the middle; 1.0 the end
-     * @param rangeDecimal The amount of variation from {@code locationDecimal} allowed - so 0.5 means +/1 half of the string. Must
-     *              be at least MIN_PERMUTATION_RNG = 0.2
-     * @param permutations The number of permutations attempted - note these are NOT guaranteed to be unique and picking
-     *                     a small value for {@code rangeDecimal} will make it less likely they are, especially if the string
-     *                     to permute is relatively short.
+     *                        start of the string; 0.5 the middle; 1.0 the end
+     * @param rangeDecimal    The amount of variation from {@code locationDecimal} allowed - so 0.5 means +/1 half of the string. Must
+     *                        be at least MIN_PERMUTATION_RNG = {@value MIN_PERMUTATION_RNG}
+     * @param permutations    The number of permutations attempted - note these are NOT guaranteed to be unique and picking
+     *                        a small value for {@code rangeDecimal} will make it less likely they are, especially if the string
+     *                        to permute is relatively short.
      * @return The permuted or original string - the original string is returned if no permutations are possible, or the
      * number of permutations requested is negative.
      *
@@ -147,7 +114,7 @@ public class Utils {
      */
 
     public static final String permuteString(final String dataString, final double locationDecimal,
-                                              final double rangeDecimal, final int permutations) {
+                                             final double rangeDecimal, final int permutations) {
 
         /*We only make changes if the number of permutations is +ve and if the rangeDecimal is large enough to avoid
         a high chance that no permutations will be possible
@@ -162,10 +129,10 @@ public class Utils {
         final long strLen = dataString.length();
         final long rawLowRange = Math.min(Math.round((locationDecimal - rangeDecimal) * strLen), strLen - 1);
         final long rawHighRange = Math.round((locationDecimal + rangeDecimal) * strLen);
-        final int highRange = (int)(rawHighRange > strLen - 1 ? strLen - 1 : rawHighRange);
+        final int highRange = (int) (rawHighRange > strLen - 1 ? strLen - 1 : rawHighRange);
 
         //We will make random changes between lowRange and lowRange + range
-        final int lowRange = (int)(rawLowRange < 0 ? 0 : rawLowRange);
+        final int lowRange = (int) (rawLowRange < 0 ? 0 : rawLowRange);
         final int range = highRange - lowRange;
 
         /*
@@ -184,14 +151,14 @@ public class Utils {
             have returned the original string above - otherwise this could be an
             infinite loop
              */
-            int loc1 = ThreadLocalRandom.current().nextInt(range) + lowRange;
+            final int loc1 = ThreadLocalRandom.current().nextInt(range) + lowRange;
             int loc2;
             do {
                 loc2 = ThreadLocalRandom.current().nextInt(range) + lowRange;
             } while (loc2 == loc1);
 
             //perform the swap.
-            char temp = strList[loc1];
+            final char temp = strList[loc1];
             strList[loc1] = strList[loc2];
             strList[loc2] = temp;
         }
@@ -201,6 +168,7 @@ public class Utils {
 
     /**
      * Generate a random integer between min (inclusive) and max (exclusive)
+     *
      * @param min minimum (inclusive) value
      * @param max maximum (exclusive) value
      * @return random integer between min (inclusive) and max (exclusive)
@@ -211,22 +179,20 @@ public class Utils {
 
     /**
      * Generate a random double in a specific range, optionally with a specific precision
-     * @param min the minimum value
-     * @param max the maximum value
+     *
+     * @param min      the minimum value
+     * @param max      the maximum value
      * @param decimals the number of decimal places (if zero or negative this is ignored)
      * @return the generated double
      */
-    public static double getRandomDouble(final double min, final double max, final int decimals) {
-        if (max < min) {
-            System.out.println(min + " " + max);
-        }
+    public static double genRandomDouble(final double min, final double max, final int decimals) {
         final double val = ThreadLocalRandom.current().nextDouble(min, max);
-        final double factor = Math.pow(10, decimals);
-        return decimals > 0 ?  val * decimals / decimals : val ;
+        return decimals > 0 ? val * decimals / decimals : val;
     }
 
     /**
      * Generate a random long between min (inclusive) and max (exclusive)
+     *
      * @param min minimum (inclusive) value
      * @param max maximum (exclusive) value
      * @return random long between min (inclusive) and max (exclusive)

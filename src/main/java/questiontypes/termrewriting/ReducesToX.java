@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * Which of a set of strings reduces to X using the first set of rewrite rules?
@@ -29,9 +29,9 @@ public class ReducesToX extends Question {
         String inString;
         //Run strings to completion until we get one that reduces to X - potentially unbounded of course.
         do {
-            inString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+            inString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                     CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
-            tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.rewriteMap);
+            tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.REWRITE_MAP);
         } while (!tempString.equals("X"));
         answerString = inString;
     }
@@ -47,26 +47,26 @@ public class ReducesToX extends Question {
         String inString;
         //Run strings to completion until we get one that *does not* reduce to X - potentially unbounded of course.
         do {
-            inString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+            inString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                     CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
-            tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.rewriteMap);
+            tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.REWRITE_MAP);
         } while (tempString.equals("X"));
         return Answer.makeIncorrectAnswer(inString);
     }
 
     @Override
     public boolean checkAnswer(Answer answer) {
-        String answerString = answer.getAnswer();
+        String answerStrCheck = answer.getQuestionAnswer();
         boolean done = false;
 
         while (!done) {
-            String startVal = answerString;
-            answerString = RewritingUtils.replaceAll(startVal, CoreRewritingData.rewriteMap);
-            if (answerString.equals(startVal)) {
+            String startVal = answerStrCheck;
+            answerStrCheck = RewritingUtils.replaceAll(startVal, CoreRewritingData.REWRITE_MAP);
+            if (answerStrCheck.equals(startVal)) {
                 done = true;
             }
         }
 
-        return answerString.equals("X");
+        return answerStrCheck.equals("X");
     }
 }

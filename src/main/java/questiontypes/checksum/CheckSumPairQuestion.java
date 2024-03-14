@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /*
 An example checksum question - generate a list of pairs of strings and checksums (using the algorithm in
@@ -39,7 +39,7 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
 
     @Override
     public void createCalcData() {
-        String dataString = Utils.genRandomString(65, 20, 'a', 'z');
+        String dataString = QuizUtils.genRandomString(65, 20, 'a', 'z');
         checkedString = dataString;
         checkSum = simpleCheckSum(dataString);
     }
@@ -53,8 +53,8 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Utils.permuteString(checkedString,
-                        0.5, Utils.MIN_PERMUTATION_RNG, 2) + " "
+        return Answer.makeIncorrectAnswerWithFeedback(QuizUtils.permuteString(checkedString,
+                        0.5, QuizUtils.MIN_PERMUTATION_RNG, 2) + " "
                 + checkSum, "some incorrect feedback");
     }
 }

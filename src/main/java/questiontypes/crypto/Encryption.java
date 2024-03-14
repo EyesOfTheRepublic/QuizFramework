@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' - array size?
@@ -28,10 +28,10 @@ public class Encryption extends Question {
     @Override
     public void createCalcData() {
         //Create a random key
-        key = Utils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
+        key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
         //Create random plain text whose length is multiple of the key
         do {
-            sourceString = Utils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
+            sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
         } while (sourceString.length() % key != 0);
 
@@ -46,7 +46,7 @@ public class Encryption extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(Utils.permuteString(answerText,
+        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerText,
                 0.5, 0.4, 3));
     }
 
@@ -70,7 +70,7 @@ public class Encryption extends Question {
             }
         }
 
-        return result.toString().equals(answer.getAnswer());
+        return result.toString().equals(answer.getQuestionAnswer());
     }
 
 }

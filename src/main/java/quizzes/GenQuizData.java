@@ -5,31 +5,16 @@ package quizzes;
  */
 
 public class GenQuizData {
+
+    /*
+    Prevent inadvertant initialisation
+     */
+    private GenQuizData() {}
+
     public static final int NUM_ANSWERS = 6;
-    public static String RESOURCES = "";
-    /*public static String RESOURCES = """
-            <h3>Information Sources and Tools</h3> \
-            <p>The following sources of information/tools ONLY will be available to you in the real test.</p> \
-            <h4>Course Pages</h4> \
-            <p><a class="inline_disabled" href="/courses/44525" target="_blank" rel="noopener noreferrer">Open the CS-110 Canvas pages in a new tab/window.</a></p> \
-            <h4>IDEs</h4> \
-            <p>You can choose to use any of the following online IDEs for the In-Class Test (open in new tab/window)</p> \
-            <ul style="list-style-type: disc;"> \
-                <li><a class="inline_disabled" href="https://www.online-ide.com" target="_blank" rel="noopener">online-ide.com</a></li> \
-                <li><a class="inline_disabled" href="https://www.ideone.com" target="_blank" rel="noopener">ideone.com</a></li> \
-                <li><a class="inline_disabled" href="https://www.jdoodle.com/online-java-compiler/" target="_blank" rel="noopener">jdoodle.com</a></li> \
-                <li><a class="inline_disabled" href="https://www.onlinegdb.com" target="_blank" rel="noopener">onlinegdb.com</a></li> \
-            </ul> \
-            <h4>Additional Tutorial/Support Information</h4> \
-            <p>You can use any of the following sources of Java information during the In-Class Test (open in new tab/window)</p> \
-            <ul style="list-style-type: disc;"> \
-                <li><a class="inline_disabled" href="https://www.w3schools.com/java/" target="_blank" rel="noopener">w3schools.com</a></li> \
-                <li><a class="inline_disabled" href="https://www.tutorialspoint.com/java/index.htm" target="_blank" rel="noopener">tutorialspoint.com</a></li> \
-                <li><a class="inline_disabled" href="https://www.javatpoint.com/java-tutorial" target="_blank" rel="noopener">javatpoint.com</a></li> \
-            </ul>""";*/
+    public static final String RESOURCES = "";
 
-
-    public static String HEADER = """
+    public static final String HEADER = """
             <ul> \
             <li>Answer all the questions.</li> \
             <li>You can use the Canvas pages for CS-110 and online resources..</li> \

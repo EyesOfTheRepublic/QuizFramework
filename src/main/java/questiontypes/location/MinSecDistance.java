@@ -3,7 +3,7 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.Utils;
+import quizframework.utils.QuizUtils;
 
 /**
  * Distance between two points using minutes/seconds representation
@@ -57,12 +57,12 @@ public class MinSecDistance extends Question {
         final double minVal = (distance - LocationUtils.MAX_DIST_VARIATION < 0) ? 0 : distance - LocationUtils.MAX_DIST_VARIATION;
         final double maxVal = (distance + LocationUtils.MAX_DIST_VARIATION > LocationUtils.EARTH_CIRC) ?
                 LocationUtils.EARTH_CIRC : distance + LocationUtils.MAX_DIST_VARIATION;
-        return Answer.makeIncorrectAnswer(Double.toString(Utils.getRandomDouble(minVal, maxVal, 0)));
+        return Answer.makeIncorrectAnswer(Double.toString(QuizUtils.genRandomDouble(minVal, maxVal, 0)));
     }
 
     @Override
     public boolean checkAnswer(Answer answer) {
-        final double expectedAns = Double.parseDouble(answer.getAnswer());
+        final double expectedAns = Double.parseDouble(answer.getQuestionAnswer());
 
         final String[] point1Parsed = point1MinSec.split(",");
         final double lat1 = LocationUtils.convertHourToDecimal(point1Parsed[0]);

@@ -111,3 +111,9 @@ B
 ,src/main/java/quizframework/utils/Utils.java,b/4/b4a5247671908adef93ce49298ad9ba6584c18e5
 e
 5src/main/java/quizframework/utils/ArrayFormatter.java,7/a/7a88839c948635ef1fb5844e2c956ac6d5533cf6
+S
+#src/main/java/quizzes/TimeQuiz.java,9/c/9c986fd4ac6dc44616127c690875d87c0ab364c3
+`
+0src/main/java/quizframework/utils/QuizUtils.java,9/c/9cb23a76720094e661f07bce959d3dfaa09ca913
+`
+0src/main/java/quizframework/utils/CodeUtils.java,6/0/6049b3ee28edee45536713182500518ad7722a71

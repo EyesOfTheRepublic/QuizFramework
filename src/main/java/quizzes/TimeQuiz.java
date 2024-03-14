@@ -11,14 +11,13 @@ import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 /**
  * Generate quizzes based on the time questions and two of the numbers questions
  */
 
 public class TimeQuiz {
-     private static final String quizDesc = """
+     private static final String QUIZ_DESC = """
             <h3>Time</h3> \
             <p>The first four questions in this quiz are based on Time. \
             You can find (and should already have read) background information on Time in the In-Class Test Information module \
@@ -30,7 +29,7 @@ public class TimeQuiz {
             <p>The next two questions relate to prime numbers.</p>""";
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Time and Numbers 2",
-                GenQuizData.HEADER + quizDesc + GenQuizData.RESOURCES);
+                GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Time questions
         Question closestDateTime = new ClosestDateTime();

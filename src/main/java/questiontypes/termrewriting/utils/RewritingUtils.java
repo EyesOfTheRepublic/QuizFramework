@@ -5,6 +5,11 @@ package questiontypes.termrewriting.utils;
  */
 public class RewritingUtils {
 
+    /*
+    Prevent inadvertent instantiation
+     */
+    private RewritingUtils() {}
+
     /*Run the rules once in the order they appear in the array and return the resulting string */
     public static String runOneStep(String input, String[][] rules) {
         for (int i = 0; i < rules.length; i++) {
