@@ -8,6 +8,7 @@ import questiontypes.crypto.Decryption;
 import questiontypes.crypto.DoubleEncrypt;
 import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
+import questiontypes.numbers.PythTripletsCode;
 import questiontypes.simpleexamples.MultQuestionExample;
 import questiontypes.simpleexamples.SquareQuestionExample;
 import questiontypes.location.DistanceTwoPoints;
@@ -30,7 +31,7 @@ import questiontypes.time.PairDiffMills;
 import questiontypes.time.TimeTraveller;
 import quizframework.Question;
 import quizframework.Quiz;
-//A simple change...
+
 public class DemoQuestions {
 
     public static final int NUM_ANSWERS = 6; //Total number of answers, correct and incorrect
@@ -188,6 +189,10 @@ public class DemoQuestions {
         Question minSec = new MinSecDistance();
         minSec.createMcqAnswerSet(NUM_ANSWERS);
         quiz.addQuestion(minSec);
+
+        Question testingTriples = new PythTripletsCode();
+        testingTriples.createMcqAnswerSet(6);
+        quiz.addQuestion(testingTriples);
 
         /*
         The generateText2Qti method outputs a quiz in *markdown* format to the specified PrintStream - in this case,

@@ -5,9 +5,7 @@ import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
-import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +13,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * How many of a list of triplets are Pythagorean: a * a + b * b == c * c
- *
  */
 public class PythTripletsCode extends Question {
 
@@ -41,12 +38,31 @@ public class PythTripletsCode extends Question {
 
     @Override
     public String createQuestionText() {
-        ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("int[][] possTriples", pythList);
+        ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("public static int[][] possTriples", pythList);
 
-        return  new StringBuilder("""
+        final StringBuilder builder = new StringBuilder("""
                 How many of the groups of three numbers in the list are Pythagorean Triples?
-                That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.""")
-                .append(CodeUtils.toCodeBlock(formatter.format())).toString();
+                That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
+                                
+                Write your code in the method called answer below - do not change it's name, parameters or return
+                type:
+                """);
+        final String codeFramework = """
+                public class Pythagoras {
+                %s
+                    
+                     public static void main(String[] args) {
+                         System.out.println(answer());
+                     }
+                    
+                     public static int answer() {
+                         //Write your code here - it should *return* the answer
+                     }
+                }
+                """;
+
+        final String code = String.format(codeFramework, formatter.format(2));
+        return builder.append(code).toString();
     }
 
     @Override
@@ -56,7 +72,7 @@ public class PythTripletsCode extends Question {
         numWrong = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy of list of triples to choose correct values from
-        for(Integer[] elt: PythTripletsData.TRIPLETS) {
+        for (Integer[] elt : PythTripletsData.TRIPLETS) {
             triples.add(new Triplet(elt[0], elt[1], elt[2]));
         }
 
@@ -94,7 +110,7 @@ public class PythTripletsCode extends Question {
     @Override
     public boolean checkAnswer(final Answer answer) {
         int pythCount = 0;
-        for(Triplet elt : pythList) {
+        for (Triplet elt : pythList) {
             if (elt.a() * elt.a() + elt.b() * elt.b() == elt.c() * elt.c()) {
                 pythCount++;
             }
@@ -109,7 +125,7 @@ public class PythTripletsCode extends Question {
         int b;
         int c;
         final Integer[] notTriple = new Integer[3];
-        final int tripLength  = PythTripletsData.TRIPLETS.length - 1;
+        final int tripLength = PythTripletsData.TRIPLETS.length - 1;
 
         Triplet candidateIncorrectTriplet;
         do {
