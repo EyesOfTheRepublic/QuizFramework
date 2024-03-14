@@ -1,6 +1,6 @@
 package quizframework;
 
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -228,24 +228,24 @@ public abstract class Question {
     public final String toText2Qti(final int qNum) {
         StringBuilder builder = new StringBuilder("Title: " + question.getQuestionTitle() + "\n");
         builder.append("Points: " + question.getQuestionPoints() + "\n");
-        builder.append(QuizUtils.outputTextBlock(qNum + ". ", question.getQuestionText()));
+        builder.append(Utils.outputTextBlock(qNum + ". ", question.getQuestionText()));
         if (question.getGeneralFeedback() != null) {
-            builder.append(QuizUtils.outputTextBlock("... ",question.getGeneralFeedback()));
+            builder.append(Utils.outputTextBlock("... ",question.getGeneralFeedback()));
         }
         if (question.getCorrectAnswerFeedback() != null) {
-            builder.append(QuizUtils.outputTextBlock("+ ", question.getCorrectAnswerFeedback()));
+            builder.append(Utils.outputTextBlock("+ ", question.getCorrectAnswerFeedback()));
         }
         if (question.getIncorrectAnswerFeedback() != null) {
-            builder.append(QuizUtils.outputTextBlock("- ", question.getIncorrectAnswerFeedback()));
+            builder.append(Utils.outputTextBlock("- ", question.getIncorrectAnswerFeedback()));
         }
         ArrayList<Answer> list = randomize();
         char qItem = 'a';
         for (Answer ans: list) {
             String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
-            builder.append(QuizUtils.outputTextBlock(qLabel, ans.getAnswer()));
+            builder.append(Utils.outputTextBlock(qLabel, ans.getAnswer()));
             //builder.append("\n");
             if (ans.getFeedback() != null) {
-                builder.append(QuizUtils.outputTextBlock("... ", ans.getFeedback()));
+                builder.append(Utils.outputTextBlock("... ", ans.getFeedback()));
             }
             qItem++;
         }

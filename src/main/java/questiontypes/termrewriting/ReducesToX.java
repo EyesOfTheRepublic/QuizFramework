@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * Which of a set of strings reduces to X using the first set of rewrite rules?
@@ -29,7 +29,7 @@ public class ReducesToX extends Question {
         String inString;
         //Run strings to completion until we get one that reduces to X - potentially unbounded of course.
         do {
-            inString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+            inString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                     CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
             tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.rewriteMap);
         } while (!tempString.equals("X"));
@@ -47,7 +47,7 @@ public class ReducesToX extends Question {
         String inString;
         //Run strings to completion until we get one that *does not* reduce to X - potentially unbounded of course.
         do {
-            inString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+            inString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                     CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
             tempString = RewritingUtils.runToCompletion(inString, CoreRewritingData.rewriteMap);
         } while (tempString.equals("X"));

@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' - array size?
@@ -21,17 +21,17 @@ public class Encryption extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of encrypting the string ``" + sourceString + "`` with a transposition cypher using an array"
+        return "What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
                 + " with " + key + " columns?";
     }
 
     @Override
     public void createCalcData() {
         //Create a random key
-        key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
+        key = Utils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
         //Create random plain text whose length is multiple of the key
         do {
-            sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
+            sourceString = Utils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
         } while (sourceString.length() % key != 0);
 
@@ -46,7 +46,7 @@ public class Encryption extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerText,
+        return Answer.makeIncorrectAnswer(Utils.permuteString(answerText,
                 0.5, 0.4, 3));
     }
 
@@ -54,7 +54,7 @@ public class Encryption extends Question {
     @Override
     public boolean checkAnswer(Answer answer) {
         char[][] encryptArray = new char[sourceString.length() / key][key];
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         int charLoc = 0;
         for (int i = 0; i < sourceString.length() / key; i++) {
@@ -66,11 +66,11 @@ public class Encryption extends Question {
 
         for (int i = 0; i < key; i++) {
             for (int j = 0; j < sourceString.length() / key; j++) {
-                result += encryptArray[j][i];
+                result.append(encryptArray[j][i]);
             }
         }
 
-        return result.equals(answer.getAnswer());
+        return result.toString().equals(answer.getAnswer());
     }
 
 }

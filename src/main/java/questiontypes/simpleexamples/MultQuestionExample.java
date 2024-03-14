@@ -11,8 +11,8 @@ public class MultQuestionExample extends Question {
 
     private final Random rnd = new Random();
 
-    private int val1;
-    private int val2;
+    private long val1;
+    private long val2;
 
     public String createQuestionTitle() {
         return "Multiplying Numbers";
@@ -21,23 +21,28 @@ public class MultQuestionExample extends Question {
         return "What is " + val1 + " * " + val2 + " ?";
     }
 
+    @Override
     public String createGeneralFeedback() {
         return "Some generic feedback";
     }
 
+    @Override
     public String createCorrectFeedback() {
         return "Some feedback for the correct answer";
     }
 
+    @Override
     public String createIncorrectFeedback() {
         return "Some general feedback for incorrect answers";
     }
 
+    @Override
     public void createCalcData() {
         val1 = rnd.nextInt(15);
         val2 = rnd.nextInt(15);
     }
 
+    @Override
     public int createQuestionPoints() {
         return 5;
     }

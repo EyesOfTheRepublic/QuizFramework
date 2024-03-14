@@ -5,7 +5,12 @@ package questiontypes.numbers.utils;
  */
 public class FibSequence {
 
-    public static long[] FIB_ARRAY = {
+    /*
+    Prevent inadvertant instantation
+     */
+    private FibSequence() {}
+
+    public static final long[] FIB_ARRAY = {
             10946L, 17711L, 28657L, 46368L, 75025L, 121393L,
             196418L, 317811L, 514229L, 832040L, 1346269L, 2178309L, 3524578L,
             5702887L, 9227465L, 14930352L, 24157817L, 39088169L, 63245986L,

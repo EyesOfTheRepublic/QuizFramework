@@ -3,7 +3,8 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -24,24 +25,21 @@ public class TotalDistance extends Question {
     @Override
     public String createQuestionText() {
         StringBuilder res = new StringBuilder("""
-                What is the TOTAL distance in km if you travel between all the coordinates in the following Java array?:
-                
-                ```
-                double[][] coordArray = {
-                """);
-        //Use a 'trad' for loop because last entry is a special case
-        /*for(int i = 0; i < points.size() - 1; i++) {
-            res.append("{" + points.get(i) + "}, ");
-        }*/
-        points.stream().limit(points.size() - 1).forEach(point -> res.append("{" + point.rawString() + "}, "));
-        res.append("{" + points.get(points.size() - 1) + "}};\n```\n");
-        return res.toString();
+                What is the TOTAL distance in km if you travel between all the
+                coordinates in the following Java array?:""");
+        ArrayFormatter<LocationUtils.Point> formatter = new ArrayFormatter<>("double[][] coordArray", points) {
+            @Override
+            public String outputItem(LocationUtils.Point point) {
+                return "{" + point + "}";
+            }
+        };
+        return res.append(Utils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         distance = 0;
-        numSteps = QuizUtils.genRandomInt(LocationUtils.MIN_STEPS, LocationUtils.MAX_STEPS);
+        numSteps = Utils.genRandomInt(LocationUtils.MIN_STEPS, LocationUtils.MAX_STEPS);
         LocationUtils.Point currPoint = LocationUtils.randomPoint();
         for(int i = 0; i < numSteps; i++) {
             points.add(currPoint);
@@ -61,7 +59,7 @@ public class TotalDistance extends Question {
         /*The range of wrong answers cannot be outside 0 to circumference of the Earth multiplied by half
         the number of steps (empirically determined as looking 'OK')
          */
-        return Answer.makeIncorrectAnswer(Double.toString(QuizUtils.getRandomDouble(0,
+        return Answer.makeIncorrectAnswer(Double.toString(Utils.getRandomDouble(0,
                 LocationUtils.EARTH_CIRC * numSteps /2 , 0)));
     }
 
@@ -72,10 +70,10 @@ public class TotalDistance extends Question {
     @Override
     public boolean checkAnswer(Answer answer) {
         final double expectedAns = Double.parseDouble(answer.getAnswer());
-        double distance = 0;
+        double answerDistance = 0;
         for(int i = 1; i < points.size(); i++) {
-            distance += LocationUtils.getDistance(points.get(i-1), points.get(i));
+            answerDistance += LocationUtils.getDistance(points.get(i-1), points.get(i));
         }
-        return distance == expectedAns;
+        return answerDistance == expectedAns;
     }
 }

@@ -1,35 +1,31 @@
 package questiontypes.location.locationutils;
 
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 public class LocationUtils {
 
     public record Point(double lat, double lon) {
         @Override
         public String toString() {
-            return "``" + lat + "``, ``" + lon + "``";
-        }
-
-        public String rawString() {
             return lat + ", " + lon;
         }
     }
 
-    public static double MIN_GEO = -90.0;
-    public static double MAX_GEO = 90.0;
-    public static double MAX_DIST_VARIATION = 1000.0;
-    public static double EARTH_RAD = 6371;
-    public static double EARTH_CIRC = 40075;
+    public static final double MIN_GEO = -90.0;
+    public static final double MAX_GEO = 90.0;
+    public static final double MAX_DIST_VARIATION = 1000.0;
+    public static final double EARTH_RAD = 6371;
+    public static final double EARTH_CIRC = 40075;
 
-    public static int MIN_STEPS = 13;
-    public static int MAX_STEPS = 23;
+    public static final int MIN_STEPS = 13;
+    public static final int MAX_STEPS = 23;
 
     /*
     Create a new random point
      */
     public static Point randomPoint() {
-        return new LocationUtils.Point(QuizUtils.getRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0),
-                QuizUtils.getRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0));
+        return new LocationUtils.Point(Utils.getRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0),
+                Utils.getRandomDouble(LocationUtils.MIN_GEO, LocationUtils.MAX_GEO, 0));
     }
 
     /*
@@ -84,10 +80,7 @@ public class LocationUtils {
                 + Math.cos(Math.toRadians(point1.lat()))
                 * Math.cos(Math.toRadians(point2.lat()))* Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         final double c = 2 * Math.asin(Math.sqrt(a));
-        final double distance = EARTH_RAD * c;
-
-        //System.out.println("The distance between two lat and long is:- " + distance);
-        return distance;
+        return EARTH_RAD * c;
     }
 
 }

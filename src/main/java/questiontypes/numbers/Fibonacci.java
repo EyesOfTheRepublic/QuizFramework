@@ -4,7 +4,8 @@ import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.FibSequence;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,8 +24,6 @@ public class Fibonacci extends Question {
     private ArrayList<Long> questionList = new ArrayList<>();
 
     private int numCorrect;
-    private int numWrong;
-
 
     @Override
     public String createQuestionTitle() {
@@ -34,19 +33,17 @@ public class Fibonacci extends Question {
     @Override
     public String createQuestionText() {
 
-        String qText = """
-                Numbers: How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
-                for the Fibonacci numbers you calculate and NOT int
-                
-                ```
-                long[] posFibNumbers = {""";
+        StringBuilder questionText = new StringBuilder("""
+                How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
+                for the Fibonacci numbers you calculate and NOT int.""");
 
-        for (int j = 0; j < questionList.size() - 1; j++) {
-            qText += questionList.get(j) + "L, ";
-        }
-        qText += questionList.get(questionList.size() - 1) + "L};\n```\n";
-
-        return qText;
+        ArrayFormatter<Long> formatter = new ArrayFormatter<Long>("long[] posFibNumbers", questionList) {
+            @Override
+            public String outputItem(final Long item) {
+                return item + "L";
+            }
+        };
+        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
     }
 
 
@@ -59,8 +56,8 @@ public class Fibonacci extends Question {
             baseList.add(elt);
         }
 
-        numCorrect = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
-        numWrong = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numCorrect = Utils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numWrong = Utils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy actual fibonaacci numbers to the list for the question, deleting them from the source to avoid duplicates
         for (int i = 0; i < numCorrect; i++) {
@@ -77,7 +74,7 @@ public class Fibonacci extends Question {
                 //Pick a random fibonacci number and 'adjust' it by a random amount
                 fakeFibIndex = ThreadLocalRandom.current().nextInt(FibSequence.FIB_ARRAY.length);
                 fakeFib = FibSequence.FIB_ARRAY[fakeFibIndex]
-                        + QuizUtils.genRandomInt(FAKE_FIB_OFFSET, FAKE_FIB_OFFSET * 2);
+                        + Utils.genRandomInt(FAKE_FIB_OFFSET, FAKE_FIB_OFFSET * 2);
                 //If it's negative, also a fibonacci number, or in the list of fibonacci numbers for the question, skip it
             } while (fakeFib < FibSequence.FIB_ARRAY[0]
                     || fakeFibs.contains(fakeFib)
@@ -97,7 +94,7 @@ public class Fibonacci extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = Utils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, questionList.size())));
     }
 

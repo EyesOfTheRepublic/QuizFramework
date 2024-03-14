@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /*
 Generate a random string, the correct checksum, and a set of random incorrect checksums. The question asks which checksum is correct
@@ -37,7 +37,7 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore {
 
     @Override
     public void createCalcData() {
-        checkString = QuizUtils.genRandomString(65, 20, 'a', 'z');
+        checkString = Utils.genRandomString(65, 20, 'a', 'z');
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomLong(Long.MIN_VALUE, Long.MAX_VALUE)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(Utils.genRandomLong(Long.MIN_VALUE, Long.MAX_VALUE)),
                 "some incorrect feedback");
     }
 }

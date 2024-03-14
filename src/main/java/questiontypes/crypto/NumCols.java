@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * How many columns did the array have that encrypted a particular string
@@ -21,17 +21,17 @@ public class NumCols extends Question {
 
     @Override
     public String createQuestionText() {
-        return "How many columns were used to encrypt the string ``" + sourceString + "`` to the following string? ``"
+        return "How many columns were used to encrypt the string  \n``" + sourceString + "``  \nto the following string? ``"
                 + answerText + "``";
     }
 
     @Override
     public void createCalcData() {
         //Create a random key
-        key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
+        key = Utils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY);
         //Create random plain text whose length is multiple of the key
         do {
-            sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
+            sourceString = Utils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
         } while (sourceString.length() % key != 0);
 
@@ -46,31 +46,31 @@ public class NumCols extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY)));
+        return Answer.makeIncorrectAnswer(Integer.toString(Utils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY)));
     }
 
     //We don't use the utilities we have written to more accurately check what a student might write
     @Override
     public boolean checkAnswer(Answer answer) {
-        int key = Integer.parseInt(answer.getAnswer());
-        char[][] encryptArray = new char[sourceString.length() / key][key];
-        String result = "";
+        int answerKey = Integer.parseInt(answer.getAnswer());
+        char[][] encryptArray = new char[sourceString.length() / answerKey][answerKey];
+        StringBuilder result = new StringBuilder();
 
         int charLoc = 0;
-        for (int i = 0; i < sourceString.length() / key; i++) {
-            for(int j = 0; j < key; j++) {
+        for (int i = 0; i < sourceString.length() / answerKey; i++) {
+            for(int j = 0; j < answerKey; j++) {
                 encryptArray[i][j]= sourceString.charAt(charLoc);
                 charLoc++;
             }
         }
 
-        for (int i = 0; i < key; i++) {
-            for (int j = 0; j < sourceString.length() / key; j++) {
-                result += encryptArray[j][i];
+        for (int i = 0; i < answerKey; i++) {
+            for (int j = 0; j < sourceString.length() / answerKey; j++) {
+                result.append(encryptArray[j][i]);
             }
         }
 
-        return result.equals(answerText);
+        return result.toString().equals(answerText);
     }
 
 }

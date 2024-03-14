@@ -4,7 +4,8 @@ import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -18,9 +19,8 @@ public class SophieGermain extends Question {
     private static final int MAX_ANS = 8; //A plausible maximum value for the wrong answers
 
     private int numGermainPrimes;
-    private int numPrimes;
-    private ArrayList<Integer> primeList = new ArrayList<>();
-    private ArrayList<Integer> dataSet = new ArrayList<>();
+    private final ArrayList<Integer> primeList = new ArrayList<>();
+    private final ArrayList<Integer> dataSet = new ArrayList<>();
 
     @Override
     public String createQuestionTitle() {
@@ -29,26 +29,21 @@ public class SophieGermain extends Question {
 
     @Override
     public String createQuestionText() {
-        String qText = """
-                A Sophie Germain prime number is a prime number p where 2 \\* p + 1 is also
-                prime. How many of the following are Sophie Germain numbers?
-                
-                ```
-                int[] primes = {""";
-        for(int i = 0; i < dataSet.size() - 1; i++) {
-            qText += dataSet.get(i) + ", ";
-        }
-        qText += dataSet.get(dataSet.size() - 1) + "};\n```\n";
-        return qText;
+        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] primes", dataSet);
+
+        return new StringBuilder("""
+                A Sophie Germain prime number is a prime number p where 2 * p + 1 is
+                also prime. How many of the following are Sophie Germain numbers?""")
+                .append(Utils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
         numGermainPrimes = 0;
-        numPrimes = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numPrimes = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy the list of primes
-        for(int elt : PrimeData.primes) {
+        for(int elt : PrimeData.PRIMES) {
             primeList.add(elt);
         }
 

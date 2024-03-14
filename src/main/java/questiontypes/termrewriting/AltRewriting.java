@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * What is the result of alternately running one rule set then the other until no further changes occur?
@@ -21,14 +21,14 @@ public class AltRewriting extends Question {
 
     @Override
     public String createQuestionText() {
-        return "Which of the following is the result of alternately running term rewriting rule sets 1 and 2 on the string ``"
-                + questionString + "``? That is, you run rule set 1 once, then you run rule set 2 once, then you rur"
+        return "Which of the following is the result of alternately running term rewriting rule sets 1 and 2 on the string  \n``"
+                + questionString + "``?  \nThat is, you run rule set 1 once, then you run rule set 2 once, then you run"
                 + " rule set 1 again - and you alternate until there are no more changes.";
     }
 
     @Override
     public void createCalcData() {
-        questionString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+        questionString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                 CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
 
         String tempString = questionString;
@@ -60,7 +60,7 @@ public class AltRewriting extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerString,0.5, 0.4, 5));
+        return Answer.makeIncorrectAnswer(Utils.permuteString(answerString,0.5, 0.4, 5));
     }
 
     @Override

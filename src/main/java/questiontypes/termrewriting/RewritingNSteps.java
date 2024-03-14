@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * What is the result of running the main set of rewriting rules once? (We could make this more generic and able to
@@ -23,7 +23,7 @@ public class RewritingNSteps extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of running term rewriting rule set 1 for " + numSteps + " times on the string ``"
+        return "What is the result of running term rewriting rule set 1 for " + numSteps + " times on the string  \n``"
                 + sourceString + "``?";
     }
 
@@ -31,8 +31,8 @@ public class RewritingNSteps extends Question {
     @Override
     public void createCalcData() {
         //Generate the number of steps and the source string
-        numSteps = QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, CoreRewritingData.STEP_MAX);
-        sourceString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+        numSteps = Utils.genRandomInt(CoreRewritingData.STEP_MIN, CoreRewritingData.STEP_MAX);
+        sourceString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                 CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
 
         //Run the rules for the number of steps to generate the correct answer
@@ -50,7 +50,7 @@ public class RewritingNSteps extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerString,0.5, 0.4, 5));
+        return Answer.makeIncorrectAnswer(Utils.permuteString(answerString,0.5, 0.4, 5));
     }
 
     @Override

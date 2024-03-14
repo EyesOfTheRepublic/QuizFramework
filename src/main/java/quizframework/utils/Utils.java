@@ -9,10 +9,10 @@ import java.util.concurrent.ThreadLocalRandom;
  * to questions.
  */
 
-public class QuizUtils {
+public class Utils {
 
     //Prevent instance of this class being (pointlessly) created
-    private QuizUtils(){}
+    private Utils(){}
 
     /**
      * Standard indent using Markdown. Text2Qti requires markdown content to be systematically indented within questions.
@@ -44,16 +44,8 @@ public class QuizUtils {
         return builder.toString();
     }
 
-    /**
-     * A slightly clumsy way to generate formatted text output by inserting line breaks and indents - used in formatting
-     * array output.
-     * (TODO - rethink this)
-     * @param count
-     * @param item
-     * @return
-     */
-    public static String formattedItem(final int count, final String item) {
-        return count % BLOCK_SIZE == 0 ? "\n" + " ".repeat(MARKDOWN_INDENT) + item : item;
+    public static StringBuilder toCodeBlock(final StringBuilder code) {
+        return new StringBuilder().append("\n\n```\n").append(code).append("\n```\n\n");
     }
 
     /**

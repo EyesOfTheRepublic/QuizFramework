@@ -4,7 +4,8 @@ import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +17,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Primes extends Question {
 
     private int numPrimes;
-    private int numNonPrimes;
 
     private ArrayList<Integer> dataSet = new ArrayList<>(); //The set that appears in the question
     private ArrayList<Integer> primeList = new ArrayList<>(); //A copy of the list of primes in PrimeData
@@ -30,34 +30,23 @@ public class Primes extends Question {
 
     @Override
     public String createQuestionText() {
-        String qText = """
-        How many of the following numbers are prime?
-        
-        ```
-        int[] primes={""";
-        for(int i = 0; i < dataSet.size() - 1; i++) {
-            qText += dataSet.get(i) + ", ";
-            if (i % 4 == 0) {
-                qText += "\n";
-            }
-        }
-        qText += dataSet.get(dataSet.size() - 1) + "};\n```\n";
-        return qText;
-
+        StringBuilder questionText = new StringBuilder("How many of the following numbers are prime?");
+        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] primes", dataSet);
+        return questionText.append(Utils.toCodeBlock(formatter.format())).toString();
     }
 
     @Override
     public void createCalcData() {
 
         //Generate the number of primes (the correct answer) and non primes to add to the list of data
-        numPrimes = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        numNonPrimes = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numPrimes = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numNonPrimes = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //copy the prime and non prime data to generate the data list
-        for(int elt : PrimeData.primes) {
+        for(int elt : PrimeData.PRIMES) {
             primeList.add(elt);
         }
-        for(int elt : PrimeData.notPrime) {
+        for(int elt : PrimeData.NOT_PRIME) {
             nonPrimeList.add(elt);
         }
 
@@ -84,7 +73,7 @@ public class Primes extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = Utils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
         //dataSet.size() won't be > MAX_NUM for current values but just in case...
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, dataSet.size())));
     }

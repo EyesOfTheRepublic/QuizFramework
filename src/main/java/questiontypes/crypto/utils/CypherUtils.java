@@ -12,20 +12,11 @@ public class CypherUtils {
     public static final char HIGH_CHAR = 'm';
     public static final char LOW_CHAR = 'a';
 
-
-
     /*
-     * Prints an array of characters row-by-row in a readable way.
-     * You may need to add the keyword static after public
+     * Prevent unintentionally instantiating this
      */
-    public static void formatArray(char[][] charArray) {
-        for (char[] row : charArray) {
-            for (char item : row) {
-                System.out.print(" " + item);
-            }
-            System.out.println();
-        }
-    }
+    private CypherUtils() {}
+
 
     public static String encode(String plainText, int key) {
         if (plainText.length() % key != 0) {
@@ -60,7 +51,6 @@ public class CypherUtils {
                 strLen++;
             }
         }
-        //formatArray(transposeArray);
         return transposeArray;
     }
 

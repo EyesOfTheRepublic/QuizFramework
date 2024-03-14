@@ -3,7 +3,7 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' then again with another key?
@@ -21,7 +21,7 @@ public class DoubleEncrypt extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of encrypting the string ``" + sourceString + "`` with a transposition cypher using an array"
+        return "What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
                 + " with " + key + " columns, and then encrypting it AGAIN with an array WITH THE SAME NUMBER ("
                 + key + ") OF COLUMNS?";
     }
@@ -35,8 +35,8 @@ public class DoubleEncrypt extends Question {
          */
 
         do {
-            key = QuizUtils.genRandomInt(CypherUtils.MIN_KEY,CypherUtils.MAX_KEY);
-            sourceString = QuizUtils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
+            key = Utils.genRandomInt(CypherUtils.MIN_KEY,CypherUtils.MAX_KEY);
+            sourceString = Utils.genRandomString(CypherUtils.MIN_STR_LENG, CypherUtils.MAX_STR_LEN,
                     CypherUtils.LOW_CHAR, CypherUtils.HIGH_CHAR);
         } while (sourceString.length() % key != 0 || sourceString.length() == key * key);
 
@@ -52,7 +52,7 @@ public class DoubleEncrypt extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(QuizUtils.permuteString(answerText,
+        return Answer.makeIncorrectAnswer(Utils.permuteString(answerText,
                 0.5, 0.4, 3));
     }
 
@@ -67,7 +67,7 @@ public class DoubleEncrypt extends Question {
 
     private String encode(String sourceString, int key) {
         char[][] encryptArray = new char[sourceString.length() / key][key];
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         int charLoc = 0;
         for (int i = 0; i < sourceString.length() / key; i++) {
@@ -79,11 +79,11 @@ public class DoubleEncrypt extends Question {
 
         for (int i = 0; i < key; i++) {
             for (int j = 0; j < sourceString.length() / key; j++) {
-                result += encryptArray[j][i];
+                result.append(encryptArray[j][i]);
             }
         }
 
-        return result;
+        return result.toString();
     }
 
 }

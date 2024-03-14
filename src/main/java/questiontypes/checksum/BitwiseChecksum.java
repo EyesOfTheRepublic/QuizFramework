@@ -1,7 +1,7 @@
 package questiontypes.checksum;
 
 import quizframework.Answer;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 public class BitwiseChecksum extends CheckSumQuestionCore {
 
@@ -20,7 +20,7 @@ public class BitwiseChecksum extends CheckSumQuestionCore {
 
     @Override
     public void createCalcData() {
-        correctString = QuizUtils.genRandomString(MIN_LEN, MAX_LEN, LOW_RNG, HIGH_RNG);
+        correctString = Utils.genRandomString(MIN_LEN, MAX_LEN, LOW_RNG, HIGH_RNG);
         checkSum = bitwiseCheckSum(correctString);
     }
 
@@ -31,6 +31,6 @@ public class BitwiseChecksum extends CheckSumQuestionCore {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswer(QuizUtils.genRandomString(MIN_LEN, MAX_LEN, LOW_RNG, HIGH_RNG));
+        return Answer.makeIncorrectAnswer(Utils.genRandomString(MIN_LEN, MAX_LEN, LOW_RNG, HIGH_RNG));
     }
 }

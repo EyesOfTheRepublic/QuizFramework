@@ -2,7 +2,7 @@ package questiontypes.simpleexamples;
 
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class OddNumberExample extends Question {
 
-    private ArrayList<Integer> list = new ArrayList<>();
+    private final ArrayList<Integer> list = new ArrayList<>();
     private int oddCount = 0;
 
     @Override
@@ -21,12 +21,14 @@ public class OddNumberExample extends Question {
 
     @Override
     public String createQuestionText() {
-        String val = "How many numbers in the following array are odd?\n```\nint[] nums = {";
+        StringBuilder val =
+                new StringBuilder("How many numbers in the following array are odd?\n```\nint[] nums = {");
+        //To stream operation
         for(int i = 0; i < list.size() - 1; i++) {
-            val += i + ", ";
+            val.append(i).append(", ");
         }
-        val += list.get(list.size() - 1) + "};\n```\n'";
-        return val;
+        val.append(list.get(list.size() - 1)).append("};\n```\n'");
+        return val.toString();
     }
 
     @Override
@@ -46,7 +48,7 @@ public class OddNumberExample extends Question {
 
     @Override
     public Answer createIncorrectAnswer() {
-        final int wrongAnswer = QuizUtils.genRandomInt(0, 25);
+        final int wrongAnswer = Utils.genRandomInt(0, 25);
         return Answer.makeIncorrectAnswer(Integer.toString(wrongAnswer));
     }
 }

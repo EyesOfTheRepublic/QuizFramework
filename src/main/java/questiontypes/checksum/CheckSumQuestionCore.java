@@ -1,8 +1,6 @@
 package questiontypes.checksum;
 
 import quizframework.Question;
-
-import java.util.Random;
 /*
 Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithms
 This approach probably doesn't make any sense now given changes elsewhere

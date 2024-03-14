@@ -3,7 +3,7 @@ package questiontypes.time.timeutils;
 Basic operations etc. used in the time based questions
  */
 
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -47,19 +47,19 @@ public class TimeUtils {
      */
     public String genRandomDate() {
         //"1970/01/01 01:10:45"
-        int year = QuizUtils.genRandomInt(1970, 2970);
-        int month = QuizUtils.genRandomInt(1, 12);
+        int year = Utils.genRandomInt(1970, 2970);
+        int month = Utils.genRandomInt(1, 12);
         boolean isLeapYr = (year % 400 == 0) || (year % 4 == 0) && (year % 100 != 0);
         int day =
         switch (month) {
-            case 2 -> QuizUtils.genRandomInt(1, isLeapYr ? 29 : 28);
-            case 4, 6, 9, 11 -> QuizUtils.genRandomInt(1, 30);
-            default -> QuizUtils.genRandomInt(1, 31);
+            case 2 -> Utils.genRandomInt(1, isLeapYr ? 29 : 28);
+            case 4, 6, 9, 11 -> Utils.genRandomInt(1, 30);
+            default -> Utils.genRandomInt(1, 31);
         };
 
-        int hour = QuizUtils.genRandomInt(0, 24);
-        int min = QuizUtils.genRandomInt(0, 60);
-        int sec =QuizUtils.genRandomInt(0, 60);
+        int hour = Utils.genRandomInt(0, 24);
+        int min = Utils.genRandomInt(0, 60);
+        int sec = Utils.genRandomInt(0, 60);
         return String.format("%04d/%02d/%02d %02d:%02d:%02d",
                 year, month, day, hour, min, sec);
     }

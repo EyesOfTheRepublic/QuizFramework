@@ -4,7 +4,7 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * When run until no more changes happen, how many term rewriting steps are needed?
@@ -21,15 +21,15 @@ public class RewritingToCompletion extends Question {
 
     @Override
     public String createQuestionText() {
-        return "How many times does term rewriting rule set 1 need to be run on the string ``"
-                + sourceString + "`` before no more changes happen?";
+        return "How many times does term rewriting rule set 1 need to be run on the string  \n``"
+                + sourceString + "``  \nbefore no more changes happen?";
     }
 
     @Override
     public void createCalcData() {
 
         //Create the source string
-        sourceString = QuizUtils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
+        sourceString = Utils.genRandomString(CoreRewritingData.MIN_LEN, CoreRewritingData.MAX_LEN,
                 CoreRewritingData.LOW_RNG, CoreRewritingData.HIGH_RNG);
         String tempString = new String(sourceString);
         int steps = 0;
@@ -56,7 +56,7 @@ public class RewritingToCompletion extends Question {
     public Answer createIncorrectAnswer() {
         int min = numSteps < CoreRewritingData.STEP_MIN ? CoreRewritingData.STEP_MIN : numSteps;
         int max = numSteps + CoreRewritingData.STEP_MAX;
-        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
+        return Answer.makeIncorrectAnswer(Integer.toString(Utils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
     }
 
     @Override

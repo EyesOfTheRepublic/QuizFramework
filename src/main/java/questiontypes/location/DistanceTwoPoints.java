@@ -3,7 +3,7 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * How far is it between two points (lat, long) on a globe?
@@ -22,8 +22,8 @@ public class DistanceTwoPoints extends Question {
 
     @Override
     public String createQuestionText() {
-        return "What is the distance in Km between coordinates " + point1
-                + " and " + point2 + "?";
+        return "What is the distance in Km between coordinates ``" + point1
+                + "`` and ``" + point2 + "``?";
     }
 
     @Override
@@ -46,10 +46,7 @@ public class DistanceTwoPoints extends Question {
         final double minVal = (distance - LocationUtils.MAX_DIST_VARIATION < 0) ? 0 : distance - LocationUtils.MAX_DIST_VARIATION;
         final double maxVal = (distance + LocationUtils.MAX_DIST_VARIATION > LocationUtils.EARTH_CIRC) ?
                 LocationUtils.EARTH_CIRC : distance + LocationUtils.MAX_DIST_VARIATION;
-        if (minVal > maxVal) {
-            System.out.println(minVal + " " + maxVal + " " + distance);
-        }
-        return Answer.makeIncorrectAnswer(Double.toString(QuizUtils.getRandomDouble(minVal, maxVal, 0)));
+        return Answer.makeIncorrectAnswer(Double.toString(Utils.getRandomDouble(minVal, maxVal, 0)));
     }
 
     @Override
@@ -64,8 +61,8 @@ public class DistanceTwoPoints extends Question {
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         double c = 2 * Math.asin(Math.sqrt(a));
-        double distance = LocationUtils.EARTH_RAD * c;
+        double answerDistance = LocationUtils.EARTH_RAD * c;
 
-        return distance == Double.parseDouble(answer.getAnswer());
+        return answerDistance == Double.parseDouble(answer.getAnswer());
     }
 }

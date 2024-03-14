@@ -5,6 +5,11 @@ package questiontypes.numbers.utils;
  */
 public class PythTripletsData {
 
+    /*
+    Prevent inadvertant instantiation
+     */
+    private PythTripletsData() {}
+
     public static final Integer[][] TRIPLETS = {
             {9999, 200, 10001},
             {9996, 400, 10004},

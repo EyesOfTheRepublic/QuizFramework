@@ -3,7 +3,7 @@ package questiontypes.location;
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
 import quizframework.Question;
-import quizframework.utils.QuizUtils;
+import quizframework.utils.Utils;
 
 /**
  * Distance between two points using minutes/seconds representation
@@ -57,10 +57,7 @@ public class MinSecDistance extends Question {
         final double minVal = (distance - LocationUtils.MAX_DIST_VARIATION < 0) ? 0 : distance - LocationUtils.MAX_DIST_VARIATION;
         final double maxVal = (distance + LocationUtils.MAX_DIST_VARIATION > LocationUtils.EARTH_CIRC) ?
                 LocationUtils.EARTH_CIRC : distance + LocationUtils.MAX_DIST_VARIATION;
-        if (minVal > maxVal) {
-            System.out.println(minVal + " " + maxVal + " " + distance);
-        }
-        return Answer.makeIncorrectAnswer(Double.toString(QuizUtils.getRandomDouble(minVal, maxVal, 0)));
+        return Answer.makeIncorrectAnswer(Double.toString(Utils.getRandomDouble(minVal, maxVal, 0)));
     }
 
     @Override

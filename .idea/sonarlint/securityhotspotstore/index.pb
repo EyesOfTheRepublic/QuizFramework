@@ -45,8 +45,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 e
 5src/main/java/questiontypes/numbers/PythTriplets.java,3/1/3150705ea39c0285678848c73822513fb6eec122
-Z
-*src/main/java/quizframework/QuizUtils.java,5/8/589d84f93505d01809b93079c9a930165f9edb57
 W
 'src/main/java/quizzes/LocationQuiz.java,a/3/a39a38d743057ddb7218416d06dee76ce088d4ea
 U
@@ -109,7 +107,7 @@ U
 %src/main/java/test/DemoQuestions.java,5/f/5f2175f7cba97e0d69e4447625ab547519f93902
 B
 Transposition3.txt,e/8/e851f24eae8e8e08c896e4009cfb151daf32acac
-b
-2src/main/java/quizframework/FormatArrayOutput.java,b/e/bece3ff0be74ce00377b6b625e8842c899d5507c
-`
-0src/main/java/quizframework/utils/QuizUtils.java,9/c/9cb23a76720094e661f07bce959d3dfaa09ca913
+\
+,src/main/java/quizframework/utils/Utils.java,b/4/b4a5247671908adef93ce49298ad9ba6584c18e5
+e
+5src/main/java/quizframework/utils/ArrayFormatter.java,7/a/7a88839c948635ef1fb5844e2c956ac6d5533cf6
