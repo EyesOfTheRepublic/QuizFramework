@@ -1,11 +1,11 @@
 package quizzes;
 
-import questiontypes.numbers.Primes;
-import questiontypes.numbers.SophieGermain;
-import questiontypes.time.ClosestDateTime;
-import questiontypes.time.DiffMills;
-import questiontypes.time.PairDiffMills;
-import questiontypes.time.TimeTraveller;
+import questiontypes.directanswer.numbers.Primes;
+import questiontypes.directanswer.numbers.SophieGermain;
+import questiontypes.directanswer.time.ClosestDateTime;
+import questiontypes.directanswer.time.DiffMills;
+import questiontypes.directanswer.time.PairDiffMills;
+import questiontypes.directanswer.time.TimeTraveller;
 import quizframework.Question;
 import quizframework.Quiz;
 

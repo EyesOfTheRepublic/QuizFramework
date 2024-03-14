@@ -1,6 +1,6 @@
 package quizzes;
 
-import questiontypes.simpleexamples.OddNumberExample;
+import questiontypes.directanswer.simpleexamples.OddNumberExample;
 import quizframework.Question;
 import quizframework.Quiz;
 

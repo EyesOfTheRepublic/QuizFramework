@@ -8,10 +8,11 @@ import java.util.List;
 /**
  * Abstract class intended to form the basis of new question types. Some methods are abstract (and need to implementations);
  * others have default implementations that you can override if you choose.
- * Questions need a title, description, data seeds (data used to generate the question which can appear in the description),
+ * Questions need a title, description, data seeds (data used to generate the question, which can appear in the description),
  * a way to compute the correct answer and a way to compute incorrect answers. Optionally you can also override the number of
  * points available (this defaults to 1) and the general, correct and incorrect feedback (these default to null, which should
- * ideally be changed). NOTE you may well first implement another abstract class, if you wish to develop several questions
+ * ideally be changed though Canvas does not display all of it anyway).
+ * NOTE you may well first implement another abstract class, if you wish to develop several questions
  * based on the same concept - so avoiding repeating common code.
  */
 

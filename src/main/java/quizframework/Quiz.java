@@ -59,10 +59,17 @@ public class Quiz {
      * @param stream the output stream to write the text2Qti format text to.
      */
     public void generateText2Qti(final PrintStream stream) {
+        if (hasFaults()) {
+            stream.println("***QUESTIONS HAVE FAULTS");
+            stream.println("***Re-run using toString() to get more information about what and why");
+        }
         stream.println("Quiz title: " + quizTitle);
         stream.println("Quiz description: " + quizDesc + "\n");
         int qNum = 1;
         for(Question question: questionList) {
+            if (!question.checkAnswerSet()) {
+                stream.println("***FAULTY QUESTION");
+            }
             stream.println(question.toText2Qti(qNum));
             qNum++;
         }

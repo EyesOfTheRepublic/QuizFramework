@@ -1,11 +1,11 @@
 package quizzes;
 
-import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.MinSecDistance;
-import questiontypes.location.TotalDistance;
-import questiontypes.location.WhichDistance;
-import questiontypes.numbers.Factors;
-import questiontypes.numbers.Fibonacci;
+import questiontypes.directanswer.location.DistanceTwoPoints;
+import questiontypes.directanswer.location.MinSecDistance;
+import questiontypes.directanswer.location.TotalDistance;
+import questiontypes.directanswer.location.WhichDistance;
+import questiontypes.directanswer.numbers.Factors;
+import questiontypes.directanswer.numbers.Fibonacci;
 import quizframework.Question;
 import quizframework.Quiz;
 
