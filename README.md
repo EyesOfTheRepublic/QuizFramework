@@ -1,21 +1,21 @@
 # QuizFramework
-Generate multiple choice questions based on problems that students have to solve programatically to answer.
-Used as the basis or in-class tests at Swansea University (teaching Java to first year students.
+Generate multiple choice questions based on problems that students have to write code for to answer.
+Used as the basis or in-class tests at Swansea University (teaching Java to first year students).
 ##text2qti
 The main use of this is to generate QTI files that can be imported into Canvas - currently using
 [text2qti](https://github.com/gpoore/text2qti), which is fundamentally Markdown. Currently only MCQs are implemented but other question types are possible.
 ## Overview
-- Quizs are based on *Quiz* objects to which *questions* are added
+- Quizzes are based on *Quiz* objects to which *questions* are added
 - Questions are classes that extend the abstract *Question* class.
 - Questions contain multiple *Answer* objects - answers can either be correct or incorrect and can optionally include feedback
 - The *Question* class contains a number of abstract methods that you *must* implement, as well as a number of default methods that you *may* implement.
 
 ### Required
-- *String createQuestionTitle()* returns the title of your question (Canvas ignores this but it seems to be necessary)
+- *String createQuestionTitle()* returns the title of your question (Canvas ignores this, but it seems to be necessary)
 - *String createQuestionText()* contains the text of the question.
 - *void createCalcData()* creates data on which the question is based. This is usually (partly) random and this method runs *before* *createQuestionText* so the data can potentially appear in the question text.
 - *Answer createCorrectAnswer()* creates an *Answer* object containing the correct answer.
-- *Answer createIncorrectAnswer()* creates an *Answer* object containing an incorrect answer - these should be in some way randomly generated becaust typically there will be multiple incorrect answers (there is no need to check they will be unique - this is dealt with by the code)
+- *Answer createIncorrectAnswer()* creates an *Answer* object containing an incorrect answer - these should be in some way randomly generated because typically there will be multiple incorrect answers (there is no need to check they will be unique - this is dealt with by the code)
 
 ### Optional
 - *int createQuestionPoint()* defaults to 1 (and cannot be negative).
@@ -93,7 +93,7 @@ public boolean checkAnswer(final Answer ans) {
 ## Supporting Classes and Methods
 A range of utilities exist to help generate questions, answers and (critically) plausible-looking *incorrect* answers. These include methods to:
 - generate parameterized random integers, longs and doubles.
-- generate a long with the same nubmer of (decimal) digits as another long.
+- generate a long with the same number of (decimal) digits as another long.
 - generate random strings parameterized by length and characters they include.
 - permute strings parameterized by the number of permutations and the part of the string changed (it is usually better to restrict changes to the middle of long strings).
 - format a list of data as a Java array (if the built-in toString() method for the underlying data type isn't appropriate another one can be provided
