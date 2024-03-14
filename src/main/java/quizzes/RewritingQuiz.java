@@ -1,7 +1,7 @@
 package quizzes;
 
-import questiontypes.directanswer.numbers.AddPairs;
-import questiontypes.directanswer.numbers.PythTriplets;
+import questiontypes.numbers.AddPairs;
+import questiontypes.numbers.PythTriplets;
 import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;

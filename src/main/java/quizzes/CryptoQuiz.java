@@ -1,11 +1,11 @@
 package quizzes;
 
-import questiontypes.directanswer.crypto.Decryption;
-import questiontypes.directanswer.crypto.DoubleEncrypt;
-import questiontypes.directanswer.crypto.Encryption;
-import questiontypes.directanswer.crypto.NumCols;
-import questiontypes.directanswer.numbers.Primes;
-import questiontypes.directanswer.numbers.SophieGermain;
+import questiontypes.crypto.Decryption;
+import questiontypes.crypto.DoubleEncrypt;
+import questiontypes.crypto.Encryption;
+import questiontypes.crypto.NumCols;
+import questiontypes.numbers.Primes;
+import questiontypes.numbers.SophieGermain;
 import quizframework.Question;
 import quizframework.Quiz;
 

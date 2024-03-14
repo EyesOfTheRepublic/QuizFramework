@@ -171,7 +171,7 @@ public abstract class Question {
      *
      * @return the list of faulty answers.
      */
-    public List<Answer> getFaultList() {
+    public final List<Answer> getFaultList() {
         return faultList;
     }
 
@@ -190,7 +190,7 @@ public abstract class Question {
      */
     @Override
     public final String toString() {
-        StringBuilder builder = new StringBuilder(questData.getQuestionTitle());
+        final StringBuilder builder = new StringBuilder(questData.getQuestionTitle());
         builder.append("\n");
         builder.append(questData.getQuestionText());
         builder.append("\n");
@@ -204,7 +204,7 @@ public abstract class Question {
             }
         } else {
 
-            List<Answer> list = questData.getAnswerList();
+            final List<Answer> list = questData.getAnswerList();
             for (Answer ans : list) {
                 builder.append(ans.getQuestionAnswer());
                 if (ans.isCorrect()) {
@@ -224,7 +224,7 @@ public abstract class Question {
      * @return the (markDown) format string suitable for text2qti
      */
     public final String toText2Qti(final int qNum) {
-        StringBuilder builder = new StringBuilder("Title: " + questData.getQuestionTitle() + "\n");
+        final StringBuilder builder = new StringBuilder("Title: " + questData.getQuestionTitle() + "\n");
         builder.append("Points: " + questData.getQuestionPoints() + "\n");
         builder.append(CodeUtils.outputTextBlock(qNum + ". ", questData.getQuestionText()));
         if (questData.getGeneralFeedback() != null) {
@@ -236,10 +236,10 @@ public abstract class Question {
         if (questData.getIncorrectAnswerFeedback() != null) {
             builder.append(CodeUtils.outputTextBlock("- ", questData.getIncorrectAnswerFeedback()));
         }
-        ArrayList<Answer> list = randomize();
+        final List<Answer> list = randomize();
         char qItem = 'a';
         for (Answer ans: list) {
-            String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
+            final String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
             builder.append(CodeUtils.outputTextBlock(qLabel, ans.getQuestionAnswer()));
             if (ans.getFeedback() != null) {
                 builder.append(CodeUtils.outputTextBlock("... ", ans.getFeedback()));
@@ -253,8 +253,8 @@ public abstract class Question {
 
     /*Shuffle an arraylist - used to randomize the order of answers in the list of possible answers (by default, in
     MCQ example, the correct answer will always be added first and will always be at the front, so this shuffles the order) */
-    private ArrayList<Answer> randomize() {
-        ArrayList<Answer> list = new ArrayList<>(questData.getAnswerList());
+    private List<Answer> randomize() {
+        final List<Answer> list = new ArrayList<>(questData.getAnswerList());
         java.util.Collections.shuffle(list);
         return list;
     }
