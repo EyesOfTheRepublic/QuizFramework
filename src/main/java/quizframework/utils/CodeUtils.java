@@ -13,7 +13,7 @@ import java.util.List;
  * </ul>
  */
 
-public class CodeUtils {
+public final class CodeUtils {
 
     /*
     Prevent inadvertant instantiation

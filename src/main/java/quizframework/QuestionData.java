@@ -10,7 +10,7 @@ import java.util.List;
 * and a list of {@Answer} objects representing correct and incorrect answers. It also contains the {@Seed} data - any data (numbers, strings etc.)
  * used by the question to compute the correct answer
  */
-public class QuestionData {
+public final class QuestionData {
     private String questionTitle;
     private String questionText;
 

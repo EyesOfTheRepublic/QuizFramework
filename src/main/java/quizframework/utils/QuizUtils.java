@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * </ul>
  */
 
-public class QuizUtils {
+public final class QuizUtils {
 
     //Prevent instance of this class being (pointlessly) created
     private QuizUtils() {
@@ -34,7 +34,7 @@ public class QuizUtils {
      * @param arg an arbitrary long - note that there are limited options if this has very few digits
      * @return a new long that is the same number of (decimal) digits as the argument and the same sign
      */
-    public static final long similarLong(final long arg) {
+    public static long similarLong(final long arg) {
         final int digits = String.valueOf(arg).length();
         final int base = (int) Math.pow(10, digits - 1);
         final long positiveVal = ThreadLocalRandom.current().nextLong(9L * base);
@@ -57,7 +57,7 @@ public class QuizUtils {
      *  made up of lower-case latin characters.</p>
      */
 
-    public static final String genRandomString(final int minLen, final int maxLen,
+    public static String genRandomString(final int minLen, final int maxLen,
                                                final char low, final char high) {
 
         final int minLenVal = Math.min(minLen, maxLen);
@@ -77,7 +77,7 @@ public class QuizUtils {
     }
 
     /**Controls the range over which random permutations of strings will be attempted in
-     * {@code permuteString} - make it smaller at your peril! This is public so it can be used as the rangeDecimal
+     * {@code permuteString} - make it smaller at your peril! This is public, so it can be used as the rangeDecimal
      * argument in {@link #permuteString}. Represents the faction of the string that will be permuted - the smaller it
      * is, the less likely (and ultimately impossible) it is to generate a new string that is actually different to
      * the old one. Value chosen empirically based on experiments with the typical random string seen in questions.
@@ -113,7 +113,7 @@ public class QuizUtils {
      * {@code String val = permuteString(myString, 1.0, 0.2, 1); //1 permutation within 20% of the end of myString}
      */
 
-    public static final String permuteString(final String dataString, final double locationDecimal,
+    public static String permuteString(final String dataString, final double locationDecimal,
                                              final double rangeDecimal, final int permutations) {
 
         /*We only make changes if the number of permutations is +ve and if the rangeDecimal is large enough to avoid
@@ -129,7 +129,7 @@ public class QuizUtils {
         final long strLen = dataString.length();
         final long rawLowRange = Math.min(Math.round((locationDecimal - rangeDecimal) * strLen), strLen - 1);
         final long rawHighRange = Math.round((locationDecimal + rangeDecimal) * strLen);
-        final int highRange = (int) (rawHighRange > strLen - 1 ? strLen - 1 : rawHighRange);
+        final int highRange = (int) Math.min(strLen - 1, rawHighRange);
 
         //We will make random changes between lowRange and lowRange + range
         final int lowRange = (int) (rawLowRange < 0 ? 0 : rawLowRange);

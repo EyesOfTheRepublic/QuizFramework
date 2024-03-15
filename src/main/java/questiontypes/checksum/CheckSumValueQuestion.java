@@ -3,8 +3,9 @@ package questiontypes.checksum;
 import quizframework.Answer;
 import quizframework.utils.QuizUtils;
 
-/*
-Generate a random string, the correct checksum, and a set of random incorrect checksums. The question asks which checksum is correct
+/**
+ *Generate a random string, the correct checksum using algorithm defined in {@link CheckSumQuestionCore},
+ * and a set of random incorrect checksums. The question asks which checksum is correct
  */
 public class CheckSumValueQuestion extends CheckSumQuestionCore {
 

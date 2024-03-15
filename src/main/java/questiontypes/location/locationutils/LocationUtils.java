@@ -39,7 +39,7 @@ public class LocationUtils {
         latSec = Math.abs(latSec % 3600);
         final int latMin = (int) latSec / 60;
         latSec %= 60;
-        String latStr = String.format("%d\u00B0%d'%.2f\"%c",
+        String latStr = String.format("%dº%d'%.2f\"%c",
                 latDeg, latMin, latSec, ns);
 
         final char ew = point.lon() < 0 ? 'W' : 'E';
@@ -49,7 +49,7 @@ public class LocationUtils {
         lonSec = Math.abs(lonSec % 3600);
         final int lonMin = (int) lonSec / 60;
         lonSec %= 60;
-        String lonStr = String.format("%d\u00B0%d'%.2f\"%c",
+        String lonStr = String.format("%dº%d'%.2f\"%c",
                 lonDeg, lonMin, lonSec, ew);
 
         return latStr + ", " + lonStr;

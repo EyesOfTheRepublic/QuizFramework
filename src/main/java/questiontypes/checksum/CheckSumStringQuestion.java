@@ -3,9 +3,10 @@ package questiontypes.checksum;
 import quizframework.Answer;
 import quizframework.utils.QuizUtils;
 
-/*
-Generate a simple checksum question - create a random string and a corresponding checksum. Then create a set of
-(incorrect) strings - the question asks which string the checksum belongs to.
+/**
+ *Generate a simple checksum question - create a random string and a corresponding checksum. Then create a set of
+ *(incorrect) strings - the question asks which string the checksum belongs to. Uses algorithms defined in
+ * {@link CheckSumQuestionCore}
  */
 public class CheckSumStringQuestion extends CheckSumQuestionCore {
 

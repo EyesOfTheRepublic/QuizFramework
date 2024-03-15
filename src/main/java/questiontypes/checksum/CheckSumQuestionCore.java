@@ -1,9 +1,9 @@
 package questiontypes.checksum;
 
 import quizframework.Question;
-/*
-Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithms
-This approach probably doesn't make any sense now given changes elsewhere
+/**
+ *Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithms
+ *This approach probably doesn't make any sense now given changes elsewhere
  */
 public abstract class CheckSumQuestionCore extends Question {
 

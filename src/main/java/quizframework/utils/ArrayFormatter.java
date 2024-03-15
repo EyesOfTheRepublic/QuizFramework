@@ -28,7 +28,7 @@ public class ArrayFormatter<T> {
      * Return the item as a String - normally just calls toString but can be overridden if not appropriate. E.g. if
      * outputting a 2D array and need to include {..}
      * @param item the data item of type T
-     * @return
+     * @return the item formatted consistent with a Java array declaration
      */
     public  String outputItem(final T item) {
         return item.toString();
@@ -39,7 +39,7 @@ public class ArrayFormatter<T> {
      * not part of a larger block of code
      * @return the formatted data as a String
      */
-    public StringBuilder format() {
+    public final StringBuilder format() {
         return this.format(1);
     }
 
@@ -49,7 +49,7 @@ public class ArrayFormatter<T> {
      * @param steps Number of steps to indent
      * @return the formatted data as a String
      */
-    public StringBuilder format(final int steps) {
+    public final StringBuilder format(final int steps) {
         final Iterator<T> iter = dataList.iterator();
         final StringBuilder builder = new StringBuilder(" ".repeat(CodeUtils.MARKDOWN_INDENT * (steps -1)) + header + " = {\n");
         while(iter.hasNext()) {
@@ -65,7 +65,8 @@ public class ArrayFormatter<T> {
             } while(iter.hasNext());
             builder.append(lineBuilder).append("\n");
         }
-        builder.append(" ".repeat(CodeUtils.MARKDOWN_INDENT * (steps -1)) +"};");
+        builder.append(" ".repeat(CodeUtils.MARKDOWN_INDENT * (steps -1)))
+                .append("};");
         return builder;
     }
 }

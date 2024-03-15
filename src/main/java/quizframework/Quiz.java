@@ -2,18 +2,19 @@ package quizframework;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class representing a quiz - A quizframework.Quiz object is created with a title and a description (there is currently no other
  * constructor so these must be supplied). Once created, question objects can be added, and the quiz can be output in
  * a format compatible with <a href="https://github.com/gpoore/text2qti">text2qti</a>(which will generate a QTI file).
  */
-public class Quiz {
+public final class Quiz {
 
-    private final ArrayList<Question> questionList = new ArrayList<>();
+    private final List<Question> questionList = new ArrayList<>();
 
     //Questions that fail fault checking - answers do not match expectations
-    private final ArrayList<Question> faultyQuestions = new ArrayList<>();
+    private final List<Question> faultyQuestions = new ArrayList<>();
     private final String quizTitle;
 
     private final String quizDesc;
@@ -83,10 +84,10 @@ public class Quiz {
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Title: " + quizTitle + "\n");
-        builder.append("Quiz description: " + quizDesc + "\n");
+        builder.append(String.format("Title: %s%n", quizTitle));
+        builder.append(String.format("Quiz description: %s%n", quizDesc));
         for (Question question: questionList) {
-            builder.append("\n" + question);
+            builder.append("\n").append(question);
         }
         return builder.toString();
     }

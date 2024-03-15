@@ -10,7 +10,7 @@ import java.util.Objects;
  * Note that not having feedback currently means the feedback field is just null, which
  * should be fixed.
  */
-public class Answer {
+public final class Answer {
     private final String questionAnswer;
     private final boolean isCorrect;
     private final String feedback;
