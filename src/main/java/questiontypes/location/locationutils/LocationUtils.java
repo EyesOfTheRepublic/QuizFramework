@@ -31,28 +31,23 @@ public class LocationUtils {
     /*
     Convert a latitude and longitude represented as doubles into a degrees, minutes, seconds string
      */
-    public static String toMinSec(final Point point) {
+    public static String pointToMinSec(final Point point) {
         final char ns = point.lat() < 0 ? 'S' : 'N';
-        final double lat = Math.abs(point.lat());
-        double latSec = Math.round(lat * 3600);
-        final int latDeg = (int) latSec / 3600;
-        latSec = Math.abs(latSec % 3600);
-        final int latMin = (int) latSec / 60;
-        latSec %= 60;
-        String latStr = String.format("%dº%d'%.2f\"%c",
-                latDeg, latMin, latSec, ns);
-
         final char ew = point.lon() < 0 ? 'W' : 'E';
+        final double lat = Math.abs(point.lat());
         final double lon = Math.abs(point.lon());
-        double lonSec = Math.round(lon * 3600);
-        final int lonDeg = (int) lonSec / 3600;
-        lonSec = Math.abs(lonSec % 3600);
-        final int lonMin = (int) lonSec / 60;
-        lonSec %= 60;
-        String lonStr = String.format("%dº%d'%.2f\"%c",
-                lonDeg, lonMin, lonSec, ew);
 
-        return latStr + ", " + lonStr;
+        return toMinSec(lat, ns) + ", " + toMinSec(lon, ew);
+    }
+
+    private static String toMinSec(final double degDecimal, final char hemi) {
+        double sec = Math.round(degDecimal * 3600);
+        final int deg = (int) sec / 3600;
+        sec = Math.abs(sec % 3600);
+        final int min = (int) sec / 60;
+        sec %= 60;
+        return String.format("%dº%d'%.2f\"%c",
+                deg, min, sec, hemi);
     }
 
     /*
@@ -61,7 +56,7 @@ public class LocationUtils {
     public static double convertHourToDecimal(final String degree) {
 
         boolean isNeg = false;
-        final String[] strArray = degree.split("[\"'\u00B0]");
+        final String[] strArray = degree.split("[\"'º]");
         if (degree.charAt(degree.length() - 1) == 'S' || degree.charAt(degree.length() - 1) == 'W') {
             isNeg = true;
         }

@@ -31,8 +31,8 @@ public class MinSecDistance extends Question {
         final LocationUtils.Point point2 = LocationUtils.randomPoint();
 
         //Safer to convert to the expected format and then parse and calculate distance to avoid rounding errors
-        point1MinSec = LocationUtils.toMinSec(point1);
-        point2MinSec = LocationUtils.toMinSec(point2);
+        point1MinSec = LocationUtils.pointToMinSec(point1);
+        point2MinSec = LocationUtils.pointToMinSec(point2);
 
         final String[] point1Parsed = point1MinSec.split(",");
         final double lat1 = LocationUtils.convertHourToDecimal(point1Parsed[0]);
