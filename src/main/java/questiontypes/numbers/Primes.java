@@ -80,7 +80,7 @@ public class Primes extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         int primeCount = 0;
         for(int i = 0; i < dataSet.size(); i++) {
             boolean prime = true;

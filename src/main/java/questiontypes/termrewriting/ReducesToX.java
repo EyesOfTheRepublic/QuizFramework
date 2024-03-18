@@ -55,7 +55,7 @@ public class ReducesToX extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         String answerStrCheck = answer.getQuestionAnswer();
         boolean done = false;
 

@@ -11,7 +11,7 @@ public class RewritingUtils {
     private RewritingUtils() {}
 
     /*Run the rules once in the order they appear in the array and return the resulting string */
-    public static String runOneStep(String input, String[][] rules) {
+    public static String runOneStep(String input, final String[][] rules) {
         for (int i = 0; i < rules.length; i++) {
             input = input.replaceAll(rules[i][0], rules[i][1]);
         }
@@ -36,7 +36,7 @@ public class RewritingUtils {
     }
 
     //USED FOR SAMPLE SOLUTION TESTING
-    public static String replaceAll(String workingString, String[][] rewriteMap) {
+    public static String replaceAll(String workingString, final String[][] rewriteMap) {
         for(String[] elt : rewriteMap) {
             workingString = workingString.replaceAll(elt[0], elt[1]);
         }

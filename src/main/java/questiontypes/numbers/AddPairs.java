@@ -86,7 +86,7 @@ public class AddPairs extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         int ans = Integer.parseInt(answer.getQuestionAnswer());
 
         for (int i = 0; i < numList.size(); i++) {

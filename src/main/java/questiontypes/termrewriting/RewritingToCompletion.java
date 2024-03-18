@@ -59,7 +59,7 @@ public class RewritingToCompletion extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         String startingString = sourceString;
         boolean done = false;
         int count = 0;

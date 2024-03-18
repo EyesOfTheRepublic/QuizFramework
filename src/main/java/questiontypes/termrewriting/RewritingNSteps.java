@@ -54,7 +54,7 @@ public class RewritingNSteps extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         String answerVal = sourceString;
         for(int i = 0; i < numSteps; i++) {
             answerVal = RewritingUtils.runOneStep(answerVal,CoreRewritingData.REWRITE_MAP);

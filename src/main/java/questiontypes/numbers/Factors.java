@@ -76,7 +76,7 @@ public class Factors extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         int factorCount = 0;
         for(int elt: listOfPosFactors) {
             if (elt % ansFactor == 0) {

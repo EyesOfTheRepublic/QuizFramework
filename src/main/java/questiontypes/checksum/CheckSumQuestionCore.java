@@ -24,7 +24,7 @@ public abstract class CheckSumQuestionCore extends Question {
         return k;
     }
 
-    protected byte bitwiseCheckSum(String str) {
+    protected byte bitwiseCheckSum(final String str) {
         byte[] input = str.getBytes();
         byte checksum = 0;
         for (byte cur_byte : input) {

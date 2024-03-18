@@ -51,7 +51,7 @@ public class NumCols extends Question {
 
     //We don't use the utilities we have written to more accurately check what a student might write
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         int answerKey = Integer.parseInt(answer.getQuestionAnswer());
         char[][] encryptArray = new char[sourceString.length() / answerKey][answerKey];
         StringBuilder result = new StringBuilder();

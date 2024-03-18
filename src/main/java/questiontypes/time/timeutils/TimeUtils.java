@@ -27,7 +27,7 @@ public class TimeUtils {
     /*
     Parse a string in the format used by the date formatter and return the number of milliseconds
      */
-    public long getMillis(String date) {
+    public long getMillis(final String date) {
         return LocalDateTime.parse(date, df)
                 .atZone(ZoneId.systemDefault())
                 .toInstant().toEpochMilli();
@@ -36,7 +36,7 @@ public class TimeUtils {
     /*
     Turn a long representing the time in milliseconds into a formatted string
      */
-    public String millisToDate(long millis) {
+    public String millisToDate(final long millis) {
         LocalDateTime dmils
                 = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault());
         return dmils.format(df);

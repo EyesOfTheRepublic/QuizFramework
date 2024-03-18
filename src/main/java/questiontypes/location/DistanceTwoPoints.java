@@ -50,7 +50,7 @@ public class DistanceTwoPoints extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer){
+    public boolean checkAnswer(final Answer answer){
         double lat1 = point1.lat();
         double long1 = point1.lon();
         double lat2 = point2.lat();

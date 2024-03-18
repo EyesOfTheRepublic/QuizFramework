@@ -61,7 +61,7 @@ public class MinSecDistance extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         final double expectedAns = Double.parseDouble(answer.getQuestionAnswer());
 
         final String[] point1Parsed = point1MinSec.split(",");

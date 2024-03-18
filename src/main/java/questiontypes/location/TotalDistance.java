@@ -69,7 +69,7 @@ public class TotalDistance extends Question {
     */
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         final double expectedAns = Double.parseDouble(answer.getQuestionAnswer());
         double answerDistance = 0;
         for(int i = 1; i < points.size(); i++) {

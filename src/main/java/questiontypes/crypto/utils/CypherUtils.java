@@ -18,14 +18,14 @@ public class CypherUtils {
     private CypherUtils() {}
 
 
-    public static String encode(String plainText, int key) {
+    public static String encode(final String plainText, final int key) {
         if (plainText.length() % key != 0) {
             return null;
         }
         return codeToString(codeToArray(plainText, key));
     }
 
-    public static String decode(String cypherText, int key) {
+    public static String decode(final String cypherText, int key) {
         if (cypherText.length() % key != 0) {
             return null;
         }
@@ -36,7 +36,7 @@ public class CypherUtils {
     /*
      * Encode a string to an array using a specific number of columns as the key
      */
-    private static char[][] codeToArray(String plainText, int cols) {
+    private static char[][] codeToArray(final String plainText, final int cols) {
 
         //Work out number of rows in the array
         int len =  plainText.length() / cols;
@@ -57,7 +57,7 @@ public class CypherUtils {
     /*
      * Turn a 2D char array into a string
      */
-    private static String codeToString(char[][] encoded) {
+    private static String codeToString(final char[][] encoded) {
         StringBuilder builder = new StringBuilder();
 
         for(int i = 0; i < encoded[0].length; i++) {

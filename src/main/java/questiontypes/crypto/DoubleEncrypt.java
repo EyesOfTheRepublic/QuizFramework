@@ -58,7 +58,7 @@ public class DoubleEncrypt extends Question {
 
     //We don't use the utilities we have written to more accurately check what a student might write
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
 
         String tempVal =  encode(sourceString, key);
         String result = encode(tempVal, key);

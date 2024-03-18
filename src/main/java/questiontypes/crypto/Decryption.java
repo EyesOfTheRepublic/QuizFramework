@@ -53,7 +53,7 @@ public class Decryption extends Question {
 
     //We don't use the utilities we have written to more accurately check what a student might write
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         char[][] encryptArray = new char[key][sourceString.length() / key];
         StringBuilder result = new StringBuilder();
 

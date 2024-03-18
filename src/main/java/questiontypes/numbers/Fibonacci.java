@@ -100,7 +100,7 @@ public class Fibonacci extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         int fibCount = 0;
         for (long elt : questionList) {
             long f1 = 1;

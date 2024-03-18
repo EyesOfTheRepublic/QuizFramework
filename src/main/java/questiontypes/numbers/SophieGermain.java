@@ -73,7 +73,7 @@ public class SophieGermain extends Question {
     }
 
     @Override
-    public boolean checkAnswer(Answer answer) {
+    public boolean checkAnswer(final Answer answer) {
         int count = 0;
         for (int elt: dataSet) {
             boolean sg = true;
