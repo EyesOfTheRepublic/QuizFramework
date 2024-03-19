@@ -20,11 +20,18 @@ public abstract class Question {
 
     private final QuestionData questData = new QuestionData();
     private final List<Answer> faultList = new ArrayList<>();
+    private QuestionType questionType;
+
+    private enum QuestionType {
+        MCQ,
+        NUMERIC
+    }
 
     /* Abstract Methods - MUST be implemented */
 
     /**
      * Abstract method to return a question title. A typical implementation will just return a constant string
+     *
      * @return the question title
      */
     public abstract String createQuestionTitle();
@@ -32,6 +39,7 @@ public abstract class Question {
     /**
      * Abstract method to return the question description. A typical implementation will return a string with embedded
      * data used to compute the correct answer for this specific question.
+     *
      * @return the question description text (commonly with embedded data fields)
      */
     public abstract String createQuestionText();
@@ -48,21 +56,27 @@ public abstract class Question {
     /**
      * Create and return a correct answer to the question. Typically,
      * this will include the implementation that is your solution to the problem (either directly or indirectly)
+     *
      * @return the {@link Answer} object that is the correct answer to the question
      */
     public abstract Answer createCorrectAnswer();
 
+    /* Overridable Methods - CAN be implemented and some MUST be for some question types */
+
     /**
-     * Create and return an incorrect answer. This will typically be called multiple times, and incorrect answers need
-     * to be unique. However, that is handled elsewhere and <strong>there is no requirement to ensure that here</strong>
+     * Create and return an incorrect answer. <strong>This must be implemented if a question needs to display incorrect answers</strong> - not
+     * all question types need to. This will typically be called multiple times, and incorrect answers need
+     * to be unique. </strong>However, that is handled elsewhere and <strong>there is no requirement to ensure that here</strong>
+     *
      * @return an {@link Answer} object that is the incorrect answer to the question.
      */
-    public abstract Answer createIncorrectAnswer();
-
-    /* Overridable Methods - CAN be implemented */
+    public Answer createIncorrectAnswer() {
+        return null;
+    }
 
     /**
      * Return the number of points for the question. By default, this returns 1 (but can be optionally overridden)
+     *
      * @return the number of points (defaults to 1)
      */
     public int createQuestionPoints() {
@@ -71,6 +85,7 @@ public abstract class Question {
 
     /**
      * Return the general feedback for the question - defaults to null (which should be fixed) but can be overridden
+     *
      * @return the general feedback to the question
      */
     public String createGeneralFeedback() {
@@ -79,6 +94,7 @@ public abstract class Question {
 
     /**
      * Return the general correct answer feedback for the question - defaults to null (which should be fixed) but can be overridden
+     *
      * @return the general correct answer feedback to the question
      */
     public String createCorrectFeedback() {
@@ -87,6 +103,7 @@ public abstract class Question {
 
     /**
      * Return the general incorrect answer feedback for the question - defaults to null (which should be fixed) but can be overridden
+     *
      * @return the general incorrect answer feedback to the question
      */
     public String createIncorrectFeedback() {
@@ -114,20 +131,20 @@ public abstract class Question {
      * present - since the correct answer is added first, and the code ensures incorrect ones are unique and do not match
      * the correct one, this should not happen. However, although this question type only has one possible correct answer, future
      * question types may have multiple correct answers.
+     *
      * @param numAnswers the number of answers (correct and incorrect) required.
      * @return true for success and false for failure (should not happen)
      */
-    public final boolean createMcqAnswerSet(final int numAnswers) {
-        createCalcData();//This needs to be first to ensure the data is available to compute question text and answers
-        questData.addQuestionTitle(createQuestionTitle());
-        questData.addQuestionText(createQuestionText());
-        //Prevent questions having zero/negative points
-        questData.addQuestionPoints(Math.max(createQuestionPoints(),1));
-        questData.addGeneralFeedback(createGeneralFeedback());
-        questData.addCorrectFeedback(createCorrectFeedback());
-        questData.addIncorrectAnswerFeedback(createIncorrectFeedback());
+    public final boolean createMcqQuestion(final int numAnswers) {
+        questionType = QuestionType.MCQ;
+        buildQuestionBasics();
         //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
         if (!questData.addAnswer(createCorrectAnswer())) {
+            return false;
+        }
+
+        //For MCQ questions there must be a method to create incorrect answers (TODO improve this)
+        if (createIncorrectAnswer() == null) {
             return false;
         }
 
@@ -143,6 +160,32 @@ public abstract class Question {
     }
 
     /**
+     * Create a numeric question with the specified correct answer.
+     *
+     * @return true for success and false for failure (should not happen)
+     */
+    public final boolean createNumericQuestion() {
+        questionType = QuestionType.NUMERIC;
+        buildQuestionBasics();
+        //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
+        return questData.addAnswer(createCorrectAnswer());
+    }
+
+    /*
+    Do all things common to all question types
+     */
+    private void buildQuestionBasics() {
+        createCalcData();//This needs to be first to ensure the data is available to compute question text and answers
+        questData.addQuestionTitle(createQuestionTitle());
+        questData.addQuestionText(createQuestionText());
+        //Prevent questions having zero/negative points
+        questData.addQuestionPoints(Math.max(createQuestionPoints(), 1));
+        questData.addGeneralFeedback(createGeneralFeedback());
+        questData.addCorrectFeedback(createCorrectFeedback());
+        questData.addIncorrectAnswerFeedback(createIncorrectFeedback());
+    }
+
+    /**
      * Check the correctness of all the recorded answers by calling {@link #checkAnswer(Answer answer) checkAnswer} for
      * each one. For debugging returns a list of answers that do not match the expected result.
      * By default, checkAnswer just uses the correct/incorrect stored in each {@link Answer Answer} and so
@@ -153,10 +196,10 @@ public abstract class Question {
      */
     public final boolean checkAnswerSet() {
 
-        for(Answer answer : questData.getAnswerList()) {
+        for (Answer answer : questData.getAnswerList()) {
             //If checkAnswer does not agree with the recorded correctness of the answer
             if (answer.isCorrect() && !checkAnswer(answer)
-            || !answer.isCorrect() && checkAnswer(answer)) {
+                    || !answer.isCorrect() && checkAnswer(answer)) {
                 faultList.add(answer);
             }
         }
@@ -180,8 +223,9 @@ public abstract class Question {
      * If there are faults in the question, only those answers which are not correct (do not pass the fault testing)
      * are output, with the correct answer first.
      * Only meaningfully called
-     * after you have called {@link #createMcqAnswerSet(int answers) createMcqAnswerSet} (or possible future methods)
+     * after you have called {@link #createMcqQuestion(int answers) createMcqAnswerSet} (or possible future methods)
      * generating different question types.
+     *
      * @return the String representation of the
      */
     @Override
@@ -191,11 +235,12 @@ public abstract class Question {
         builder.append(questData.getQuestionText());
         builder.append("\n");
         builder.append("Points: ").append(questData.getQuestionPoints()).append("\n");
+        builder.append("Type: ").append(questionType).append("\n");
 
         if (!faultList.isEmpty()) {
             builder.append("QUESTION DOES NOT PASS FAULT CHECKING\n");
             builder.append("The following answers do not match the expected value:\n");
-            for(Answer ans: faultList) {
+            for (Answer ans : faultList) {
                 builder.append(ans.getQuestionAnswer())
                         .append(" should be: ")
                         .append(ans.isCorrect() ? "correct\n" : "incorrect\n");
@@ -217,10 +262,11 @@ public abstract class Question {
 
     /**
      * Generate the question test in a format suitable for
-     * @see <a href="https://github.com/gpoore/text2qti">text2qti</a>.
-     * Answer order is randomized. The format is a restricted form of MarkDown.
+     *
      * @param qNum the number that should appear in the questions
      * @return the (markDown) format string suitable for text2qti
+     * @see <a href="https://github.com/gpoore/text2qti">text2qti</a>.
+     * Answer order is randomized. The format is a restricted form of MarkDown.
      */
     public final String toText2Qti(final int qNum) {
         final StringBuilder builder = new StringBuilder("Title: " + questData.getQuestionTitle() + "\n");
@@ -235,9 +281,22 @@ public abstract class Question {
         if (questData.getIncorrectAnswerFeedback() != null) {
             builder.append(CodeUtils.outputTextBlock("- ", questData.getIncorrectAnswerFeedback()));
         }
+        switch (questionType) {
+            case MCQ -> qtiMcqAnswerSet(builder);
+            case NUMERIC -> qtiNumericAnswer(builder);
+            default -> {
+            }
+        }
+        return builder.toString();
+    }
+
+    /*
+    Generate a set of answers in text2qti format for an MCQ question
+     */
+    private void qtiMcqAnswerSet(final StringBuilder builder) {
         final List<Answer> list = randomize();
         char qItem = 'a';
-        for (Answer ans: list) {
+        for (Answer ans : list) {
             final String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
             builder.append(CodeUtils.outputTextBlock(qLabel, ans.getQuestionAnswer()));
             if (ans.getFeedback() != null) {
@@ -245,10 +304,14 @@ public abstract class Question {
             }
             qItem++;
         }
-        return builder.toString();
     }
 
-    /* Private Methods */
+    /*
+    Generate an answer in text2qti format for a numeric question
+     */
+    private void qtiNumericAnswer(final StringBuilder builder) {
+        builder.append(CodeUtils.outputTextBlock("=", questData.getAnswerList().get(0).getQuestionAnswer()));
+    }
 
     /*Shuffle an arraylist - used to randomize the order of answers in the list of possible answers (by default, in
     MCQ example, the correct answer will always be added first and will always be at the front, so this shuffles the order) */

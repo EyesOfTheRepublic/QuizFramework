@@ -49,28 +49,28 @@ public class LocationQuiz {
 
         //Location questions
         Question distTwoPoints = new DistanceTwoPoints();
-        distTwoPoints.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        distTwoPoints.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(distTwoPoints);
 
         Question whichDistance = new WhichDistance();
-        whichDistance.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        whichDistance.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(whichDistance);
 
         Question totalDist = new TotalDistance();
-        totalDist.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        totalDist.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(totalDist);
 
         Question minSecDist = new MinSecDistance();
-        minSecDist.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        minSecDist.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(minSecDist);
 
         //Factor and Fibonacci questions
         Question factor = new Factors();
-        factor.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        factor.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(factor);
 
         Question fibNum = new Fibonacci();
-        fibNum.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        fibNum.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(fibNum);
 
         if (quiz.hasFaults()) {

@@ -46,28 +46,28 @@ public class CryptoQuiz {
 
         //Transposition questions
         Question encrypt = new Encryption();
-        encrypt.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        encrypt.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(encrypt);
 
         Question decrypt = new Decryption();
-        decrypt.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        decrypt.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(decrypt);
 
         Question numCols = new NumCols();
-        numCols.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        numCols.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(numCols);
 
         Question doubleEncrypt = new DoubleEncrypt();
-        doubleEncrypt.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        doubleEncrypt.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(doubleEncrypt);
 
         //Prime number questions
         Question prime = new Primes();
-        prime.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        prime.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(prime);
 
         Question sophieG = new SophieGermain();
-        sophieG.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        sophieG.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {

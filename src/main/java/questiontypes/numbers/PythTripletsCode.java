@@ -5,6 +5,7 @@ import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
 import quizframework.Question;
 import quizframework.utils.ArrayFormatter;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,10 +44,7 @@ public class PythTripletsCode extends Question {
         final StringBuilder builder = new StringBuilder("""
                 How many of the groups of three numbers in the list are Pythagorean Triples?
                 That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
-                                
-                Write your code in the method called answer below - do not change it's name, parameters or return
-                type:
-                """);
+                """).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeFramework = """
                 public class Pythagoras {
                 %s
@@ -62,7 +60,7 @@ public class PythTripletsCode extends Question {
                 """;
 
         final String code = String.format(codeFramework, formatter.format(2));
-        return builder.append(code).toString();
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override
@@ -101,13 +99,6 @@ public class PythTripletsCode extends Question {
     }
 
     @Override
-    public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        //Just in case...
-        return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, pythList.size())));
-    }
-
-    @Override
     public boolean checkAnswer(final Answer answer) {
         int pythCount = 0;
         for (Triplet elt : pythList) {
@@ -124,7 +115,6 @@ public class PythTripletsCode extends Question {
         int a;
         int b;
         int c;
-        final Integer[] notTriple = new Integer[3];
         final int tripLength = PythTripletsData.TRIPLETS.length - 1;
 
         Triplet candidateIncorrectTriplet;
@@ -136,6 +126,7 @@ public class PythTripletsCode extends Question {
             a = PythTripletsData.TRIPLETS[0][0] + ThreadLocalRandom.current().nextInt(PythTripletsData.TRIPLETS[tripLength][0]);
             b = PythTripletsData.TRIPLETS[0][1] + ThreadLocalRandom.current().nextInt(PythTripletsData.TRIPLETS[tripLength][1]);
             c = PythTripletsData.TRIPLETS[0][2] + ThreadLocalRandom.current().nextInt(PythTripletsData.TRIPLETS[tripLength][2]);
+            final Integer[] notTriple = new Integer[3];
             notTriple[0] = a;
             notTriple[1] = b;
             notTriple[2] = c;

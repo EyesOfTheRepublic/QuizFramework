@@ -12,5 +12,5 @@ public class CoreData {
     public static final int LIM_VAL = Integer.MAX_VALUE / 3;
     public static final int MULT_LIM = (int) (Math.sqrt(Integer.MAX_VALUE) / 2);
     public static final int MAX_NUM = 18;
-    public static final int MIN_NUM = 11;
+    public static final int MIN_NUM = 6;
 }

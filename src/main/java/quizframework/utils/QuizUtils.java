@@ -44,21 +44,22 @@ public final class QuizUtils {
     /**
      * Generate a random string from a specified range of characters, with a specified minimum length.
      * + some range.
-     * @param minLen The generated string will be at least this long.
-     * @param low The low end of the range of characters used in the string. If {@code low > high},
-     *           {@code low} and {@code high} will be swapped.
-     * @param high The low end of the range of characters used in the string. If {@code low > high},
-     *           {@code low} and {@code high} will be swapped.
-     * @return The randomly generated string of size between {@code minlen} and {@code minLen + sizeRng} made up of
-     *              characters between {@code low} and {@code high} inclusive.
      *
-     *  <h3>Example</h3>
-     *  <p>{@code String example = genRandomString(50, 10, 'a', 'z');} - a string between 50 and 60 characters long
-     *  made up of lower-case latin characters.</p>
+     * @param minLen The generated string will be at least this long.
+     * @param low    The low end of the range of characters used in the string. If {@code low > high},
+     *               {@code low} and {@code high} will be swapped.
+     * @param high   The low end of the range of characters used in the string. If {@code low > high},
+     *               {@code low} and {@code high} will be swapped.
+     * @return The randomly generated string of size between {@code minlen} and {@code minLen + sizeRng} made up of
+     * characters between {@code low} and {@code high} inclusive.
+     *
+     * <h3>Example</h3>
+     * <p>{@code String example = genRandomString(50, 10, 'a', 'z');} - a string between 50 and 60 characters long
+     * made up of lower-case latin characters.</p>
      */
 
     public static String genRandomString(final int minLen, final int maxLen,
-                                               final char low, final char high) {
+                                         final char low, final char high) {
 
         final int minLenVal = Math.min(minLen, maxLen);
         final int maxLenVal = Math.max(minLen, maxLen);
@@ -76,7 +77,8 @@ public final class QuizUtils {
                 .toString();
     }
 
-    /**Controls the range over which random permutations of strings will be attempted in
+    /**
+     * Controls the range over which random permutations of strings will be attempted in
      * {@code permuteString} - make it smaller at your peril! This is public, so it can be used as the rangeDecimal
      * argument in {@link #permuteString}. Represents the faction of the string that will be permuted - the smaller it
      * is, the less likely (and ultimately impossible) it is to generate a new string that is actually different to
@@ -114,7 +116,7 @@ public final class QuizUtils {
      */
 
     public static String permuteString(final String dataString, final double locationDecimal,
-                                             final double rangeDecimal, final int permutations) {
+                                       final double rangeDecimal, final int permutations) {
 
         /*We only make changes if the number of permutations is +ve and if the rangeDecimal is large enough to avoid
         a high chance that no permutations will be possible
@@ -200,4 +202,12 @@ public final class QuizUtils {
     public static long genRandomLong(final long min, final long max) {
         return ThreadLocalRandom.current().nextLong(min, max);
     }
+
+    public static final String CODE_QUESTION_BOILERPLATE = """
+                            
+            Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
+            - *do not change it's name, parameters or return type*.
+                
+            **Upload your code to autograder** *and* **enter the answer below**.
+            """;
 }

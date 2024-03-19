@@ -38,28 +38,28 @@ public class RewritingQuiz {
 
         //Rewriting questions
         Question rewriteN = new RewritingNSteps();
-        rewriteN.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        rewriteN.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(rewriteN);
 
         Question toCompletion = new RewritingToCompletion();
-        toCompletion.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        toCompletion.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(toCompletion);
 
         Question reducesToX = new ReducesToX();
-        reducesToX.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        reducesToX.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(reducesToX);
 
         Question altRewrite = new AltRewriting();
-        altRewrite.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        altRewrite.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(altRewrite);
 
         //Pair Addition and Pythagorean Triples Questions
         Question pairs = new AddPairs();
-        pairs.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        pairs.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pairs);
 
         Question pythag = new PythTriplets();
-        pythag.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        pythag.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pythag);
 
         if (quiz.hasFaults()) {

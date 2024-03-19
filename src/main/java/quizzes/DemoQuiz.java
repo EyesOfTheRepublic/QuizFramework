@@ -12,7 +12,7 @@ public class DemoQuiz {
         Quiz quiz = new Quiz("Demo", "Demonstrating long strings...");
 
         Question odd = new OddNumberExample();
-        odd.createMcqAnswerSet(6);
+        odd.createMcqQuestion(6);
         quiz.addQuestion(odd);
         System.out.println(quiz);
         try {

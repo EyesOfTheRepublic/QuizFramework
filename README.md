@@ -3,7 +3,8 @@ Generate multiple choice questions based on problems that students have to write
 Used as the basis or in-class tests at Swansea University (teaching Java to first year students).
 ##text2qti
 The main use of this is to generate QTI files that can be imported into Canvas - currently using
-[text2qti](https://github.com/gpoore/text2qti), which is fundamentally Markdown. Currently only MCQs are implemented but other question types are possible.
+[text2qti](https://github.com/gpoore/text2qti), which is fundamentally Markdown. Currently only MCQs and Numberic questions are implemented
+(and Numeric ones are not that well tested) but other question types are possible.
 ## Overview
 - Quizzes are based on *Quiz* objects to which *questions* are added
 - Questions are classes that extend the abstract *Question* class.
@@ -15,9 +16,9 @@ The main use of this is to generate QTI files that can be imported into Canvas -
 - *String createQuestionText()* contains the text of the question.
 - *void createCalcData()* creates data on which the question is based. This is usually (partly) random and this method runs *before* *createQuestionText* so the data can potentially appear in the question text.
 - *Answer createCorrectAnswer()* creates an *Answer* object containing the correct answer.
-- *Answer createIncorrectAnswer()* creates an *Answer* object containing an incorrect answer - these should be in some way randomly generated because typically there will be multiple incorrect answers (there is no need to check they will be unique - this is dealt with by the code)
 
 ### Optional
+- *Answer createIncorrectAnswer()* creates an *Answer* object containing an incorrect answer (required if the question type displays incorrect answers) - these should be in some way randomly generated because typically there will be multiple incorrect answers (there is no need to check they will be unique - this is dealt with by the code)
 - *int createQuestionPoint()* defaults to 1 (and cannot be negative).
 - *String createGeneralFeedback()* defaults to null - shown in all cases (though Canvas does not seem to provide access to all feedback types)
 - *String createCorrectFeedback()* defaults to null - contains general feedback for the correct answer
@@ -25,7 +26,7 @@ The main use of this is to generate QTI files that can be imported into Canvas -
 - *boolean checkAnswer(Answer answer)* defaults to correct. Optional (defaults) to 'correct' but important: enables an independent check of the correctness of the correct (and incorrectness of incorrect answers) - ideally written in a way that matches the code students are likely to write.
 
 ## Example
-Below is a trivial and minimal example that shows how this works - it generates a question asking what is the multiple of two (randomly generated) numbers:
+Below is a trivial and minimal MCQ example that shows how this works - it generates a question asking what is the multiple of two (randomly generated) numbers:
 
 ```
 public class MultQuestionExample extends Question {
@@ -68,7 +69,7 @@ public class DemoQuiz {
         Quiz quiz = new Quiz("Demo", "Demonstrating multiplication...");
 
         Question multi = new MultQuestionExample();
-        odd.createMcqAnswerSet(6);
+        odd.createMcqQuestion(6);
         quiz.addQuestion(odd);
         try {
             PrintStream stream = new PrintStream("DemoQuiz.txt");

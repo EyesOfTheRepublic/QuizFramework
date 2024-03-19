@@ -33,28 +33,28 @@ public class TimeQuiz {
 
         //Time questions
         Question closestDateTime = new ClosestDateTime();
-        closestDateTime.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        closestDateTime.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(closestDateTime);
 
         Question diffMills = new DiffMills();
-        diffMills.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        diffMills.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(diffMills);
 
         Question pairDiffMills = new PairDiffMills();
-        pairDiffMills.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        pairDiffMills.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pairDiffMills);
 
         Question timeTraveller = new TimeTraveller();
-        timeTraveller.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        timeTraveller.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
 
         //Prime number questions
         Question prime = new Primes();
-        prime.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        prime.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(prime);
 
         Question sophieG = new SophieGermain();
-        sophieG.createMcqAnswerSet(GenQuizData.NUM_ANSWERS);
+        sophieG.createMcqQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {
