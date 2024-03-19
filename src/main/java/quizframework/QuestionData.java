@@ -5,12 +5,11 @@ import java.util.List;
 
 /**
  * Contains all data relating to a question - note that it is never necessary to directly deal with this: all user
- * code should be added in new classes that extend {@Question}. Contains: question title; question description, general question feedback,
- * incorrect and correct question feedback (distinct from feedback that is specific to an {@Answer}, the points score for the question,
-* and a list of {@Answer} objects representing correct and incorrect answers. It also contains the {@Seed} data - any data (numbers, strings etc.)
- * used by the question to compute the correct answer
+ * code should be added in new classes that extend {@link Question}. Contains: question title; question description, general question feedback,
+ * incorrect and correct question feedback (distinct from feedback that is specific to an {@link Answer}, the points score for the question,
+ * and a list of {@link Answer} objects representing correct and incorrect answers.
  */
-public final class QuestionData {
+final class QuestionData {//Accessible only in this package
     private String questionTitle;
     private String questionText;
 
@@ -63,7 +62,7 @@ public final class QuestionData {
 
     /**
      * Add general correct feedback - feedback to be displayed if the user answers correctly. Note this is additional
-     * to any answer-specific feedback (see {@Answer}
+     * to any answer-specific feedback (see {link @Answer}
      * @param feedback correct answer feedback
      */
     public void addCorrectFeedback(final String feedback) {
@@ -72,7 +71,7 @@ public final class QuestionData {
 
     /**
      * Add general incorrect feedback - feedback to be displayed if the user answers incorrectly. Note this is additional
-     * to any answer-specific feedback (see {@Answer}
+     * to any answer-specific feedback (see {link @Answer}
      * @param feedback incorrect answer feedback
      */
     public void addIncorrectAnswerFeedback(final String feedback) {
@@ -82,8 +81,8 @@ public final class QuestionData {
     /**
      * Add a new answer if and only if that answer is not already present. An answer is present if and only if the answer
      * text matches an existing answer (feedback or correctness of the answer is not considered)
-     * @param answer the {@Answer} object to be added
-     * @return true if the {@Answer} was added, false if was already present (and not added)
+     * @param answer the {@link Answer} object to be added
+     * @return true if the {@link Answer} was added, false if was already present (and not added)
      */
     public boolean addAnswer(final Answer answer) {
         if (getAnswerList().contains(answer)) {
@@ -120,7 +119,7 @@ public final class QuestionData {
 
     /**
      * Return the list of answers
-     * @return a list of {@Answer} objects representing the correct and incorrect question answers
+     * @return a list of {@link Answer} objects representing the correct and incorrect question answers
      */
     public List<Answer> getAnswerList() {
         return answerList;
