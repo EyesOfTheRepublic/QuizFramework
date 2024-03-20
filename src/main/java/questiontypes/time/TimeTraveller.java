@@ -2,7 +2,7 @@ package questiontypes.time;
 
 import questiontypes.time.timeutils.TimeUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * How many milliseconds does it take to travel though a sequence of dates
  */
-public class TimeTraveller extends Question {
+public class TimeTraveller extends McqQuestion {
 
     private long numMillis;
     private ArrayList<String> dateSeq = new ArrayList<>();

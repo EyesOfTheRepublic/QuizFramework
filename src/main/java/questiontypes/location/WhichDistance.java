@@ -2,12 +2,12 @@ package questiontypes.location;
 
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 
 /**
  * Which two points are a specific distance apart?
  */
-public class WhichDistance extends Question {
+public class WhichDistance extends McqQuestion {
 
     private double distance;
     private LocationUtils.Point point1;

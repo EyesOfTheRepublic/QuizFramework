@@ -2,13 +2,13 @@ package questiontypes.location;
 
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * How far is it between two points (lat, long) on a globe?
  */
-public class DistanceTwoPoints extends Question {
+public class DistanceTwoPoints extends McqQuestion {
 
     private LocationUtils.Point point1;
     private LocationUtils.Point point2;

@@ -3,7 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * A Sophie Germain prime is a prime number p such that 2p + 1 is also prime. The question is about how many primes
  * in a list of primes are Sophie Germain primes.
  */
-public class SophieGermain extends Question {
+public class SophieGermain extends McqQuestion {
 
     private static final int MAX_ANS = 8; //A plausible maximum value for the wrong answers
 

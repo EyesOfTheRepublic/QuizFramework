@@ -1,7 +1,7 @@
 package questiontypes.simpleexamples;
 
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Purely used for a demo video to show issue in c&p long strings
  */
-public class OddNumberExample extends Question {
+public class OddNumberExample extends McqQuestion {
 
     private final List<Integer> list = new ArrayList<>();
     private int oddCount = 0;

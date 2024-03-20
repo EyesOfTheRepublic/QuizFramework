@@ -3,7 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.FibSequence;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Identify the number of Fibonacci numbers is a list
  */
-public class Fibonacci extends Question {
+public class Fibonacci extends McqQuestion {
 
     private static final int FAKE_FIB_OFFSET = 15;
 

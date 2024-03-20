@@ -2,14 +2,14 @@ package questiontypes.crypto;
 
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of decrypting a string with a particular 'key' - array size? Note this seems to be more
  * difficult than encrypting
  */
-public class Decryption extends Question {
+public class Decryption extends McqQuestion {
 
     private String sourceString;
     private int key;

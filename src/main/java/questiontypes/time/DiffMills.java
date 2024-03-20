@@ -2,12 +2,12 @@ package questiontypes.time;
 
 import questiontypes.time.timeutils.TimeUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 
 /**
  * Dates which differ by a specific number of milliseconds
  */
-public class DiffMills extends Question {
+public class DiffMills extends McqQuestion {
 
     private String baseDate;
     private String answerDate;

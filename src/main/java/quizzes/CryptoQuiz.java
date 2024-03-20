@@ -6,7 +6,7 @@ import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
 import questiontypes.numbers.Primes;
 import questiontypes.numbers.SophieGermain;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -45,29 +45,29 @@ public class CryptoQuiz {
                 GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Transposition questions
-        Question encrypt = new Encryption();
-        encrypt.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion encrypt = new Encryption();
+        encrypt.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(encrypt);
 
-        Question decrypt = new Decryption();
-        decrypt.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion decrypt = new Decryption();
+        decrypt.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(decrypt);
 
-        Question numCols = new NumCols();
-        numCols.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion numCols = new NumCols();
+        numCols.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(numCols);
 
-        Question doubleEncrypt = new DoubleEncrypt();
-        doubleEncrypt.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion doubleEncrypt = new DoubleEncrypt();
+        doubleEncrypt.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(doubleEncrypt);
 
         //Prime number questions
-        Question prime = new Primes();
-        prime.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion prime = new Primes();
+        prime.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(prime);
 
-        Question sophieG = new SophieGermain();
-        sophieG.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion sophieG = new SophieGermain();
+        sophieG.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {

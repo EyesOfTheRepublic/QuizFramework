@@ -2,13 +2,13 @@ package questiontypes.location;
 
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * Distance between two points using minutes/seconds representation
  */
-public class MinSecDistance extends Question {
+public class MinSecDistance extends McqQuestion {
 
     private String point1MinSec;
     private String point2MinSec;

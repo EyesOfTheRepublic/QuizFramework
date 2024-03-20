@@ -2,7 +2,7 @@ package questiontypes.numbers;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -14,7 +14,7 @@ import java.util.Collections;
  * Checking how many numbers in a list have a specfic number as a factor
  */
 
-public class Factors extends Question {
+public class Factors extends McqQuestion {
 
     private int ansFactor;
     private final ArrayList<Integer> listOfPosFactors = new ArrayList<>();

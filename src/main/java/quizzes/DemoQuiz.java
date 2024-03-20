@@ -1,7 +1,7 @@
 package quizzes;
 
 import questiontypes.simpleexamples.OddNumberExample;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -11,8 +11,8 @@ public class DemoQuiz {
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Demo", "Demonstrating long strings...");
 
-        Question odd = new OddNumberExample();
-        odd.createMcqQuestion(6);
+        McqQuestion odd = new OddNumberExample();
+        odd.createQuestion(6);
         quiz.addQuestion(odd);
         System.out.println(quiz);
         try {

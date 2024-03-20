@@ -3,7 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * This question has a large list of numbers some prime and some not. The question is to identify how many are prime.
  */
-public class Primes extends Question {
+public class Primes extends McqQuestion {
 
     private int numPrimes;
 

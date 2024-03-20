@@ -2,7 +2,7 @@ package questiontypes.numbers;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -22,7 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * <p>
  * The number of numbers in the list is between the standard question-set wide constants MIN_VAL and MAX_VAL
  */
-public class AddPairs extends Question {
+public class AddPairs extends McqQuestion {
 
     //The maximum value of any number in the list of 'pairs'
     private static final int LIM_VAL = CoreData.LIM_VAL / 2;

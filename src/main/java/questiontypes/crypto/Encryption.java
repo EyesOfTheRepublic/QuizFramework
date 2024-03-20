@@ -2,13 +2,13 @@ package questiontypes.crypto;
 
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' - array size?
  */
-public class Encryption extends Question {
+public class Encryption extends McqQuestion {
 
     private String sourceString;
     private int key;

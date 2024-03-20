@@ -3,13 +3,13 @@ package questiontypes.termrewriting;
 import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * When run until no more changes happen, how many term rewriting steps are needed?
  */
-public class RewritingToCompletion extends Question {
+public class RewritingToCompletion extends McqQuestion {
 
     private String sourceString;
     private int numSteps;

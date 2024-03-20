@@ -3,7 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * How many of a list of triplets are Pythagorean: a * a + b * b == c * c
  *
  */
-public class PythTriplets extends Question {
+public class PythTriplets extends McqQuestion {
 
     private final ArrayList<Triplet> triples = new ArrayList<>();
 

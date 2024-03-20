@@ -2,7 +2,7 @@ package questiontypes.location;
 
 import questiontypes.location.locationutils.LocationUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Total distance between a sequence of points.
  */
-public class TotalDistance extends Question {
+public class TotalDistance extends McqQuestion {
 
     private double distance;
     private int numSteps;

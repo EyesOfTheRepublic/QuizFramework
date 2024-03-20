@@ -6,7 +6,7 @@ import questiontypes.location.TotalDistance;
 import questiontypes.location.WhichDistance;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -48,29 +48,29 @@ public class LocationQuiz {
                 GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Location questions
-        Question distTwoPoints = new DistanceTwoPoints();
-        distTwoPoints.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion distTwoPoints = new DistanceTwoPoints();
+        distTwoPoints.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(distTwoPoints);
 
-        Question whichDistance = new WhichDistance();
-        whichDistance.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion whichDistance = new WhichDistance();
+        whichDistance.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(whichDistance);
 
-        Question totalDist = new TotalDistance();
-        totalDist.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion totalDist = new TotalDistance();
+        totalDist.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(totalDist);
 
-        Question minSecDist = new MinSecDistance();
-        minSecDist.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion minSecDist = new MinSecDistance();
+        minSecDist.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(minSecDist);
 
         //Factor and Fibonacci questions
-        Question factor = new Factors();
-        factor.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion factor = new Factors();
+        factor.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(factor);
 
-        Question fibNum = new Fibonacci();
-        fibNum.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion fibNum = new Fibonacci();
+        fibNum.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(fibNum);
 
         if (quiz.hasFaults()) {

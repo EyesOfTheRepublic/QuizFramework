@@ -3,13 +3,13 @@ package questiontypes.termrewriting;
 import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of alternately running one rule set then the other until no further changes occur?
  */
-public class AltRewriting extends Question {
+public class AltRewriting extends McqQuestion {
 
     private String questionString;
     private String answerString;

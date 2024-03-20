@@ -2,13 +2,13 @@ package questiontypes.crypto;
 
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of encrypting a string with a particular 'key' then again with another key?
  */
-public class DoubleEncrypt extends Question {
+public class DoubleEncrypt extends McqQuestion {
 
     private String sourceString;
     private int key;

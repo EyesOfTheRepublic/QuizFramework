@@ -3,13 +3,13 @@ package questiontypes.termrewriting;
 import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * Which of a set of strings reduces to X using the first set of rewrite rules?
  */
-public class ReducesToX extends Question {
+public class ReducesToX extends McqQuestion {
 
     private String answerString = "";
 

@@ -2,12 +2,12 @@ package questiontypes.time;
 
 import questiontypes.time.timeutils.TimeUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 
 /**
 Work out the time that is closest to a specific number of hours from midnight on 1st Jan 1970
  */
-public class ClosestDateTime extends Question {
+public class ClosestDateTime extends McqQuestion {
 
     private long hours;
     private String dateTime;

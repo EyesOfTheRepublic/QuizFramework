@@ -2,11 +2,11 @@ package questiontypes.simpleexamples;/*
 Simple example question asking what is the square of a (random) number
  */
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 
 import java.util.Random;
 
-public class SquareQuestionExample extends Question {
+public class SquareQuestionExample extends McqQuestion {
 
     private final Random rnd = new Random();
 

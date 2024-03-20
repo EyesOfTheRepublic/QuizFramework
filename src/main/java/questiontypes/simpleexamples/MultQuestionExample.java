@@ -3,11 +3,11 @@ A (trivial) multiplication question - asks what is the product of two (random) n
 incorrect answers.
  */
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 
 import java.util.Random;
 
-public class MultQuestionExample extends Question {
+public class MultQuestionExample extends McqQuestion {
 
     private final Random rnd = new Random();
 

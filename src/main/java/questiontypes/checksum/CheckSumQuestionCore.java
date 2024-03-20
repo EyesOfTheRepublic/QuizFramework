@@ -1,11 +1,11 @@
 package questiontypes.checksum;
 
-import quizframework.Question;
+import quizframework.McqQuestion;
 /**
  *Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithms
  *This approach probably doesn't make any sense now given changes elsewhere
  */
-public abstract class CheckSumQuestionCore extends Question {
+public abstract class CheckSumQuestionCore extends McqQuestion {
 
     protected static final int MIN_LEN = 65;
     protected static final int MAX_LEN = 85;

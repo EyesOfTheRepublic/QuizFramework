@@ -2,12 +2,12 @@ package questiontypes.time;
 
 import questiontypes.time.timeutils.TimeUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 
 /**
  * Which pair of dates are separated by a specific number of milliiseconds?
  */
-public class PairDiffMills extends Question {
+public class PairDiffMills extends McqQuestion {
     private String baseDate;
     private String endDate;
 

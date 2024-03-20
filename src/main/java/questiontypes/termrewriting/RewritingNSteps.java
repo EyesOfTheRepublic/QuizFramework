@@ -3,14 +3,14 @@ package questiontypes.termrewriting;
 import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of running the main set of rewriting rules once? (We could make this more generic and able to
  * accept multiple sets of rules)
  */
-public class RewritingNSteps extends Question {
+public class RewritingNSteps extends McqQuestion {
 
     private int numSteps;
     private String sourceString = "";

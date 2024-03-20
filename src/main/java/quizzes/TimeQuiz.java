@@ -6,7 +6,7 @@ import questiontypes.time.ClosestDateTime;
 import questiontypes.time.DiffMills;
 import questiontypes.time.PairDiffMills;
 import questiontypes.time.TimeTraveller;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -32,29 +32,29 @@ public class TimeQuiz {
                 GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Time questions
-        Question closestDateTime = new ClosestDateTime();
-        closestDateTime.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion closestDateTime = new ClosestDateTime();
+        closestDateTime.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(closestDateTime);
 
-        Question diffMills = new DiffMills();
-        diffMills.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion diffMills = new DiffMills();
+        diffMills.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(diffMills);
 
-        Question pairDiffMills = new PairDiffMills();
-        pairDiffMills.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion pairDiffMills = new PairDiffMills();
+        pairDiffMills.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pairDiffMills);
 
-        Question timeTraveller = new TimeTraveller();
-        timeTraveller.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion timeTraveller = new TimeTraveller();
+        timeTraveller.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
 
         //Prime number questions
-        Question prime = new Primes();
-        prime.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion prime = new Primes();
+        prime.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(prime);
 
-        Question sophieG = new SophieGermain();
-        sophieG.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion sophieG = new SophieGermain();
+        sophieG.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {

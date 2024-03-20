@@ -8,9 +8,6 @@ import questiontypes.crypto.Decryption;
 import questiontypes.crypto.DoubleEncrypt;
 import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
-import questiontypes.numbers.PythTripletsCode;
-import questiontypes.simpleexamples.MultQuestionExample;
-import questiontypes.simpleexamples.SquareQuestionExample;
 import questiontypes.location.DistanceTwoPoints;
 import questiontypes.location.MinSecDistance;
 import questiontypes.location.TotalDistance;
@@ -20,7 +17,10 @@ import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
 import questiontypes.numbers.PythTriplets;
+import questiontypes.numbers.PythTripletsCode;
 import questiontypes.numbers.SophieGermain;
+import questiontypes.simpleexamples.MultQuestionExample;
+import questiontypes.simpleexamples.SquareQuestionExample;
 import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
@@ -29,7 +29,8 @@ import questiontypes.time.ClosestDateTime;
 import questiontypes.time.DiffMills;
 import questiontypes.time.PairDiffMills;
 import questiontypes.time.TimeTraveller;
-import quizframework.Question;
+import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.Quiz;
 
 public class DemoQuestions {
@@ -38,7 +39,7 @@ public class DemoQuestions {
 
     /*
      * Example of a quiz created using the framework - contains all possible questions at this point (including
-     * some basic 'demo' ones.
+     * some basic 'demo' ones)
      * There are still issues and things that could be better
      */
     public static void main(String[] args) {
@@ -50,148 +51,148 @@ public class DemoQuestions {
         actually create a question of a specific type. Here we create a question that is specifically about
         squares - see the implementation of questiontypes.example.SquareQuestionExample and quizframework.Question for more information
          */
-        /*Question squareExample = new SquareQuestionExample();
-        *//*Once created we build an actual question - multiple choice (MCQ) with 6 possible answers (1 will be correct)
+        McqQuestion squareExample = new SquareQuestionExample();
+        /*Once created we build an actual question - multiple choice (MCQ) with 6 possible answers (1 will be correct)
         There can be as many answers as we want - ideally (but not yet) there would be more question types.
-         *//*
-        squareExample.createMcqQuestion(NUM_ANSWERS);
+         */
+        squareExample.createQuestion(NUM_ANSWERS);
         //Then we add it to the quiz
         quiz.addQuestion(squareExample);
 
-        *//*The remaining questions are created in a similar way below - note that they all include their own
-        implementations of the abstract quizframework.Question class *//*
+        /*The remaining questions are created in a similar way below - note that they all include their own
+        implementations of the abstract quizframework.Question class */
 
-        Question multExample = new MultQuestionExample();
-        multExample.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion multExample = new MultQuestionExample();
+        multExample.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(multExample);
 
         //Real Questions - these are questions that could be realistically used in a quiz.
 
-        *//*Checksum questions - note checkAnswer to (semi-independently)check the correctness of the answers
+        /*Checksum questions - note checkAnswer to (semi-independently)check the correctness of the answers
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
-         *//*
-        Question checkValueQuestion = new CheckSumValueQuestion();
-        checkValueQuestion.createMcqQuestion(NUM_ANSWERS);
+         */
+        McqQuestion checkValueQuestion = new CheckSumValueQuestion();
+        checkValueQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkValueQuestion);
 
-        Question checkStringQuestion = new CheckSumStringQuestion();
-        checkStringQuestion.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion checkStringQuestion = new CheckSumStringQuestion();
+        checkStringQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkStringQuestion);
 
-        Question checkPairQuestion = new CheckSumPairQuestion();
-        checkPairQuestion.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion checkPairQuestion = new CheckSumPairQuestion();
+        checkPairQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkPairQuestion);
 
-        Question bitwise = new BitwiseChecksum();
-        bitwise.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion bitwise = new BitwiseChecksum();
+        bitwise.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(bitwise);
 
-        *//*Time questions - note checkAnswer to (semi-independently)check the correctness of the answers
+        /*Time questions - note checkAnswer to (semi-independently)check the correctness of the answers
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
-         *//*
-        Question closestTime = new ClosestDateTime();
-        closestTime.createMcqQuestion(NUM_ANSWERS);
+         */
+        McqQuestion closestTime = new ClosestDateTime();
+        closestTime.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(closestTime);
 
-        Question timeTraveller = new TimeTraveller();
-        timeTraveller.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion timeTraveller = new TimeTraveller();
+        timeTraveller.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
 
-        Question diffMills = new DiffMills();
-        diffMills.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion diffMills = new DiffMills();
+        diffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(diffMills);
 
-        Question pairDiffMills = new PairDiffMills();
-        pairDiffMills.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion pairDiffMills = new PairDiffMills();
+        pairDiffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(pairDiffMills);
 
-        *//*
+        /*
         THE FOLLOWING QUESTIONS HAVE BEEN MORE CAREFULLY CHECKED.
         They also include implementations of checkAnswer to (semi-independently) confirm (in)correctness of a questions'
         answers when it is generated
-         *//*
+         */
         //Number problem questions
-        Question factorsQuestion = new Factors();
-        factorsQuestion.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion factorsQuestion = new Factors();
+        factorsQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(factorsQuestion);
 
-        Question pythTriplets = new PythTriplets();
-        pythTriplets.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion pythTriplets = new PythTriplets();
+        pythTriplets.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(pythTriplets);
 
-        Question fibonacci = new Fibonacci();
-        fibonacci.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion fibonacci = new Fibonacci();
+        fibonacci.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(fibonacci);
 
-        Question pairSum = new AddPairs();
-        pairSum.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion pairSum = new AddPairs();
+        pairSum.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(pairSum);
 
-        Question primes = new Primes();
-        primes.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion primes = new Primes();
+        primes.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(primes);
 
-        Question sophieG = new SophieGermain();
-        sophieG.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion sophieG = new SophieGermain();
+        sophieG.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(sophieG);
 
         //"Term rewriting" questions
-        Question nStepRewrite = new RewritingNSteps();
-        nStepRewrite.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion nStepRewrite = new RewritingNSteps();
+        nStepRewrite.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(nStepRewrite);
 
-        Question completeRewrite = new RewritingToCompletion();
-        completeRewrite.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion completeRewrite = new RewritingToCompletion();
+        completeRewrite.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(completeRewrite);
 
-        Question whichIsX = new ReducesToX();
-        whichIsX.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion whichIsX = new ReducesToX();
+        whichIsX.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(whichIsX);
 
-        Question altSets = new AltRewriting();
-        altSets.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion altSets = new AltRewriting();
+        altSets.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(altSets);
 
         //Transposition cypher questions
-        Question encode = new Encryption();
-        encode.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion encode = new Encryption();
+        encode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(encode);
 
-        Question numCols = new NumCols();
-        numCols.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion numCols = new NumCols();
+        numCols.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(numCols);
 
-        Question decode = new Decryption();
-        decode.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion decode = new Decryption();
+        decode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(decode);
 
-        Question doubleEncode = new DoubleEncrypt();
-        doubleEncode.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion doubleEncode = new DoubleEncrypt();
+        doubleEncode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(doubleEncode);
 
         //Geographical distance questions
-        Question singleDistance = new DistanceTwoPoints();
-        singleDistance.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion singleDistance = new DistanceTwoPoints();
+        singleDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(singleDistance);
 
-        Question whichDistance = new WhichDistance();
-        whichDistance.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion whichDistance = new WhichDistance();
+        whichDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(whichDistance);
 
-        Question totalDistance = new TotalDistance();
-        totalDistance.createMcqQuestion(NUM_ANSWERS);
+        McqQuestion totalDistance = new TotalDistance();
+        totalDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(totalDistance);
 
-        Question minSec = new MinSecDistance();
-        minSec.createMcqQuestion(NUM_ANSWERS);
-        quiz.addQuestion(minSec);*/
+        McqQuestion minSec = new MinSecDistance();
+        minSec.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(minSec);
 
-        Question testingTriples = new PythTripletsCode();
-        testingTriples.createNumericQuestion();
+        NumericQuestion testingTriples = new PythTripletsCode();
+        testingTriples.createQuestion();
         quiz.addQuestion(testingTriples);
 
         /*

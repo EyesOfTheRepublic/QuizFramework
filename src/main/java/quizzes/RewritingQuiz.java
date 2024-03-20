@@ -6,7 +6,7 @@ import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
-import quizframework.Question;
+import quizframework.McqQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -37,29 +37,29 @@ public class RewritingQuiz {
                 GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
 
         //Rewriting questions
-        Question rewriteN = new RewritingNSteps();
-        rewriteN.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion rewriteN = new RewritingNSteps();
+        rewriteN.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(rewriteN);
 
-        Question toCompletion = new RewritingToCompletion();
-        toCompletion.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion toCompletion = new RewritingToCompletion();
+        toCompletion.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(toCompletion);
 
-        Question reducesToX = new ReducesToX();
-        reducesToX.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion reducesToX = new ReducesToX();
+        reducesToX.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(reducesToX);
 
-        Question altRewrite = new AltRewriting();
-        altRewrite.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion altRewrite = new AltRewriting();
+        altRewrite.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(altRewrite);
 
         //Pair Addition and Pythagorean Triples Questions
-        Question pairs = new AddPairs();
-        pairs.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion pairs = new AddPairs();
+        pairs.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pairs);
 
-        Question pythag = new PythTriplets();
-        pythag.createMcqQuestion(GenQuizData.NUM_ANSWERS);
+        McqQuestion pythag = new PythTriplets();
+        pythag.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pythag);
 
         if (quiz.hasFaults()) {
