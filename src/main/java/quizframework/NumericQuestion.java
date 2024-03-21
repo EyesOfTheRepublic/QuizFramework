@@ -81,13 +81,13 @@ public abstract class NumericQuestion extends Question {
         questionType = QuestionType.NUMERIC;
         buildQuestionBasics();
         //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
-        return questData.addAnswer(createCorrectAnswer());
+        return addAnswer(createCorrectAnswer());
     }
 
     /*
     Generate an answer in QTI format for a numeric question
      */
     protected final void generateQtiAnswerSet(final StringBuilder builder) {
-        builder.append(CodeUtils.outputTextBlock("=", questData.getAnswerList().get(0).getQuestionAnswer()));
+        builder.append(CodeUtils.outputTextBlock("=", getAnswerList().get(0).getQuestionAnswer()));
     }
 }

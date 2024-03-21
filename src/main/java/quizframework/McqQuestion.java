@@ -88,7 +88,7 @@ public abstract class McqQuestion extends Question {
         questionType = QuestionType.MCQ;
         buildQuestionBasics();
         //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
-        if (!questData.addAnswer(createCorrectAnswer())) {
+        if (!addAnswer(createCorrectAnswer())) {
             return false;
         }
 
@@ -96,7 +96,7 @@ public abstract class McqQuestion extends Question {
         final int incorrectAnswers = Math.max(1, numAnswers - 1);
         int incorrectCount = 0;
         while (incorrectCount < incorrectAnswers) {
-            if (questData.addAnswer(createIncorrectAnswer())) {
+            if (addAnswer(createIncorrectAnswer())) {
                 incorrectCount++;
             }
         }

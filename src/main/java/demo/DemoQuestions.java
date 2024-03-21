@@ -1,4 +1,4 @@
-package test;
+package demo;
 
 import questiontypes.checksum.BitwiseChecksum;
 import questiontypes.checksum.CheckSumPairQuestion;
