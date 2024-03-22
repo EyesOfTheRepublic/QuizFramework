@@ -3,6 +3,10 @@ import org.junit.Before;
 import org.junit.Test;
 import quizframework.Answer;
 
+/**
+ * Simple test of the Answer class - create all combinations of possible types of Answer and check properties:
+ * correctness/incorrectness of answers; presence/absence of feedback
+ */
 public class TestAnswer extends TestCase {
     protected String correctAnswer;
     protected String incorrectAnswer;

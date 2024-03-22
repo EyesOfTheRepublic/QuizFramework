@@ -1,6 +1,6 @@
 package questiontypes.location;
 
-import questiontypes.location.locationutils.LocationUtils;
+import questiontypes.location.utils.LocationUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;

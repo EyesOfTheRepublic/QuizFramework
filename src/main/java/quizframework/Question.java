@@ -173,7 +173,7 @@ public abstract class Question {
      *
      * @return the list of faulty answers.
      */
-    protected final List<Answer> getFaultList() {
+    public final List<Answer> getFaultList() {
         return faultList;
     }
 

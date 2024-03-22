@@ -1,5 +1,6 @@
 package questiontypes.checksum;
 
+import questiontypes.checksum.utils.CheckSumQuestionCore;
 import quizframework.Answer;
 import quizframework.utils.QuizUtils;
 

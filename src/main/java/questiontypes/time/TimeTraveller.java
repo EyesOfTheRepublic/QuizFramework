@@ -1,6 +1,6 @@
 package questiontypes.time;
 
-import questiontypes.time.timeutils.TimeUtils;
+import questiontypes.time.utils.TimeUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
