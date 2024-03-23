@@ -69,8 +69,8 @@ public class DemoQuiz {
         Quiz quiz = new Quiz("Demo", "Demonstrating multiplication...");
 
         Question multi = new MultQuestionExample();
-        odd.createQuestion(6);
-        quiz.addQuestion(odd);
+        multi.createQuestion(6);
+        quiz.addQuestion(multi);
         try {
             PrintStream stream = new PrintStream("DemoQuiz.txt");
             quiz.generateText2Qti(stream);
