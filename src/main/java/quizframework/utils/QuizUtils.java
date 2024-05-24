@@ -203,10 +203,14 @@ public final class QuizUtils {
         return ThreadLocalRandom.current().nextLong(min, max);
     }
 
+    /**
+     * Standard text to appear before code-based questions
+     */
     public static final String CODE_QUESTION_BOILERPLATE = """
                             
             Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
-            - *do not change it's name, parameters or return type*.
+            (you can write additional methods if you want) 
+            - *but do not change the name, parameters or return type of the method below*.
                 
             **Upload your code to autograder** *and* **enter the answer below**.
             """;

@@ -14,6 +14,23 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * How many of a list of triplets are Pythagorean: a * a + b * b == c * c
+ * This version requires a numeric answer and a specific code format suitable
+ * for autograder
+ *
+ * Here is the code for autograder:
+ <pre>
+ import java.util.Arrays;
+
+public class Test {
+    public static void main(String[] args) {
+        long count = Arrays.asList(Pythagoras.possTriples)
+        .stream()
+        .filter(x -> x[0] * x[0] + x[1] * x[1] == x[2] * x[2]).count();
+
+        System.out.println(count == Pythagoras.answer());
+    }
+}
+ </pre>
  */
 public class PythTripletsCode extends NumericQuestion {
 
@@ -45,21 +62,8 @@ public class PythTripletsCode extends NumericQuestion {
                 How many of the groups of three numbers in the list are Pythagorean Triples?
                 That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
                 """).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final String codeFramework = """
-                public class Pythagoras {
-                %s
-                    
-                     public static void main(String[] args) {
-                         System.out.println(answer());
-                     }
-                    
-                     public static int answer() {
-                         //Write your code here - it should *return* the answer
-                     }
-                }
-                """;
 
-        final String code = String.format(codeFramework, formatter.format(2));
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Pythagoras", formatter.format(2));
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

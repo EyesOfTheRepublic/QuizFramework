@@ -1,34 +1,8 @@
 package demo;
 
-import questiontypes.checksum.BitwiseChecksum;
-import questiontypes.checksum.CheckSumPairQuestion;
-import questiontypes.checksum.CheckSumStringQuestion;
-import questiontypes.checksum.CheckSumValueQuestion;
-import questiontypes.crypto.Decryption;
-import questiontypes.crypto.DoubleEncrypt;
-import questiontypes.crypto.Encryption;
-import questiontypes.crypto.NumCols;
-import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.MinSecDistance;
-import questiontypes.location.TotalDistance;
-import questiontypes.location.WhichDistance;
-import questiontypes.numbers.AddPairs;
-import questiontypes.numbers.Factors;
-import questiontypes.numbers.Fibonacci;
-import questiontypes.numbers.Primes;
-import questiontypes.numbers.PythTriplets;
+import questiontypes.numbers.AddPairsCode;
 import questiontypes.numbers.PythTripletsCode;
-import questiontypes.numbers.SophieGermain;
-import questiontypes.simpleexamples.MultQuestionExample;
-import questiontypes.simpleexamples.SquareQuestionExample;
-import questiontypes.termrewriting.AltRewriting;
-import questiontypes.termrewriting.ReducesToX;
-import questiontypes.termrewriting.RewritingNSteps;
-import questiontypes.termrewriting.RewritingToCompletion;
-import questiontypes.time.ClosestDateTime;
-import questiontypes.time.DiffMills;
-import questiontypes.time.PairDiffMills;
-import questiontypes.time.TimeTraveller;
+import questiontypes.numbers.SophieGermainCode;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -51,16 +25,16 @@ public class DemoQuestions {
         actually create a question of a specific type. Here we create a question that is specifically about
         squares - see the implementation of questiontypes.example.SquareQuestionExample and quizframework.Question for more information
          */
-        McqQuestion squareExample = new SquareQuestionExample();
-        /*Once created we build an actual question - multiple choice (MCQ) with 6 possible answers (1 will be correct)
+       /* McqQuestion squareExample = new SquareQuestionExample();
+        *//*Once created we build an actual question - multiple choice (MCQ) with 6 possible answers (1 will be correct)
         There can be as many answers as we want - ideally (but not yet) there would be more question types.
-         */
+         *//*
         squareExample.createQuestion(NUM_ANSWERS);
         //Then we add it to the quiz
         quiz.addQuestion(squareExample);
 
-        /*The remaining questions are created in a similar way below - note that they all include their own
-        implementations of the abstract quizframework.Question class */
+        *//*The remaining questions are created in a similar way below - note that they all include their own
+        implementations of the abstract quizframework.Question class *//*
 
         McqQuestion multExample = new MultQuestionExample();
         multExample.createQuestion(NUM_ANSWERS);
@@ -68,11 +42,11 @@ public class DemoQuestions {
 
         //Real Questions - these are questions that could be realistically used in a quiz.
 
-        /*Checksum questions - note checkAnswer to (semi-independently)check the correctness of the answers
+        *//*Checksum questions - note checkAnswer to (semi-independently)check the correctness of the answers
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
-         */
+         *//*
         McqQuestion checkValueQuestion = new CheckSumValueQuestion();
         checkValueQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkValueQuestion);
@@ -89,11 +63,11 @@ public class DemoQuestions {
         bitwise.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(bitwise);
 
-        /*Time questions - note checkAnswer to (semi-independently)check the correctness of the answers
+        *//*Time questions - note checkAnswer to (semi-independently)check the correctness of the answers
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
-         */
+         *//*
         McqQuestion closestTime = new ClosestDateTime();
         closestTime.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(closestTime);
@@ -110,11 +84,11 @@ public class DemoQuestions {
         pairDiffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(pairDiffMills);
 
-        /*
+        *//*
         THE FOLLOWING QUESTIONS HAVE BEEN MORE CAREFULLY CHECKED.
         They also include implementations of checkAnswer to (semi-independently) confirm (in)correctness of a questions'
         answers when it is generated
-         */
+         *//*
         //Number problem questions
         McqQuestion factorsQuestion = new Factors();
         factorsQuestion.createQuestion(NUM_ANSWERS);
@@ -190,10 +164,18 @@ public class DemoQuestions {
         McqQuestion minSec = new MinSecDistance();
         minSec.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(minSec);
-
+*/
         NumericQuestion testingTriples = new PythTripletsCode();
         testingTriples.createQuestion();
         quiz.addQuestion(testingTriples);
+
+        McqQuestion testingSgCode = new SophieGermainCode();
+        testingSgCode.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(testingSgCode);
+
+        NumericQuestion testingAddPairs = new AddPairsCode();
+        testingAddPairs.createQuestion();
+        quiz.addQuestion(testingAddPairs);
 
         /*
         The generateText2Qti method outputs a quiz in *markdown* format to the specified PrintStream - in this case,
@@ -202,6 +184,6 @@ public class DemoQuestions {
         That can generate QTI format - which Canvas can import. Ideally, (but not yet) there would be other output formats.
          */
         quiz.generateText2Qti(System.out);
-        System.out.println(quiz);
+        //System.out.println(quiz);
     }
 }
