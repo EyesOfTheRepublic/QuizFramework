@@ -82,11 +82,14 @@ public class AddPairsCode extends NumericQuestion {
         sum target minus MIN_LIST_VAL. Provided that number is not already in the list, add it and it's value
         minus sumTargetVal
         */
-        for (int i = 0; i < numPairs; i++) {
+        int i = 0;
+        while (i < numPairs) {
             int splitPoint = QuizUtils.genRandomInt(MIN_LIST_VAL, sumTarget - MIN_LIST_VAL);
-            if (!numList.contains(splitPoint)) {
+            //check it's not present and it won't mean adding itself twice
+            if (!numList.contains(splitPoint) && splitPoint / 2 != sumTarget) {
                 numList.add(splitPoint);
                 numList.add(sumTarget - splitPoint);
+                i++;
             }
         }
 

@@ -349,8 +349,6 @@ Q.idea/sonarlint/securityhotspotstore/c/6/c60265a78b658185d5fd31e3efe25f00eb2600
 Q.idea/sonarlint/securityhotspotstore/c/6/c64da7be8c0fbb749192fa12458f24dae36dd405,4/b/4b184f7fdf06e888e9f0b460f82ca8baa33fcaf1
 Å
 Q.idea/sonarlint/securityhotspotstore/4/f/4f1c6a07cd3838fe851ed71a98d92ccd47c245d9,d/1/d1f51db3fd9b3ada6b89f9057c9c99fec64acb8e
-G
-src/main/java/Test.java,b/6/b660a5f333c00ef78dec1d85c727eb000157c1f3
 j
 :src/main/java/questiontypes/numbers/SophieGermainCode.java,5/2/5228c1e4dd1517f2d26032bf5feafb2d9229cc74
 U
