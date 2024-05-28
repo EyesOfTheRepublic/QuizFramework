@@ -21,7 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class QuizUtils {
 
-    //Prevent instance of this class being (pointlessly) created
+    //Prevent inadvertent instantiation
     private QuizUtils() {
     }
 

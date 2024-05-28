@@ -6,7 +6,7 @@ package questiontypes.numbers.utils;
 public class PrimeData {
 
     /*
-    Prevent inadvertant instantiation
+    Prevent inadvertent instantiation
      */
     private PrimeData(){}
 

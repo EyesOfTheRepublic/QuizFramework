@@ -13,16 +13,32 @@ import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Identify the number of Fibonacci numbers is a list
+ * Identify the number of Fibonacci numbers is a list - version suitable for use with autograder.
+ * Use this code in autograder:
+ <pre>
+ public class Test {
+    public static final long[] FIB_ARRAY = {
+       //Contents of FIB_ARRAY in {@link FibSequence} goes here
+    };
+
+    public static void main(String[] args) {
+        List<Long> fibList = Arrays.stream(FIB_ARRAY).boxed().collect(Collectors.toList());
+
+        long count = LongStream.of(Fibonacci.posFibNumbers)
+        .filter(x -> fibList.contains(x)).count();
+        System.exit(count == Fibonacci.answer() ? 0 : 1);
+    }
+}
+ </pre>
  */
 public class Fibonacci extends McqQuestion {
 
     private static final int FAKE_FIB_OFFSET = 15;
 
-    private ArrayList<Long> fibList = new ArrayList<>();
-    private ArrayList<Long> baseList = new ArrayList<>();
-    private ArrayList<Long> fakeFibs = new ArrayList<>();
-    private ArrayList<Long> questionList = new ArrayList<>();
+    private final ArrayList<Long> fibList = new ArrayList<>();
+    private final ArrayList<Long> baseList = new ArrayList<>();
+    private final ArrayList<Long> fakeFibs = new ArrayList<>();
+    private final ArrayList<Long> questionList = new ArrayList<>();
 
     private int numCorrect;
 
@@ -34,17 +50,19 @@ public class Fibonacci extends McqQuestion {
     @Override
     public String createQuestionText() {
 
-        StringBuilder questionText = new StringBuilder("""
+        StringBuilder builder = new StringBuilder("""
                 How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
-                for the Fibonacci numbers you calculate and NOT int.""");
+                for the Fibonacci numbers you calculate and NOT int.""")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        ArrayFormatter<Long> formatter = new ArrayFormatter<Long>("long[] posFibNumbers", questionList) {
+        ArrayFormatter<Long> formatter = new ArrayFormatter<>("public final static long[] posFibNumbers", questionList) {
             @Override
             public String outputItem(final Long item) {
                 return item + "L";
             }
         };
-        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Fibonacci", formatter.format(2));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
 
@@ -57,8 +75,8 @@ public class Fibonacci extends McqQuestion {
             baseList.add(elt);
         }
 
-        numCorrect = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
-        final int numWrong = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        numCorrect = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        final int numWrong = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy actual fibonaacci numbers to the list for the question, deleting them from the source to avoid duplicates
         for (int i = 0; i < numCorrect; i++) {
@@ -95,7 +113,7 @@ public class Fibonacci extends McqQuestion {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt( CoreData.MIN_NUM, CoreData.MAX_NUM);
+        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
         return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, questionList.size())));
     }
 

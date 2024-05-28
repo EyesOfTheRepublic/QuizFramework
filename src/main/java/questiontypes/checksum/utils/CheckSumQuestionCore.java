@@ -13,6 +13,9 @@ public abstract class CheckSumQuestionCore extends McqQuestion {
     protected static final char HIGH_RNG = 'z';
     protected static final char LOW_RNG = 'a';
 
+    //Prevent inadvertent instantiation
+    private CheckSumQuestionCore() {}
+
     protected long simpleCheckSum(String str) {
         long k = 7;//7
         for (int i = 0; i < str.length(); i++) {

@@ -1,8 +1,6 @@
 package demo;
 
-import questiontypes.numbers.AddPairsCode;
-import questiontypes.numbers.PythTripletsCode;
-import questiontypes.numbers.SophieGermainCode;
+import questiontypes.numbers.*;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -89,30 +87,6 @@ public class DemoQuestions {
         They also include implementations of checkAnswer to (semi-independently) confirm (in)correctness of a questions'
         answers when it is generated
          *//*
-        //Number problem questions
-        McqQuestion factorsQuestion = new Factors();
-        factorsQuestion.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(factorsQuestion);
-
-        McqQuestion pythTriplets = new PythTriplets();
-        pythTriplets.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(pythTriplets);
-
-        McqQuestion fibonacci = new Fibonacci();
-        fibonacci.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(fibonacci);
-
-        McqQuestion pairSum = new AddPairs();
-        pairSum.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(pairSum);
-
-        McqQuestion primes = new Primes();
-        primes.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(primes);
-
-        McqQuestion sophieG = new SophieGermain();
-        sophieG.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(sophieG);
 
         //"Term rewriting" questions
         McqQuestion nStepRewrite = new RewritingNSteps();
@@ -165,17 +139,29 @@ public class DemoQuestions {
         minSec.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(minSec);
 */
-        NumericQuestion testingTriples = new PythTripletsCode();
+        NumericQuestion testingTriples = new PythTriplets();
         testingTriples.createQuestion();
         quiz.addQuestion(testingTriples);
 
-        McqQuestion testingSgCode = new SophieGermainCode();
+        McqQuestion testingSgCode = new SophieGermain();
         testingSgCode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(testingSgCode);
 
-        NumericQuestion testingAddPairs = new AddPairsCode();
+        NumericQuestion testingAddPairs = new AddPairs();
         testingAddPairs.createQuestion();
         quiz.addQuestion(testingAddPairs);
+
+        Factors testingFactorCode = new Factors();
+        testingFactorCode.createQuestion();
+        quiz.addQuestion(testingFactorCode);
+
+        Fibonacci testingFibonacciCode = new Fibonacci();
+        testingFibonacciCode.createQuestion(6);
+        quiz.addQuestion(testingFibonacciCode);
+
+        Primes testingPrimesCode = new Primes();
+        testingPrimesCode.createQuestion();
+        quiz.addQuestion(testingPrimesCode);
 
         /*
         The generateText2Qti method outputs a quiz in *markdown* format to the specified PrintStream - in this case,

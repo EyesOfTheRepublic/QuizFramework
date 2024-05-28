@@ -17,7 +17,7 @@ import java.util.List;
 public final class CodeUtils {
 
     /*
-    Prevent inadvertant instantiation
+    Prevent inadvertent instantiation
      */
     private CodeUtils(){}
 
@@ -69,9 +69,7 @@ public final class CodeUtils {
         final String[] lines = text.trim().split("\n");
         final StringBuilder builder = new StringBuilder("\n");
         for(String line : lines) {
-            for(int i = 0; i < steps * MARKDOWN_INDENT; i++) {
-                builder.append(" ");
-            }
+            builder.append(" ".repeat(Math.max(0, steps * MARKDOWN_INDENT)));
             builder.append(line).append("\n");
         }
         return builder.toString();

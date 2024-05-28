@@ -1,7 +1,5 @@
 package quizzes;
 
-import questiontypes.numbers.AddPairs;
-import questiontypes.numbers.PythTriplets;
 import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
@@ -28,9 +26,7 @@ public class RewritingQuiz {
            <h4>Term Rewriting Rule Set 2</h4>\
           <ul><li>aYb -> Y</li><li>cY -> Y</li><li>XabYa -> X</li><li>XXX -> X</li><li>Xa -> X</li></ul>\
           <p>Remember: cut-and-paste long strings from the questions; do not try to type them in.</p> \
-          <h4>Pairs of Numbers and Pythagorean Triples</h4> \
-          <p>The remaining two questions ask you to find the only number in a list which does not add to another number in the list \
-          to make a specified value; and to work out how many groups of three numbers in a list are Pythagorean.</p>""";
+          """;
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Rewriting and Numbers 3",
@@ -52,15 +48,6 @@ public class RewritingQuiz {
         McqQuestion altRewrite = new AltRewriting();
         altRewrite.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(altRewrite);
-
-        //Pair Addition and Pythagorean Triples Questions
-        McqQuestion pairs = new AddPairs();
-        pairs.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(pairs);
-
-        McqQuestion pythag = new PythTriplets();
-        pythag.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(pythag);
 
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");

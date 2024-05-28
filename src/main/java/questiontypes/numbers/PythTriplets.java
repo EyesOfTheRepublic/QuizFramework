@@ -3,11 +3,10 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
-import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,9 +14,24 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * How many of a list of triplets are Pythagorean: a * a + b * b == c * c
- *
+ * This version requires a numeric answer and a specific code format suitable
+ * for autograder
+ * Here is the code for autograder:
+ <pre>
+ import java.util.Arrays;
+
+public class Test {
+    public static void main(String[] args) {
+        long count = Arrays.asList(Pythagoras.possTriples)
+        .stream()
+        .filter(x -> x[0] * x[0] + x[1] * x[1] == x[2] * x[2]).count();
+
+        System.exit(count == Pythagoras.answer() ? 0 : 1);
+    }
+}
+ </pre>
  */
-public class PythTriplets extends McqQuestion {
+public class PythTriplets extends NumericQuestion {
 
     private final ArrayList<Triplet> triples = new ArrayList<>();
 
@@ -41,12 +55,15 @@ public class PythTriplets extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("int[][] possTriples", pythList);
+        ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("public static int[][] possTriples", pythList);
 
-        return  new StringBuilder("""
+        final StringBuilder builder = new StringBuilder("""
                 How many of the groups of three numbers in the list are Pythagorean Triples?
-                That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.""")
-                .append(CodeUtils.toCodeBlock(formatter.format())).toString();
+                That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
+                """).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Pythagoras", formatter.format(2));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override
@@ -56,7 +73,7 @@ public class PythTriplets extends McqQuestion {
         numWrong = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
 
         //Copy of list of triples to choose correct values from
-        for(Integer[] elt: PythTripletsData.TRIPLETS) {
+        for (Integer[] elt : PythTripletsData.TRIPLETS) {
             triples.add(new Triplet(elt[0], elt[1], elt[2]));
         }
 
@@ -85,16 +102,9 @@ public class PythTriplets extends McqQuestion {
     }
 
     @Override
-    public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        //Just in case...
-        return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, pythList.size())));
-    }
-
-    @Override
     public boolean checkAnswer(final Answer answer) {
         int pythCount = 0;
-        for(Triplet elt : pythList) {
+        for (Triplet elt : pythList) {
             if (elt.a() * elt.a() + elt.b() * elt.b() == elt.c() * elt.c()) {
                 pythCount++;
             }
@@ -108,8 +118,7 @@ public class PythTriplets extends McqQuestion {
         int a;
         int b;
         int c;
-        final Integer[] notTriple = new Integer[3];
-        final int tripLength  = PythTripletsData.TRIPLETS.length - 1;
+        final int tripLength = PythTripletsData.TRIPLETS.length - 1;
 
         Triplet candidateIncorrectTriplet;
         do {
@@ -120,6 +129,7 @@ public class PythTriplets extends McqQuestion {
             a = PythTripletsData.TRIPLETS[0][0] + ThreadLocalRandom.current().nextInt(PythTripletsData.TRIPLETS[tripLength][0]);
             b = PythTripletsData.TRIPLETS[0][1] + ThreadLocalRandom.current().nextInt(PythTripletsData.TRIPLETS[tripLength][1]);
             c = PythTripletsData.TRIPLETS[0][2] + ThreadLocalRandom.current().nextInt(PythTripletsData.TRIPLETS[tripLength][2]);
+            final Integer[] notTriple = new Integer[3];
             notTriple[0] = a;
             notTriple[1] = b;
             notTriple[2] = c;

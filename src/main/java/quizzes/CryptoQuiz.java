@@ -4,8 +4,6 @@ import questiontypes.crypto.Decryption;
 import questiontypes.crypto.DoubleEncrypt;
 import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
-import questiontypes.numbers.Primes;
-import questiontypes.numbers.SophieGermain;
 import quizframework.McqQuestion;
 import quizframework.Quiz;
 
@@ -38,8 +36,7 @@ public class CryptoQuiz {
                 } <br/>\
             } <br/>\
             </pre> \
-            <h3>Prime Numbers</h3> \
-            <p>The next two questions relate to prime numbers.</p>""";
+            """;
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Transposition Cyphers and Numbers 3",
                 GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
@@ -60,15 +57,6 @@ public class CryptoQuiz {
         McqQuestion doubleEncrypt = new DoubleEncrypt();
         doubleEncrypt.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(doubleEncrypt);
-
-        //Prime number questions
-        McqQuestion prime = new Primes();
-        prime.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(prime);
-
-        McqQuestion sophieG = new SophieGermain();
-        sophieG.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");

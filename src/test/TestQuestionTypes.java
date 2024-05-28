@@ -1,6 +1,5 @@
 import com.google.common.reflect.ClassPath;
 import junit.framework.TestCase;
-import org.checkerframework.checker.units.qual.N;
 import org.junit.Test;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
@@ -12,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Test essential properties of all MCQ question types. Assumes all classes in the {@link questiontypes} package are
- * MCQ questions <b>except</b> those in packages called <emph>util</emph>. Uses Google's Guava to get and filter
+ * MCQ or Numeric questions <b>except</b> those in packages called <emph>util</emph>. Uses Google's Guava to get and filter
  * a set of classes that meet those criteria and which have the superclass {@link McqQuestion}. It then uses
  * 'vanilla' Java reflection to instantiate them and JUnit to test them
  */
@@ -25,7 +24,7 @@ public final class TestQuestionTypes extends TestCase {
      * packages called 'utils'.
      * @param packageName the package name containing questions
      * @return A set of all classes that meet the criteria
-     * @throws IOException
+     * @throws IOException if code file data not accessible
      */
     public Set<Class> getMcqQuestions(final String packageName, final Class clsVal) throws IOException {
         return ClassPath.from(ClassLoader.getSystemClassLoader())

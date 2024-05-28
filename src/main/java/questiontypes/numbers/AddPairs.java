@@ -2,14 +2,13 @@ package questiontypes.numbers;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
-import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Generate a question containing a list of numbers (as an array that can be cut-and-pasted) in which
@@ -21,8 +20,29 @@ import java.util.concurrent.ThreadLocalRandom;
  * range of MAX_VALUE / 6 to MAX_VALUE / 3.
  * <p>
  * The number of numbers in the list is between the standard question-set wide constants MIN_VAL and MAX_VAL
+ * This version is a numeric question (not an MCQ) and is suitable for use with autograder. Suitable code is:
+ <pre>
+ public class Test {
+    public static void main(String[] args) {
+        for(int candidate : AddPairs.numList) {
+            boolean notFound = true;
+            for(int sum : AddPairs.numList) {
+                if (sum + candidate == AddPairs.pairSum) {
+                    notFound = false;
+                    break;
+                }
+            }
+            if (notFound) {
+                System.exit(candidate == AddPairs.answer() ? 0 : 1);
+            } else {
+                System.exit(1);
+            }
+        }
+    }
+}
+ </pre>
  */
-public class AddPairs extends McqQuestion {
+public class AddPairs extends NumericQuestion {
 
     //The maximum value of any number in the list of 'pairs'
     private static final int LIM_VAL = CoreData.LIM_VAL / 2;
@@ -33,7 +53,7 @@ public class AddPairs extends McqQuestion {
     private int sumTarget; //The number the 'pairs' must sum to
     private int correctAns; //The correct answer (which does not sum to any of the others to make sumTarget
 
-    private ArrayList<Integer> numList = new ArrayList<>();
+    private final ArrayList<Integer> numList = new ArrayList<>();
 
     @Override
     public String createQuestionTitle() {
@@ -41,11 +61,17 @@ public class AddPairs extends McqQuestion {
     }
 
     public String createQuestionText() {
-        StringBuilder questionText = new StringBuilder("In the following list of numbers, every number EXCEPT ONE can be added to another number "
-                + "in the list to make " + sumTarget + ". What is that number?");
+        StringBuilder builder = new StringBuilder("In the following list of numbers, every number EXCEPT ONE can be added to another number "
+                + "in the list to make " + sumTarget
+                + ". What is that number? It is guaranteed that all numbers in the list are unique.")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] numList", numList);
-        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
+        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] numList", numList);
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "AddPairs",
+                formatter.format(2)
+                        .append(CodeUtils
+                                .indentTextBlock(String.format("public final static int pairSum = %s;",sumTarget), 1)));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override
@@ -58,11 +84,14 @@ public class AddPairs extends McqQuestion {
         sum target minus MIN_LIST_VAL. Provided that number is not already in the list, add it and it's value
         minus sumTargetVal
         */
-        for (int i = 0; i < numPairs; i++) {
+        int i = 0;
+        while (i < numPairs) {
             int splitPoint = QuizUtils.genRandomInt(MIN_LIST_VAL, sumTarget - MIN_LIST_VAL);
-            if (!numList.contains(splitPoint)) {
+            //check it's not present and it won't mean adding itself twice
+            if (!numList.contains(splitPoint) && splitPoint / 2 != sumTarget) {
                 numList.add(splitPoint);
                 numList.add(sumTarget - splitPoint);
+                i++;
             }
         }
 
@@ -76,13 +105,6 @@ public class AddPairs extends McqQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(correctAns));
-    }
-
-    //Question generation automatically handles checking that wrong answers are unique and don't match the correct one
-    @Override
-    public Answer createIncorrectAnswer() {
-        int index = ThreadLocalRandom.current().nextInt(numList.size());
-        return Answer.makeIncorrectAnswer(Integer.toString(numList.get(index)));
     }
 
     @Override

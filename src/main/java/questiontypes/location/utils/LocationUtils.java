@@ -4,6 +4,9 @@ import quizframework.utils.QuizUtils;
 
 public class LocationUtils {
 
+    //Prevent inadvertent instantiation
+    private LocationUtils() {}
+
     public record Point(double lat, double lon) {
         @Override
         public String toString() {

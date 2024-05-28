@@ -6,11 +6,24 @@ package questiontypes.numbers.utils;
 public class CoreData {
 
     /*
-    Prevent inadvertant instantiation
+    Prevent inadvertent instantiation
      */
     private CoreData() {}
+
+    /**
+     * Basis of the typical maximum size of data values that are randomly generated.
+     */
     public static final int LIM_VAL = Integer.MAX_VALUE / 3;
+    /**
+     * Alternative typical maximum size of data values that are randomly generated
+     */
     public static final int MULT_LIM = (int) (Math.sqrt(Integer.MAX_VALUE) / 2);
-    public static final int MAX_NUM = 18;
-    public static final int MIN_NUM = 6;
+    /**
+     * Maximum number of elements in a randomly-generated data array
+     */
+    public static final int MAX_NUM = 27;
+    /**
+     * Minimum number of elements in a randomly-generated data array
+     */
+    public static final int MIN_NUM = 17;
 }

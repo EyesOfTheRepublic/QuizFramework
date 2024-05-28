@@ -1,7 +1,5 @@
 package quizzes;
 
-import questiontypes.numbers.Primes;
-import questiontypes.numbers.SophieGermain;
 import questiontypes.time.ClosestDateTime;
 import questiontypes.time.DiffMills;
 import questiontypes.time.PairDiffMills;
@@ -25,8 +23,7 @@ public class TimeQuiz {
             You will need to use the DateFormatter and LocalDateTime classes, along with the code examples, described in the \
             background information.</p> \
             <p>Remember: cut-and-paste long strings from the questions; do not try to type them in.</p> \
-            <h3>Prime Numbers</h3> \
-            <p>The next two questions relate to prime numbers.</p>""";
+            """;
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Time and Numbers 2",
                 GenQuizData.HEADER + QUIZ_DESC + GenQuizData.RESOURCES);
@@ -47,15 +44,6 @@ public class TimeQuiz {
         McqQuestion timeTraveller = new TimeTraveller();
         timeTraveller.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
-
-        //Prime number questions
-        McqQuestion prime = new Primes();
-        prime.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(prime);
-
-        McqQuestion sophieG = new SophieGermain();
-        sophieG.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(sophieG);
 
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");

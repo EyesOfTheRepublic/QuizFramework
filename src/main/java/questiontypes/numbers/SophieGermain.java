@@ -14,6 +14,34 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * A Sophie Germain prime is a prime number p such that 2p + 1 is also prime. The question is about how many primes
  * in a list of primes are Sophie Germain primes.
+ * This version requires a specific code format and is suitable for autograder (but is still an MCQ).
+ * Here's the code for autograder.
+ <pre>
+ public class Test {
+    public static void main(String[] args) {
+        int count = 0;
+        for(int sg : SophieGermain.primes) {
+            if (isSg(sg)) {
+                count++;
+            }
+        }
+        System.exit(count == SophieGermain.answer() ? 0 : 1);
+    }
+
+    private static boolean isSg(int p) {
+        int factors = 0;
+        final int n = 2 * p + 1;
+
+        for(int i = 2; i < n; i++){
+            if(n % i == 0) {
+                factors++;
+            }
+        }
+
+        return factors == 0;
+    }
+}
+ </pre>>
  */
 public class SophieGermain extends McqQuestion {
 
@@ -30,12 +58,15 @@ public class SophieGermain extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] primes", dataSet);
+        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] primes", dataSet);
 
-        return new StringBuilder("""
+        final StringBuilder builder = new StringBuilder("""
                 A Sophie Germain prime number is a prime number p where 2 * p + 1 is
-                also prime. How many of the following are Sophie Germain numbers?""")
-                .append(CodeUtils.toCodeBlock(formatter.format())).toString();
+                also prime. How many of the following are Sophie Germain numbers?
+                """)
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "SophieGermain", formatter.format(2));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override

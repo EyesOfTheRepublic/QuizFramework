@@ -4,8 +4,6 @@ import questiontypes.location.DistanceTwoPoints;
 import questiontypes.location.MinSecDistance;
 import questiontypes.location.TotalDistance;
 import questiontypes.location.WhichDistance;
-import questiontypes.numbers.Factors;
-import questiontypes.numbers.Fibonacci;
 import quizframework.McqQuestion;
 import quizframework.Quiz;
 
@@ -39,9 +37,7 @@ public class LocationQuiz {
               <p>The algorithm for converting from coordinates in degrees, minutes, seconds to decimal is in the information on Canvas in\
               the January Assessment Information module.</p>\
               <p>Remember: cut-and-paste long strings from the questions; do not try to type them in.</p> \
-              <h4>Fibonacci Numbers and Factors</h4> \
-              <p>The remaining two questions ask you to find which numbers in a list have a specific number as a factor, \
-              and which numbers in a list are Fibonacci numbers.</p>""";
+              """;
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz("Location and Numbers 3",
@@ -63,15 +59,6 @@ public class LocationQuiz {
         McqQuestion minSecDist = new MinSecDistance();
         minSecDist.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(minSecDist);
-
-        //Factor and Fibonacci questions
-        McqQuestion factor = new Factors();
-        factor.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(factor);
-
-        McqQuestion fibNum = new Fibonacci();
-        fibNum.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(fibNum);
 
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");

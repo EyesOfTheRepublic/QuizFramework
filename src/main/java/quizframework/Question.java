@@ -242,9 +242,9 @@ public abstract class Question {
     }
 
     /*
-    Generate the answers to the question in the relevant (question type-specific) QTI format
-    Classes that implement question types should implement this method but *not* classes that create questions
-     */
+        Generate the answers to the question in the relevant (question type-specific) QTI format
+        Classes that implement question types should implement this method but *not* classes that create questions
+         */
     protected abstract void generateQtiAnswerSet(StringBuilder builder);
 
 

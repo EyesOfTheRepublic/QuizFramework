@@ -2,7 +2,7 @@ package questiontypes.numbers;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
-import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -11,10 +11,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Checking how many numbers in a list have a specfic number as a factor
+ * Checking how many numbers in a list have a specific number as a factor - version that is suitable for use with
+ * autograder. Code suitable for checking correctness on autograder:
+ <pre>
+ import java.util.stream.IntStream;
+
+public class Test {
+    public static void main(String[] args) {
+        long count = IntStream.of(Factors.numbers)
+        .filter(x -> (x % Factors.factor) == 0).count();
+
+        System.exit(count == Factors.answer() ? 0 : 1);
+    }
+}
+ </pre>
  */
 
-public class Factors extends McqQuestion {
+public class Factors extends NumericQuestion {
 
     private int ansFactor;
     private final ArrayList<Integer> listOfPosFactors = new ArrayList<>();
@@ -28,11 +41,15 @@ public class Factors extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        StringBuilder questionText = new StringBuilder("How many numbers in the following sequence have "
-                + ansFactor + " as a factor?");
+        StringBuilder builder = new StringBuilder("How many numbers in the following sequence have "
+                + ansFactor + " as a factor?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] numbers", listOfPosFactors);
-        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
+        ArrayFormatter<Integer> formatter =
+                new ArrayFormatter<>("public static int[] numbers", listOfPosFactors);
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Factors",
+                formatter.format(2).append(CodeUtils
+                        .indentTextBlock(String.format("public final static int factor = %s;",ansFactor),1 )));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override
@@ -66,13 +83,6 @@ public class Factors extends McqQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(numCorrect));
-    }
-
-    @Override
-    public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        //listOfPosFactors.size() won't be > MAX_NUM for current values but just in case...
-        return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, listOfPosFactors.size())));
     }
 
     @Override

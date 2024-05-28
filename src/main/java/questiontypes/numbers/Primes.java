@@ -3,7 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
-import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -14,15 +14,35 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * This question has a large list of numbers some prime and some not. The question is to identify how many are prime.
+ * This version suitable for use with autograder - use this code:
+ <pre>
+import java.util.stream.IntStream;
+
+public class Test {
+    public static void main(String[] args) {
+        long count = IntStream.of(Primes.primes).filter(Test::isPrime).count();
+        System.exit(count == Primes.answer() ? 0 : 1);
+    }
+
+    public static boolean isPrime(final int val) {
+        for(int i = 2; i < Math.ceil(Math.sqrt(val)) + 1; i++) { //to be safe...
+            if (val % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+ </pre>
  */
-public class Primes extends McqQuestion {
+public class Primes extends NumericQuestion {
 
     private int numPrimes;
 
-    private ArrayList<Integer> dataSet = new ArrayList<>(); //The set that appears in the question
-    private ArrayList<Integer> primeList = new ArrayList<>(); //A copy of the list of primes in PrimeData
+    private final ArrayList<Integer> dataSet = new ArrayList<>(); //The set that appears in the question
+    private final ArrayList<Integer> primeList = new ArrayList<>(); //A copy of the list of primes in PrimeData
 
-    private ArrayList<Integer> nonPrimeList = new ArrayList<>(); //A copy of the list of non primes in PrimeData
+    private final ArrayList<Integer> nonPrimeList = new ArrayList<>(); //A copy of the list of non primes in PrimeData
 
     @Override
     public String createQuestionTitle() {
@@ -31,9 +51,11 @@ public class Primes extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        StringBuilder questionText = new StringBuilder("How many of the following numbers are prime?");
-        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("int[] primes", dataSet);
-        return questionText.append(CodeUtils.toCodeBlock(formatter.format())).toString();
+        StringBuilder builder = new StringBuilder("How many of the following numbers are prime?");
+        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static final int[] primes", dataSet);
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Primes",
+                formatter.format(2));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override
@@ -73,19 +95,12 @@ public class Primes extends McqQuestion {
     }
 
     @Override
-    public Answer createIncorrectAnswer() {
-        int candidate = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        //dataSet.size() won't be > MAX_NUM for current values but just in case...
-        return Answer.makeIncorrectAnswer(Integer.toString(Math.min(candidate, dataSet.size())));
-    }
-
-    @Override
     public boolean checkAnswer(final Answer answer) {
         int primeCount = 0;
-        for(int i = 0; i < dataSet.size(); i++) {
+        for (int potentialPrime : dataSet) {
             boolean prime = true;
-            for (int j = 2; j < dataSet.get(i) - 1; j++) {
-                if (dataSet.get(i) % j == 0) {
+            for (int j = 2; j < potentialPrime - 1; j++) {
+                if (potentialPrime % j == 0) {
                     prime = false;
                     break;
                 }

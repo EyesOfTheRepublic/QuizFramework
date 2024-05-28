@@ -6,7 +6,7 @@ package questiontypes.numbers.utils;
 public class FibSequence {
 
     /*
-    Prevent inadvertant instantation
+    Prevent inadvertent instantation
      */
     private FibSequence() {}
 
