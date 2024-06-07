@@ -1,6 +1,7 @@
 package demo;
 
 import questiontypes.checksum.CheckSumStringQuestion;
+import questiontypes.checksum.CheckSumValueQuestion;
 import questiontypes.numbers.*;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
@@ -45,10 +46,10 @@ public class DemoQuestions {
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
-         *//*
-        McqQuestion checkValueQuestion = new CheckSumValueQuestion();
-        checkValueQuestion.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(checkValueQuestion);*/
+         */
+        NumericQuestion checkValueQuestion = new CheckSumValueQuestion();
+        checkValueQuestion.createQuestion();
+        quiz.addQuestion(checkValueQuestion);
 
         McqQuestion checkStringQuestion = new CheckSumStringQuestion();
         checkStringQuestion.createQuestion(6);

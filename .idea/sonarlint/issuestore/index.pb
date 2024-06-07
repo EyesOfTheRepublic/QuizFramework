@@ -37,8 +37,6 @@ h
 8src/main/java/questiontypes/location/MinSecDistance.java,f/c/fc2038b95f3dd74a54fecbeebfd86ee909640ba7
 g
 7src/main/java/questiontypes/location/TotalDistance.java,0/c/0c94c01ae4c311d068b4a3dfadb0591e9a00dcc8
-i
-9src/main/java/questiontypes/numbers/PythTripletsCode.java,1/b/1b3e215e784ad72836a0e0096fd8c7ace1ad9de4
 c
 3src/main/java/questiontypes/time/TimeTraveller.java,a/8/a8e61024696b639266200cf6d67e44bb666a1746
 c
@@ -205,8 +203,6 @@ w
 G.idea/sonarlint/issuestore/a/e/ae9ddf453f55affea2d6b9e3973cac1eb2efb4e1,6/2/6248197ca7a44d8bc42b5bd6cd80cd6e99143261
 w
 G.idea/sonarlint/issuestore/f/d/fd9aeeb8973582a7bb1705f1abcbbe3777b36bfd,2/b/2b8d8d8056c1c5b5e750ae4fd4d93261ab2f1193
-t
-Dsrc/main/java/questiontypes/checksum/utils/CheckSumQuestionCore.java,9/6/965efb915c434c3f785545fe448bb2f3d79286ac
 Å
 Q.idea/sonarlint/securityhotspotstore/1/c/1c32b6bdd1e8a400e570c525b394a5dbafd8b830,2/a/2a53afa872de0d9e6d0febe525dbba3975c3a905
 w
@@ -349,13 +345,7 @@ Q.idea/sonarlint/securityhotspotstore/c/6/c60265a78b658185d5fd31e3efe25f00eb2600
 Q.idea/sonarlint/securityhotspotstore/c/6/c64da7be8c0fbb749192fa12458f24dae36dd405,4/b/4b184f7fdf06e888e9f0b460f82ca8baa33fcaf1
 Å
 Q.idea/sonarlint/securityhotspotstore/4/f/4f1c6a07cd3838fe851ed71a98d92ccd47c245d9,d/1/d1f51db3fd9b3ada6b89f9057c9c99fec64acb8e
-j
-:src/main/java/questiontypes/numbers/SophieGermainCode.java,5/2/5228c1e4dd1517f2d26032bf5feafb2d9229cc74
 U
 %src/main/java/demo/DemoQuestions.java,c/a/caeeb56155e60cabee6f43e98fcd90ca2055b13e
-e
-5src/main/java/questiontypes/numbers/AddPairsCode.java,9/d/9df88ac59cdb20262444f0006bc87a3a3f68a6f1
 u
 Esrc/main/java/questiontypes/checksum/utils/CheckSumQuestionUtils.java,0/5/050e618aae51b2023d4d31b5dbc02af17a029dbc
-v
-Fsrc/main/java/questiontypes/checksum/CheckSumStringQuestionNoCode.java,4/9/4998042a356061ffffe88d6651e0d6569cf474ff

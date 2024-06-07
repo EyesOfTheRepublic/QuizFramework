@@ -50,12 +50,12 @@ public class Fibonacci extends McqQuestion {
     @Override
     public String createQuestionText() {
 
-        StringBuilder builder = new StringBuilder("""
+        final StringBuilder builder = new StringBuilder("""
                 How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
                 for the Fibonacci numbers you calculate and NOT int.""")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        ArrayFormatter<Long> formatter = new ArrayFormatter<>("public final static long[] posFibNumbers", questionList) {
+        final ArrayFormatter<Long> formatter = new ArrayFormatter<>("public final static long[] posFibNumbers", questionList) {
             @Override
             public String outputItem(final Long item) {
                 return item + "L";

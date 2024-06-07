@@ -55,7 +55,7 @@ public class PythTriplets extends NumericQuestion {
 
     @Override
     public String createQuestionText() {
-        ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("public static int[][] possTriples", pythList);
+        final ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("public static int[][] possTriples", pythList);
 
         final StringBuilder builder = new StringBuilder("""
                 How many of the groups of three numbers in the list are Pythagorean Triples?

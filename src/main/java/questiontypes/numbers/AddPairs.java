@@ -61,12 +61,12 @@ public class AddPairs extends NumericQuestion {
     }
 
     public String createQuestionText() {
-        StringBuilder builder = new StringBuilder("In the following list of numbers, every number EXCEPT ONE can be added to another number "
+        final StringBuilder builder = new StringBuilder("In the following list of numbers, every number EXCEPT ONE can be added to another number "
                 + "in the list to make " + sumTarget
                 + ". What is that number? It is guaranteed that all numbers in the list are unique.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] numList", numList);
+        final ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] numList", numList);
         final String code = String.format(CodeUtils.CODE_FRAMEWORK, "AddPairs",
                 formatter.format(2)
                         .append(CodeUtils
