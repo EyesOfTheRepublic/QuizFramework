@@ -1,6 +1,25 @@
 package demo;
 
+import questiontypes.checksum.BitwiseChecksum;
+import questiontypes.checksum.CheckSumPairQuestion;
+import questiontypes.checksum.CheckSumStringQuestion;
+import questiontypes.crypto.Decryption;
+import questiontypes.crypto.DoubleEncrypt;
+import questiontypes.crypto.Encryption;
+import questiontypes.crypto.NumCols;
+import questiontypes.location.DistanceTwoPoints;
+import questiontypes.location.MinSecDistance;
+import questiontypes.location.TotalDistance;
+import questiontypes.location.WhichDistance;
 import questiontypes.numbers.*;
+import questiontypes.termrewriting.AltRewriting;
+import questiontypes.termrewriting.ReducesToX;
+import questiontypes.termrewriting.RewritingNSteps;
+import questiontypes.termrewriting.RewritingToCompletion;
+import questiontypes.time.ClosestDateTime;
+import questiontypes.time.DiffMills;
+import questiontypes.time.PairDiffMills;
+import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -47,12 +66,12 @@ public class DemoQuestions {
          *//*
         McqQuestion checkValueQuestion = new CheckSumValueQuestion();
         checkValueQuestion.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(checkValueQuestion);
+        quiz.addQuestion(checkValueQuestion);*/
 
         McqQuestion checkStringQuestion = new CheckSumStringQuestion();
-        checkStringQuestion.createQuestion(NUM_ANSWERS);
+        checkStringQuestion.createQuestion(6);
         quiz.addQuestion(checkStringQuestion);
-
+/*
         McqQuestion checkPairQuestion = new CheckSumPairQuestion();
         checkPairQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkPairQuestion);

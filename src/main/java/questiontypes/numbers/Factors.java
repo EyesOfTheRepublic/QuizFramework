@@ -41,14 +41,14 @@ public class Factors extends NumericQuestion {
 
     @Override
     public String createQuestionText() {
-        StringBuilder builder = new StringBuilder("How many numbers in the following sequence have "
+        final StringBuilder builder = new StringBuilder("How many numbers in the following sequence have "
                 + ansFactor + " as a factor?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        ArrayFormatter<Integer> formatter =
+        final ArrayFormatter<Integer> formatter =
                 new ArrayFormatter<>("public static int[] numbers", listOfPosFactors);
         final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Factors",
                 formatter.format(2).append(CodeUtils
-                        .indentTextBlock(String.format("public final static int factor = %s;",ansFactor),1 )));
+                        .indentTextBlock(String.format("public static int factor = %s;",ansFactor),1 )));
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

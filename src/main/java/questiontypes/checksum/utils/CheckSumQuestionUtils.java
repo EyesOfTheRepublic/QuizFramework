@@ -1,22 +1,18 @@
 package questiontypes.checksum.utils;
 
-import quizframework.McqQuestion;
 /**
  *Class used as the basis of the checksum example questions - most importantly contains the actual checksum algorithms
  *This approach probably doesn't make any sense now given changes elsewhere
  */
-public abstract class CheckSumQuestionCore extends McqQuestion {
+public class CheckSumQuestionUtils {
 
-    protected static final int MIN_LEN = 65;
-    protected static final int MAX_LEN = 85;
+    public static final int MIN_LEN = 65;
+    public static final int MAX_LEN = 85;
 
-    protected static final char HIGH_RNG = 'z';
-    protected static final char LOW_RNG = 'a';
+    public static final char HIGH_RNG = 'z';
+    public static final char LOW_RNG = 'a';
 
-    //Prevent inadvertent instantiation
-    private CheckSumQuestionCore() {}
-
-    protected long simpleCheckSum(String str) {
+    public static long simpleCheckSum(String str) {
         long k = 7;//7
         for (int i = 0; i < str.length(); i++) {
             k *= 23;//23
@@ -27,7 +23,7 @@ public abstract class CheckSumQuestionCore extends McqQuestion {
         return k;
     }
 
-    protected byte bitwiseCheckSum(final String str) {
+    public static byte bitwiseCheckSum(final String str) {
         byte[] input = str.getBytes();
         byte checksum = 0;
         for (byte cur_byte : input) {

@@ -1,14 +1,15 @@
 package questiontypes.checksum;
 
-import questiontypes.checksum.utils.CheckSumQuestionCore;
+import questiontypes.checksum.utils.CheckSumQuestionUtils;
 import quizframework.Answer;
+import quizframework.NumericQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
- *Generate a random string, the correct checksum using algorithm defined in {@link CheckSumQuestionCore},
+ *Generate a random string, the correct checksum using algorithm defined in {@link questiontypes.checksum.utils.CheckSumQuestionUtils},
  * and a set of random incorrect checksums. The question asks which checksum is correct
  */
-public class CheckSumValueQuestion extends CheckSumQuestionCore {
+public class CheckSumValueQuestion extends NumericQuestion {
 
     private String checkString;
 
@@ -45,13 +46,7 @@ public class CheckSumValueQuestion extends CheckSumQuestionCore {
     @Override
     public Answer createCorrectAnswer() {
 
-        return Answer.makeCorrectAnswerWithFeedback(Long.toString(simpleCheckSum(checkString)),
+        return Answer.makeCorrectAnswerWithFeedback(Long.toString(CheckSumQuestionUtils.simpleCheckSum(checkString)),
                 "some correct feedback");
-    }
-
-    @Override
-    public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomLong(Long.MIN_VALUE, Long.MAX_VALUE)),
-                "some incorrect feedback");
     }
 }

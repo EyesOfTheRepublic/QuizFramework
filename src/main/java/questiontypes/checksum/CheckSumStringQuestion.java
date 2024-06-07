@@ -1,15 +1,17 @@
 package questiontypes.checksum;
 
-import questiontypes.checksum.utils.CheckSumQuestionCore;
+import questiontypes.checksum.utils.CheckSumQuestionUtils;
 import quizframework.Answer;
+import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
  *Generate a simple checksum question - create a random string and a corresponding checksum. Then create a set of
  *(incorrect) strings - the question asks which string the checksum belongs to. Uses algorithms defined in
- * {@link CheckSumQuestionCore}
+ * {@link CheckSumQuestionUtils}
  */
-public class CheckSumStringQuestion extends CheckSumQuestionCore {
+public class CheckSumStringQuestion extends McqQuestion {
 
     private String correctAnswer;
 
@@ -19,7 +21,13 @@ public class CheckSumStringQuestion extends CheckSumQuestionCore {
     }
     @Override
     public String createQuestionText() {
-        return "Which of the following strings generates the simple checksum ``" + correctAnswer + "`` ?";
+        final StringBuilder builder = new StringBuilder( "Which of the following strings generates the simple checksum "
+                + CheckSumQuestionUtils.simpleCheckSum(correctAnswer) + " ?")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "CheckSumString",
+                CodeUtils.indentTextBlock(String.format("public static int checkSum = %d;",
+                        CheckSumQuestionUtils.simpleCheckSum(correctAnswer)),1));
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override

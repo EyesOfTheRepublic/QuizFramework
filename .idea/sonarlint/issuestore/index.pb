@@ -355,3 +355,5 @@ U
 %src/main/java/demo/DemoQuestions.java,c/a/caeeb56155e60cabee6f43e98fcd90ca2055b13e
 e
 5src/main/java/questiontypes/numbers/AddPairsCode.java,9/d/9df88ac59cdb20262444f0006bc87a3a3f68a6f1
+u
+Esrc/main/java/questiontypes/checksum/utils/CheckSumQuestionUtils.java,0/5/050e618aae51b2023d4d31b5dbc02af17a029dbc

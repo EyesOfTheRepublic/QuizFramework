@@ -1,14 +1,15 @@
 package questiontypes.checksum;
 
-import questiontypes.checksum.utils.CheckSumQuestionCore;
+import questiontypes.checksum.utils.CheckSumQuestionUtils;
 import quizframework.Answer;
+import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
  *An example checksum question - generate a list of pairs of strings and checksums (using the algorithm in
- *{@link CheckSumQuestionCore} - one of which will be correct and the others incorrect
+ *{@link CheckSumQuestionUtils} - one of which will be correct and the others incorrect
  */
-public class CheckSumPairQuestion extends CheckSumQuestionCore {
+public class CheckSumPairQuestion extends McqQuestion {
 
     private String checkedString;
     private long checkSum;
@@ -24,25 +25,10 @@ public class CheckSumPairQuestion extends CheckSumQuestionCore {
     }
 
     @Override
-    public String createGeneralFeedback() {
-        return "Some generic feedback";
-    }
-
-    @Override
-    public String createCorrectFeedback() {
-        return "Some feedback for the correct answer";
-    }
-
-    @Override
-    public String createIncorrectFeedback() {
-        return "Some general feedback for incorrect answers";
-    }
-
-    @Override
     public void createCalcData() {
         String dataString = QuizUtils.genRandomString(65, 20, 'a', 'z');
         checkedString = dataString;
-        checkSum = simpleCheckSum(dataString);
+        checkSum = CheckSumQuestionUtils.simpleCheckSum(dataString);
     }
 
     @Override
