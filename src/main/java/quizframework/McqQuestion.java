@@ -87,6 +87,7 @@ public abstract class McqQuestion extends Question {
     public final boolean createQuestion(final int numAnswers) {
         questionType = QuestionType.MCQ;
         buildQuestionBasics();
+
         //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
         if (!addAnswer(createCorrectAnswer())) {
             return false;
@@ -100,6 +101,10 @@ public abstract class McqQuestion extends Question {
                 incorrectCount++;
             }
         }
+        //We need to shuffle the answers *before* we (potentially) use them in question text
+        java.util.Collections.shuffle(answerList);
+        //Must be generated LAST to allow answers to appear in it - this is clunky...
+        addQuestionText(createQuestionText());
         return true;
     }
 
@@ -107,9 +112,8 @@ public abstract class McqQuestion extends Question {
    Generate a set of answers in text2qti format for an MCQ question
    */
     protected void generateQtiAnswerSet(final StringBuilder builder) {
-        final List<Answer> list = randomize();
         char qItem = 'a';
-        for (Answer ans : list) {
+        for (Answer ans : answerList) {
             final String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
             builder.append(CodeUtils.outputTextBlock(qLabel, ans.getQuestionAnswer()));
             if (ans.getFeedback() != null) {

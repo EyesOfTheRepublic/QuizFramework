@@ -80,6 +80,8 @@ public abstract class NumericQuestion extends Question {
     public final boolean createQuestion() {
         questionType = QuestionType.NUMERIC;
         buildQuestionBasics();
+        //Must be generated LAST to allow answers to appear in it - this is clunky...
+        addQuestionText(createQuestionText());
         //Add the correct answer first to ensure an incorrect one randomly-matching it is not already present
         return addAnswer(createCorrectAnswer());
     }

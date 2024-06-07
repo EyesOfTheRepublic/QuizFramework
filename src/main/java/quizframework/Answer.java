@@ -97,6 +97,15 @@ public final class Answer {
     }
 
     /**
+     * Used to generate a version of an answer that is a string and needs to appear in quotes
+     * @param ans the answer that needs to be quoted
+     * @return the same answer but with the text in quotes
+     */
+    public Answer makeQuotedStringAnswer() {
+        return new Answer("\"" + questionAnswer + "\"", feedback, isCorrect);
+    }
+
+    /**
      * Method to return the <strong>answer text only</strong> as a string
      *
      * @return the answer text

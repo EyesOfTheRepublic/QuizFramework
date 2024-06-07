@@ -1,25 +1,7 @@
 package demo;
 
-import questiontypes.checksum.BitwiseChecksum;
-import questiontypes.checksum.CheckSumPairQuestion;
 import questiontypes.checksum.CheckSumStringQuestion;
-import questiontypes.crypto.Decryption;
-import questiontypes.crypto.DoubleEncrypt;
-import questiontypes.crypto.Encryption;
-import questiontypes.crypto.NumCols;
-import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.MinSecDistance;
-import questiontypes.location.TotalDistance;
-import questiontypes.location.WhichDistance;
 import questiontypes.numbers.*;
-import questiontypes.termrewriting.AltRewriting;
-import questiontypes.termrewriting.ReducesToX;
-import questiontypes.termrewriting.RewritingNSteps;
-import questiontypes.termrewriting.RewritingToCompletion;
-import questiontypes.time.ClosestDateTime;
-import questiontypes.time.DiffMills;
-import questiontypes.time.PairDiffMills;
-import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;

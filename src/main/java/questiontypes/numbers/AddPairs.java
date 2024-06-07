@@ -70,7 +70,7 @@ public class AddPairs extends NumericQuestion {
         final String code = String.format(CodeUtils.CODE_FRAMEWORK, "AddPairs",
                 formatter.format(2)
                         .append(CodeUtils
-                                .indentTextBlock(String.format("public static int pairSum = %s;",sumTarget), 1)));
+                                .indentTextBlock(String.format("public static int pairSum = %s;",sumTarget), 1)), "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

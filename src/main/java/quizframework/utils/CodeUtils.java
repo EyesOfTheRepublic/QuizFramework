@@ -30,8 +30,8 @@ public final class CodeUtils {
 
     /**
      * Standard framework used for (at least some of) the question types intended to be submitted to autograder
-     * Requires a class name and a block of set up code - which can be anything but typically would be, say,
-     * a public static array.
+     * Requires a class name, a block of set up code - which can be anything but typically would be, say,
+     * a public static array - and a return type for the method answer.
      */
     public static final String CODE_FRAMEWORK = """
                 public class %s {
@@ -41,7 +41,7 @@ public final class CodeUtils {
                          System.out.println(answer());
                      }
                     
-                     public static int answer() {
+                     public static %s answer() {
                          //Write your code here - it should *return* the answer
                      }
                 }

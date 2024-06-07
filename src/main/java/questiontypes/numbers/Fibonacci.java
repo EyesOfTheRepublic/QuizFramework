@@ -61,7 +61,7 @@ public class Fibonacci extends McqQuestion {
                 return item + "L";
             }
         };
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Fibonacci", formatter.format(2));
+        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Fibonacci", formatter.format(2), "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

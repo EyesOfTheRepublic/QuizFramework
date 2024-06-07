@@ -25,7 +25,7 @@ public abstract class Question {
     private String incorrectAnswerFeedback;
 
     private int points;
-    private final List<Answer> answerList = new ArrayList<>();
+    protected final List<Answer> answerList = new ArrayList<>();
     protected final List<Answer> faultList = new ArrayList<>();
     protected QuestionType questionType;
 
@@ -138,7 +138,8 @@ public abstract class Question {
     protected final void buildQuestionBasics() {
         createCalcData();//This needs to be first to ensure the data is available to compute question text and answers
         addQuestionTitle(createQuestionTitle());
-        addQuestionText(createQuestionText());
+        //DO NOT generate the question text here!! - it needs to be possible to include the answers in the text
+        //addQuestionText(createQuestionText());
         //Prevent questions having zero/negative points
         addQuestionPoints(Math.max(createQuestionPoints(), 1));
         addGeneralFeedback(createGeneralFeedback());
@@ -250,11 +251,12 @@ public abstract class Question {
 
     /*Shuffle an arraylist - used to randomize the order of answers in the list of possible answers (by default, in
     MCQ example, the correct answer will always be added first and will always be at the front, so this shuffles the order) */
-    protected final List<Answer> randomize() {
+    protected final List<Answer> randomizeAnsList() {
         final List<Answer> list = new ArrayList<>(getAnswerList());
         java.util.Collections.shuffle(list);
         return list;
     }
+
 
     //Setters, getters...
     /**
