@@ -65,7 +65,7 @@ public class SophieGermain extends McqQuestion {
                 also prime. How many of the following are Sophie Germain numbers?
                 """)
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "SophieGermain", formatter.format(2), "int");
+        final StringBuilder code = CodeUtils.questionCode( "SophieGermain", formatter.format(2), "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

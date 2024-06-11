@@ -42,8 +42,9 @@ public class CheckSumValueQuestion extends NumericQuestion {
     public String createQuestionText() {
         final StringBuilder builder = new StringBuilder( "What is the result of running the simple checksum algorithm on the string ``"
                 + checkString + "``?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "CheckSumValue",
-                CodeUtils.indentTextBlock(String.format("public static String checkStr = \"%s\";", checkString), 1), "long");
+        final StringBuilder code = CodeUtils.questionCode("CheckSumValue",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static String checkStr = \"%s\";", checkString))),
+                "long");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

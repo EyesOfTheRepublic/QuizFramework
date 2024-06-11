@@ -53,8 +53,7 @@ public class Primes extends NumericQuestion {
     public String createQuestionText() {
         final StringBuilder builder = new StringBuilder("How many of the following numbers are prime?");
         final ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static final int[] primes", dataSet);
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Primes",
-                formatter.format(2), "int");
+        final StringBuilder code = CodeUtils.questionCode("Primes", formatter.format(2), "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

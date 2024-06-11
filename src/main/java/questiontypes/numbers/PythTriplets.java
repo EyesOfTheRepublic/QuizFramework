@@ -62,7 +62,7 @@ public class PythTriplets extends NumericQuestion {
                 That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
                 """).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Pythagoras", formatter.format(2), "int");
+        final StringBuilder code = CodeUtils.questionCode("Pythagoras", formatter.format(2), "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

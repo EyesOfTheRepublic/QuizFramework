@@ -67,10 +67,11 @@ public class AddPairs extends NumericQuestion {
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
         final ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] numList", numList);
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "AddPairs",
+        final StringBuilder code = CodeUtils.questionCode( "AddPairs",
                 formatter.format(2)
                         .append(CodeUtils
-                                .indentTextBlock(String.format("public static int pairSum = %s;",sumTarget), 1)), "int");
+                                .indentTextBlock(String.format("public static int pairSum = %s;",sumTarget), 1)),
+                "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

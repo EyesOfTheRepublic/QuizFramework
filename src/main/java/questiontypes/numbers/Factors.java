@@ -46,9 +46,9 @@ public class Factors extends NumericQuestion {
 
         final ArrayFormatter<Integer> formatter =
                 new ArrayFormatter<>("public static int[] numbers", listOfPosFactors);
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "Factors",
+        final StringBuilder code = CodeUtils.questionCode( "Factors",
                 formatter.format(2).append(CodeUtils
-                        .indentTextBlock(String.format("public static int factor = %s;",ansFactor),1 )), "int");
+                        .indentTextBlock(String.format("public static int factor = %s;",ansFactor))), "int");
         return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 

@@ -66,10 +66,10 @@ public class CheckSumStringQuestion extends McqQuestion {
             }
         };
 
-        final String code = String.format(CodeUtils.CODE_FRAMEWORK, "CheckSumString",
-                formatter.format(2).append(CodeUtils.indentTextBlock(String.format("public static long checkSum = %dL;",
-                        CheckSumQuestionUtils.simpleCheckSum(correctAnswer)),1)), "String");
-        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
+        final StringBuilder  code = CodeUtils.questionCode("CheckSumString",
+                formatter.format().append(CodeUtils.indentTextBlock(String.format("public static long checkSum = %dL;",
+                        CheckSumQuestionUtils.simpleCheckSum(correctAnswer)))), "String");
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
     }
 
     @Override

@@ -48,6 +48,19 @@ public final class CodeUtils {
                 """;
 
     /**
+     * Format a block of code suitable to be cut and pasted to answer the question and also to be used to upload
+     * to autograder - format is based on CODE_FRAMEWORK
+     * @param className the name of the class to be created
+     * @param codeBlock an arbitrary block of code to be inserted - usually an array, a constant of both. No checking
+     *                  is done to determine if this is legal
+     * @param returnType the type returned by the method the student should write.
+     * @return the formatted string
+     */
+    public static StringBuilder questionCode(final String className,
+                                             final StringBuilder codeBlock, final String returnType) {
+        return  new StringBuilder(String.format(CodeUtils.CODE_FRAMEWORK, className, codeBlock, returnType));
+    }
+    /**
      * Generate an appropriately-indented (by MARKDOWN_INDENT) block of text, with an initial unindented label
      * All lines of content must be consistently indented and the label (question number or answer number) must fit
      * within that indenting (i.e. the label is *not* indented). This means that the indenting must be strictly >
@@ -65,6 +78,21 @@ public final class CodeUtils {
         return builder.toString();
     }
 
+    /**
+     * Indent a text block by one 'step' (MARKDOWN_INDENT spaces)
+     * @param text the block of text
+     * @return the indented text
+     */
+    public static String indentTextBlock(final String text) {
+        return indentTextBlock(text, 1);
+    }
+
+    /**
+     * Indent a text block by steps multiples of MARKDOWN_INDENT spaces
+     * @param text the block of text
+     * @param steps the number of steps to indent
+     * @return the indented text
+     */
     public static String indentTextBlock(final String text, final int steps) {
         final String[] lines = text.trim().split("\n");
         final StringBuilder builder = new StringBuilder("\n");

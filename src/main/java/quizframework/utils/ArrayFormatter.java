@@ -12,6 +12,7 @@ public class ArrayFormatter<T> {
 
     private final String header;
     private final List<T> dataList;
+    private static final int STEPS = 2;
 
     /**
      * Create an ArrayFormatter - header is the first line of the declaration (e.g. 'static int[] name =' and datalist
@@ -40,7 +41,7 @@ public class ArrayFormatter<T> {
      * @return the formatted data as a String
      */
     public final StringBuilder format() {
-        return this.format(1);
+        return this.format(STEPS);
     }
 
     /**
