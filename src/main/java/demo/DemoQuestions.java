@@ -1,8 +1,14 @@
 package demo;
 
+import questiontypes.checksum.BitwiseChecksum;
 import questiontypes.checksum.CheckSumStringQuestion;
 import questiontypes.checksum.CheckSumValueQuestion;
-import questiontypes.numbers.*;
+import questiontypes.numbers.AddPairs;
+import questiontypes.numbers.Factors;
+import questiontypes.numbers.Fibonacci;
+import questiontypes.numbers.Primes;
+import questiontypes.numbers.PythTriplets;
+import questiontypes.numbers.SophieGermain;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -55,15 +61,15 @@ public class DemoQuestions {
         checkStringQuestion.createQuestion(6);
         quiz.addQuestion(checkStringQuestion);
 /*
-        McqQuestion checkPairQuestion = new CheckSumPairQuestion();
+        McqQuestion checkPairQuestion = new CheckSumPairQuestionNoCode();
         checkPairQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkPairQuestion);
-
+*/
         McqQuestion bitwise = new BitwiseChecksum();
         bitwise.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(bitwise);
 
-        *//*Time questions - note checkAnswer to (semi-independently)check the correctness of the answers
+        /*Time questions - note checkAnswer to (semi-independently)check the correctness of the answers
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!

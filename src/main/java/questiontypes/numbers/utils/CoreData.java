@@ -21,9 +21,9 @@ public class CoreData {
     /**
      * Maximum number of elements in a randomly-generated data array
      */
-    public static final int MAX_NUM = 27;
+    public static final int MAX_NUM = 37;
     /**
      * Minimum number of elements in a randomly-generated data array
      */
-    public static final int MIN_NUM = 17;
+    public static final int MIN_NUM = 27;
 }

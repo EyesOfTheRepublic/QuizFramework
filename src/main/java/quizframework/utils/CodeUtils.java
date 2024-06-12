@@ -49,7 +49,7 @@ public final class CodeUtils {
 
     /**
      * Format a block of code suitable to be cut and pasted to answer the question and also to be used to upload
-     * to autograder - format is based on CODE_FRAMEWORK
+     * to autograder - format is based on {@link #CODE_FRAMEWORK}
      * @param className the name of the class to be created
      * @param codeBlock an arbitrary block of code to be inserted - usually an array, a constant of both. No checking
      *                  is done to determine if this is legal
@@ -61,7 +61,7 @@ public final class CodeUtils {
         return  new StringBuilder(String.format(CodeUtils.CODE_FRAMEWORK, className, codeBlock, returnType));
     }
     /**
-     * Generate an appropriately-indented (by MARKDOWN_INDENT) block of text, with an initial unindented label
+     * Generate an appropriately-indented (by {@link #MARKDOWN_INDENT}) block of text, with an initial unindented label
      * All lines of content must be consistently indented and the label (question number or answer number) must fit
      * within that indenting (i.e. the label is *not* indented). This means that the indenting must be strictly >
      * than the length of the label (because text2qti doesn't work if there is space after the question number).
@@ -79,7 +79,7 @@ public final class CodeUtils {
     }
 
     /**
-     * Indent a text block by one 'step' (MARKDOWN_INDENT spaces)
+     * Indent a text block by one 'step' ({@link #MARKDOWN_INDENT} spaces)
      * @param text the block of text
      * @return the indented text
      */
@@ -88,7 +88,7 @@ public final class CodeUtils {
     }
 
     /**
-     * Indent a text block by steps multiples of MARKDOWN_INDENT spaces
+     * Indent a text block by steps multiples of {@link #MARKDOWN_INDENT} spaces
      * @param text the block of text
      * @param steps the number of steps to indent
      * @return the indented text

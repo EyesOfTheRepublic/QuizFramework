@@ -337,3 +337,5 @@ U
 %src/main/java/demo/DemoQuestions.java,c/a/caeeb56155e60cabee6f43e98fcd90ca2055b13e
 u
 Esrc/main/java/questiontypes/checksum/utils/CheckSumQuestionUtils.java,0/5/050e618aae51b2023d4d31b5dbc02af17a029dbc
+t
+Dsrc/main/java/questiontypes/checksum/CheckSumPairQuestionNoCode.java,4/8/4836b19ba8c19e21111b6a6a1d1f4ef834811338
