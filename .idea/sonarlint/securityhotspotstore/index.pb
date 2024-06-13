@@ -75,12 +75,8 @@ o
 ?src/main/java/questiontypes/numbers/utils/PythTripletsData.java,a/9/a93957cbf1988e43e14266325dfac407d085544b
 j
 :src/main/java/questiontypes/numbers/utils/FibSequence.java,d/a/da7c38b6a1543413dd862c6411ab053f6cd0942f
-p
-@src/main/java/questiontypes/checksum/CheckSumStringQuestion.java,4/9/49a0d4c597dda852edb545856adff7bb3f0891de
 i
 9src/main/java/questiontypes/checksum/BitwiseChecksum.java,f/3/f3bc3f5cf22f2d97c22ac73082c9713d59db7afe
-o
-?src/main/java/questiontypes/checksum/CheckSumValueQuestion.java,b/a/ba74ec620385618a97a7a31ec775dedc61fc5b4a
 b
 2src/main/java/questiontypes/crypto/Encryption.java,c/6/c60265a78b658185d5fd31e3efe25f00eb26000b
 b
@@ -331,8 +327,6 @@ U
 %src/main/java/demo/DemoQuestions.java,c/a/caeeb56155e60cabee6f43e98fcd90ca2055b13e
 u
 Esrc/main/java/questiontypes/checksum/utils/CheckSumQuestionUtils.java,0/5/050e618aae51b2023d4d31b5dbc02af17a029dbc
-t
-Dsrc/main/java/questiontypes/checksum/CheckSumPairQuestionNoCode.java,4/8/4836b19ba8c19e21111b6a6a1d1f4ef834811338
 h
 8src/main/java/questiontypes/checksum/CheckSumString.java,d/5/d54e0cf029020ee4eec797659862ad9441a23cc9
 g

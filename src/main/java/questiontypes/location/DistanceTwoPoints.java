@@ -3,10 +3,43 @@ package questiontypes.location;
 import questiontypes.location.utils.LocationUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
- * How far is it between two points (lat, long) on a globe?
+ * How far is it between two points (lat, long) on a globe?. Code for autograder:
+ <pre>
+public class Test {
+    public static DistanceBetweenPoints.Point point1 =
+        new DistanceBetweenPoints.Point(43.17735535805636, 22.551194809308342);
+    public static DistanceBetweenPoints.Point point2 =
+        new DistanceBetweenPoints.Point(-4.412059037641029, -51.300181037261346);
+
+
+    public static void main(String[] args) {
+        DistanceBetweenPoints.point1 = point1;
+        DistanceBetweenPoints.point2 = point2;
+
+        System.exit((distance(point1, point2)
+            == DistanceBetweenPoints.answer()) ? 0 : 1);
+    }
+
+    public static double distance(final DistanceBetweenPoints.Point point1,
+        DistanceBetweenPoints.Point point2) {
+        double lat1 = point1.lat();
+        double long1 = point1.lon();
+        double lat2 = point2.lat();
+        double long2 = point2.lon();
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(long2 - long1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+            + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return 6371 * c;
+    }
+}
+ </pre>
  */
 public class DistanceTwoPoints extends McqQuestion {
 
@@ -22,8 +55,17 @@ public class DistanceTwoPoints extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is the distance in Km between coordinates ``" + point1
-                + "`` and ``" + point2 + "``?";
+        final StringBuilder builder = new StringBuilder("What is the distance in Km between coordinates ``" + point1
+                + "`` and ``" + point2 + "``?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final String codeTemplate = """
+                public record Point(double lat, double lon) {};
+                public static Point point1 = new Point(%s);
+                public static Point point2 = new Point(%s);
+                """;
+        final StringBuilder code = CodeUtils.questionCode("DistanceBetweenPoints",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, point1, point2))), "double");
+        return builder.append(code).toString();
+
     }
 
     @Override

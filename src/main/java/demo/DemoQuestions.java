@@ -137,12 +137,12 @@ public class DemoQuestions {
         McqQuestion doubleEncode = new DoubleEncrypt();
         doubleEncode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(doubleEncode);
-/*
+
         //Geographical distance questions
         McqQuestion singleDistance = new DistanceTwoPoints();
         singleDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(singleDistance);
-
+/*
         McqQuestion whichDistance = new WhichDistance();
         whichDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(whichDistance);
