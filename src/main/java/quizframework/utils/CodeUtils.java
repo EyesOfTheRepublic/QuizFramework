@@ -71,7 +71,7 @@ public final class CodeUtils {
      */
     public static StringBuilder questionCode(final String className,
                                              final StringBuilder codeBlock, final String returnType) {
-        return  new StringBuilder(String.format(CodeUtils.CODE_FRAMEWORK, className, codeBlock, returnType));
+        return  new StringBuilder(indentTextBlock(String.format(CodeUtils.CODE_FRAMEWORK, className, codeBlock, returnType)));
     }
     /**
      * Generate an appropriately-indented (by {@link #MARKDOWN_INDENT}) block of text, with an initial unindented label

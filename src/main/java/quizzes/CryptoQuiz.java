@@ -5,6 +5,7 @@ import questiontypes.crypto.DoubleEncrypt;
 import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
 import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -50,8 +51,8 @@ public class CryptoQuiz {
         decrypt.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(decrypt);
 
-        McqQuestion numCols = new NumCols();
-        numCols.createQuestion(GenQuizData.NUM_ANSWERS);
+        NumericQuestion numCols = new NumCols();
+        numCols.createQuestion();
         quiz.addQuestion(numCols);
 
         McqQuestion doubleEncrypt = new DoubleEncrypt();

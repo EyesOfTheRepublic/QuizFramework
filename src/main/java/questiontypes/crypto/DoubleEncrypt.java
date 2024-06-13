@@ -3,10 +3,45 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
- * What is the result of encrypting a string with a particular 'key' then again with another key?
+ * What is the result of encrypting a string with a particular 'key' then again with the same key?
+ * Code for autograder:
+ <pre>
+ public class Test {
+    public static String plainText = "daidemhcjjldadmlfhlmefkjlaaamffihlcgglchilelccicildkklggfgbkimemckmbkagejadllbcjllbc";
+    public static int columns = 12;
+
+    public static void main(String[] args) {
+        DoubleEncrypt.plainText = plainText;
+        DoubleEncrypt.columns = columns;
+
+        String doubleEnc = encode(encode(plainText, columns), columns);
+        System.exit(doubleEnc.equals(DoubleEncrypt.answer()) ? 0 : 1);
+    }
+
+    public static String encode(final String str, final int cols) {
+        char[][] codeArray = new char[str.length()/cols][cols];
+        int count = 0;
+        for(int i = 0; i < str.length()/cols; i++) {
+            for(int j = 0; j < cols; j++) {
+                codeArray[i][j] = plainText.charAt(count);
+                count++;
+            }
+        }
+        String retVal = "";
+        for(int k = 0; k < cols; k++) {
+            for(int l = 0; l < str.length()/cols; l++) {
+                retVal += codeArray[l][k];
+            }
+        }
+    return retVal;
+    }
+
+}
+ </pre>
  */
 public class DoubleEncrypt extends McqQuestion {
 
@@ -21,9 +56,16 @@ public class DoubleEncrypt extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
+        final StringBuilder builder = new StringBuilder("What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
                 + " with " + key + " columns, and then encrypting it AGAIN with an array WITH THE SAME NUMBER ("
-                + key + ") OF COLUMNS?";
+                + key + ") OF COLUMNS?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final String codeTemplate = """
+               public static String plainText = "%s";
+               public static int columns = %d;
+               """;
+        final StringBuilder code = CodeUtils.questionCode("DoubleEncrypt",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, sourceString,key))), "String");
+        return builder.append(code).toString();
     }
 
     @Override

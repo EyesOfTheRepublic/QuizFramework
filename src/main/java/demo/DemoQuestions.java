@@ -125,19 +125,19 @@ public class DemoQuestions {
         McqQuestion encode = new Encryption();
         encode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(encode);
-/*
-        McqQuestion numCols = new NumCols();
-        numCols.createQuestion(NUM_ANSWERS);
+
+        NumericQuestion numCols = new NumCols();
+        numCols.createQuestion();
         quiz.addQuestion(numCols);
-*/
+
         McqQuestion decode = new Decryption();
         decode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(decode);
-/*
+
         McqQuestion doubleEncode = new DoubleEncrypt();
         doubleEncode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(doubleEncode);
-
+/*
         //Geographical distance questions
         McqQuestion singleDistance = new DistanceTwoPoints();
         singleDistance.createQuestion(NUM_ANSWERS);
