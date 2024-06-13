@@ -11,7 +11,11 @@ import quizframework.utils.QuizUtils;
  * and a set of random incorrect checksums. The question asks which checksum is correct. The following code can be used in autograder:
  <pre>
  public class Test {
+    public static String checkStr = "bfcnleuqfzdksaexbpxeqzbfiljzkbmyepznwzffxwhestfctpqfcyhlpnys";
+
     public static void main(String[] args) {
+        CheckSumValue.checkStr = checkStr;
+
         long givenAns = CheckSumValue.answer();
         System.exit((givenAns == simpleCheckSum(CheckSumValue.checkStr)) ? 0 : 1);
     }
@@ -29,7 +33,7 @@ import quizframework.utils.QuizUtils;
 }
  </pre>
  */
-public class CheckSumValueQuestion extends NumericQuestion {
+public class CheckSumValue extends NumericQuestion {
 
     private String checkString;
 

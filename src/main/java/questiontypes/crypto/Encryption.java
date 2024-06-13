@@ -3,10 +3,46 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
- * What is the result of encrypting a string with a particular 'key' - array size?
+ * What is the result of encrypting a string with a particular 'key' - array size? Code to use in Autograder:
+ <pre>
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.*;
+import java.awt.*;
+import java.util.*;
+
+public class Test {
+    public static String plainText = "fcmbeiehghmfmkefjkbefcfbkbbgfddbkdckeliggdalmfmkmgjmbmaalgdllhefemciljjfmjfljlbmafejiiic";
+    public static int columns = 11;
+
+    public static void main(String[] args) {
+        TransposeEncrypt.plainText = plainText;
+        TransposeEncrypt.columns = columns;
+
+        char[][] codeArray =
+            new char[TransposeEncrypt.plainText.length()/TransposeEncrypt.columns][TransposeEncrypt.columns];
+        int count = 0;
+        for(int i = 0; i < TransposeEncrypt.plainText.length()/TransposeEncrypt.columns; i++) {
+            for(int j = 0; j < TransposeEncrypt.columns; j++) {
+                codeArray[i][j] = TransposeEncrypt.plainText.charAt(count);
+                count++;
+            }
+        }
+        String retVal = "";
+        for(int k = 0; k < TransposeEncrypt.columns; k++) {
+            for(int l = 0; l < TransposeEncrypt.plainText.length()/TransposeEncrypt.columns; l++) {
+                retVal += codeArray[l][k];
+            }
+        }
+        System.exit(retVal.equals(TransposeEncrypt.answer()) ? 0 : 1);
+    }
+}
+
+ </pre>
  */
 public class Encryption extends McqQuestion {
 
@@ -21,8 +57,15 @@ public class Encryption extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
-                + " with " + key + " columns?";
+        final StringBuilder builder = new StringBuilder("What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
+                + " with " + key + " columns?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final String codeTemplate = """
+               public static String plainText = "%s";
+               public static int columns = %d;
+               """;
+        final StringBuilder code = CodeUtils.questionCode("TransposeEncrypt",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, sourceString, key))), "String");
+        return builder.append(code).toString();
     }
 
     @Override

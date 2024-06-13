@@ -18,7 +18,15 @@ import java.util.concurrent.ThreadLocalRandom;
  * Here's the code for autograder.
  <pre>
  public class Test {
+    public static int[] primes = {
+            7237, 5881, 1553, 1811, 5227, 1487, 6803, 9839, 3671, 8941, 5503, 8681,
+            6899, 8059, 2579, 1933, 7019, 8933, 4363, 7487, 5791, 8623, 10651, 8117,
+            1373, 6733, 10289
+    };
+
     public static void main(String[] args) {
+        SophieGermain.primes = primes;
+
         int count = 0;
         for(int sg : SophieGermain.primes) {
             if (isSg(sg)) {

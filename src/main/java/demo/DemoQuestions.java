@@ -1,8 +1,9 @@
 package demo;
 
 import questiontypes.checksum.BitwiseChecksum;
-import questiontypes.checksum.CheckSumStringQuestion;
-import questiontypes.checksum.CheckSumValueQuestion;
+import questiontypes.checksum.CheckSumString;
+import questiontypes.checksum.CheckSumValue;
+import questiontypes.crypto.Encryption;
 import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
@@ -53,15 +54,15 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
-        NumericQuestion checkValueQuestion = new CheckSumValueQuestion();
+        NumericQuestion checkValueQuestion = new CheckSumValue();
         checkValueQuestion.createQuestion();
         quiz.addQuestion(checkValueQuestion);
 
-        McqQuestion checkStringQuestion = new CheckSumStringQuestion();
+        McqQuestion checkStringQuestion = new CheckSumString();
         checkStringQuestion.createQuestion(6);
         quiz.addQuestion(checkStringQuestion);
 /*
-        McqQuestion checkPairQuestion = new CheckSumPairQuestionNoCode();
+        McqQuestion checkPairQuestion = new CheckSumPairNoCode();
         checkPairQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkPairQuestion);
 */
@@ -112,12 +113,12 @@ public class DemoQuestions {
         McqQuestion altSets = new AltRewriting();
         altSets.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(altSets);
-
+*/
         //Transposition cypher questions
         McqQuestion encode = new Encryption();
         encode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(encode);
-
+/*
         McqQuestion numCols = new NumCols();
         numCols.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(numCols);

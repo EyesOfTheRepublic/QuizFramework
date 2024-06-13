@@ -16,13 +16,34 @@ import java.util.concurrent.ThreadLocalRandom;
  * Identify the number of Fibonacci numbers is a list - version suitable for use with autograder.
  * Use this code in autograder:
  <pre>
- public class Test {
+ import java.util.stream.LongStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.*;
+
+public class Test {
     public static final long[] FIB_ARRAY = {
        //Contents of FIB_ARRAY in {@link FibSequence} goes here
     };
 
+    public final static long[] posFibNumbers = {
+                        4807526976L, 53316291173L, 14472334024676221L, 591286729879L, 3416454622906707L,
+                        27777890035310L, 8944394323791490L, 956722026057L, 514229L, 10610209857723L,
+                        267914316L, 2111485077978050L, 2971215092L, 9227465L, 7778742066L, 7778742073L,
+                        117669030461014L, 3524578L, 39088196L, 17167680177593L, 190392490709159L,
+                        433494437L, 3416454622906732L, 61305790721611591L, 832069L, 37889062373143921L,
+                        37889062373143906L, 6557470319842L, 701408750L, 7778742077L, 1836311903L,
+                        2178333L, 2504730781961L, 10964L, 20365011074L, 32951280126L, 63246009L,
+                        832040L, 121393L, 2111485077978070L, 61305790721611618L, 225851433717L,
+                        7778742049L, 44945570212879L, 190392490709135L, 139583862445L, 4807526993L,
+                        10946L, 37889062373143932L, 267914296L, 39088169L, 86267571272L, 4052739537901L,
+                        5702887L, 1346289L, 1346269L
+                };
+
     public static void main(String[] args) {
+
         List<Long> fibList = Arrays.stream(FIB_ARRAY).boxed().collect(Collectors.toList());
+        Fibonacci.posFibNumbers = posFibNumbers;
 
         long count = LongStream.of(Fibonacci.posFibNumbers)
         .filter(x -> fibList.contains(x)).count();

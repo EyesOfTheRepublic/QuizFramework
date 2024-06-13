@@ -77,8 +77,6 @@ j
 :src/main/java/questiontypes/numbers/utils/FibSequence.java,d/a/da7c38b6a1543413dd862c6411ab053f6cd0942f
 p
 @src/main/java/questiontypes/checksum/CheckSumStringQuestion.java,4/9/49a0d4c597dda852edb545856adff7bb3f0891de
-n
->src/main/java/questiontypes/checksum/CheckSumPairQuestion.java,7/6/7632650987b85622b2ca8ae7a6f370020daed983
 i
 9src/main/java/questiontypes/checksum/BitwiseChecksum.java,f/3/f3bc3f5cf22f2d97c22ac73082c9713d59db7afe
 o
@@ -221,8 +219,6 @@ w
 G.idea/sonarlint/issuestore/5/8/58a68eb20ed3995dc2bd8aa48339d2d1f05c1ae3,6/c/6c43f86a987f206b3f8fd04eaec7b809adf4ec1b
 w
 G.idea/sonarlint/issuestore/b/a/ba74ec620385618a97a7a31ec775dedc61fc5b4a,2/f/2f076f246172dd3c772734c39646d18cea1744a0
-Å
-Q.idea/sonarlint/securityhotspotstore/7/6/7632650987b85622b2ca8ae7a6f370020daed983,c/8/c8efb7f4e6be2179b8de2d4ff09d3c6b49a7ebe1
 w
 G.idea/sonarlint/issuestore/5/8/588b3838cb87e1444caa231457eaa295890ba031,2/b/2bfc13185eebb9ac078730f7573078ed4cc42ce9
 w
@@ -275,8 +271,6 @@ Q.idea/sonarlint/securityhotspotstore/9/d/9d0f5270135773eeec7418af77e473ca1da706
 Q.idea/sonarlint/securityhotspotstore/1/a/1aab2c85eefe88119fd199b171c39abbdcc5d0d4,e/0/e0cca9be5811873934725b5db2bac944edf62cee
 w
 G.idea/sonarlint/issuestore/1/a/1aab2c85eefe88119fd199b171c39abbdcc5d0d4,5/e/5eb7df13e779a0d3102b6d75e860b4ed85a76dc7
-w
-G.idea/sonarlint/issuestore/7/6/7632650987b85622b2ca8ae7a6f370020daed983,8/3/834d3c848ebdb9f3a7281951939bdc18ec8f17ef
 w
 G.idea/sonarlint/issuestore/0/c/0c94c01ae4c311d068b4a3dfadb0591e9a00dcc8,2/9/29c195a113bd28b31f171b78fd5525e24404bc24
 Å
@@ -339,3 +333,9 @@ u
 Esrc/main/java/questiontypes/checksum/utils/CheckSumQuestionUtils.java,0/5/050e618aae51b2023d4d31b5dbc02af17a029dbc
 t
 Dsrc/main/java/questiontypes/checksum/CheckSumPairQuestionNoCode.java,4/8/4836b19ba8c19e21111b6a6a1d1f4ef834811338
+h
+8src/main/java/questiontypes/checksum/CheckSumString.java,d/5/d54e0cf029020ee4eec797659862ad9441a23cc9
+g
+7src/main/java/questiontypes/checksum/CheckSumValue.java,6/4/64442d497c81d59d0b7050b68a145b45526b77e2
+l
+<src/main/java/questiontypes/checksum/CheckSumPairNoCode.java,d/3/d37bda5187d2e6a1349dd6f959312559c4f6f6fe

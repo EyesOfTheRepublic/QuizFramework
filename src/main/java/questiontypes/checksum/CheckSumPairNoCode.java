@@ -10,7 +10,7 @@ import quizframework.utils.QuizUtils;
  *{@link CheckSumQuestionUtils} - one of which will be correct and the others incorrect.
  * As currently written, not really suitable for use with autograder
  */
-public class CheckSumPairQuestionNoCode extends McqQuestion {
+public class CheckSumPairNoCode extends McqQuestion {
 
     private String checkedString;
     private long checkSum;

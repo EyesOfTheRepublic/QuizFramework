@@ -13,7 +13,17 @@ import quizframework.utils.QuizUtils;
  * {@link CheckSumQuestionUtils}. The following code is suitable to use in autograder:
  <pre>
  public class Test {
+    public static String[] possStrings = {
+                        "uyrunhrpgsxazbpxytmzxufubtdqoejg", "uyrunhrpgszxzpbxytmxuafubtdqoejg",
+                        "uyrunhrpgszazybxutmxxpfubtdqoejg", "uyrunhrpgszazpbxytmxxufubtdqoejg",
+                        "uyrunhrpgszazmbxxtpyxufubtdqoejg", "uyrunhrpgsuazpbxyxmtxzfubtdqoejg"
+                };
+    public static long checkSum = 151820392L;
+
     public static void main(String[] args) {
+        CheckSumString.possStrings = possStrings;
+        CheckSumString.checkSum = checkSum;
+
         String chosenVal = CheckSumString.answer();
         String correctVal = getStr(CheckSumString.checkSum, CheckSumString.possStrings);
         if (chosenVal == null) {
@@ -44,7 +54,7 @@ import quizframework.utils.QuizUtils;
 }
  </pre>
  */
-public class CheckSumStringQuestion extends McqQuestion {
+public class CheckSumString extends McqQuestion {
 
     private String correctAnswer;
 

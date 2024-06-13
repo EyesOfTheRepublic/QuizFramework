@@ -23,7 +23,23 @@ import java.util.Collections;
  * This version is a numeric question (not an MCQ) and is suitable for use with autograder. Suitable code is:
  <pre>
  public class Test {
+    public static int[] numList = {
+                        440686007, 454259340, 53590326, 209358344, 352656517, 169432126, 209041101,
+                        143787097, 41212669, 312466550, 391709798, 231361804, 182333746, 467334514,
+                        41924260, 231710917, 32848238, 475279196, 457739912, 6619480, 14564162,
+                        353224942, 364389179, 77097550, 439974416, 63612455, 250536872, 431919549,
+                        90188878, 381813762, 418286221, 15393058, 449050438, 478409804, 428308350,
+                        247883687, 76232419, 272540332, 129242159, 404801126, 338111579, 199575491,
+                        466505618, 222241375, 181661558, 117509497, 250187759, 49979127, 405666257,
+                        3488872, 24158764, 389226239, 100084914, 234014989, 282323185, 128673734,
+                        259657301, 299564930, 27639336, 272857575, 92672437
+                };
+    public static int pairSum = 481898676;
+
     public static void main(String[] args) {
+        AddPairs.numList = numList;
+        AddPairs.pairSum = pairSum;
+
         for(int candidate : AddPairs.numList) {
             boolean notFound = true;
             for(int sum : AddPairs.numList) {
@@ -39,7 +55,7 @@ import java.util.Collections;
             }
         }
     }
-}
+
  </pre>
  */
 public class AddPairs extends NumericQuestion {

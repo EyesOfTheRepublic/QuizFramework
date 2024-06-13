@@ -12,10 +12,23 @@ import quizframework.utils.QuizUtils;
  * The following code is suitable for use in autograder:
  <pre>
  import java.util.Arrays;
-import java.util.Optional;
+ import java.util.Optional;
 
-public class Test {
+ public class Test {
+    public static String[] possStrings = {
+                        "jbxrjtnckphsurwvrttdawiotstsvawxsooykviqmuollnkqpibsgszgrdwiyxrnapethbupbp",
+                        "iyclqqdkyafrbbngmscxhoiplakzrhuxlicljimqsjresblmhuooeiuejfzrjfmeatawzvfrvi",
+                        "whcfsbzbqwetzxzdkyajtowzwphqzpntexfcotndibaqvheekzhknqnzgwtyqauezlinmltboee",
+                        "dhqtpyvuibadzqxirmasqverscfgklwwwzaquxtexmtofowgtnjdwodmwmvlbcqhwjb",
+                        "czufmvibvcelkooojryvcvcshstxgmhsozhlbohbohiboreehncuxfurnkydzpxtqhtsmnugzppfxvggixk",
+                        "vqewhmmfxqykkfwjgxnjsvegdzdrfydatorumdmjzjvtbuhpbramoridctbnomeleirjyywwtxxzaigelwp"
+                };
+    public static byte checkSum = -34;
+
     public static void main(String[] args) {
+        BitWiseCheckSum.possStrings = possStrings;
+        BitWiseCheckSum.checkSum = checkSum;
+
         Optional<String> ans = Arrays.stream(BitWiseCheckSum.possStrings)
         .filter(x -> bitwiseCheckSum(x) == BitWiseCheckSum.checkSum).findFirst();
         if(!ans.isPresent()) {
@@ -34,7 +47,6 @@ public class Test {
         return checksum;
     }
 }
-
  </pre>
  */
 
@@ -50,10 +62,10 @@ public class BitwiseChecksum extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        StringBuilder builder = new StringBuilder("Which of the following strings generates the bitwise checksum ``"
+        final StringBuilder builder = new StringBuilder("Which of the following strings generates the bitwise checksum ``"
                 + checkSum + "``?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possStrings", this.answerList)
+        final ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possStrings", this.answerList)
         {
             @Override
             public String outputItem(Answer item) {

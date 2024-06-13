@@ -19,7 +19,17 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 public class Test {
+    public static final int[] primes = {
+            4543, 4699, 4393, 2531, 9151, 10973, 10351, 6917, 7829, 8669, 1471, 9431,
+            10885, 7757, 8629, 8317, 7783, 4673, 11323, 6019, 4241, 3319, 8039, 5449,
+            5527, 10375, 9589, 9343, 8521, 3359, 4073, 2347, 9235, 5335, 2447, 4477,
+            7807, 5897, 8947, 11011, 8281, 9805, 5471, 8233, 6847, 8581, 4843, 7079,
+            11173, 10717, 2161, 1511, 7817, 5029, 8077, 10081, 6355, 11117, 9037, 8797
+    };
+
     public static void main(String[] args) {
+        Primes.primes = primes;
+
         long count = IntStream.of(Primes.primes).filter(Test::isPrime).count();
         System.exit(count == Primes.answer() ? 0 : 1);
     }
