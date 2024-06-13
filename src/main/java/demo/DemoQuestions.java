@@ -3,7 +3,14 @@ package demo;
 import questiontypes.checksum.BitwiseChecksum;
 import questiontypes.checksum.CheckSumString;
 import questiontypes.checksum.CheckSumValue;
+import questiontypes.crypto.Decryption;
+import questiontypes.crypto.DoubleEncrypt;
 import questiontypes.crypto.Encryption;
+import questiontypes.crypto.NumCols;
+import questiontypes.location.DistanceTwoPoints;
+import questiontypes.location.MinSecDistance;
+import questiontypes.location.TotalDistance;
+import questiontypes.location.WhichDistance;
 import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
@@ -122,11 +129,11 @@ public class DemoQuestions {
         McqQuestion numCols = new NumCols();
         numCols.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(numCols);
-
+*/
         McqQuestion decode = new Decryption();
         decode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(decode);
-
+/*
         McqQuestion doubleEncode = new DoubleEncrypt();
         doubleEncode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(doubleEncode);

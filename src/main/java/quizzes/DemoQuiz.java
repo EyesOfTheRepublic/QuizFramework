@@ -1,6 +1,7 @@
 package quizzes;
 
 import questiontypes.simpleexamples.OddNumberExample;
+import questiontypes.simpleexamples.SquareQuestionExample;
 import quizframework.McqQuestion;
 import quizframework.Quiz;
 
@@ -9,11 +10,11 @@ import java.io.PrintStream;
 
 public class DemoQuiz {
     public static void main(String[] args) {
-        Quiz quiz = new Quiz("Demo", "Demonstrating long strings...");
+        Quiz quiz = new Quiz("Example", "Example for In-Class Test");
 
-        McqQuestion odd = new OddNumberExample();
-        odd.createQuestion(6);
-        quiz.addQuestion(odd);
+        McqQuestion square = new SquareQuestionExample();
+        square.createQuestion(6);
+        quiz.addQuestion(square);
         System.out.println(quiz);
         try {
             PrintStream stream = new PrintStream("DemoQuiz.txt");

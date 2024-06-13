@@ -3,11 +3,42 @@ package questiontypes.crypto;
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of decrypting a string with a particular 'key' - array size? Note this seems to be more
- * difficult than encrypting
+ * difficult than encrypting. Code suitable for use in autograder:
+ <pre>
+ public class Test {
+    public static String cypherText = "lgkbmdlkbkfaifcdkgkjmbgeljdlcbambaddaidcheiabeclbjijebgmlbjd";
+    public static int columns = 12;
+
+    public static void main(String[] args) {
+        TransposeDecrypt.cypherText = cypherText;
+        TransposeDecrypt.columns = columns;
+
+        char[][] encryptArray = new char[columns][cypherText.length() / columns];
+        String result = "";
+
+        int charLoc = 0;
+        for (int i = 0; i < columns ; i++) {
+            for(int j = 0; j < cypherText.length() / columns; j++) {
+                encryptArray[i][j]= cypherText.charAt(charLoc);
+                charLoc++;
+            }
+        }
+
+        for (int i = 0; i < cypherText.length() / columns; i++) {
+            for (int j = 0; j < columns; j++) {
+                result += encryptArray[j][i];
+            }
+        }
+
+        System.exit(result.equals(TransposeDecrypt.answer()) ? 0 : 1);
+    }
+}
+ </pre>
  */
 public class Decryption extends McqQuestion {
 
@@ -22,8 +53,15 @@ public class Decryption extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of decrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher that has" +
-                " been encrypted using an array with " + key + " columns?";
+        final StringBuilder builder = new StringBuilder( "What is the result of decrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher that has" +
+                " been encrypted using an array with " + key + " columns?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final String codeTemplate = """
+               public static String cypherText = "%s";
+               public static int columns = %d;
+               """;
+        final StringBuilder code = CodeUtils.questionCode("TransposeDecrypt",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, sourceString, key))), "String");
+        return builder.append(code).toString();
     }
 
     @Override

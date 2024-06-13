@@ -1,3 +1,5 @@
 
-e	java:S106"+Replace this use of System.out by a logger.(’–õJ$2b875cdc-ebe4-46c4-8af1-f347eead81f9
-k	java:S106"+Replace this use of System.out by a logger.(î²ˆ¬ûÿÿÿÿJ$42bea975-c188-476b-b364-315179bd45aa
+e	java:S106"+Replace this use of System.out by a logger.(’–õJ$718c1ace-5621-4642-b4ea-a4b7ca914d8f
+k	java:S106"+Replace this use of System.out by a logger.(î²ˆ¬ûÿÿÿÿJ$0cc8f87b-ed10-467d-a45a-fa6c87da06af
+
+java:S1128"JRemove this unused import 'questiontypes.simpleexamples.OddNumberExample'.(ä»–ø8·ƒ¹Š2J$5e710415-d48d-4f8a-ae04-b0289466d769

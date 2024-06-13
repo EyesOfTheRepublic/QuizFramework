@@ -3,6 +3,8 @@ Simple example question asking what is the square of a (random) number
  */
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.Random;
 
@@ -19,7 +21,12 @@ public class SquareQuestionExample extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is the square of " + number + " ?";
+        final StringBuilder builder = new StringBuilder("What is the square of " + number + " ?")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final StringBuilder code = CodeUtils.questionCode("Square",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static String numToSquare = %d;", number))),
+                "int");
+        return builder.append(code).toString();
     }
 
     @Override
@@ -38,7 +45,7 @@ public class SquareQuestionExample extends McqQuestion {
     }
 
     public void createCalcData() {
-        number = rnd.nextInt(15);
+        number = rnd.nextInt(15) + 5;
     }
 
     @Override
