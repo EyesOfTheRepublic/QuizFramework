@@ -1,8 +1,7 @@
 package quizframework;
 
+import org.checkerframework.checker.units.qual.A;
 import quizframework.utils.CodeUtils;
-
-import java.util.List;
 
 /**
  * Abstract class that is used to create MCQ questions - override this class and provide (minimally)
@@ -111,7 +110,15 @@ public abstract class McqQuestion extends Question {
     /*
    Generate a set of answers in text2qti format for an MCQ question
    */
-    protected void generateQtiAnswerSet(final StringBuilder builder) {
+    protected boolean generateQtiAnswerSet(final StringBuilder builder) {
+        //Check that there are at least two answers..
+        if(answerList.size() < 2) {
+            return false;
+        }
+        //Check that only one is true
+        if (answerList.stream().filter(x -> x.isCorrect()).count() > 1) {
+            return false;
+        }
         char qItem = 'a';
         for (Answer ans : answerList) {
             final String qLabel = (ans.isCorrect() ? "*" : "") + qItem + ")";
@@ -121,5 +128,6 @@ public abstract class McqQuestion extends Question {
             }
             qItem++;
         }
+        return true;
     }
 }

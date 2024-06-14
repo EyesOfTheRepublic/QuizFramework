@@ -2,7 +2,6 @@ package questiontypes.crypto;
 
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
-import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -73,7 +72,7 @@ public class NumCols extends NumericQuestion {
         final StringBuilder code = CodeUtils.questionCode("TransposeNumCols",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, plainText, cypherText))),
                 "int");
-        return builder.append(code).toString();
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
     }
 
     @Override

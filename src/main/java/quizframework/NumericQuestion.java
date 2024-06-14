@@ -1,6 +1,9 @@
 package quizframework;
 
 import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
+
+import java.util.Scanner;
 
 /**
  * Abstract class that is used to create questions with a numerical answer - override this class and provide (minimally)
@@ -87,9 +90,26 @@ public abstract class NumericQuestion extends Question {
     }
 
     /*
-    Generate an answer in QTI format for a numeric question
+    Generate an answer in QTI format for a numeric question - returns false if it detects an error in the answer set
+    for a numeric question
      */
-    protected final void generateQtiAnswerSet(final StringBuilder builder) {
-        builder.append(CodeUtils.outputTextBlock("=", getAnswerList().get(0).getQuestionAnswer()));
+    protected final boolean generateQtiAnswerSet(final StringBuilder builder) {
+        //Check that there is only one answer
+        if (getAnswerList().size() != 1) {
+            return false;
+        }
+
+        //Check that the answer is present and is a number
+        Answer answer = getAnswerList().get(0);
+        if (answer == null || !QuizUtils.isNumber(answer.getQuestionAnswer())) {
+            return false;
+        }
+
+        final StringBuilder questionAnswer = new StringBuilder(getAnswerList().get(0).getQuestionAnswer());
+        if (getAnswerList().get(0).getErrorRange() > 0.0) {
+            questionAnswer.append(" +- ").append(getAnswerList().get(0).getErrorRange());
+        }
+        builder.append(CodeUtils.outputTextBlock("=", questionAnswer.toString()));
+        return true;
     }
 }

@@ -169,8 +169,6 @@ Q.idea/sonarlint/securityhotspotstore/f/c/fc2038b95f3dd74a54fecbeebfd86ee909640b
 Q.idea/sonarlint/securityhotspotstore/f/c/fc97c974babb055381643bd6885d2c3c99c8bb0f,e/5/e5b414f2dc49c7baf052402fcb3e2840f0e55ce3
 Å
 Q.idea/sonarlint/securityhotspotstore/f/d/fd9aeeb8973582a7bb1705f1abcbbe3777b36bfd,5/0/501bc5259b67423591e0b6c55e0ba3898051d8e3
-w
-G.idea/sonarlint/issuestore/4/9/49a0d4c597dda852edb545856adff7bb3f0891de,3/7/379245fef9602fab5b4de2df5b13e63f1878fc1d
 Å
 Q.idea/sonarlint/securityhotspotstore/5/8/58a68eb20ed3995dc2bd8aa48339d2d1f05c1ae3,6/5/65d1f8b74b3816035180bb1091274d20def1c364
 Å
@@ -213,8 +211,6 @@ w
 G.idea/sonarlint/issuestore/b/4/b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3,b/0/b04578cffb47b1e57970601a0cacef6081245859
 w
 G.idea/sonarlint/issuestore/5/8/58a68eb20ed3995dc2bd8aa48339d2d1f05c1ae3,6/c/6c43f86a987f206b3f8fd04eaec7b809adf4ec1b
-w
-G.idea/sonarlint/issuestore/b/a/ba74ec620385618a97a7a31ec775dedc61fc5b4a,2/f/2f076f246172dd3c772734c39646d18cea1744a0
 w
 G.idea/sonarlint/issuestore/5/8/588b3838cb87e1444caa231457eaa295890ba031,2/b/2bfc13185eebb9ac078730f7573078ed4cc42ce9
 w
@@ -297,8 +293,6 @@ G.idea/sonarlint/issuestore/2/0/2031130f2087995e7470fdfdca162e39bedc5c0f,b/9/b9
 Q.idea/sonarlint/securityhotspotstore/b/4/b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3,6/b/6bc361fab678f74f7da63b229ace2fc9d3130980
 w
 G.idea/sonarlint/issuestore/2/6/267b60efc27042ec5280c13973ef0fe97bccce5b,6/0/607cdfd3fb6428dc8b1b3339e34fc3c4d7405dcd
-Å
-Q.idea/sonarlint/securityhotspotstore/b/a/ba74ec620385618a97a7a31ec775dedc61fc5b4a,f/f/ff574b241f4a12e81cf44fdc5635db0c2695a9e0
 e
 5src/main/java/questiontypes/time/utils/TimeUtils.java,e/0/e00f76e7837b64b46f160d985f35691b1f5c7726
 w
@@ -313,8 +307,6 @@ G.idea/sonarlint/issuestore/3/1/3150705ea39c0285678848c73822513fb6eec122,9/b/9b
 Q.idea/sonarlint/securityhotspotstore/b/b/bbf202272a96de5cd6b6828ffdc55fb3ce45289c,4/8/4863281891d32ef796d6f680d78cb100e7c940be
 Å
 Q.idea/sonarlint/securityhotspotstore/4/6/46665c6136f9f51b670a79e426e544b4442567e9,0/8/089d8bbfe840cb79972272a46e7749f9dafa56ee
-Å
-Q.idea/sonarlint/securityhotspotstore/4/9/49a0d4c597dda852edb545856adff7bb3f0891de,d/0/d036cec2c2779a886076ab9b0944115a7c9ce47b
 w
 G.idea/sonarlint/issuestore/3/2/32a3b31588b864c134b7755ddc2ab22c3afecb2f,e/7/e75def086b9807831396266dd95f19a01904374d
 Å
@@ -335,3 +327,7 @@ l
 <src/main/java/questiontypes/checksum/CheckSumPairNoCode.java,d/3/d37bda5187d2e6a1349dd6f959312559c4f6f6fe
 <
 DemoQuiz.txt,e/8/e81bdb1ccbedeb6c341ccd851f7c3925d0ee5bdf
+n
+>src/main/java/questiontypes/location/MinSecDistanceNoCode.java,c/0/c0950ff959210d129eaa0ed92a2290c3662e489d
+m
+=src/main/java/questiontypes/location/WhichDistanceNoCode.java,5/4/5491193f955213198bc91d453eb411abd88785ff

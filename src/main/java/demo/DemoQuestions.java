@@ -8,9 +8,7 @@ import questiontypes.crypto.DoubleEncrypt;
 import questiontypes.crypto.Encryption;
 import questiontypes.crypto.NumCols;
 import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.MinSecDistance;
 import questiontypes.location.TotalDistance;
-import questiontypes.location.WhichDistance;
 import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
@@ -143,15 +141,15 @@ public class DemoQuestions {
         singleDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(singleDistance);
 /*
-        McqQuestion whichDistance = new WhichDistance();
+        McqQuestion whichDistance = new WhichDistanceNoCode();
         whichDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(whichDistance);
-
-        McqQuestion totalDistance = new TotalDistance();
-        totalDistance.createQuestion(NUM_ANSWERS);
+*/
+        NumericQuestion totalDistance = new TotalDistance();
+        totalDistance.createQuestion();
         quiz.addQuestion(totalDistance);
-
-        McqQuestion minSec = new MinSecDistance();
+/*
+        McqQuestion minSec = new MinSecDistanceNoCode();
         minSec.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(minSec);
 */

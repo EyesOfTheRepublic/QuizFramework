@@ -5,9 +5,9 @@ import quizframework.Answer;
 import quizframework.McqQuestion;
 
 /**
- * Which two points are a specific distance apart?
+ * Which two points are a specific distance apart? As currently written, not suitable for use with autograder
  */
-public class WhichDistance extends McqQuestion {
+public class WhichDistanceNoCode extends McqQuestion {
 
     private double distance;
     private LocationUtils.Point point1;

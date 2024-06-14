@@ -139,7 +139,6 @@ public abstract class Question {
         createCalcData();//This needs to be first to ensure the data is available to compute question text and answers
         addQuestionTitle(createQuestionTitle());
         //DO NOT generate the question text here!! - it needs to be possible to include the answers in the text
-        //addQuestionText(createQuestionText());
         //Prevent questions having zero/negative points
         addQuestionPoints(Math.max(createQuestionPoints(), 1));
         addGeneralFeedback(createGeneralFeedback());
@@ -238,15 +237,15 @@ public abstract class Question {
         getCorrectAnswerFeedback().ifPresent(fb -> builder.append(CodeUtils.outputTextBlock("+ ", fb)));
         getIncorrectAnswerFeedback().ifPresent(fb -> builder.append(CodeUtils.outputTextBlock("- ", fb)));
 
-        generateQtiAnswerSet(builder);
-        return builder.toString();
+        return generateQtiAnswerSet(builder) ? builder.toString() : "ERROR: Inconsistency in answer set.";
     }
 
     /*
-        Generate the answers to the question in the relevant (question type-specific) QTI format
-        Classes that implement question types should implement this method but *not* classes that create questions
-         */
-    protected abstract void generateQtiAnswerSet(StringBuilder builder);
+    Generate the answers to the question in the relevant (question type-specific) QTI format
+    Classes that implement question types should implement this method but *not* classes that create questions
+    Needs to return false if any errors are detected in the answer set - this is problem-type specific
+     */
+    protected abstract boolean generateQtiAnswerSet(StringBuilder builder);
 
 
     /*Shuffle an arraylist - used to randomize the order of answers in the list of possible answers (by default, in

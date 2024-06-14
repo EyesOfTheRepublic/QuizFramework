@@ -10,15 +10,17 @@ The main use of this is to generate QTI files that can be imported into Canvas -
 - Questions are classes that extend the abstract *Question* class.
 - Questions contain multiple *Answer* objects - answers can either be correct or incorrect and can optionally include feedback
 - The *Question* class contains a number of abstract methods that you *must* implement, as well as a number of default methods that you *may* implement.
+- Although it can be used for 'general' questions, more usually the questions created require a code 'template' to be filled in to enable automatic checking with autograder.
 
 ### Required
 - *String createQuestionTitle()* returns the title of your question (Canvas ignores this, but it seems to be necessary)
 - *String createQuestionText()* contains the text of the question.
 - *void createCalcData()* creates data on which the question is based. This is usually (partly) random and this method runs *before* *createQuestionText* so the data can potentially appear in the question text.
 - *Answer createCorrectAnswer()* creates an *Answer* object containing the correct answer.
-
+- *Answer createIncorrectAnswer()* *for MCQ questions only* creates an *Answer* object containing an incorrect answer (required if the question type displays incorrect answers) - these should be in some way randomly generated because typically there will be multiple incorrect answers (there is no need to check they will be unique - this is dealt with by the code)
+- 
 ### Optional
-- *Answer createIncorrectAnswer()* creates an *Answer* object containing an incorrect answer (required if the question type displays incorrect answers) - these should be in some way randomly generated because typically there will be multiple incorrect answers (there is no need to check they will be unique - this is dealt with by the code)
+
 - *int createQuestionPoint()* defaults to 1 (and cannot be negative).
 - *String createGeneralFeedback()* defaults to null - shown in all cases (though Canvas does not seem to provide access to all feedback types)
 - *String createCorrectFeedback()* defaults to null - contains general feedback for the correct answer

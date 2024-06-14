@@ -1,3 +1,5 @@
 
-s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ìÃ™–ÿ1J$db45062f-fe54-4239-81d9-27d3c2236345
+†
+java:S1612w">Replace this lambda with method reference 'Answer::isCorrect'.(öøùúÿÿÿÿ8ŸËÑ¯2J$c317843d-484e-4160-a4b5-8701646fcaa0
+
+java:S1128"FRemove this unused import 'org.checkerframework.checker.units.qual.A'.(¿‚áñøÿÿÿÿ8úØ¯2J$37cfac48-6dd8-488c-978c-90d4c0ed2f3c

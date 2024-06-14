@@ -6,9 +6,9 @@ import quizframework.McqQuestion;
 import quizframework.utils.QuizUtils;
 
 /**
- * Distance between two points using minutes/seconds representation
+ * Distance between two points using minutes/seconds representation. As currently written not suitable for use with autograder
  */
-public class MinSecDistance extends McqQuestion {
+public class MinSecDistanceNoCode extends McqQuestion {
 
     private String point1MinSec;
     private String point2MinSec;

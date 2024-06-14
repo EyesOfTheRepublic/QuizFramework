@@ -65,7 +65,7 @@ public class DoubleEncrypt extends McqQuestion {
                """;
         final StringBuilder code = CodeUtils.questionCode("DoubleEncrypt",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, sourceString,key))), "String");
-        return builder.append(code).toString();
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
     }
 
     @Override

@@ -1,10 +1,11 @@
 package quizzes;
 
 import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.MinSecDistance;
+import questiontypes.location.MinSecDistanceNoCode;
 import questiontypes.location.TotalDistance;
-import questiontypes.location.WhichDistance;
+import questiontypes.location.WhichDistanceNoCode;
 import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;
@@ -48,15 +49,15 @@ public class LocationQuiz {
         distTwoPoints.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(distTwoPoints);
 
-        McqQuestion whichDistance = new WhichDistance();
+        McqQuestion whichDistance = new WhichDistanceNoCode();
         whichDistance.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(whichDistance);
 
-        McqQuestion totalDist = new TotalDistance();
-        totalDist.createQuestion(GenQuizData.NUM_ANSWERS);
+        NumericQuestion totalDist = new TotalDistance();
+        totalDist.createQuestion();
         quiz.addQuestion(totalDist);
 
-        McqQuestion minSecDist = new MinSecDistance();
+        McqQuestion minSecDist = new MinSecDistanceNoCode();
         minSecDist.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(minSecDist);
 

@@ -14,6 +14,7 @@ public final class Answer {
     private final String questionAnswer;
     private final boolean isCorrect;
     private final String feedback;
+    private double errorRange; //Used ONLY in numeric questions - if non-zero adds a range to the accepted answer
 
     /**
      * Return the answer
@@ -40,6 +41,24 @@ public final class Answer {
      */
     public boolean isCorrect() {
         return isCorrect;
+    }
+
+    /**
+     * Get the allowed error range - this only makes sense for numeric questions.
+     * @return the error range
+     */
+    public double getErrorRange() {
+        return errorRange;
+    }
+
+    /**
+     * Set the required error range - this only makes sense for numeric questions
+     * @param errorRange the permitted error range
+     */
+    public void setErrorRange(double errorRange) {
+        if (errorRange > 0.0) {
+            this.errorRange = errorRange;
+        }
     }
 
     /**
@@ -94,6 +113,7 @@ public final class Answer {
         this.questionAnswer = answer;
         this.isCorrect = isCorrect;
         this.feedback = feedback;
+        this.errorRange = 0.0;
     }
 
     /**

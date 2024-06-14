@@ -10,22 +10,21 @@ import quizframework.utils.QuizUtils;
  * How far is it between two points (lat, long) on a globe?. Code for autograder:
  <pre>
 public class Test {
-    public static DistanceBetweenPoints.Point point1 =
-        new DistanceBetweenPoints.Point(43.17735535805636, 22.551194809308342);
-    public static DistanceBetweenPoints.Point point2 =
-        new DistanceBetweenPoints.Point(-4.412059037641029, -51.300181037261346);
+    public record Point(double lat, double lon){};
+    public static Point point1 = new Point(43.17735535805636, 22.551194809308342);
+    public static Point point2 = new Point(-4.412059037641029, -51.300181037261346);
 
 
     public static void main(String[] args) {
-        DistanceBetweenPoints.point1 = point1;
-        DistanceBetweenPoints.point2 = point2;
-
+        DistanceBetweenPoints.latPoint1 = point1.lat();
+        DistanceBetweenPoints.lonPoint1 = point1.lon();
+        DistanceBetweenPoints.latPoint2 = point2.lat();
+        DistanceBetweenPoints.lonPoint2 = point2.lon();
         System.exit((distance(point1, point2)
             == DistanceBetweenPoints.answer()) ? 0 : 1);
     }
 
-    public static double distance(final DistanceBetweenPoints.Point point1,
-        DistanceBetweenPoints.Point point2) {
+    public static double distance(final Point point1, Point point2) {
         double lat1 = point1.lat();
         double long1 = point1.lon();
         double lat2 = point2.lat();
@@ -58,13 +57,16 @@ public class DistanceTwoPoints extends McqQuestion {
         final StringBuilder builder = new StringBuilder("What is the distance in Km between coordinates ``" + point1
                 + "`` and ``" + point2 + "``?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeTemplate = """
-                public record Point(double lat, double lon) {};
-                public static Point point1 = new Point(%s);
-                public static Point point2 = new Point(%s);
+                public static double latPoint1 = %f;
+                public static double lonPoint1 = %f;
+                public static double latPoint2 = %f;
+                public static double lonPoint2 = %f;
                 """;
         final StringBuilder code = CodeUtils.questionCode("DistanceBetweenPoints",
-                new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, point1, point2))), "double");
-        return builder.append(code).toString();
+                new StringBuilder(CodeUtils.indentTextBlock(String.format(codeTemplate, point1.lat(), point1.lon(),
+                        point2.lat(), point2.lon()))),
+                "double");
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
 
     }
 

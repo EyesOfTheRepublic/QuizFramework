@@ -1,6 +1,7 @@
 package quizframework.utils;
 
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -36,7 +37,7 @@ public final class QuizUtils {
      */
     public static long similarLong(final long arg) {
         final int digits = String.valueOf(arg).length();
-        final int base = (int) Math.pow(10, digits - 1);
+        final int base = (int) Math.pow(10, digits - 1.0);
         final long positiveVal = ThreadLocalRandom.current().nextLong(9L * base);
         return arg < 0 ? -positiveVal : positiveVal;
     }
@@ -201,6 +202,15 @@ public final class QuizUtils {
      */
     public static long genRandomLong(final long min, final long max) {
         return ThreadLocalRandom.current().nextLong(min, max);
+    }
+
+    /**
+     *
+     */
+    public static boolean isNumber(String str) {
+        try (Scanner scan = new Scanner(str)) {
+            return (scan.hasNextInt() || scan.hasNextDouble());
+        }
     }
 
     /**
