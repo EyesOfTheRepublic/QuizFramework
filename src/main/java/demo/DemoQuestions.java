@@ -115,11 +115,12 @@ public class DemoQuestions {
         McqQuestion completeRewrite = new RewritingToCompletion();
         completeRewrite.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(completeRewrite);
+        */
 
         McqQuestion whichIsX = new ReducesToX();
         whichIsX.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(whichIsX);
-
+/*
         McqQuestion altSets = new AltRewriting();
         altSets.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(altSets);
