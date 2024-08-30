@@ -4,12 +4,57 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.NumericQuestion;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
  * When run until no more changes happen, how many term rewriting steps are needed?
+ <pre>
+ import java.awt.*;
+import java.util.*;
+
+public class Test {
+    public static final String[][] REWRITE_MAP
+            = {{"bYb", "Y"},
+            {"c", "Y"},
+            {"XXbYaX", "X"},
+            {"XXba", "X"},
+            {"Xa", "X"},
+            {"XY", "X"},
+            {"bb", "X"}};
+
+    public static String sourceString = "baccccababcccbabbbbcaaaabbcbbacbcbabccaaaaccccaaaccacabcbbbccccabaccaccb";
+
+
+    public static void main(String[] args) {
+        ReduceToCompletion.sourceString = sourceString;
+
+        boolean done = false;
+        int count = 0;
+        while(!done) {
+            String temp = runOneStep(sourceString, REWRITE_MAP);
+            if (temp.equals(sourceString)) {
+                done = true;
+            } else {
+                count++;
+                sourceString = temp;
+            }
+        }
+        System.exit(count == (ReduceToCompletion.answer()) ? 0 : 1);
+    }
+
+    public static String runOneStep(String input, final String[][] rules) {
+        for (int i = 0; i < rules.length; i++) {
+            input = input.replaceAll(rules[i][0], rules[i][1]);
+        }
+        return input;
+    }
+}
+ </pre>
  */
-public class RewritingToCompletion extends McqQuestion {
+public class RewritingToCompletion extends NumericQuestion {
 
     private String sourceString;
     private int numSteps;
@@ -21,8 +66,16 @@ public class RewritingToCompletion extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "How many times does term rewriting rule set 1 need to be run on the string  \n``"
-                + sourceString + "``  \nbefore no more changes happen?";
+        final StringBuilder builder =
+                new StringBuilder("How many times does term rewriting rule set 1 need to be run on the string  \n``"
+                        + sourceString + "``  \nbefore no more changes happen? ONLY count the number of times that applying"
+                        + " the rules results in a change.")
+                        .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+
+        final StringBuilder code = CodeUtils.questionCode("ReduceToCompletion",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static String sourceString = \"%s\";", sourceString))),
+                "int");
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
     }
 
     @Override
@@ -37,10 +90,10 @@ public class RewritingToCompletion extends McqQuestion {
         //Run the rules until no more changes happen
         do {
             String rewrittenString = RewritingUtils.runOneStep(tempString, CoreRewritingData.REWRITE_MAP);
-            steps++;
             if (rewrittenString.equals(tempString)) {
                 done = true;
             } else {
+                steps++;
                 tempString = rewrittenString;
             }
         } while (!done);
@@ -50,12 +103,6 @@ public class RewritingToCompletion extends McqQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return  Answer.makeCorrectAnswer(Integer.toString(numSteps));
-    }
-
-    @Override
-    public Answer createIncorrectAnswer() {
-        int max = numSteps + CoreRewritingData.STEP_MAX;
-        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
     }
 
     @Override
