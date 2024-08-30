@@ -4,11 +4,54 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 /**
  * What is the result of running the main set of rewriting rules once? (We could make this more generic and able to
- * accept multiple sets of rules)
+ * accept multiple sets of rules). The following code is suitable for use in autograder:
+ * <pre>
+import java.awt.*;
+import java.util.*;
+
+public class Test {
+    public static final String[][] REWRITE_MAP
+            = {{"bYb", "Y"},
+            {"c", "Y"},
+            {"XXbYaX", "X"},
+            {"XXba", "X"},
+            {"Xa", "X"},
+            {"XY", "X"},
+            {"bb", "X"}};
+
+    public static String[] possResults = {
+        "XYabYaaaXXXXXbYaabaXbaY", "XYaYYaaaXXXXbbbaabaXXaY", "XYabYbaaXXXXXbYaabaaXaY",
+        "XYbbYaaaXXXabaYaabXXXaY", "XYabaaXaXXXXabYaabYXbaY", "XYaXXbaaXXXYbbbaXYaaaaY"
+    };
+    public static int numTimes = 7;
+
+    public static String sourceString = "bbbbcacbaabcbaacaccabcaaabbcbbabbacbbabbcabbbaccabcaababbccbac";
+
+    public static void main(String[] args) {
+        RewriteNTimes.possResults = possResults;
+        RewriteNTimes.numTimes = numTimes;
+
+        String workingStr = sourceString;
+        for(int i = 0; i < numTimes; i++) {
+            workingStr = runOneStep(workingStr, REWRITE_MAP);
+        }
+        System.exit(workingStr.equals(RewriteNTimes.answer()) ? 0 : 1);
+    }
+
+    public static String runOneStep(String input, final String[][] rules) {
+        for (int i = 0; i < rules.length; i++) {
+            input = input.replaceAll(rules[i][0], rules[i][1]);
+        }
+        return input;
+    }
+}
+ * </pre>
  */
 public class RewritingNSteps extends McqQuestion {
 
@@ -23,8 +66,21 @@ public class RewritingNSteps extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is the result of running term rewriting rule set 1 for " + numSteps + " times on the string  \n``"
-                + sourceString + "``?";
+        final StringBuilder builder = new StringBuilder("What is the result of running term rewriting rule set 1 for " + numSteps + " times on the string  \n``"
+                + sourceString + "``?")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possResults", this.answerList)
+        {
+            @Override
+            public String outputItem(Answer item) {
+                return super.outputItem(item.makeQuotedStringAnswer());
+            }
+        };
+        final StringBuilder code = CodeUtils.questionCode("RewriteNTimes",
+                formatter.format().append(CodeUtils.indentTextBlock(String.format("public static int numTimes = %d;", numSteps)))
+                        .append(CodeUtils.indentTextBlock(String.format("public static String sourceString = \"%s\";", sourceString))),
+        "String");
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
     }
 
     /*Generate the number of steps the rewriting should run for; the source string; and the correct answer string */

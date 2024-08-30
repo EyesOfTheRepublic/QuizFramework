@@ -15,6 +15,10 @@ import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
 import questiontypes.numbers.PythTriplets;
 import questiontypes.numbers.SophieGermain;
+import questiontypes.termrewriting.AltRewriting;
+import questiontypes.termrewriting.ReducesToX;
+import questiontypes.termrewriting.RewritingNSteps;
+import questiontypes.termrewriting.RewritingToCompletion;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -100,12 +104,13 @@ public class DemoQuestions {
         THE FOLLOWING QUESTIONS HAVE BEEN MORE CAREFULLY CHECKED.
         They also include implementations of checkAnswer to (semi-independently) confirm (in)correctness of a questions'
         answers when it is generated
-         *//*
+         */
 
         //"Term rewriting" questions
         McqQuestion nStepRewrite = new RewritingNSteps();
         nStepRewrite.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(nStepRewrite);
+        /*
 
         McqQuestion completeRewrite = new RewritingToCompletion();
         completeRewrite.createQuestion(NUM_ANSWERS);
@@ -120,6 +125,7 @@ public class DemoQuestions {
         quiz.addQuestion(altSets);
 */
         //Transposition cypher questions
+        /*
         McqQuestion encode = new Encryption();
         encode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(encode);

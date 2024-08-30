@@ -29,12 +29,8 @@ s
 Csrc/main/java/questiontypes/termrewriting/utils/RewritingUtils.java,f/3/f371deec1a2e03ce2fec616ca0db919017af2a83
 v
 Fsrc/main/java/questiontypes/termrewriting/utils/CoreRewritingData.java,9/7/97da29bce01025e009d9545a241d0f39efeededd
-g
-7src/main/java/questiontypes/location/WhichDistance.java,2/6/267b60efc27042ec5280c13973ef0fe97bccce5b
 k
 ;src/main/java/questiontypes/location/DistanceTwoPoints.java,6/8/6809d10664d1222d70a652813d9d49f310c22b73
-h
-8src/main/java/questiontypes/location/MinSecDistance.java,f/c/fc2038b95f3dd74a54fecbeebfd86ee909640ba7
 g
 7src/main/java/questiontypes/location/TotalDistance.java,0/c/0c94c01ae4c311d068b4a3dfadb0591e9a00dcc8
 c
@@ -164,8 +160,6 @@ Q.idea/sonarlint/securityhotspotstore/f/4/f46f560f4ab506e065604344f86e3ac2082442
 w
 G.idea/sonarlint/issuestore/9/d/9d0f5270135773eeec7418af77e473ca1da706e1,2/d/2d9683096cbabbb6f630fa403e31805e95fb2aae
 Å
-Q.idea/sonarlint/securityhotspotstore/f/c/fc2038b95f3dd74a54fecbeebfd86ee909640ba7,d/a/da6d602059a4c39f69f72290aa99163391792e9c
-Å
 Q.idea/sonarlint/securityhotspotstore/f/c/fc97c974babb055381643bd6885d2c3c99c8bb0f,e/5/e5b414f2dc49c7baf052402fcb3e2840f0e55ce3
 Å
 Q.idea/sonarlint/securityhotspotstore/f/d/fd9aeeb8973582a7bb1705f1abcbbe3777b36bfd,5/0/501bc5259b67423591e0b6c55e0ba3898051d8e3
@@ -173,8 +167,6 @@ Q.idea/sonarlint/securityhotspotstore/f/d/fd9aeeb8973582a7bb1705f1abcbbe3777b36b
 Q.idea/sonarlint/securityhotspotstore/5/8/58a68eb20ed3995dc2bd8aa48339d2d1f05c1ae3,6/5/65d1f8b74b3816035180bb1091274d20def1c364
 Å
 Q.idea/sonarlint/securityhotspotstore/5/8/588b3838cb87e1444caa231457eaa295890ba031,6/e/6e0745593dbf28676f1434af95d2b2d5f299fd76
-w
-G.idea/sonarlint/issuestore/f/c/fc2038b95f3dd74a54fecbeebfd86ee909640ba7,a/9/a9452f38f4432d83e6585f17e7952ae7c2fb0bf4
 w
 G.idea/sonarlint/issuestore/f/c/fc97c974babb055381643bd6885d2c3c99c8bb0f,5/7/57e2172b091bc57d49eaa9ced5b2ac4384a4b57c
 w
@@ -225,8 +217,6 @@ w
 G.idea/sonarlint/issuestore/5/a/5a414dc16f2b420f221a7772feb3fae9811deb18,d/a/da03fcea955852838a64247e86e872810d85ea40
 Å
 Q.idea/sonarlint/securityhotspotstore/2/5/25013f3d03a0a08cf721c11080ceeaa038fa9a2b,7/2/72f3d50f80455c341db1779bd7fe2096bf2f2ba4
-Å
-Q.idea/sonarlint/securityhotspotstore/2/6/267b60efc27042ec5280c13973ef0fe97bccce5b,a/8/a8b7f22dee5e39c332b04b1a24e84b6d5f7c9e7c
 Å
 Q.idea/sonarlint/securityhotspotstore/8/7/87c8ef10ad98c9c37aa06ddd16d3f37b877d2ae5,3/2/3246b253c643602ffbca5751d864322f1b1b6013
 w
@@ -291,8 +281,6 @@ w
 G.idea/sonarlint/issuestore/2/0/2031130f2087995e7470fdfdca162e39bedc5c0f,b/9/b908729a575665133b8e53143fc1be51b42e583f
 Å
 Q.idea/sonarlint/securityhotspotstore/b/4/b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3,6/b/6bc361fab678f74f7da63b229ace2fc9d3130980
-w
-G.idea/sonarlint/issuestore/2/6/267b60efc27042ec5280c13973ef0fe97bccce5b,6/0/607cdfd3fb6428dc8b1b3339e34fc3c4d7405dcd
 e
 5src/main/java/questiontypes/time/utils/TimeUtils.java,e/0/e00f76e7837b64b46f160d985f35691b1f5c7726
 w
