@@ -339,3 +339,7 @@ W
 +src/main/SampleSolutions/DoubleEncrypt.java,b/4/b4a65066c10556c428fefa8755807bff16e8d87e
 c
 3src/main/SampleSolutions/DistanceBetweenPoints.java,f/8/f89177460b76815b642e514401f5a566c8a8eb31
+`
+0src/main/SampleSolutions/ReduceToCompletion.java,b/1/b1a6b819c883c688b28e3f827794d39db9af9984
+b
+2src/main/SampleSolutions/AlternatingRewriting.java,f/0/f0daa1476672f10482ea0b294c8df8128b3b8a0c

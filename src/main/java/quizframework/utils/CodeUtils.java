@@ -44,13 +44,18 @@ public final class CodeUtils {
                      public static %s answer() {
                          /* Write your code here - it MUST *return* the answer
                          
-                            Do not change any of the variables declared above or the main method - though you can add
-                            other methods if you want (make sure you do not change the "signature" of answer() - autograder
-                            is expecting a static method with that name and return type and no parameters).
+                            Do not change any of the names or values of the variables declared above or the main method
+                            - though you can add other methods if you want (make sure you do not change the "signature"
+                            of answer() - autograder is expecting a static method with that name and return type and
+                            no parameters).
                          
                             Make sure you use the variables declared above in your calculation and DO NOT
                             use the values themselves directly. If you do that, your code will NOT WORK
                             when you submit it to autograder.
+                            
+                            Your code should not *change* the values of any of the variables declared above - if you want
+                            to do that, declare new variables with the same values as the ones above (not doing this *may*
+                            result in your answer being marked wrong even if your code is correct).
                             
                             If you need your code to print anything out for, say, debugging - that's fine and
                             it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns

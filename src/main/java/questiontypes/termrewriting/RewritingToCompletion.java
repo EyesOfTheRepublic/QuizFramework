@@ -114,7 +114,9 @@ public class RewritingToCompletion extends NumericQuestion {
             String tempString = startingString;
             startingString = RewritingUtils.runOneStep(startingString, CoreRewritingData.REWRITE_MAP);
             done = startingString.equals(tempString);
-            count++;
+            if (!done) {
+                count++;
+            }
         }
         return count == Integer.parseInt(answer.getQuestionAnswer());
     }

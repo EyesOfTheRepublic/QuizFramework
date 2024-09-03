@@ -118,11 +118,11 @@ public class DemoQuestions {
         McqQuestion whichIsX = new ReducesToX();
         whichIsX.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(whichIsX);
-/*
+
         McqQuestion altSets = new AltRewriting();
         altSets.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(altSets);
-*/
+
         //Transposition cypher questions
         /*
         McqQuestion encode = new Encryption();
