@@ -19,6 +19,10 @@ import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
+import questiontypes.time.ClosestDateTime;
+import questiontypes.time.DiffMills;
+import questiontypes.time.PairDiffMills;
+import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -83,11 +87,11 @@ public class DemoQuestions {
         not yet implemented!
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
-         *//*
+         */
         McqQuestion closestTime = new ClosestDateTime();
         closestTime.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(closestTime);
-
+/*
         McqQuestion timeTraveller = new TimeTraveller();
         timeTraveller.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
