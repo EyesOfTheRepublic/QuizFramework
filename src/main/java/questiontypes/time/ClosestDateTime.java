@@ -10,7 +10,47 @@ import quizframework.utils.QuizUtils;
 import java.time.LocalDate;
 
 /**
-Work out the time that is closest to a specific number of hours from midnight on 1st Jan 1970
+Work out the time that is closest to a specific number of hours from midnight on 1st Jan 1970. Code for autograder:
+ <pre>
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+public class Test {
+    public static String[]  possDates = {
+                "2293/06/29 23:05:10", "2575/06/05 02:54:27", "2825/04/24 13:32:29", "2462/01/28 14:44:23",
+                "2927/09/29 15:28:47", "2710/01/06 20:40:13"
+    };
+    public static long hours = 6486836L;
+
+    public static void main(String[] args) {
+        TimeSince.hours = hours;
+        TimeSince.possDates = possDates;
+
+        long millis = hours * 60 * 60 * 1000;
+        long diff = millis;
+        String closest = possDates[0];
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        for(String date : possDates) {
+            long possMillis = LocalDateTime.parse(date, df).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+            if (Math.abs(possMillis - millis) < diff) {
+                diff = Math.abs(possMillis - millis);
+                closest = date;
+            }
+        }
+
+        System.exit(closest.equals(TimeSince.answer()) ? 0 : 1);
+    }
+
+    public static String runOneStep(String input, final String[][] rules) {
+        for (int i = 0; i < rules.length; i++) {
+            input = input.replaceAll(rules[i][0], rules[i][1]);
+        }
+        return input;
+    }
+}
+ </pre>
  */
 public class ClosestDateTime extends McqQuestion {
 
