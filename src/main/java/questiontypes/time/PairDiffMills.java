@@ -5,7 +5,7 @@ import quizframework.Answer;
 import quizframework.McqQuestion;
 
 /**
- * Which pair of dates are separated by a specific number of milliiseconds?
+ * Which pair of dates are separated by a specific number of milliiseconds? Currently not suitable for use with autograder
  */
 public class PairDiffMills extends McqQuestion {
     private String baseDate;
@@ -21,6 +21,7 @@ public class PairDiffMills extends McqQuestion {
 
     @Override
     public String createQuestionText() {
+
         return "Which of the pairs of dates below is separated by ``" + millsDiff + "L`` milliseconds?";
     }
 

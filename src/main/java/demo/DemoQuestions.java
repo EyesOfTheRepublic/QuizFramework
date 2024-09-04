@@ -91,11 +91,11 @@ public class DemoQuestions {
         McqQuestion closestTime = new ClosestDateTime();
         closestTime.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(closestTime);
-/*
+
         McqQuestion timeTraveller = new TimeTraveller();
         timeTraveller.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
-*/
+
         McqQuestion diffMills = new DiffMills();
         diffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(diffMills);
