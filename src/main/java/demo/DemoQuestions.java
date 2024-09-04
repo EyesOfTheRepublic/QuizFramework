@@ -95,11 +95,11 @@ public class DemoQuestions {
         McqQuestion timeTraveller = new TimeTraveller();
         timeTraveller.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
-
+*/
         McqQuestion diffMills = new DiffMills();
         diffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(diffMills);
-
+/*
         McqQuestion pairDiffMills = new PairDiffMills();
         pairDiffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(pairDiffMills);

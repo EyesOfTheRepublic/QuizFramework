@@ -3,6 +3,9 @@ package questiontypes.time;
 import questiontypes.time.utils.TimeUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 /**
  * Dates which differ by a specific number of milliseconds
@@ -22,8 +25,22 @@ public class DiffMills extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "Which of the dates below is ``" + millsDiff + "L`` milliseconds from the "
-                + "date " + baseDate + "?";
+        final StringBuilder builder = new StringBuilder("Which of the dates below is ``" + millsDiff + "`` milliseconds from (either "
+                + " before OR after) the date " + baseDate + "?")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possDates", this.answerList)
+        {
+            @Override
+            public String outputItem(Answer item) {
+                return super.outputItem(item.makeQuotedStringAnswer());
+            }
+        };
+        final StringBuilder code = CodeUtils.questionCode("MillisFrom",
+                formatter.format()
+                        .append(CodeUtils.indentTextBlock(String.format("public static long millsDifferent = %dL;", millsDiff)))
+                        .append(CodeUtils.indentTextBlock(String.format("public static String baseDate = \"%s\";", baseDate))),
+                "String");
+        return builder.append(CodeUtils.toCodeBlock(code)).toString();
     }
 
     @Override
