@@ -2,6 +2,7 @@ package questiontypes.crypto;
 
 import questiontypes.crypto.utils.CypherUtils;
 import quizframework.Answer;
+import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -49,7 +50,7 @@ import quizframework.utils.QuizUtils;
 }
  </pre>
  */
-public class NumCols extends NumericQuestion {
+public class NumCols extends McqQuestion {
 
     private String plainText;
     private int key;
@@ -92,6 +93,11 @@ public class NumCols extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(key));
+    }
+
+    @Override
+    public Answer createIncorrectAnswer() {
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CypherUtils.MIN_KEY, CypherUtils.MAX_KEY)));
     }
 
     //We don't use the utilities we have written to more accurately check what a student might write

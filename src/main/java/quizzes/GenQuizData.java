@@ -28,16 +28,18 @@ public class GenQuizData {
             (opens in a new window/tab)</li> \
             </ul>""";
 
-    public static String TITLE = "CS-110 Programming Class Test %d";
+    public static String TITLE = "CS-110 Programming Class Test";
     public static String PRE_AMBLE = """
             <h2>Academic Integrity</h2> \
             <h2>Question Types</h2> \
-            <p>This test contains two questions about <emph>numbers</emph>, one question about <emph>rewriting</emph>, \
-            and one question about <emph>time</emph>. \
-            <p>You can find (and should already have read) background information on Numbers, Term Rewriting and Time in the In-Class Test \
-            Information module on Canvas.</p> \
+            <p>This test contains two questions about <em>numbers</em>, one question about <em>rewriting</em>, \
+            one question about encryption/decryption, \
+            and one question about <em>time</em>. \
+            <p>You can find (and should already have read) background information on Numbers, Term Rewriting, Encryption/Decryption \
+            and Time in the In-Class Test Information module on Canvas.</p> \
+            <em>Remember to cut-and-paste long strings - do not try to type them in.</em>\
             <h3>Numbers</h3> \
-            <p><emph>Depending on the specific questions in your tests,</emph> the following information may be useful (note that not \
+            <p><em>Depending on the specific questions in your tests,</em> the following information may be useful (note that not \
             all tests will include all of these):</p> \
             <ul> \
             <li>A Prime Number is a number with no factors other than 1 and itself.</li> \
@@ -48,7 +50,7 @@ public class GenQuizData {
             <kbd>Fib(n) = Fib(n-1) + Fib(n-2)</kbd> for <kbd>n>1</kbd></li> \
             </ul> \
             <h3>Term Rewriting</h3> \
-            <p>You will need to apply  the following set of rules <emph>in the order given below</emph> to successfully solve \
+            <p>You will need to apply  the following set of rules <em>in the order given below</em> to successfully solve \
             the term rewriting question.</p> \
             <h4>Term Rewriting Rule Set</h4> \
             <ul><li>bYb -> Y</li><li>c -> Y</li><li>XXbYaX -> X</li><li>XXba -> X</li><li>Xa -> X</li><li>XY -> X</li><li>bb -> X</li></ul> \
@@ -79,6 +81,22 @@ public class GenQuizData {
              </pre><pre>\
             String dateString = dmils.format(df);\
             </pre>\
-            <p>Note that it is <emph>essential</emph> that you use the <kbd>long</kbd> data type and NOT <kbd>int</kbd>. \
+            <p>Note that it is <em>essential</em> that you use the <kbd>long</kbd> data type and NOT <kbd>int</kbd>. \
+            <h3>Encryption/Decryption</h3>\
+            You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays.</p> \
+            <pre>\
+            /*<br/>\
+             * Prints an array of characters row-by-row in a readable way. <br/>\
+             * You may need to add the keyword static after public <br/>\
+             */ <br/>\
+            public static void formatArray(char[][] charArray) { <br/>\
+                for (char[] row : charArray) { <br/>\
+                    for (char item : row) { <br/>\
+                        System.out.print(" " + item); <br/>\
+                    } <br/>\
+                    System.out.println(); <br/>\
+                } <br/>\
+            } <br/>\
+            </pre> \
             """;
 }

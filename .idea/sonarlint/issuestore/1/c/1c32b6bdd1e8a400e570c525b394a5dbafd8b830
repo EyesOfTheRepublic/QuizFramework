@@ -1,4 +1,6 @@
 
-r	java:S106,"+Replace this use of System.out by a logger.(µáÎüÿÿÿÿ8¡ŞÁµæ1J$a08ecc14-abe8-4d08-b4c4-59c2d46b5444
-m	java:S106-"+Replace this use of System.out by a logger.(ú‡İ´8€”¬2J$0a601dc8-a93f-4989-9a06-3a9f08ffbd8d
-r	java:S1065"+Replace this use of System.out by a logger.(µáÎüÿÿÿÿ8¢ŞÁµæ1J$21cbc2af-5ef1-41de-a75e-e035446095aa
+r	java:S106,"+Replace this use of System.out by a logger.(µáÎüÿÿÿÿ8¡ŞÁµæ1J$315ca988-995c-4f43-84d5-2d39f4fe4222
+m	java:S106-"+Replace this use of System.out by a logger.(ú‡İ´8€”¬2J$1d6dc795-5f46-4e97-9171-2fb32c0ff786
+r	java:S1065"+Replace this use of System.out by a logger.(µáÎüÿÿÿÿ8¢ŞÁµæ1J$5493ea3e-b634-42a1-b5e3-e84d0a2cbf0f
+W
+java:S1128":Remove this unused import 'quizframework.NumericQuestion'.(ñÕÒ—8ì¤Ö¿œ2

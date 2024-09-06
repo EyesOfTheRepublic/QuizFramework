@@ -51,8 +51,8 @@ public class CryptoQuiz {
         decrypt.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(decrypt);
 
-        NumericQuestion numCols = new NumCols();
-        numCols.createQuestion();
+        McqQuestion numCols = new NumCols();
+        numCols.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(numCols);
 
         McqQuestion doubleEncrypt = new DoubleEncrypt();

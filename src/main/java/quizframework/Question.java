@@ -84,10 +84,10 @@ public abstract class Question {
     /**
      * Return the number of points for the question. By default, this returns 1 (but can be optionally overridden)
      *
-     * @return the number of points (defaults to 1)
+     * @return the number of points (defaults to 6 for now...)
      */
     public int createQuestionPoints() {
-        return 1;
+        return 6;
     }
 
     /**

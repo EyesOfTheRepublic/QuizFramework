@@ -122,8 +122,8 @@ public class DemoQuestions {
         encode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(encode);
 
-        NumericQuestion numCols = new NumCols();
-        numCols.createQuestion();
+        McqQuestion numCols = new NumCols();
+        numCols.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(numCols);
 
         McqQuestion decode = new Decryption();

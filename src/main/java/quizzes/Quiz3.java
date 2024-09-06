@@ -1,5 +1,6 @@
 package quizzes;
 
+import questiontypes.crypto.NumCols;
 import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.PythTriplets;
@@ -21,10 +22,10 @@ import java.io.PrintStream;
 
 public class Quiz3 {
 
-    private static int QUIZ_NUM = 3;
-
+    private static int QUIZ_NUM = 3
+            ;
     public static void main(String[] args) {
-        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
+        Quiz quiz = new Quiz(GenQuizData.TITLE,
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
         NumericQuestion factors = new Factors();
@@ -37,6 +38,10 @@ public class Quiz3 {
         rewritingNSteps.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(rewritingNSteps);
 
+        McqQuestion numCols = new NumCols();
+        numCols.createQuestion(GenQuizData.NUM_ANSWERS);
+        quiz.addQuestion(numCols);
+
         McqQuestion closestDateTime = new ClosestDateTime();
         closestDateTime.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(closestDateTime);
@@ -45,7 +50,7 @@ public class Quiz3 {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);
         } else {
-            final String fileName = "Quiz " + QUIZ_NUM;
+            final String fileName = "Quiz" + QUIZ_NUM;
             try {
                 PrintStream stream = new PrintStream(fileName + ".txt");
                 quiz.generateText2Qti(stream);
