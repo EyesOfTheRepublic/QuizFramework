@@ -343,3 +343,18 @@ c
 0src/main/SampleSolutions/ReduceToCompletion.java,b/1/b1a6b819c883c688b28e3f827794d39db9af9984
 b
 2src/main/SampleSolutions/AlternatingRewriting.java,f/0/f0daa1476672f10482ea0b294c8df8128b3b8a0c
+W
+'src/main/SampleSolutions/TimeSince.java,3/2/323b9d26491dee9854305ca0e16cf6bab035cdda
+Z
+*src/main/java/quizzes/QuizHeaderUtils.java,8/f/8fec94ea88133c1558c36d2ac5bff2fa44949403
+P
+ src/main/java/quizzes/Quiz1.java,1/8/185ce3ea8c66085d694ea0b52d994ebb4000164d
+:
+
+Quiz 1.txt,b/3/b33877e4aa73dcd571610c693ed4c40d4bb72cfc
+P
+ src/main/java/quizzes/Quiz2.java,5/d/5daf19c686885e1d80a2590c567b9c8bbf6071a9
+P
+ src/main/java/quizzes/Quiz3.java,1/0/100a59f12e9b0f07f744f10866b60b96a0f211ab
+i
+9src/main/java/questiontypes/time/PairDiffMillsNoCode.java,2/d/2d30598a183729f94dc5a42d09a14d2a7c0ad641

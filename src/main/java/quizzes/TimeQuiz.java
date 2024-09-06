@@ -2,7 +2,7 @@ package quizzes;
 
 import questiontypes.time.ClosestDateTime;
 import questiontypes.time.DiffMills;
-import questiontypes.time.PairDiffMills;
+import questiontypes.time.PairDiffMillsNoCode;
 import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.Quiz;
@@ -37,7 +37,7 @@ public class TimeQuiz {
         diffMills.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(diffMills);
 
-        McqQuestion pairDiffMills = new PairDiffMills();
+        McqQuestion pairDiffMills = new PairDiffMillsNoCode();
         pairDiffMills.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(pairDiffMills);
 

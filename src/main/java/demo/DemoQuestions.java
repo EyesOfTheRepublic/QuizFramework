@@ -21,7 +21,6 @@ import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
 import questiontypes.time.ClosestDateTime;
 import questiontypes.time.DiffMills;
-import questiontypes.time.PairDiffMills;
 import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
@@ -39,7 +38,7 @@ public class DemoQuestions {
     public static void main(String[] args) {
 
         //quizframework.Quiz is class that represents a whole quiz - we initially create one with a title and description
-        Quiz quiz = new Quiz("A sample quiz", "An example to show how this works");
+        Quiz quiz = new Quiz("All Autograder Question", "All the questions that work with autograder.");
 
         /* Quizzes consist of zero or more Questions - quizframework.Question is an abstract class that must be implemented to
         actually create a question of a specific type. Here we create a question that is specifically about
@@ -74,11 +73,7 @@ public class DemoQuestions {
         McqQuestion checkStringQuestion = new CheckSumString();
         checkStringQuestion.createQuestion(6);
         quiz.addQuestion(checkStringQuestion);
-/*
-        McqQuestion checkPairQuestion = new CheckSumPairNoCode();
-        checkPairQuestion.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(checkPairQuestion);
-*/
+
         McqQuestion bitwise = new BitwiseChecksum();
         bitwise.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(bitwise);
@@ -99,12 +94,7 @@ public class DemoQuestions {
         McqQuestion diffMills = new DiffMills();
         diffMills.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(diffMills);
-/*
-        McqQuestion pairDiffMills = new PairDiffMills();
-        pairDiffMills.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(pairDiffMills);
-
-        *//*
+        /*
         THE FOLLOWING QUESTIONS HAVE BEEN MORE CAREFULLY CHECKED.
         They also include implementations of checkAnswer to (semi-independently) confirm (in)correctness of a questions'
         answers when it is generated
@@ -128,7 +118,6 @@ public class DemoQuestions {
         quiz.addQuestion(altSets);
 
         //Transposition cypher questions
-        /*
         McqQuestion encode = new Encryption();
         encode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(encode);
@@ -149,19 +138,11 @@ public class DemoQuestions {
         McqQuestion singleDistance = new DistanceTwoPoints();
         singleDistance.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(singleDistance);
-/*
-        McqQuestion whichDistance = new WhichDistanceNoCode();
-        whichDistance.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(whichDistance);
-*/
+
         NumericQuestion totalDistance = new TotalDistance();
         totalDistance.createQuestion();
         quiz.addQuestion(totalDistance);
-/*
-        McqQuestion minSec = new MinSecDistanceNoCode();
-        minSec.createQuestion(NUM_ANSWERS);
-        quiz.addQuestion(minSec);
-*/
+
         NumericQuestion testingTriples = new PythTriplets();
         testingTriples.createQuestion();
         quiz.addQuestion(testingTriples);
@@ -179,7 +160,7 @@ public class DemoQuestions {
         quiz.addQuestion(testingFactorCode);
 
         Fibonacci testingFibonacciCode = new Fibonacci();
-        testingFibonacciCode.createQuestion(6);
+        testingFibonacciCode.createQuestion();
         quiz.addQuestion(testingFibonacciCode);
 
         Primes testingPrimesCode = new Primes();

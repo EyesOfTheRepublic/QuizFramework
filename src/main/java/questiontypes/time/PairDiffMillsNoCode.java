@@ -7,7 +7,7 @@ import quizframework.McqQuestion;
 /**
  * Which pair of dates are separated by a specific number of milliiseconds? Currently not suitable for use with autograder
  */
-public class PairDiffMills extends McqQuestion {
+public class PairDiffMillsNoCode extends McqQuestion {
     private String baseDate;
     private String endDate;
 
