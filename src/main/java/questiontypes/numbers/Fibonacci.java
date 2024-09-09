@@ -73,7 +73,7 @@ public class Fibonacci extends NumericQuestion {
     public String createQuestionText() {
 
         final StringBuilder builder = new StringBuilder("""
-                How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
+                **Fibonacci.** How many of the numbers in the following list are Fibonacci numbers? It is ESSENTIAL that you use long
                 for the Fibonacci numbers you calculate and NOT int.""")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 

@@ -44,7 +44,7 @@ public class CheckSumValue extends NumericQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder( "What is the result of running the simple checksum algorithm on the string ``"
+        final StringBuilder builder = new StringBuilder( "**Checksum Value.** What is the result of running the simple checksum algorithm on the string ``"
                 + checkString + "``?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final StringBuilder code = CodeUtils.questionCode("CheckSumValue",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format("public static String checkStr = \"%s\";", checkString))),

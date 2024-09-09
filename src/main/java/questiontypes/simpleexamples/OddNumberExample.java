@@ -23,7 +23,7 @@ public class OddNumberExample extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder val =
-                new StringBuilder("How many numbers in the following array are odd?\n```\nint[] nums = {");
+                new StringBuilder("**Odd Numbers.** How many numbers in the following array are odd?\n```\nint[] nums = {");
         for(int i = 0; i < list.size() - 1; i++) {
             val.append(i).append(", ");
         }

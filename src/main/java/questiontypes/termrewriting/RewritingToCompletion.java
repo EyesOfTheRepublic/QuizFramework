@@ -67,7 +67,7 @@ public class RewritingToCompletion extends NumericQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder =
-                new StringBuilder("How many times does term rewriting rule set 1 need to be run on the string  \n``"
+                new StringBuilder("**Rewrite to Completion.** How many times does term rewriting rule set 1 need to be run on the string  \n``"
                         + sourceString + "``  \nbefore no more changes happen? ONLY count the number of times that applying"
                         + " the rules results in a change.")
                         .append(QuizUtils.CODE_QUESTION_BOILERPLATE);

@@ -82,7 +82,7 @@ public class AltRewriting extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("Which of the following is the result of alternately running term rewriting rule sets 1 and 2 on the string  \n``"
+        final StringBuilder builder = new StringBuilder("**Alternate Rewriting.** Which of the following is the result of alternately running term rewriting rule sets 1 and 2 on the string  \n``"
                 + sourceString + "``?  \nThat is, you run rule set 1 once, then you run rule set 2 once, then you run"
                 + " rule set 1 again - and you alternate until there are no more changes.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);

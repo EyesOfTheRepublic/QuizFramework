@@ -69,7 +69,7 @@ public class DiffMills extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("Which of the dates below is ``" + millsDiff + "`` milliseconds from (either "
+        final StringBuilder builder = new StringBuilder("**Milliseconds From.** Which of the dates below is ``" + millsDiff + "`` milliseconds from (either "
                 + " before OR after) the date " + baseDate + "?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possDates", this.answerList)

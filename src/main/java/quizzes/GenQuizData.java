@@ -29,8 +29,8 @@ public class GenQuizData {
             </ul>""";
 
     public static String TITLE = "CS-110 Programming Class Test";
+    public static String PRACTICE_TITLE = "CS-110 Programming Class Test: Practice Version";
     public static String PRE_AMBLE = """
-            <h2>Academic Integrity</h2> \
             <h2>Question Types</h2> \
             <p>This test contains two questions about <em>numbers</em>, one question about <em>rewriting</em>, \
             one question about encryption/decryption, \
@@ -98,5 +98,16 @@ public class GenQuizData {
                 } <br/>\
             } <br/>\
             </pre> \
+            """;
+
+    public static String PRACTICE_PRE_AMBLE = """
+            <h2>Practice Test<h2>\
+            <p>This is a practice test, containing five questions - two on <em>locations</em> and three on \
+            <em>checksums</em>. You can find the preliminary information on these question types in the modules \
+            section on Canvas. Two of these questions require you to enter an answer and the other three are multiple \
+            choice. The actual test will also have five questions - two will also need you to enter an answer and the \
+            other three will be multiple choice. In the actual test, two questions will be about <em>numbers</em>, one about \
+            <em>time</em>, one about <em>term rewriting</em> and one about <em>cyphers</em>. Preliminary information \
+            about these question types will be released a day or so before the actual test.
             """;
 }

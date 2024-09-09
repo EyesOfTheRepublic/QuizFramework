@@ -69,7 +69,7 @@ public class SophieGermain extends McqQuestion {
         ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] primes", dataSet);
 
         final StringBuilder builder = new StringBuilder("""
-                A Sophie Germain prime number is a prime number p where 2 * p + 1 is
+                **Sophie Germain.** A Sophie Germain prime number is a prime number p where 2 * p + 1 is
                 also prime. How many of the following are Sophie Germain numbers?
                 """)
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);

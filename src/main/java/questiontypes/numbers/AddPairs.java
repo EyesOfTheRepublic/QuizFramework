@@ -77,7 +77,7 @@ public class AddPairs extends NumericQuestion {
     }
 
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("In the following list of numbers, every number EXCEPT ONE can be added to another number "
+        final StringBuilder builder = new StringBuilder("**Add Pairs.** In the following list of numbers, every number EXCEPT ONE can be added to another number "
                 + "in the list to make " + sumTarget
                 + ". What is that number? It is guaranteed that all numbers in the list are unique.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);

@@ -53,7 +53,7 @@ public class Decryption extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder( "What is the result of decrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher that has" +
+        final StringBuilder builder = new StringBuilder( "**Decryption.** What is the result of decrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher that has" +
                 " been encrypted using an array with " + key + " columns?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeTemplate = """
                public static String cypherText = "%s";

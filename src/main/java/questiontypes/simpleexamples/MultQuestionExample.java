@@ -21,7 +21,7 @@ public class MultQuestionExample extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "What is " + val1 + " * " + val2 + " ?";
+        return "**Multiplying Numbers.** What is " + val1 + " * " + val2 + " ?";
     }
 
     @Override

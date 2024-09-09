@@ -56,7 +56,7 @@ public class DoubleEncrypt extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
+        final StringBuilder builder = new StringBuilder("**Double Encrypt.** What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
                 + " with " + key + " columns, and then encrypting it AGAIN with an array WITH THE SAME NUMBER ("
                 + key + ") OF COLUMNS?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeTemplate = """

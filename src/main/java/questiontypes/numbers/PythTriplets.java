@@ -81,7 +81,7 @@ public class PythTriplets extends NumericQuestion {
         final ArrayFormatter<Triplet> formatter = new ArrayFormatter<>("public static int[][] possTriples", pythList);
 
         final StringBuilder builder = new StringBuilder("""
-                How many of the groups of three numbers in the list are Pythagorean Triples?
+                **Pythagoras.** How many of the groups of three numbers in the list are Pythagorean Triples?
                 That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
                 """).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 

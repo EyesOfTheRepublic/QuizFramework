@@ -63,7 +63,7 @@ public class NumCols extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("How many columns were used to encrypt the string  \n``"
+        final StringBuilder builder = new StringBuilder("**Number of Columns.** How many columns were used to encrypt the string  \n``"
                 + plainText + "``  \nto the following string? ``"
                 + cypherText + "``").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeTemplate = """

@@ -58,7 +58,7 @@ public class Factors extends NumericQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("How many numbers in the following sequence have "
+        final StringBuilder builder = new StringBuilder("**Factors.** How many numbers in the following sequence have "
                 + ansFactor + " as a factor?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
         final ArrayFormatter<Integer> formatter =

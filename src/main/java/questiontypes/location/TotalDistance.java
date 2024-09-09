@@ -74,7 +74,7 @@ public class TotalDistance extends NumericQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder = new StringBuilder("""
-                What is the TOTAL distance in km if you travel between all the
+                **Total Distance.** What is the TOTAL distance in km if you travel between all the
                 coordinates in the following Java array? Your answer needs to be an integer so round it to the nearest km
                 (think carefully about when you should do that in your code), and
                 your answer needs to be within (+-) 2km of the actual answer. """).append(QuizUtils.CODE_QUESTION_BOILERPLATE);

@@ -35,8 +35,6 @@ g
 7src/main/java/questiontypes/location/TotalDistance.java,0/c/0c94c01ae4c311d068b4a3dfadb0591e9a00dcc8
 c
 3src/main/java/questiontypes/time/TimeTraveller.java,a/8/a8e61024696b639266200cf6d67e44bb666a1746
-c
-3src/main/java/questiontypes/time/PairDiffMills.java,4/f/4f1c6a07cd3838fe851ed71a98d92ccd47c245d9
 e
 5src/main/java/questiontypes/time/ClosestDateTime.java,6/8/68b1df210a3e9992d84c10254fb9425f33252388
 _
@@ -345,16 +343,13 @@ b
 2src/main/SampleSolutions/AlternatingRewriting.java,f/0/f0daa1476672f10482ea0b294c8df8128b3b8a0c
 W
 'src/main/SampleSolutions/TimeSince.java,3/2/323b9d26491dee9854305ca0e16cf6bab035cdda
-Z
-*src/main/java/quizzes/QuizHeaderUtils.java,8/f/8fec94ea88133c1558c36d2ac5bff2fa44949403
 P
  src/main/java/quizzes/Quiz1.java,1/8/185ce3ea8c66085d694ea0b52d994ebb4000164d
-:
-
-Quiz 1.txt,b/3/b33877e4aa73dcd571610c693ed4c40d4bb72cfc
 P
  src/main/java/quizzes/Quiz2.java,5/d/5daf19c686885e1d80a2590c567b9c8bbf6071a9
 P
  src/main/java/quizzes/Quiz3.java,1/0/100a59f12e9b0f07f744f10866b60b96a0f211ab
 i
 9src/main/java/questiontypes/time/PairDiffMillsNoCode.java,2/d/2d30598a183729f94dc5a42d09a14d2a7c0ad641
+W
+'src/main/java/quizzes/PracticeQuiz.java,a/b/ab5eedb77684336938dc4958c74696bc7b5da693

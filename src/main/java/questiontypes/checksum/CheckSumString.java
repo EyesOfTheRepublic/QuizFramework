@@ -65,7 +65,7 @@ public class CheckSumString extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder =
-                new StringBuilder( "Which of the strings in the array in the code below generates the simple checksum "
+                new StringBuilder( "**Checksum String.** Which of the strings in the array in the code below generates the simple checksum "
                 + CheckSumQuestionUtils.simpleCheckSum(correctAnswer) + " ?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possStrings",this.answerList)

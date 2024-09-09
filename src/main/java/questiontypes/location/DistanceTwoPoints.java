@@ -54,7 +54,7 @@ public class DistanceTwoPoints extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("What is the distance in Km between coordinates ``" + point1
+        final StringBuilder builder = new StringBuilder("**Distance Between Points.** What is the distance in Km between coordinates ``" + point1
                 + "`` and ``" + point2 + "``?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeTemplate = """
                 public static double latPoint1 = %f;

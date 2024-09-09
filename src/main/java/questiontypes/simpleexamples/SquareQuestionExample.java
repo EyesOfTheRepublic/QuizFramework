@@ -21,7 +21,7 @@ public class SquareQuestionExample extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("What is the square of " + number + " ?")
+        final StringBuilder builder = new StringBuilder("**Squares.** What is the square of " + number + " ?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final StringBuilder code = CodeUtils.questionCode("Square",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format("public static String numToSquare = %d;", number))),

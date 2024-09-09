@@ -74,7 +74,7 @@ public class ReducesToX extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder =
-                new StringBuilder("Which of the following strings reduces to ``X`` when the term rewriting rule set 1 is run until no more changes occur?")
+                new StringBuilder("**Rewrite to X.** Which of the following strings reduces to ``X`` when the term rewriting rule set 1 is run until no more changes occur?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possAnswers", this.answerList)
         {

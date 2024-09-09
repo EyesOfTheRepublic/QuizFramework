@@ -62,7 +62,7 @@ public class BitwiseChecksum extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("Which of the following strings generates the bitwise checksum ``"
+        final StringBuilder builder = new StringBuilder("**Bitwise Checksum.** Which of the following strings generates the bitwise checksum ``"
                 + checkSum + "``?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final ArrayFormatter<Answer> formatter = new ArrayFormatter<>("public static String[] possStrings", this.answerList)
