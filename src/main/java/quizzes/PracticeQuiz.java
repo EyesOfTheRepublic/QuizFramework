@@ -17,7 +17,7 @@ import quizframework.Quiz;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-/**
+/**PracticeQuizPracticeQuiz
  * One of the 'real' quizzes - two numbers, one rewriting and one time question
  */
 

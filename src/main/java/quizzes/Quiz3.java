@@ -25,7 +25,7 @@ public class Quiz3 {
     private static int QUIZ_NUM = 3
             ;
     public static void main(String[] args) {
-        Quiz quiz = new Quiz(GenQuizData.TITLE,
+        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
         NumericQuestion factors = new Factors();

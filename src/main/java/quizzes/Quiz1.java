@@ -25,7 +25,7 @@ public class Quiz1 {
     private static int QUIZ_NUM = 1;
 
     public static void main(String[] args) {
-        Quiz quiz = new Quiz(GenQuizData.TITLE,
+        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
         NumericQuestion primes = new Primes();

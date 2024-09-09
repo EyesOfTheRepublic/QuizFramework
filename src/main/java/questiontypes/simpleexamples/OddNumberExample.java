@@ -2,6 +2,8 @@ package questiontypes.simpleexamples;
 
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.ArrayFormatter;
+import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.List;
  */
 public class OddNumberExample extends McqQuestion {
 
-    private final List<Integer> list = new ArrayList<>();
+    private final List<Integer> dataSet = new ArrayList<>();
     private int oddCount = 0;
 
     @Override
@@ -22,19 +24,17 @@ public class OddNumberExample extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder val =
-                new StringBuilder("**Odd Numbers.** How many numbers in the following array are odd?\n```\nint[] nums = {");
-        for(int i = 0; i < list.size() - 1; i++) {
-            val.append(i).append(", ");
-        }
-        val.append(list.get(list.size() - 1)).append("};\n```\n'");
-        return val.toString();
+        final StringBuilder builder = new StringBuilder("**Odd Numbers.** How many numbers in the following array are odd?")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] possOdd", dataSet);
+        final StringBuilder code = CodeUtils.questionCode("Odds", formatter.format(2), "int");
+        return builder.append(CodeUtils.toCodeBlock(new StringBuilder(code))).toString();
     }
 
     @Override
     public void createCalcData() {
         for(int i = 0; i < 50; i++) {
-            list.add(i);
+            dataSet.add(i);
             if (i % 2 != 0) {
                 oddCount++;
             }

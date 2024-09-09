@@ -4,6 +4,8 @@ incorrect answers.
  */
 import quizframework.Answer;
 import quizframework.McqQuestion;
+import quizframework.utils.CodeUtils;
+import quizframework.utils.QuizUtils;
 
 import java.util.Random;
 
@@ -21,7 +23,13 @@ public class MultQuestionExample extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        return "**Multiplying Numbers.** What is " + val1 + " * " + val2 + " ?";
+        final StringBuilder builder = new StringBuilder("**Multiplying Numbers.** What is " + val1 + " * " + val2 + " ?")
+                .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
+        final StringBuilder code = CodeUtils.questionCode("Mult",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int val1 = %d;", val1)))
+                .append(CodeUtils.indentTextBlock(String.format("public static int val2 = %d;", val2))),
+                "int");
+        return builder.append(code).toString();
     }
 
     @Override

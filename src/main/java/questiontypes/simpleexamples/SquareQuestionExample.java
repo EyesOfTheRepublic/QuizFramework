@@ -24,7 +24,7 @@ public class SquareQuestionExample extends McqQuestion {
         final StringBuilder builder = new StringBuilder("**Squares.** What is the square of " + number + " ?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final StringBuilder code = CodeUtils.questionCode("Square",
-                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static String numToSquare = %d;", number))),
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int numToSquare = %d;", number))),
                 "int");
         return builder.append(code).toString();
     }

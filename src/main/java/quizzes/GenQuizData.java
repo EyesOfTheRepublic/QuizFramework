@@ -28,7 +28,7 @@ public class GenQuizData {
             (opens in a new window/tab)</li> \
             </ul>""";
 
-    public static String TITLE = "CS-110 Programming Class Test";
+    public static String TITLE = "CS-110 Programming Class Test %d";
     public static String PRACTICE_TITLE = "CS-110 Programming Class Test: Practice Version";
     public static String PRE_AMBLE = """
             <h2>Question Types</h2> \
