@@ -33,7 +33,7 @@ public class GenQuizData {
     public static String PRE_AMBLE = """
             <h2>Question Types</h2> \
             <p>This test contains two questions about <em>numbers</em>, one question about <em>rewriting</em>, \
-            one question about encryption/decryption, \
+            one question about <em>encryption/decryption</em>, \
             and one question about <em>time</em>. \
             <p>You can find (and should already have read) background information on Numbers, Term Rewriting, Encryption/Decryption \
             and Time in the In-Class Test Information module on Canvas.</p> \
@@ -83,7 +83,8 @@ public class GenQuizData {
             </pre>\
             <p>Note that it is <em>essential</em> that you use the <kbd>long</kbd> data type and NOT <kbd>int</kbd>. \
             <h3>Encryption/Decryption</h3>\
-            You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays.</p> \
+            You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays.
+            This code may be useful for debugging.</p> \
             <pre>\
             /*<br/>\
              * Prints an array of characters row-by-row in a readable way. <br/>\

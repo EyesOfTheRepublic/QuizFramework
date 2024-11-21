@@ -33,6 +33,7 @@ public class Quiz3 {
         quiz.addQuestion(factors);
         NumericQuestion pythTriplets = new PythTriplets();
         pythTriplets.createQuestion();
+        quiz.addQuestion(pythTriplets);
 
         McqQuestion rewritingNSteps = new RewritingNSteps();
         rewritingNSteps.createQuestion(GenQuizData.NUM_ANSWERS);
