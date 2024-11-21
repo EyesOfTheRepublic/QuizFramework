@@ -83,7 +83,7 @@ public class GenQuizData {
             </pre>\
             <p>Note that it is <em>essential</em> that you use the <kbd>long</kbd> data type and NOT <kbd>int</kbd>. \
             <h3>Encryption/Decryption</h3>\
-            You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays.
+            You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays. \
             This code may be useful for debugging.</p> \
             <pre>\
             /*<br/>\
