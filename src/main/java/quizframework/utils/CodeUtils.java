@@ -53,9 +53,7 @@ public final class CodeUtils {
                             use the values themselves directly. If you do that, your code will NOT WORK
                             when you submit it to autograder.
                             
-                            Your code should not *change* the values of any of the variables declared above - if you want
-                            to do that, declare new variables with the same values as the ones above (not doing this *may*
-                            result in your answer being marked wrong even if your code is correct).
+                            Your code should not *change* the values of any of the variables declared above.
                             
                             If you need your code to print anything out for, say, debugging - that's fine and
                             it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
