@@ -77,7 +77,7 @@ public class Fibonacci extends NumericQuestion {
                 for the Fibonacci numbers you calculate and NOT int.""")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
-        final ArrayFormatter<Long> formatter = new ArrayFormatter<>("public final static long[] posFibNumbers", questionList) {
+        final ArrayFormatter<Long> formatter = new ArrayFormatter<>("public static long[] posFibNumbers", questionList) {
             @Override
             public String outputItem(final Long item) {
                 return item + "L";

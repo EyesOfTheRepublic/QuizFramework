@@ -49,7 +49,7 @@ import java.util.concurrent.ThreadLocalRandom;
         return factors == 0;
     }
 }
- </pre>>
+ </pre>
  */
 public class SophieGermain extends McqQuestion {
 

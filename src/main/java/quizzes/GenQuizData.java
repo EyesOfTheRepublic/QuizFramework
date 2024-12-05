@@ -15,16 +15,21 @@ public class GenQuizData {
     public static final String RESOURCES = "";
 
     public static final String HEADER = """
-            <p><b style='color:red'>Open whatever software tools you want to use BEFORE you start the test!</b></p> \
-            <p style='color:red'>Otherwise you will lose test time while the tool(s) open!</p> \
+            <p><b style='color:red'>Open whatever software tools - e.g. IntelliJ - you want to use BEFORE you start the test!</b></p> \
+            <p style='color:red'>Otherwise you will lose test time while the tool(s) open! It could easily take 5mins or more to \
+            open software if nobody has run it before on the machine you are using.</p> \
             <ul> \
             <li>Answer all the questions.</li> \
-            <li>You can use the Canvas pages for CS-110 and online resources..</li> \
+            <li>You can use the Canvas pages for CS-110 and online resources THAT ALREADY EXIST.</li> \
             <li>HOWEVER IF YOU COMMUNICATE WITH ANYONE OR ANYTHING IN ANYWAY YOU ARE COMMITTING ACADEMIC MISCONDUCT. \
             The penalties for misconduct in exams/tests are MUCH more serious than for coursework and it is \
             perfectly possible to be WITHDRAWN FROM THE UNIVERSITY FOR A FIRST OFFENCE.</li> \
-            <li>This applies to e.g. online forums/help sites or AI- asking questions there would be COMMISSIONING - the most serious offence.</li> \
-            <li>You have 1 hour 20 minutes to complete the quiz - plus any extra time you may be entitled to.</li> \
+            <li>This applies to e.g. asking questions on online forums/help sites. You can though LOOK UP any EXISTING content on \
+            online forums/help sites - just don't ask anything new.</li> \
+            <li>YOU CANNOT USE AI IN ANY WAY AT ALL.</li> \
+            <li style='color:red'> Asking questions of anyone in anyway, or using AI would be COMMISSIONING \
+            - the most serious offence.</li> \
+            <li><b>You have 1 hour 20 minutes to complete the quiz</b> - plus any extra time you may be entitled to.</li> \
             <li>By submitting you state that you fully understand and are complying with the University's \
             <a href="https://myuni.swansea.ac.uk/academic-life/academic-misconduct/" target="_blank" rel="noopener">Academic Misconduct Policy</a> \
             (opens in a new window/tab)</li> \
