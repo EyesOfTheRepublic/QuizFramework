@@ -15,6 +15,8 @@ public class GenQuizData {
     public static final String RESOURCES = "";
 
     public static final String HEADER = """
+            <p><b style='color:red'>Open whatever software tools you want to use BEFORE you start the test!</b></p> \
+            <p style='color:red'>Otherwise you will lose test time while the tool(s) open!</p> \
             <ul> \
             <li>Answer all the questions.</li> \
             <li>You can use the Canvas pages for CS-110 and online resources..</li> \
@@ -22,7 +24,7 @@ public class GenQuizData {
             The penalties for misconduct in exams/tests are MUCH more serious than for coursework and it is \
             perfectly possible to be WITHDRAWN FROM THE UNIVERSITY FOR A FIRST OFFENCE.</li> \
             <li>This applies to e.g. online forums/help sites or AI- asking questions there would be COMMISSIONING - the most serious offence.</li> \
-            <li>You have 1 hour to complete the quiz - plus any extra time you may be entitled to.</li> \
+            <li>You have 1 hour 20 minutes to complete the quiz - plus any extra time you may be entitled to.</li> \
             <li>By submitting you state that you fully understand and are complying with the University's \
             <a href="https://myuni.swansea.ac.uk/academic-life/academic-misconduct/" target="_blank" rel="noopener">Academic Misconduct Policy</a> \
             (opens in a new window/tab)</li> \
@@ -43,7 +45,6 @@ public class GenQuizData {
             all tests will include all of these):</p> \
             <ul> \
             <li>A Prime Number is a number with no factors other than 1 and itself.</li> \
-            <li>A Sophie Germain Prime Number is a Prime Number p where 2 * p + 1 is also prime</li> \
             <li>A Pythagorean Triple is a set of three numbers <kbd>{a, b, c} such that a*a + b*b == c*c</kbd></li> \
             <li>A Factor <kbd>x</kbd> of a number <kbd>y</kbd> is a number such that <kbd>y/x</kbd> is an integer</li> \
             <li>A Fibonacci Number is a number <kbd>Fib(n)</kbd> such that <kbd>Fib(0) = Fib(1) = 1</kbd>, and \
@@ -55,8 +56,7 @@ public class GenQuizData {
             <h4>Term Rewriting Rule Set</h4> \
             <ul><li>bYb -> Y</li><li>c -> Y</li><li>XXbYaX -> X</li><li>XXba -> X</li><li>Xa -> X</li><li>XY -> X</li><li>bb -> X</li></ul> \
             <h3>Time</h3> \
-            <p>The following code (also in the preliminary information on Canvas) may be useful in answering the Time question.</p> \
-            <p>The following imports are probably useful - you may not use all of them but it will not be a problem if you include \
+            <p>The following imports are probably useful - you may not need all of them but it will not be a problem if you include \
             them all:</p>\
             <pre>\
             import java.time.format.DateTimeFormatter;\
@@ -67,6 +67,7 @@ public class GenQuizData {
              </pre><pre>\
             import java.time.ZoneId;\
             </pre>\
+            <p>The following code (also in the preliminary information on Canvas) may be useful in answering the Time question.</p> \
             <p>To create a <kbd>DateTimeFormatter</kbd> to parse a date/time in the format used in the question:</p> \
             <pre>\
             DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");\

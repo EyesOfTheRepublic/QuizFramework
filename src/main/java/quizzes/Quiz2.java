@@ -1,10 +1,7 @@
 package quizzes;
 
 import questiontypes.crypto.Decryption;
-import questiontypes.numbers.AddPairs;
-import questiontypes.numbers.Fibonacci;
-import questiontypes.numbers.Primes;
-import questiontypes.numbers.SophieGermain;
+import questiontypes.numbers.*;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
@@ -28,12 +25,12 @@ public class Quiz2 {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
-        McqQuestion sophieGermain = new SophieGermain();
-        sophieGermain.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(sophieGermain);
-        NumericQuestion addPairs = new AddPairs();
-        addPairs.createQuestion();
-        quiz.addQuestion(addPairs);
+        NumericQuestion factors = new Factors();
+        factors.createQuestion();
+        quiz.addQuestion(factors);
+        NumericQuestion pythTriplets = new PythTriplets();
+        pythTriplets.createQuestion();
+        quiz.addQuestion(pythTriplets);
 
         NumericQuestion rewriteToCompletion = new RewritingToCompletion();
         rewriteToCompletion.createQuestion();

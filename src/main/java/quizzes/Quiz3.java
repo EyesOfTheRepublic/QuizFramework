@@ -5,6 +5,7 @@ import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.PythTriplets;
 import questiontypes.numbers.SophieGermain;
+import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
 import questiontypes.time.ClosestDateTime;
@@ -28,16 +29,16 @@ public class Quiz3 {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
-        NumericQuestion factors = new Factors();
-        factors.createQuestion();
-        quiz.addQuestion(factors);
-        NumericQuestion pythTriplets = new PythTriplets();
-        pythTriplets.createQuestion();
-        quiz.addQuestion(pythTriplets);
+        McqQuestion sophieGermain = new SophieGermain();
+        sophieGermain.createQuestion(GenQuizData.NUM_ANSWERS);
+        quiz.addQuestion(sophieGermain);
+        NumericQuestion addPairs = new AddPairs();
+        addPairs.createQuestion();
+        quiz.addQuestion(addPairs);
 
-        McqQuestion rewritingNSteps = new RewritingNSteps();
-        rewritingNSteps.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(rewritingNSteps);
+        McqQuestion reduceToX = new ReducesToX();
+        reduceToX.createQuestion(GenQuizData.NUM_ANSWERS);
+        quiz.addQuestion(reduceToX);
 
         McqQuestion numCols = new NumCols();
         numCols.createQuestion(GenQuizData.NUM_ANSWERS);

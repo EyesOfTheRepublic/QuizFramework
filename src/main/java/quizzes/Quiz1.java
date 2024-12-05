@@ -8,6 +8,7 @@ import questiontypes.location.WhichDistanceNoCode;
 import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
 import questiontypes.termrewriting.ReducesToX;
+import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
@@ -35,9 +36,9 @@ public class Quiz1 {
         fibonacci.createQuestion();
         quiz.addQuestion(fibonacci);
 
-        McqQuestion reduceToX = new ReducesToX();
-        reduceToX.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(reduceToX);
+        McqQuestion rewritingNSteps = new RewritingNSteps();
+        rewritingNSteps.createQuestion(GenQuizData.NUM_ANSWERS);
+        quiz.addQuestion(rewritingNSteps);
 
         McqQuestion encryption = new Encryption();
         encryption.createQuestion(GenQuizData.NUM_ANSWERS);
