@@ -105,8 +105,8 @@ public class DemoQuestions {
         nStepRewrite.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(nStepRewrite);
 
-        NumericQuestion completeRewrite = new RewritingToCompletion();
-        completeRewrite.createQuestion();
+        McqQuestion completeRewrite = new RewritingToCompletion();
+        completeRewrite.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(completeRewrite);
 
         McqQuestion whichIsX = new ReducesToX();

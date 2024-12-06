@@ -105,6 +105,6 @@ A range of utilities exist to help generate questions, answers and (critically) 
 - generate a long with the same number of (decimal) digits as another long.
 - generate random strings parameterized by length and characters they include.
 - permute strings parameterized by the number of permutations and the part of the string changed (it is usually better to restrict changes to the middle of long strings).
-- format a list of data as a Java array (if the built-in toString() method for the underlying data type isn't appropriate another one can be provided
+- format a list of data as a Java array (if the built-in toString() method for the underlying data type isn't appropriate another one can be provided).
 - format a block of text as a Markdown code block.
 

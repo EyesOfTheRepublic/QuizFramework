@@ -7,6 +7,7 @@ import questiontypes.termrewriting.RewritingToCompletion;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
+import quizframework.utils.QuizUtils;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -38,8 +39,8 @@ public class RewritingQuiz {
         rewriteN.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(rewriteN);
 
-        NumericQuestion toCompletion = new RewritingToCompletion();
-        toCompletion.createQuestion();
+        McqQuestion toCompletion = new RewritingToCompletion();
+        toCompletion.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(toCompletion);
 
         McqQuestion reducesToX = new ReducesToX();

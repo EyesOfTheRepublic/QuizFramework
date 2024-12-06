@@ -26,7 +26,7 @@ public class Quiz1 {
     private static int QUIZ_NUM = 1;
 
     public static void main(String[] args) {
-        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
+        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Engineering C109, 12:00",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
         NumericQuestion primes = new Primes();
@@ -52,7 +52,7 @@ public class Quiz1 {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);
         } else {
-            final String fileName = "Quiz" + QUIZ_NUM;
+            final String fileName = "Quiz-C109-" + QUIZ_NUM;
             try {
                 PrintStream stream = new PrintStream(fileName + ".txt");
                 quiz.generateText2Qti(stream);

@@ -22,7 +22,7 @@ public class Quiz2 {
     private static int QUIZ_NUM = 2;
 
     public static void main(String[] args) {
-        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
+        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Engineering C109, 14:30",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
         NumericQuestion factors = new Factors();
@@ -32,8 +32,8 @@ public class Quiz2 {
         pythTriplets.createQuestion();
         quiz.addQuestion(pythTriplets);
 
-        NumericQuestion rewriteToCompletion = new RewritingToCompletion();
-        rewriteToCompletion.createQuestion();
+        McqQuestion rewriteToCompletion = new RewritingToCompletion();
+        rewriteToCompletion.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(rewriteToCompletion);
 
         McqQuestion decryption = new Decryption();
@@ -48,7 +48,7 @@ public class Quiz2 {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);
         } else {
-            final String fileName = "Quiz" + QUIZ_NUM;
+            final String fileName = "Quiz-C109-" + QUIZ_NUM;
             try {
                 PrintStream stream = new PrintStream(fileName + ".txt");
                 quiz.generateText2Qti(stream);

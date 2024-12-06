@@ -1,5 +1,9 @@
 
-y
-java:S1128"6Remove this unused import 'quizframework.McqQuestion'.(äÛ³8ÙŞš2J$2374e304-1528-4ec6-809f-481b055fa3f0
+z
+java:S1854n"7Remove this useless assignment to local variable "min".(ßºÅ“8ß†Ş¹2J$fa7308ed-de3a-4218-aff6-fcbbe8e7ea02
+k
+java:S1481n"(Remove this unused "min" local variable.(ßºÅ“8‚ß†Ş¹2J$385a48df-ec49-48e4-a9cf-58124b76c9c9
+}
+java:S1128":Remove this unused import 'quizframework.NumericQuestion'.(ñÕÒ—8İ€èİ¹2J$45831dca-eacf-4d62-bf4b-4135165cec77
 ‡
-java:S1128"?Remove this unused import 'quizframework.utils.ArrayFormatter'.(Œµ±‡øÿÿÿÿ8ÙŞš2J$8cc16b92-1907-4388-b5ee-b19f272d9d7d
+java:S1128"?Remove this unused import 'quizframework.utils.ArrayFormatter'.(Œµ±‡øÿÿÿÿ8İ€èİ¹2J$5ac8a6df-5a9c-4603-a596-87eaed205e84

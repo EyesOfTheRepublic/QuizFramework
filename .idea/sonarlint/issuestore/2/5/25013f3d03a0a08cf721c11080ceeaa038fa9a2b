@@ -1,4 +1,9 @@
 
-l	java:S106-"+Replace this use of System.out by a logger.(£ôÎ$8àÆš2J$c12f9e24-c346-492c-aaf0-2d81e02aaff6
-r	java:S106."+Replace this use of System.out by a logger.(½Îâõúÿÿÿÿ8áÆš2J$27373433-3826-4e1d-b03f-eff6a34e29c3
-l	java:S1066"+Replace this use of System.out by a logger.(³í¹8æÆš2J$8fd7fb23-11ee-4179-92d6-658e4fa07156
+l	java:S106."+Replace this use of System.out by a logger.(£ôÎ$8àÆš2J$9616c076-1c5b-4f14-a64f-226ad75d5b2e
+r	java:S106/"+Replace this use of System.out by a logger.(½Îâõúÿÿÿÿ8áÆš2J$130ccfac-fe16-4a8e-9513-39abf5e3a813
+l	java:S1067"+Replace this use of System.out by a logger.(³í¹8æÆš2J$938903e5-41ba-4222-80f9-56ec0a662ea2
+W
+java:S1128":Remove this unused import 'quizframework.NumericQuestion'.(ñÕÒ—8÷â×Ş¹2
+W
+java:S1128
+":Remove this unused import 'quizframework.utils.QuizUtils'.(–÷õî8÷â×Ş¹2

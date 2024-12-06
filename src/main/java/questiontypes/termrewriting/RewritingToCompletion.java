@@ -54,7 +54,7 @@ public class Test {
 }
  </pre>
  */
-public class RewritingToCompletion extends NumericQuestion {
+public class RewritingToCompletion extends McqQuestion {
 
     private String sourceString;
     private int numSteps;
@@ -103,6 +103,13 @@ public class RewritingToCompletion extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return  Answer.makeCorrectAnswer(Integer.toString(numSteps));
+    }
+
+    @Override
+    public Answer createIncorrectAnswer() {
+        int min = numSteps < CoreRewritingData.STEP_MIN ? CoreRewritingData.STEP_MIN : numSteps;
+        int max = numSteps + CoreRewritingData.STEP_MAX;
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
     }
 
     @Override
