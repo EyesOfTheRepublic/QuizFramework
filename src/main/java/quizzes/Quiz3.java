@@ -26,7 +26,7 @@ public class Quiz3 {
     private static int QUIZ_NUM = 3
             ;
     public static void main(String[] args) {
-        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM),
+        Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + "Location Time Here!",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
         McqQuestion sophieGermain = new SophieGermain();
