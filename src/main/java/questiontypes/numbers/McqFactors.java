@@ -2,6 +2,7 @@ package questiontypes.numbers;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
+import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
@@ -13,9 +14,9 @@ import java.util.Collections;
 /**
  * Checking how many numbers in a list have a specific number as a factor - version that is suitable for use with
  * autograder.
- * This is a numeric version of the question - there is also an MCQ version
- *  @see questiontypes.numbers.McqFactors
- *  Code suitable for checking correctness on autograder:
+ * This is an MCQ version of the question - there is also a version that does not provide a list of possible answers
+ * @see questiontypes.numbers.Factors
+ * Code suitable for checking correctness on autograder:
  <pre>
 import java.util.stream.IntStream;
 
@@ -47,7 +48,7 @@ public class Test {
  </pre>
  */
 
-public class Factors extends NumericQuestion {
+public class McqFactors extends McqQuestion {
 
     private int ansFactor;
     private final ArrayList<Integer> listOfPosFactors = new ArrayList<>();
@@ -103,6 +104,10 @@ public class Factors extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(numCorrect));
+    }
+
+    public Answer createIncorrectAnswer() {
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM)));
     }
 
     @Override

@@ -1,8 +1,10 @@
 package questiontypes.numbers;
 
+import org.checkerframework.common.returnsreceiver.qual.This;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
+import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
@@ -14,8 +16,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * This question has a large list of numbers some prime and some not. The question is to identify how many are prime.
- * This version requires a numeric - there is also an MCQ version
- * @see questiontypes.numbers.McqPrimes
+ * This is an MCQ version of the question - there is also a version that does not provide a list of possible answers
+ * @see questiontypes.numbers.Primes
  * This version suitable for use with autograder - use this code:
  <pre>
 import java.util.stream.IntStream;
@@ -47,7 +49,7 @@ public class Test {
 }
  </pre>
  */
-public class Primes extends NumericQuestion {
+public class McqPrimes extends McqQuestion {
 
     private int numPrimes;
 
@@ -104,6 +106,11 @@ public class Primes extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(numPrimes));
+    }
+
+    @Override
+    public Answer createIncorrectAnswer() {
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM)));
     }
 
     @Override

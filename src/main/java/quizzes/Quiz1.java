@@ -6,7 +6,9 @@ import questiontypes.location.MinSecDistanceNoCode;
 import questiontypes.location.TotalDistance;
 import questiontypes.location.WhichDistanceNoCode;
 import questiontypes.numbers.Fibonacci;
+import questiontypes.numbers.McqPrimes;
 import questiontypes.numbers.Primes;
+import questiontypes.simplequestions.SumSquareQuestion;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.time.TimeTraveller;
@@ -29,9 +31,14 @@ public class Quiz1 {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Engineering C109, 12:00",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
-        NumericQuestion primes = new Primes();
-        primes.createQuestion();
+        McqQuestion checkSumOfSquares = new SumSquareQuestion();
+        checkSumOfSquares.createQuestion(5);
+        quiz.addQuestion(checkSumOfSquares);
+
+        McqQuestion primes = new McqPrimes();
+        primes.createQuestion(5);
         quiz.addQuestion(primes);
+
         NumericQuestion fibonacci = new Fibonacci();
         fibonacci.createQuestion();
         quiz.addQuestion(fibonacci);
@@ -43,11 +50,11 @@ public class Quiz1 {
         McqQuestion encryption = new Encryption();
         encryption.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(encryption);
-
+/*
         McqQuestion timeTraveller = new TimeTraveller();
         timeTraveller.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(timeTraveller);
-
+*/
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);

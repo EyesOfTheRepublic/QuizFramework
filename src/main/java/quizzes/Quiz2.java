@@ -2,6 +2,7 @@ package quizzes;
 
 import questiontypes.crypto.Decryption;
 import questiontypes.numbers.*;
+import questiontypes.simplequestions.AddSubQuestion;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
@@ -25,9 +26,14 @@ public class Quiz2 {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Engineering C109, 14:30",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
-        NumericQuestion factors = new Factors();
-        factors.createQuestion();
+        McqQuestion addSubQuestion = new AddSubQuestion();
+        addSubQuestion.createQuestion(5);
+        quiz.addQuestion(addSubQuestion);
+
+        McqQuestion factors = new McqFactors();
+        factors.createQuestion(5);
         quiz.addQuestion(factors);
+
         NumericQuestion pythTriplets = new PythTriplets();
         pythTriplets.createQuestion();
         quiz.addQuestion(pythTriplets);
@@ -39,11 +45,11 @@ public class Quiz2 {
         McqQuestion decryption = new Decryption();
         decryption.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(decryption);
-
+/*
         McqQuestion diffMills = new DiffMills();
         diffMills.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(diffMills);
-
+*/
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);

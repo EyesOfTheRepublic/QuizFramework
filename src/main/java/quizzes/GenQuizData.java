@@ -61,34 +61,6 @@ public class GenQuizData {
             the term rewriting question.</p> \
             <h4>Term Rewriting Rule Set</h4> \
             <ul><li>bYb -> Y</li><li>c -> Y</li><li>XXbYaX -> X</li><li>XXba -> X</li><li>Xa -> X</li><li>XY -> X</li><li>bb -> X</li></ul> \
-            <h3>Time</h3> \
-            <p>The following imports are probably useful - you may not need all of them but it will not be a problem if you include \
-            them all:</p>\
-            <pre>\
-            import java.time.format.DateTimeFormatter;\
-            </pre><pre>\
-            import java.time.Instant;\
-             </pre><pre>\
-            import java.time.LocalDateTime;\
-             </pre><pre>\
-            import java.time.ZoneId;\
-            </pre>\
-            <p>The following code (also in the preliminary information on Canvas) may be useful in answering the Time question.</p> \
-            <p>To create a <kbd>DateTimeFormatter</kbd> to parse a date/time in the format used in the question:</p> \
-            <pre>\
-            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");\
-            </pre>\
-            <p>To convert a date/time string into the corresponding number of milliseconds using the formatter above:</p> \
-            <pre>\
-            long milliSeconds = LocalDateTime.parse(date, df).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(); \
-            </pre> \
-            <p>To turn milliseconds represented by a <kbd>long</kbd> called <kbd>millis</kbd> back into a String:</p> \
-            <pre>\
-            LocalDateTime dmils = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault()); \
-             </pre><pre>\
-            String dateString = dmils.format(df);\
-            </pre>\
-            <p>Note that it is <em>essential</em> that you use the <kbd>long</kbd> data type and NOT <kbd>int</kbd>. \
             <h3>Encryption/Decryption</h3>\
             You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays. \
             This code may be useful for debugging.</p> \
@@ -118,5 +90,37 @@ public class GenQuizData {
             other three will be multiple choice. In the actual test, two questions will be about <em>numbers</em>, one about \
             <em>time</em>, one about <em>term rewriting</em> and one about <em>cyphers</em>. Preliminary information \
             about these question types will be released a day or so before the actual test.
+            """;
+
+    //The old preamble text for time-based questions, not used right now
+    private static String oldTimeText = """
+            <h3>Time</h3> \
+            <p>The following imports are probably useful - you may not need all of them but it will not be a problem if you include \
+            them all:</p>\
+            <pre>\
+            import java.time.format.DateTimeFormatter;\
+            </pre><pre>\
+            import java.time.Instant;\
+             </pre><pre>\
+            import java.time.LocalDateTime;\
+             </pre><pre>\
+            import java.time.ZoneId;\
+            </pre>\
+            <p>The following code (also in the preliminary information on Canvas) may be useful in answering the Time question.</p> \
+            <p>To create a <kbd>DateTimeFormatter</kbd> to parse a date/time in the format used in the question:</p> \
+            <pre>\
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");\
+            </pre>\
+            <p>To convert a date/time string into the corresponding number of milliseconds using the formatter above:</p> \
+            <pre>\
+            long milliSeconds = LocalDateTime.parse(date, df).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(); \
+            </pre> \
+            <p>To turn milliseconds represented by a <kbd>long</kbd> called <kbd>millis</kbd> back into a String:</p> \
+            <pre>\
+            LocalDateTime dmils = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault()); \
+             </pre><pre>\
+            String dateString = dmils.format(df);\
+            </pre>\
+            <p>Note that it is <em>essential</em> that you use the <kbd>long</kbd> data type and NOT <kbd>int</kbd>. \
             """;
 }

@@ -1,15 +1,9 @@
 package quizzes;
 
-import questiontypes.checksum.BitwiseChecksum;
-import questiontypes.checksum.CheckSumString;
-import questiontypes.checksum.CheckSumValue;
-import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.TotalDistance;
-import questiontypes.simpleexamples.MultQuestionExample;
-import questiontypes.simpleexamples.OddNumberExample;
-import questiontypes.simpleexamples.SquareQuestionExample;
+import questiontypes.simplequestions.MultQuestionExample;
+import questiontypes.simplequestions.OddNumberExample;
+import questiontypes.simplequestions.SquareQuestionExample;
 import quizframework.McqQuestion;
-import quizframework.NumericQuestion;
 import quizframework.Quiz;
 
 import java.io.FileNotFoundException;

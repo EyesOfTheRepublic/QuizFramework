@@ -1,33 +1,33 @@
-package questiontypes.simpleexamples;/*
-A (trivial) multiplication question - asks what is the product of two (random) numbers. Generates one correct and a set of random
-incorrect answers.
+package questiontypes.simplequestions;/*
+A relatively simple question - find the sum of numbers 2i - i for i = 1 to n.
  */
 import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.IntStream;
 
-public class MultQuestionExample extends McqQuestion {
+public class AddSubQuestion extends McqQuestion {
 
     private final Random rnd = new Random();
 
-    private long val1;
-    private long val2;
+    private int maxVal;
 
     @Override
     public String createQuestionTitle() {
-        return "Multiplying Numbers";
+        return "Sum of Squares";
     }
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Multiplying Numbers.** What is " + val1 + " * " + val2 + " ?")
+        final StringBuilder builder = new StringBuilder("**Sum of Numbers.** What is the sum of 2 * i - 1 for i = 1 to "
+                + maxVal + "? For example, for n = 3 it is (2 * 1 - 1) + (2 * 2 - 1) + (2 * 3 - 1) = 1 + 3 + 5 = 10")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final StringBuilder code = CodeUtils.questionCode("Mult",
-                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int val1 = %d;", val1)))
-                .append(CodeUtils.indentTextBlock(String.format("public static int val2 = %d;", val2))),
+        final StringBuilder code = CodeUtils.questionCode("SumSquares",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int numSquares = %d;", maxVal))),
                 "int");
         return builder.append(code).toString();
     }
@@ -49,8 +49,7 @@ public class MultQuestionExample extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        val1 = rnd.nextInt(15);
-        val2 = rnd.nextInt(15);
+        maxVal = rnd.nextInt(12) + 6;
     }
 
     @Override
@@ -60,18 +59,24 @@ public class MultQuestionExample extends McqQuestion {
 
     @Override
     public boolean checkAnswer(final Answer ans) {
-        return val1 * val2 == Integer.parseInt(ans.getQuestionAnswer());
+        Map<String, Integer> integers;
+        return IntStream.rangeClosed(1, maxVal).mapToLong(i -> (long)2 * i - 1).sum()
+                == Integer.parseInt(ans.getQuestionAnswer());
     }
 
     @Override
     public Answer createCorrectAnswer() {
-        return Answer.makeCorrectAnswerWithFeedback(Long.toString(val1 * val2),
+        int runningTotal = 0;
+        for(int i = 1; i <= maxVal; i++) {
+            runningTotal += 2 * i - 1;
+        }
+        return Answer.makeCorrectAnswerWithFeedback(Long.toString(runningTotal),
                 "some correct feedback");
     }
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(30)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(200)),
                 "some incorrect feedback");
     }
 }

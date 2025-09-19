@@ -29,9 +29,12 @@ public class Quiz3 {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + "Location Time Here!",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
+        
+
         McqQuestion sophieGermain = new SophieGermain();
         sophieGermain.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(sophieGermain);
+
         NumericQuestion addPairs = new AddPairs();
         addPairs.createQuestion();
         quiz.addQuestion(addPairs);
@@ -43,11 +46,11 @@ public class Quiz3 {
         McqQuestion numCols = new NumCols();
         numCols.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(numCols);
-
+/*
         McqQuestion closestDateTime = new ClosestDateTime();
         closestDateTime.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(closestDateTime);
-
+*/
         if (quiz.hasFaults()) {
             System.out.println("Quiz has Errors:");
             System.out.println(quiz);

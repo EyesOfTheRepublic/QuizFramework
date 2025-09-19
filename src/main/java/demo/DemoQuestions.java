@@ -15,6 +15,7 @@ import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
 import questiontypes.numbers.PythTriplets;
 import questiontypes.numbers.SophieGermain;
+import questiontypes.simplequestions.SumSquareQuestion;
 import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
@@ -66,6 +67,10 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
+        McqQuestion checkSumOfSquares = new SumSquareQuestion();
+        checkSumOfSquares.createQuestion(5);
+        quiz.addQuestion(checkSumOfSquares);
+
         NumericQuestion checkValueQuestion = new CheckSumValue();
         checkValueQuestion.createQuestion();
         quiz.addQuestion(checkValueQuestion);
