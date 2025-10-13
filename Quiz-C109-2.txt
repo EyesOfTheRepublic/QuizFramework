@@ -1,0 +1,286 @@
+Quiz title: CS-110 Programming Class Test 2: Engineering C109, 14:30
+Quiz description: <p><b style='color:red'>Open whatever software tools - e.g. IntelliJ - you want to use BEFORE you start the test!</b></p> <p style='color:red'>Otherwise you will lose test time while the tool(s) open! It could easily take 5mins or more to open software if nobody has run it before on the machine you are using.</p> <ul> <li>Answer all the questions.</li> <li>You can use the Canvas pages for CS-110 and online resources THAT ALREADY EXIST.</li> <li>HOWEVER IF YOU COMMUNICATE WITH ANYONE OR ANYTHING IN ANYWAY YOU ARE COMMITTING ACADEMIC MISCONDUCT. The penalties for misconduct in exams/tests are MUCH more serious than for coursework and it is perfectly possible to be WITHDRAWN FROM THE UNIVERSITY FOR A FIRST OFFENCE.</li> <li>This applies to e.g. asking questions on online forums/help sites. You can though LOOK UP any EXISTING content on online forums/help sites - just don't ask anything new.</li> <li>YOU CANNOT USE AI IN ANY WAY AT ALL.</li> <li style='color:red'> Asking questions of anyone in anyway, or using AI would be COMMISSIONING - the most serious offence.</li> <li><b>You have 1 hour 20 minutes to complete the quiz</b> - plus any extra time you may be entitled to.</li> <li>By submitting you state that you fully understand and are complying with the University's <a href="https://myuni.swansea.ac.uk/academic-life/academic-misconduct/" target="_blank" rel="noopener">Academic Misconduct Policy</a> (opens in a new window/tab)</li> </ul><h2>Question Types</h2> <p>This test contains two questions about <em>numbers</em>, one question about <em>rewriting</em>, one question about <em>encryption/decryption</em>, and one question about <em>time</em>. <p>You can find (and should already have read) background information on Numbers, Term Rewriting, Encryption/Decryption and Time in the In-Class Test Information module on Canvas.</p> <em>Remember to cut-and-paste long strings - do not try to type them in.</em><h3>Numbers</h3> <p><em>Depending on the specific questions in your tests,</em> the following information may be useful (note that not all tests will include all of these):</p> <ul> <li>A Prime Number is a number with no factors other than 1 and itself.</li> <li>A Pythagorean Triple is a set of three numbers <kbd>{a, b, c} such that a*a + b*b == c*c</kbd></li> <li>A Factor <kbd>x</kbd> of a number <kbd>y</kbd> is a number such that <kbd>y/x</kbd> is an integer - that is, in Java: <kbd>x % y == 0</kbd></li> <li>A Fibonacci Number is a number <kbd>Fib(n)</kbd> such that <kbd>Fib(0) = Fib(1) = 1</kbd>, and <kbd>Fib(n) = Fib(n-1) + Fib(n-2)</kbd> for <kbd>n>1</kbd></li> </ul> <h3>Term Rewriting</h3> <p>You will need to apply  the following set of rules <em>in the order given below</em> to successfully solve the term rewriting question.</p> <h4>Term Rewriting Rule Set</h4> <ul><li>bYb -> Y</li><li>c -> Y</li><li>XXbYaX -> X</li><li>XXba -> X</li><li>Xa -> X</li><li>XY -> X</li><li>bb -> X</li></ul> <h3>Encryption/Decryption</h3>You will most easily be able to solve the Transposition Cypher problems using two-dimensional arrays. This code may be useful for debugging.</p> <pre>/*<br/> * Prints an array of characters row-by-row in a readable way. <br/> * You may need to remove the keyword static after public, depending <br/> * on how you write your code.<br/> */ <br/>public static void formatArray(char[][] charArray) { <br/>    for (char[] row : charArray) { <br/>        for (char item : row) { <br/>            System.out.print(" " + item); <br/>        } <br/>        System.out.println(); <br/>    } <br/>} <br/></pre> 
+
+Title: Sum of Numbers
+Points: 5
+1.   **Sum of Numbers.** What is the sum of 2 * i - 1 for i = 1 to 7? For example, for n = 3 it is (2 * 1 - 1) + (2 * 2 - 1) + (2 * 3 - 1) = 1 + 3 + 5 = 10
+     Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
+     (you can write additional methods if you want)
+     - *but do not change the name, parameters or return type of the method below*.
+     
+     **Upload your code to autograder** *and* **enter the answer below**.
+     
+     
+          public class SumNumbers {
+          
+               public static int sumNumbers = 7;
+          
+          
+               public static void main(String[] args) {
+                   System.out.println(answer());
+               }
+          
+               public static int answer() {
+                   /* Write your code here - it MUST *return* the answer
+          
+                      Do not change any of the names or values of the variables declared above or the main method
+                      - though you can add other methods if you want (make sure you do not change the "signature"
+                      of answer() - autograder is expecting a static method with that name and return type and
+                      no parameters).
+          
+                      Make sure you use the variables declared above in your calculation and DO NOT
+                      use the values themselves directly. If you do that, your code will NOT WORK
+                      when you submit it to autograder.
+          
+                      Your code should not *change* the values of any of the variables declared above.
+          
+                      If you need your code to print anything out for, say, debugging - that's fine and
+                      it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
+                      the result of your calculation and does not just print it!
+                   */
+               }
+          }
+...  Some generic feedback
++    Some feedback for the correct answer
+-    Some general feedback for incorrect answers
+a)   76
+...  some incorrect feedback
+*b)  49
+...  some correct feedback
+c)   111
+...  some incorrect feedback
+d)   171
+...  some incorrect feedback
+e)   174
+...  some incorrect feedback
+
+Title: How many factors?
+Points: 6
+2.   **Factors.** How many numbers in the following sequence have 39400 as a factor?
+     Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
+     (you can write additional methods if you want)
+     - *but do not change the name, parameters or return type of the method below*.
+     
+     **Upload your code to autograder** *and* **enter the answer below**.
+     
+     
+     
+     ```
+     
+          public class Factors {
+               public static int[] numbers = {
+                    935631238, 1062027000, 1040300900, 1258298711, 1374672278, 823183075, 969515800, 
+                    919958575, 912980023, 1096226200, 990393415, 978893000, 993537257, 1087991600, 
+                    1304205350, 1587504800, 1294920400, 936183102, 1060517751, 1701843600, 
+                    807158302, 1722252800, 1076770129, 733083259, 1408210773, 1319268001, 946047540, 
+                    1726744400, 1354020400, 1388731800, 1284637000, 1041499600, 1352606801, 
+                    917113800, 1308119400, 1177377402, 990988800, 806185404, 1085864000, 1168004128, 
+                    1416311800, 1030688707, 1370292600, 1387463113, 1154420000, 1296614600, 
+                    838592549, 1470802000, 1715948800, 1115369579, 936577400, 716985206, 1272068400, 
+                    992259306, 1530374800, 906601381, 1097975324, 1718825000, 1171086200, 1638527800, 
+                    1583958800, 1272935200, 1221666866, 1203465213, 1148084953, 1172504600, 
+                    1079875200, 925900000
+               };
+               public static int factor = 39400;
+          
+          
+               public static void main(String[] args) {
+                   System.out.println(answer());
+               }
+          
+               public static int answer() {
+                   /* Write your code here - it MUST *return* the answer
+          
+                      Do not change any of the names or values of the variables declared above or the main method
+                      - though you can add other methods if you want (make sure you do not change the "signature"
+                      of answer() - autograder is expecting a static method with that name and return type and
+                      no parameters).
+          
+                      Make sure you use the variables declared above in your calculation and DO NOT
+                      use the values themselves directly. If you do that, your code will NOT WORK
+                      when you submit it to autograder.
+          
+                      Your code should not *change* the values of any of the variables declared above.
+          
+                      If you need your code to print anything out for, say, debugging - that's fine and
+                      it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
+                      the result of your calculation and does not just print it!
+                   */
+               }
+          }
+     
+     ```
+*a)  35
+b)   28
+c)   31
+d)   36
+e)   32
+
+Title: How many Pythagorean Triples?
+Points: 6
+3.   **Pythagoras.** How many of the groups of three numbers in the list are Pythagorean Triples?
+     That is, for each ``{a, b, c}``,  ``a*a + b*b == c*c``.
+     
+     Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
+     (you can write additional methods if you want)
+     - *but do not change the name, parameters or return type of the method below*.
+     
+     **Upload your code to autograder** *and* **enter the answer below**.
+     
+     
+     
+     ```
+     
+          public class Pythagoras {
+               public static int[][] possTriples = {
+                    {6565, 10229, 31289}, {2233, 20544, 20665}, {1159, 10418, 17160}, {10089, 15716, 31193}, 
+                    {8063, 10037, 20498}, {1554, 10584, 18903}, {10482, 15498, 27044}, {8905, 7272, 11497}, 
+                    {9548, 9936, 13780}, {7480, 13482, 15418}, {6673, 10161, 18877}, {203, 20604, 20605}, 
+                    {10585, 10585, 24574}, {10296, 13461, 14697}, {11000, 1050, 11050}, {9555, 8692, 12917}, 
+                    {5160, 14342, 15242}, {4625, 16800, 17425}, {9775, 3000, 10225}, {10445, 18344, 18756}, 
+                    {10526, 17380, 24960}, {10067, 12582, 27873}, {10134, 10160, 22451}, {3640, 16362, 16762}, 
+                    {2722, 10079, 25483}, {10516, 21506, 24528}, {5621, 10596, 22044}, {10347, 19701, 30324}, 
+                    {11543, 2376, 11785}, {10001, 6720, 12049}, {2902, 10136, 14738}, {10904, 2310, 11146}, 
+                    {10320, 11751, 13228}, {2841, 10199, 18410}, {11021, 420, 11029}, {1065, 22672, 22697}, 
+                    {5520, 16478, 17378}, {10371, 13009, 18582}, {5075, 14892, 15733}, {10621, 12934, 14859}, 
+                    {1648, 21186, 21250}, {10012, 16576, 33069}, {10572, 10633, 12692}, {9676, 3600, 10324}, 
+                    {7439, 14040, 15889}, {8932, 10176, 13540}, {9855, 6448, 11777}, {5340, 15392, 16292}, 
+                    {8199, 10196, 23793}, {11328, 2354, 11570}, {8321, 10920, 13729}, {10156, 13960, 16738}, 
+                    {3720, 17098, 17498}, {10536, 12012, 18983}, {10302, 16743, 27884}
+               };
+          
+               public static void main(String[] args) {
+                   System.out.println(answer());
+               }
+          
+               public static int answer() {
+                   /* Write your code here - it MUST *return* the answer
+          
+                      Do not change any of the names or values of the variables declared above or the main method
+                      - though you can add other methods if you want (make sure you do not change the "signature"
+                      of answer() - autograder is expecting a static method with that name and return type and
+                      no parameters).
+          
+                      Make sure you use the variables declared above in your calculation and DO NOT
+                      use the values themselves directly. If you do that, your code will NOT WORK
+                      when you submit it to autograder.
+          
+                      Your code should not *change* the values of any of the variables declared above.
+          
+                      If you need your code to print anything out for, say, debugging - that's fine and
+                      it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
+                      the result of your calculation and does not just print it!
+                   */
+               }
+          }
+     
+     ```
+=    27
+
+Title: Term rewriting until there are no more changes
+Points: 6
+4.   **Rewrite to Completion.** How many times does term rewriting rule set 1 need to be run on the string  
+     ``bbaccabacbbaacacaccccabcacaacccbabbccccbbacbbbcababaaccabaacaccabab``  
+     before no more changes happen? ONLY count the number of times that applying the rules results in a change.
+     Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
+     (you can write additional methods if you want)
+     - *but do not change the name, parameters or return type of the method below*.
+     
+     **Upload your code to autograder** *and* **enter the answer below**.
+     
+     
+     
+     ```
+     
+          public class ReduceToCompletion {
+          
+               public static String sourceString = "bbaccabacbbaacacaccccabcacaacccbabbccccbbacbbbcababaaccabaacaccabab";
+          
+          
+               public static void main(String[] args) {
+                   System.out.println(answer());
+               }
+          
+               public static int answer() {
+                   /* Write your code here - it MUST *return* the answer
+          
+                      Do not change any of the names or values of the variables declared above or the main method
+                      - though you can add other methods if you want (make sure you do not change the "signature"
+                      of answer() - autograder is expecting a static method with that name and return type and
+                      no parameters).
+          
+                      Make sure you use the variables declared above in your calculation and DO NOT
+                      use the values themselves directly. If you do that, your code will NOT WORK
+                      when you submit it to autograder.
+          
+                      Your code should not *change* the values of any of the variables declared above.
+          
+                      If you need your code to print anything out for, say, debugging - that's fine and
+                      it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
+                      the result of your calculation and does not just print it!
+                   */
+               }
+          }
+     
+     ```
+a)   7
+b)   4
+c)   16
+*d)  9
+e)   5
+f)   15
+
+Title: Decrypting a string using transposition
+Points: 6
+5.   **Decryption.** What is the result of decrypting the string  
+     ``jbefilkhefjejfcdbeeddkmgdiamiacbamkkajbhjlhbmhilmkjmkbdfalkhcjigflddmgbkdcdch``  
+     with a transposition cypher that has been encrypted using an array with 11 columns?
+     Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
+     (you can write additional methods if you want)
+     - *but do not change the name, parameters or return type of the method below*.
+     
+     **Upload your code to autograder** *and* **enter the answer below**.
+     
+     
+     
+     ```
+     
+          public class TransposeDecrypt {
+          
+               public static String cypherText = "jbefilkhefjejfcdbeeddkmgdiamiacbamkkajbhjlhbmhilmkjmkbdfalkhcjigflddmgbkdcdch";
+               public static int columns = 11;
+          
+          
+               public static void main(String[] args) {
+                   System.out.println(answer());
+               }
+          
+               public static String answer() {
+                   /* Write your code here - it MUST *return* the answer
+          
+                      Do not change any of the names or values of the variables declared above or the main method
+                      - though you can add other methods if you want (make sure you do not change the "signature"
+                      of answer() - autograder is expecting a static method with that name and return type and
+                      no parameters).
+          
+                      Make sure you use the variables declared above in your calculation and DO NOT
+                      use the values themselves directly. If you do that, your code will NOT WORK
+                      when you submit it to autograder.
+          
+                      Your code should not *change* the values of any of the variables declared above.
+          
+                      If you need your code to print anything out for, say, debugging - that's fine and
+                      it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
+                      the result of your calculation and does not just print it!
+                   */
+               }
+          }
+     
+     ```
+a)   jhckikhkbgbbedmaabblfkefbgchmmkldfjedbahkhdcieeiajijcddljdamjldjmckfdmklmfigh
+*b)  jhckikhkagbbedmaabjlfkefbgcjmmkldfjedbbhkhdcieeiahibcddljdamjldjmckfdmklmfigh
+c)   jhckikhkagbbedcaabjlgkefbfcjmmkldljedbbhkhdmieeiahibcddfjdamjldjmckfdmklmfigh
+d)   jhckikhkajbbedmaabjlfkefbgcjemkldfjedbbhkhdcimeiadibcddljdamglhjmckfdmklmfigh
+e)   jhckikhkagbbedmaabjlfkefbgcjmmkldfjedbbhkhdciceiahibcddljdamjldjmekfdmklmfigh
+f)   jhckikhkagbkedmbabjlfkefbgcjmmkldfjedbahbkdcieeiahibcddljdamjldjmchfdmklmfigh
+
