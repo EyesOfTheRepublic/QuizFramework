@@ -18,7 +18,7 @@ public class AddSubQuestion extends McqQuestion {
 
     @Override
     public String createQuestionTitle() {
-        return "Sum of Squares";
+        return "Sum of Numbers";
     }
 
     @Override
@@ -26,8 +26,8 @@ public class AddSubQuestion extends McqQuestion {
         final StringBuilder builder = new StringBuilder("**Sum of Numbers.** What is the sum of 2 * i - 1 for i = 1 to "
                 + maxVal + "? For example, for n = 3 it is (2 * 1 - 1) + (2 * 2 - 1) + (2 * 3 - 1) = 1 + 3 + 5 = 10")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final StringBuilder code = CodeUtils.questionCode("SumSquares",
-                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int numSquares = %d;", maxVal))),
+        final StringBuilder code = CodeUtils.questionCode("SumNumbers",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int sumNumbers = %d;", maxVal))),
                 "int");
         return builder.append(code).toString();
     }
