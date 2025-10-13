@@ -5,6 +5,7 @@ import questiontypes.numbers.AddPairs;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.PythTriplets;
 import questiontypes.numbers.SophieGermain;
+import questiontypes.simplequestions.SumSquareQuestion;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
 import questiontypes.termrewriting.RewritingToCompletion;
@@ -29,7 +30,9 @@ public class Quiz3 {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + "Location Time Here!",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
-        
+        McqQuestion sumSquareQuestion = new SumSquareQuestion();
+        sumSquareQuestion.createQuestion(GenQuizData.NUM_ANSWERS);
+        quiz.addQuestion(sumSquareQuestion);
 
         McqQuestion sophieGermain = new SophieGermain();
         sophieGermain.createQuestion(GenQuizData.NUM_ANSWERS);

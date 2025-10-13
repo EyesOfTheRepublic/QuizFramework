@@ -51,7 +51,7 @@ public class GenQuizData {
             <ul> \
             <li>A Prime Number is a number with no factors other than 1 and itself.</li> \
             <li>A Pythagorean Triple is a set of three numbers <kbd>{a, b, c} such that a*a + b*b == c*c</kbd></li> \
-            <li>A Factor <kbd>x</kbd> of a number <kbd>y</kbd> is a number such that <kbd>y/x</kbd> is an integer - that is,
+            <li>A Factor <kbd>x</kbd> of a number <kbd>y</kbd> is a number such that <kbd>y/x</kbd> is an integer - that is, \
             in Java: <kbd>x % y == 0</kbd></li> \
             <li>A Fibonacci Number is a number <kbd>Fib(n)</kbd> such that <kbd>Fib(0) = Fib(1) = 1</kbd>, and \
             <kbd>Fib(n) = Fib(n-1) + Fib(n-2)</kbd> for <kbd>n>1</kbd></li> \
