@@ -49,7 +49,7 @@ public class SumSquareQuestion extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        numSquares = rnd.nextInt(12);
+        numSquares = rnd.nextInt(12) + 5;
     }
 
     @Override
