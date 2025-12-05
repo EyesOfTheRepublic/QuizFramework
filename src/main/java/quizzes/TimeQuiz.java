@@ -17,11 +17,12 @@ import java.io.PrintStream;
 public class TimeQuiz {
      private static final String QUIZ_DESC = """
             <h3>Time</h3> \
-            <p>The first four questions in this quiz are based on Time. \
-            You can find (and should already have read) background information on Time in the In-Class Test Information module \
-            in Canvas. One of the problem solving question blocks in this paper is based on Time. \
+            <p>There are four questions in this practice quiz, based on Time. \
+            You can find (and should already have read before you try this quiz) background information on Time in the In-Class Test Information module \
+            in Canvas. \
             You will need to use the DateFormatter and LocalDateTime classes, along with the code examples, described in the \
             background information.</p> \
+            <p>These questions are a bit harder - in my opinion - than the ones you will mainly have to do in the actual quiz.</p>\
             <p>Remember: cut-and-paste long strings from the questions; do not try to type them in.</p> \
             """;
     public static void main(String[] args) {
