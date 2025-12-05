@@ -54,7 +54,7 @@ public class AddSubQuestion extends McqQuestion {
 
     @Override
     public int createQuestionPoints() {
-        return 5;
+        return 6;
     }
 
     @Override
