@@ -108,3 +108,8 @@ A range of utilities exist to help generate questions, answers and (critically) 
 - format a list of data as a Java array (if the built-in toString() method for the underlying data type isn't appropriate another one can be provided).
 - format a block of text as a Markdown code block.
 
+## Roadmap
+- *Direct upload via Canvas API.* Currently the tool is reliant on text2qti to generate QTI files, and this could (a) be discontinued and (b) has limited question types (of which only the ones already implemented are in practice suitable for an automatic testing system. More significantly, it adds extra steps and complexity to the generation process - the tool needs to be run; QTI files need to be generated; QTI files need to be uploaded and configured. Extending the tool to directly use the Canvas API would remove these obstacles. (QTI upload will be retained however as it makes the tool useable on VLEs other than Canvas.)
+- *More Question Types.* Direct access to the Canvas API would remove the restriction on question types imposed by text2qti - there is a wider range of available and suitable question types in Canvas other than numerical and MCQ.
+- *Refactor to SOLID.* Currently the code isn't SOLID-compliant in that it does not entirely conform to the Liskov Substitution Principle. Refactoring to address this would be good practice.
+
