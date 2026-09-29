@@ -1,5 +1,6 @@
-package questiontypes.simplequestions;/*
-Simple example question asking what is the square of a (random) number
+package questiontypes.examples;/*
+A (trivial) multiplication question - asks what is the product of two (random) numbers. Generates one correct and a set of random
+incorrect answers.
  */
 import quizframework.Answer;
 import quizframework.McqQuestion;
@@ -8,23 +9,25 @@ import quizframework.utils.QuizUtils;
 
 import java.util.Random;
 
-public class SquareQuestionExample extends McqQuestion {
+public class MultQuestionExample extends McqQuestion {
 
     private final Random rnd = new Random();
 
-    private int number;
+    private long val1;
+    private long val2;
 
     @Override
     public String createQuestionTitle() {
-        return "Squaring Numbers";
+        return "Multiplying Numbers";
     }
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Squares.** What is the square of " + number + " ?")
+        final StringBuilder builder = new StringBuilder("**Multiplying Numbers.** What is " + val1 + " * " + val2 + " ?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final StringBuilder code = CodeUtils.questionCode("Square",
-                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int numToSquare = %d;", number))),
+        final StringBuilder code = CodeUtils.questionCode("Mult",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int val1 = %d;", val1)))
+                .append(CodeUtils.indentTextBlock(String.format("public static int val2 = %d;", val2))),
                 "int");
         return builder.append(code).toString();
     }
@@ -44,24 +47,31 @@ public class SquareQuestionExample extends McqQuestion {
         return "Some general feedback for incorrect answers";
     }
 
+    @Override
     public void createCalcData() {
-        number = rnd.nextInt(15) + 5;
+        val1 = rnd.nextInt(15);
+        val2 = rnd.nextInt(15);
     }
 
     @Override
     public int createQuestionPoints() {
-        return 3;
+        return 5;
+    }
+
+    @Override
+    public boolean checkAnswer(final Answer ans) {
+        return val1 * val2 == Integer.parseInt(ans.getQuestionAnswer());
     }
 
     @Override
     public Answer createCorrectAnswer() {
-        return Answer.makeCorrectAnswerWithFeedback(Integer.toString(number * number),
+        return Answer.makeCorrectAnswerWithFeedback(Long.toString(val1 * val2),
                 "some correct feedback");
     }
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Integer.toString(rnd.nextInt(20)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(30)),
                 "some incorrect feedback");
     }
 }

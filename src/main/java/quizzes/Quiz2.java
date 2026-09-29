@@ -2,12 +2,8 @@ package quizzes;
 
 import questiontypes.crypto.Decryption;
 import questiontypes.numbers.*;
-import questiontypes.simplequestions.AddSubQuestion;
-import questiontypes.termrewriting.ReducesToX;
-import questiontypes.termrewriting.RewritingNSteps;
+import questiontypes.basic.SumNumbers;
 import questiontypes.termrewriting.RewritingToCompletion;
-import questiontypes.time.DiffMills;
-import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -20,13 +16,13 @@ import java.io.PrintStream;
  */
 public class Quiz2 {
 
-    private static int QUIZ_NUM = 2;
+    private static final int QUIZ_NUM = 2;
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Engineering C109, 14:30",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);
 
-        McqQuestion addSubQuestion = new AddSubQuestion();
+        McqQuestion addSubQuestion = new SumNumbers();
         addSubQuestion.createQuestion(5);
         quiz.addQuestion(addSubQuestion);
 

@@ -1,5 +1,6 @@
 package demo;
 
+import questiontypes.basic.SumThreeFiveQuestion;
 import questiontypes.checksum.BitwiseChecksum;
 import questiontypes.checksum.CheckSumString;
 import questiontypes.checksum.CheckSumValue;
@@ -15,7 +16,6 @@ import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
 import questiontypes.numbers.PythTriplets;
 import questiontypes.numbers.SophieGermain;
-import questiontypes.simplequestions.SumSquareQuestion;
 import questiontypes.termrewriting.AltRewriting;
 import questiontypes.termrewriting.ReducesToX;
 import questiontypes.termrewriting.RewritingNSteps;
@@ -67,16 +67,17 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
-        McqQuestion checkSumOfSquares = new SumSquareQuestion();
-        checkSumOfSquares.createQuestion(5);
-        quiz.addQuestion(checkSumOfSquares);
+
+        McqQuestion sumThreeFive = new SumThreeFiveQuestion();
+        sumThreeFive.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(sumThreeFive);
 
         NumericQuestion checkValueQuestion = new CheckSumValue();
         checkValueQuestion.createQuestion();
         quiz.addQuestion(checkValueQuestion);
 
         McqQuestion checkStringQuestion = new CheckSumString();
-        checkStringQuestion.createQuestion(6);
+        checkStringQuestion.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(checkStringQuestion);
 
         McqQuestion bitwise = new BitwiseChecksum();

@@ -1,11 +1,9 @@
 package quizzes;
 
-import questiontypes.crypto.Encryption;
 import questiontypes.numbers.Fibonacci;
-import questiontypes.numbers.McqPrimes;
 import questiontypes.numbers.SophieGermain;
-import questiontypes.simplequestions.AddSubQuestion;
-import questiontypes.simplequestions.SumSquareQuestion;
+import questiontypes.basic.SumNumbers;
+import questiontypes.basic.SumSquareQuestion;
 import questiontypes.termrewriting.RewritingNSteps;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
@@ -20,7 +18,7 @@ import java.io.PrintStream;
 
 public class QuizExch {
 
-    private static int QUIZ_NUM = 5;
+    private static final int QUIZ_NUM = 5;
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Location TBD, 5th Jan 2026, 14:00",
@@ -30,7 +28,7 @@ public class QuizExch {
         checkSumOfSquares.createQuestion(5);
         quiz.addQuestion(checkSumOfSquares);
 
-        McqQuestion addSubQuiz = new AddSubQuestion();
+        McqQuestion addSubQuiz = new SumNumbers();
         addSubQuiz.createQuestion(5);
         quiz.addQuestion(addSubQuiz);
 

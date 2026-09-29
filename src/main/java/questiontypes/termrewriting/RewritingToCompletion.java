@@ -4,8 +4,6 @@ import questiontypes.termrewriting.utils.CoreRewritingData;
 import questiontypes.termrewriting.utils.RewritingUtils;
 import quizframework.Answer;
 import quizframework.McqQuestion;
-import quizframework.NumericQuestion;
-import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
@@ -67,7 +65,7 @@ public class RewritingToCompletion extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder =
-                new StringBuilder("**Rewrite to Completion.** How many times does term rewriting rule set 1 need to be run on the string  \n``"
+                new StringBuilder("**Rewrite to Completion.** How many times does ALL of term rewriting rule set 1 need to be run on the string  \n``"
                         + sourceString + "``  \nbefore no more changes happen? ONLY count the number of times that applying"
                         + " the rules results in a change.")
                         .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
@@ -107,7 +105,6 @@ public class RewritingToCompletion extends McqQuestion {
 
     @Override
     public Answer createIncorrectAnswer() {
-        int min = numSteps < CoreRewritingData.STEP_MIN ? CoreRewritingData.STEP_MIN : numSteps;
         int max = numSteps + CoreRewritingData.STEP_MAX;
         return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreRewritingData.STEP_MIN, max)));
     }

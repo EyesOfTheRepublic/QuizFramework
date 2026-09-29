@@ -1,17 +1,10 @@
 package quizzes;
 
 import questiontypes.crypto.Encryption;
-import questiontypes.location.DistanceTwoPoints;
-import questiontypes.location.MinSecDistanceNoCode;
-import questiontypes.location.TotalDistance;
-import questiontypes.location.WhichDistanceNoCode;
 import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.McqPrimes;
-import questiontypes.numbers.Primes;
-import questiontypes.simplequestions.SumSquareQuestion;
-import questiontypes.termrewriting.ReducesToX;
+import questiontypes.basic.SumSquareQuestion;
 import questiontypes.termrewriting.RewritingNSteps;
-import questiontypes.time.TimeTraveller;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -25,7 +18,7 @@ import java.io.PrintStream;
 
 public class Quiz1 {
 
-    private static int QUIZ_NUM = 1;
+    private static final int QUIZ_NUM = 1;
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + ": Engineering C109, 12:00",

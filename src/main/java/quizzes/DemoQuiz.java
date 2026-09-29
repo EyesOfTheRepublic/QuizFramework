@@ -1,6 +1,6 @@
 package quizzes;
 
-import questiontypes.simplequestions.SquareQuestionExample;
+import questiontypes.examples.SquareQuestionExample;
 import quizframework.McqQuestion;
 import quizframework.Quiz;
 

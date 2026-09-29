@@ -2,15 +2,9 @@ package quizzes;
 
 import questiontypes.crypto.NumCols;
 import questiontypes.numbers.AddPairs;
-import questiontypes.numbers.Factors;
-import questiontypes.numbers.PythTriplets;
 import questiontypes.numbers.SophieGermain;
-import questiontypes.simplequestions.SumSquareQuestion;
+import questiontypes.basic.SumSquareQuestion;
 import questiontypes.termrewriting.ReducesToX;
-import questiontypes.termrewriting.RewritingNSteps;
-import questiontypes.termrewriting.RewritingToCompletion;
-import questiontypes.time.ClosestDateTime;
-import questiontypes.time.DiffMills;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -24,8 +18,8 @@ import java.io.PrintStream;
 
 public class Quiz3 {
 
-    private static int QUIZ_NUM = 3
-            ;
+    private static final int QUIZ_NUM = 3;
+
     public static void main(String[] args) {
         Quiz quiz = new Quiz(String.format(GenQuizData.TITLE, QUIZ_NUM) + "Location Time Here!",
                 GenQuizData.HEADER + GenQuizData.PRE_AMBLE);

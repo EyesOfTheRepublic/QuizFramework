@@ -1,16 +1,32 @@
-package questiontypes.simplequestions;/*
-A relatively simple question - find the sum of numbers 2i - i for i = 1 to n.
- */
+package questiontypes.basic;
+
 import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
-
-import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class AddSubQuestion extends McqQuestion {
+/**
+ * Find the sum of numbers 2i - i for i = 1 to n.
+ * The following code is suitable for use in autograder
+ <pre>
+public class Test {
+
+    public static final int sumNum = 9;
+    public static void main(String[] args) {
+        int sum = 0;
+        for(int i = 1; i <= sumNum; i++) {
+                sum += 2*i - 1;
+        }
+        SumNumbers.sumNumbers = sumNum;
+        System.exit(SumNumbers.answer() == sum ? 0:1);
+    }
+}
+ </pre>
+ */
+
+public class SumNumbers extends McqQuestion {
 
     private final Random rnd = new Random();
 
@@ -59,7 +75,6 @@ public class AddSubQuestion extends McqQuestion {
 
     @Override
     public boolean checkAnswer(final Answer ans) {
-        Map<String, Integer> integers;
         return IntStream.rangeClosed(1, maxVal).mapToLong(i -> (long)2 * i - 1).sum()
                 == Integer.parseInt(ans.getQuestionAnswer());
     }
