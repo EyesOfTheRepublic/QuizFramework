@@ -24,13 +24,11 @@ public class Test {
         System.exit(SumSquares.answer() == sum ? 0 : 1);
     }
 }
- 
+
  </pre>
  */
 
 public class SumSquareQuestion extends McqQuestion {
-
-    private final Random rnd = new Random();
 
     private int numSquares;
 
@@ -68,7 +66,7 @@ public class SumSquareQuestion extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        numSquares = rnd.nextInt(12) + 5;
+        numSquares = QuizUtils.genRandomInt(5, 17);
     }
 
     @Override
@@ -94,7 +92,7 @@ public class SumSquareQuestion extends McqQuestion {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(200)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomInt(25, 400)),
                 "some incorrect feedback");
     }
 }

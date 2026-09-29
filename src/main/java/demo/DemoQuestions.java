@@ -11,6 +11,7 @@ import questiontypes.crypto.NumCols;
 import questiontypes.location.DistanceTwoPoints;
 import questiontypes.location.TotalDistance;
 import questiontypes.numbers.AddPairs;
+import questiontypes.numbers.Collatz;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
@@ -67,6 +68,9 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
+        McqQuestion collatz = new Collatz();
+        collatz.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(collatz);
 
         McqQuestion sumThreeFive = new SumThreeFiveQuestion();
         sumThreeFive.createQuestion(NUM_ANSWERS);

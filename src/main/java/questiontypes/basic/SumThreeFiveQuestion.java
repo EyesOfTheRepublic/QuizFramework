@@ -37,8 +37,6 @@ public class Test {
 
 public class SumThreeFiveQuestion extends McqQuestion {
 
-    private final Random rnd = new Random();
-
     private int sumRange;
 
     @Override
@@ -49,7 +47,7 @@ public class SumThreeFiveQuestion extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder = new StringBuilder("**Sum of Numbers Multiples of 3 or 5.**"
-                + "What is the sum of numbers that are multiples of 3 or 5 BUT NOT BOTH from 1 to n, where n= "
+                + "What is the sum of numbers from 1 to n that are multiples of 3 or 5 BUT NOT BOTH, where n= "
                 + sumRange + "? For example, the sum from 1 to 19 would be 3 + 5 + 6 + 9 + 10 + 12 + 18 = 63. "
                 + "We do NOT include 15 because it is a multiple of BOTH 3 and 5.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
@@ -76,7 +74,9 @@ public class SumThreeFiveQuestion extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        sumRange = rnd.nextInt(20) + 17;
+        do {
+            sumRange = QuizUtils.genRandomInt(17, 37);
+        } while (sumRange == 19);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class SumThreeFiveQuestion extends McqQuestion {
     public Answer createIncorrectAnswer() {
         int minBound = (sumRange * sumRange) / 6;
         int maxBound = (sumRange * sumRange) / 4;
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(maxBound - minBound) + minBound),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomInt(minBound, maxBound)),
                 "some incorrect feedback");
     }
 }
