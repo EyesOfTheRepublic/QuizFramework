@@ -28,8 +28,6 @@ public class Test {
 
 public class SumNumbers extends McqQuestion {
 
-    private final Random rnd = new Random();
-
     private int maxVal;
 
     @Override
@@ -65,7 +63,7 @@ public class SumNumbers extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        maxVal = rnd.nextInt(12) + 6;
+        maxVal = QuizUtils.genRandomInt(6, 18);
     }
 
     @Override
@@ -91,7 +89,7 @@ public class SumNumbers extends McqQuestion {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(200)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomInt(0, 200)),
                 "some incorrect feedback");
     }
 }

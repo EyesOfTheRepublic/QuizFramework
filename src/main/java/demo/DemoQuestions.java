@@ -1,5 +1,6 @@
 package demo;
 
+import questiontypes.basic.EvenSumRange;
 import questiontypes.basic.SumThreeFiveQuestion;
 import questiontypes.checksum.BitwiseChecksum;
 import questiontypes.checksum.CheckSumString;
@@ -68,6 +69,10 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
+        McqQuestion sumRange = new EvenSumRange();
+        sumRange.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(sumRange);
+
         McqQuestion collatz = new Collatz();
         collatz.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(collatz);
