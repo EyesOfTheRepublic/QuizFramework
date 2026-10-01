@@ -5,36 +5,35 @@ import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
-import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
- * Find the sum of even numbers from x to y inclusive
+ * Find the product of odd numbers from x to y inclusive
  * The following code is suitable for use in autograder
  <pre>
 public class Test {
 
     public static void main(String[] args) {
-        EvenSumRange.x = 19;
-        EvenSumRange.y = 42;
+        ProductOddRange.x = 5;
+        ProductOddRange.y = 9;
 
-        long givenAns = EvenSumRange.answer();
-        System.exit((givenAns == evenSumRange(EvenSumRange.x, EvenSumRange.y)) ? 0 : 1);
+        long givenAns = ProductOddRange.answer();
+        System.exit((givenAns == productOddRange(ProductOddRange.x, ProductOddRange.y)) ? 0 : 1);
     }
 
-    public static long evenSumRange(int x, int y) {
-        int runningTotal = 0;
-        int firstEven = x % 2 == 0 ? x : x + 1;
-        for (int i = firstEven; i <= y; i+=2) {
-            runningTotal += i;
+    public static long productOddRange(int x, int y) {
+        int runningProduct = 1;
+        int firstOdd = x % 2 == 1 ? x : x + 1;
+        for (int i = firstOdd; i <= y; i+=2) {
+            runningProduct *= i;
         }
-        return runningTotal;
+        return runningProduct;
     }
 }
  </pre>
  */
 
-public class EvenSumRange extends McqQuestion {
+public class ProductOddRange extends McqQuestion {
 
     private int minVal;
     private int maxVal;
@@ -47,11 +46,11 @@ public class EvenSumRange extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Sum of Even Numbers in Range.** What is the sum of even numbers from X to Y inclusive,"
-                + "where X=" + minVal + " and Y=" + maxVal + "? For example, for X=2 and Y=6 it is 2 + 4 + 6 = 12.")
+        final StringBuilder builder = new StringBuilder("**Product of Odd Numbers in Range.** What is the product of odd numbers from X to Y inclusive,"
+                + "where X=" + minVal + " and Y=" + maxVal + "? For example, for X=2 and Y=7 it is 3 * 5 * 7 = 105.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final StringBuilder code = CodeUtils.questionCode("EvenSumRange",
-                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int x = %d;\n public static int y = %d;", minVal, maxVal))),
+        final StringBuilder code = CodeUtils.questionCode("ProductOddRange",
+                new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int x = %d;\npublic static int y = %d;", minVal, maxVal))),
                 "int");
         return builder.append(code).toString();
     }
@@ -73,9 +72,9 @@ public class EvenSumRange extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        minVal = QuizUtils.genRandomInt(6, 18);
-        maxVal = QuizUtils.genRandomInt(minVal + 10, minVal + 32);
-        answerVal = IntStream.rangeClosed(minVal, maxVal).filter(i -> i % 2 == 0).sum();
+        minVal = QuizUtils.genRandomInt(3, 9);
+        maxVal = QuizUtils.genRandomInt(minVal + 4, minVal + 8);
+        answerVal = IntStream.rangeClosed(minVal, maxVal).filter(i -> i % 2 == 1).reduce(1, (a, b) -> a * b);
     }
 
     @Override
@@ -85,13 +84,13 @@ public class EvenSumRange extends McqQuestion {
 
     @Override
     public boolean checkAnswer(final Answer ans) {
-        int runningSum = 0;
+        int runningProduct = 1;
         for (int i = minVal; i <= maxVal; i++) {
-            if (i % 2 == 0) {
-                runningSum += i;
+            if (i % 2 == 1) {
+                runningProduct *= i;
             }
         }
-        return runningSum == Integer.parseInt(ans.getQuestionAnswer());
+        return runningProduct == Integer.parseInt(ans.getQuestionAnswer());
     }
 
     @Override
@@ -102,7 +101,7 @@ public class EvenSumRange extends McqQuestion {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomInt(50, 400)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomInt(answerVal - 20, answerVal + 20)),
                 "some incorrect feedback");
     }
 }

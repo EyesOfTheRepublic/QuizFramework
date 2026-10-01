@@ -82,7 +82,7 @@ public abstract class Question {
     /* Overridable Methods - CAN be implemented and some MUST be for some question types */
 
     /**
-     * Return the number of points for the question. By default, this returns 1 (but can be optionally overridden)
+     * Return the number of points for the question. By default, this returns 6 (but can be optionally overridden)
      *
      * @return the number of points (defaults to 6 for now...)
      */
@@ -179,7 +179,7 @@ public abstract class Question {
 
     /**
      * Used to represent the question as a readable string - <emph>provided the question is fault free</emph>.
-     * The correct answer is always returend <emph>first</emph> - unlike {@link #toText2Qti(int) toText2Qti} where
+     * The correct answer is always returned <emph>first</emph> - unlike {@link #toText2Qti(int) toText2Qti} where
      * the orders are random (this is because this method is mainly used for question checking).
      * If there are faults in the question, only those answers which are not correct (do not pass the fault testing)
      * are output, with the correct answer first.
