@@ -2,6 +2,8 @@ package demo;
 
 import questiontypes.basic.EvenSumRange;
 import questiontypes.basic.ProductOddRange;
+import questiontypes.basic.Progression;
+import questiontypes.basic.SumMultiplesFour;
 import questiontypes.basic.SumThreeFiveQuestion;
 import questiontypes.checksum.BitwiseChecksum;
 import questiontypes.checksum.CheckSumString;
@@ -13,7 +15,7 @@ import questiontypes.crypto.NumCols;
 import questiontypes.location.DistanceTwoPoints;
 import questiontypes.location.TotalDistance;
 import questiontypes.numbers.AddPairs;
-import questiontypes.numbers.Collatz;
+import questiontypes.basic.Collatz;
 import questiontypes.numbers.Factors;
 import questiontypes.numbers.Fibonacci;
 import questiontypes.numbers.Primes;
@@ -26,6 +28,7 @@ import questiontypes.termrewriting.RewritingToCompletion;
 import questiontypes.time.ClosestDateTime;
 import questiontypes.time.DiffMills;
 import questiontypes.time.TimeTraveller;
+import questiontypes.verybasic.NextBiggestEven;
 import quizframework.McqQuestion;
 import quizframework.NumericQuestion;
 import quizframework.Quiz;
@@ -70,6 +73,18 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
+        McqQuestion sumFour = new SumMultiplesFour();
+        sumFour.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(sumFour);
+
+        McqQuestion nextBiggestEven = new NextBiggestEven();
+        nextBiggestEven.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(nextBiggestEven);
+
+        McqQuestion progression = new Progression();
+        progression.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(progression);
+
         McqQuestion productOddRange = new ProductOddRange();
         productOddRange.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(productOddRange);

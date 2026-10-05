@@ -1,4 +1,4 @@
-package questiontypes.examples;
+package questiontypes.demo;
 
 import quizframework.Answer;
 import quizframework.McqQuestion;

@@ -4,7 +4,6 @@ import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
@@ -40,8 +39,7 @@ public class SumSquareQuestion extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder = new StringBuilder("**Sum of Squares.** What is the sum of squares from 1 to n, where n="
-                + numSquares + "? For example, the sum of squares from 1 to 3 is (1 * 1) + (2 * 2) + (3 * 3) = 14. YOUR CODE MUST"
-                + " NOT hard code the value n=" + numSquares + " because it will be replaced by a different value in testing.")
+                + numSquares + "? For example, the sum of squares from 1 to 3 is (1 * 1) + (2 * 2) + (3 * 3) = 14.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final StringBuilder code = CodeUtils.questionCode("SumSquares",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int numSquares = %d;", numSquares))),

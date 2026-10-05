@@ -1,14 +1,11 @@
-package questiontypes.numbers;
+package questiontypes.basic;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
 import quizframework.McqQuestion;
-import quizframework.NumericQuestion;
-import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
-import java.util.Collections;
 import java.util.function.LongUnaryOperator;
 import java.util.stream.IntStream;
 

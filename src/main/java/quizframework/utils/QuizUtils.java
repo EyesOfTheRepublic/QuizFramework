@@ -221,6 +221,9 @@ public final class QuizUtils {
             Copy the code below to the editor/IDE of your choice, and write your code in the method called answer below
             (you can write additional methods if you want) 
             - *but do not change the name, parameters or return type of the method below*.
+            
+            **YOU MUST use the variables in the code template in your answer - your answer is GUARANTEED TO BE WRONG 
+            if you directly use the values instead.**
                 
             **Upload your code to autograder** *and* **enter the answer below**.
             

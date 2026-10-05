@@ -4,52 +4,51 @@ import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
+
 import java.util.stream.IntStream;
 
 /**
  * What is the sum of numbers from 1 to n divisible by 3 or 5, but not by both.
  * Code below suitable for use in autograder
  <pre>
-
 public class Test {
 
     public static void main(String[] args) {
-        SumThreeFive.sumRange = 37;
+        SumFour.sumRange = 205;
 
-        long givenAns = SumThreeFive.answer();
-        System.exit((givenAns == sumThreeFive(SumThreeFive.sumRange)) ? 0 : 1);
+        int givenAns = SumFour.answer();
+        System.exit((givenAns == sumFour(SumFour.sumRange)) ? 0 : 1);
     }
 
-    public static long sumThreeFive(int sumRange) {
-        int runningTotal = 0;
-        for (int i = 1; i <= sumRange; i++) {
-            if ((i % 3 == 0) ^ (i % 5 == 0)) {
-                runningTotal += i;
+    public static long sumFour(int range) {
+        int total = 0;
+        for(int i = 1; i <= range; i++) {
+            if (i % 4 == 0) {
+                total += i;
             }
         }
-        return runningTotal;
+        return total;
     }
 }
 </pre>
  */
 
-public class SumThreeFiveQuestion extends McqQuestion {
+public class SumMultiplesFour extends McqQuestion {
 
     private int sumRange;
 
     @Override
     public String createQuestionTitle() {
-        return "Sum of Multiples";
+        return "Sum of Multiples of Four";
     }
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Sum of Numbers Multiples of 3 or 5.**"
-                + "What is the sum of numbers from 1 to n (inclusive) that are multiples of 3 or 5 BUT NOT BOTH, where n= "
-                + sumRange + "? For example, the sum from 1 to 19 would be 3 + 5 + 6 + 9 + 10 + 12 + 18 = 63. "
-                + "We do NOT include 15 because it is a multiple of BOTH 3 and 5.")
+        final StringBuilder builder = new StringBuilder("**Sum of Multiples of Four.**"
+                + "What is the sum of numbers from 1 to n (inclusive) that are multiples of 4, where n= "
+                + sumRange + "? For example, the sum from 1 to 19 would be 4 + 8 + 12 + 16 = 40. ")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
-        final StringBuilder code = CodeUtils.questionCode("SumThreeFive",
+        final StringBuilder code = CodeUtils.questionCode("SumFour",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int sumRange = %d;", sumRange))),
                 "int");
         return builder.append(code).toString();
@@ -85,7 +84,7 @@ public class SumThreeFiveQuestion extends McqQuestion {
     @Override
     public boolean checkAnswer(final Answer ans) {
         return IntStream.rangeClosed(1, sumRange)
-                .filter(i -> (i % 3 == 0) ^ (i % 5 == 0))
+                .filter(i -> (i % 4 == 0) )
                 .sum() == Integer.parseInt(ans.getQuestionAnswer());
     }
 
@@ -93,7 +92,7 @@ public class SumThreeFiveQuestion extends McqQuestion {
     public Answer createCorrectAnswer() {
         int runningTotal = 0;
         for (int i = 1; i <= sumRange; i++) {
-            if ((i % 3 == 0) ^ (i % 5 == 0)) {
+            if (i % 4 == 0) {
                 runningTotal += i;
             }
         }

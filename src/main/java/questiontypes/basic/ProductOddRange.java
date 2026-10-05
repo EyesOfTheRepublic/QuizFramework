@@ -41,7 +41,7 @@ public class ProductOddRange extends McqQuestion {
 
     @Override
     public String createQuestionTitle() {
-        return "Sum of Even Numbers in Range";
+        return "Progression";
     }
 
     @Override
