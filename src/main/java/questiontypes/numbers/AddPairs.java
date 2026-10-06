@@ -2,7 +2,7 @@ package questiontypes.numbers;
 
 import questiontypes.numbers.utils.CoreData;
 import quizframework.Answer;
-import quizframework.NumericQuestion;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -58,7 +58,7 @@ import java.util.Collections;
 
  </pre>
  */
-public class AddPairs extends NumericQuestion {
+public class AddPairs extends McqQuestion {
 
     //The maximum value of any number in the list of 'pairs'
     private static final int LIM_VAL = CoreData.LIM_VAL / 2;
@@ -122,6 +122,11 @@ public class AddPairs extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(correctAns));
+    }
+
+    @Override
+    public Answer createIncorrectAnswer() {
+        return Answer.makeIncorrectAnswer(Integer.toString(numList.get(QuizUtils.genRandomInt(0, numList.size()))));
     }
 
     @Override

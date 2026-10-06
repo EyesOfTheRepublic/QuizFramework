@@ -82,7 +82,7 @@ public class Collatz extends McqQuestion {
     public void createCalcData() {
         //Generate the factor and the number of correct and incorrect ones in the generated list
         startingVal = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
-        steps = QuizUtils.genRandomInt(CoreData.MIN_NUM, CoreData.MAX_NUM);
+        steps = QuizUtils.genRandomInt(4, 9);
 
         finalVal = collatz(startingVal, steps);
     }

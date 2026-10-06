@@ -1,6 +1,7 @@
 package demo;
 
 import questiontypes.basic.EvenSumRange;
+import questiontypes.basic.HalfToZero;
 import questiontypes.basic.ProductOddRange;
 import questiontypes.basic.Progression;
 import questiontypes.basic.SumMultiplesFour;
@@ -37,11 +38,7 @@ public class DemoQuestions {
 
     public static final int NUM_ANSWERS = 6; //Total number of answers, correct and incorrect
 
-    /*
-     * Example of a quiz created using the framework - contains all possible questions at this point (including
-     * some basic 'demo' ones)
-     * There are still issues and things that could be better
-     */
+    /*Essentially a testbed for generating questions */
     public static void main(String[] args) {
 
         //quizframework.Quiz is class that represents a whole quiz - we initially create one with a title and description
@@ -73,6 +70,11 @@ public class DemoQuestions {
 
         NOR HAVE THEY BEEN AS CAREFULLY CHECKED AS THOSE USED IN LIVE QUIZZES!
          */
+
+        McqQuestion halfToZero = new HalfToZero();
+        halfToZero.createQuestion(NUM_ANSWERS);
+        quiz.addQuestion(halfToZero);
+
         McqQuestion sumFour = new SumMultiplesFour();
         sumFour.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(sumFour);
@@ -178,16 +180,16 @@ public class DemoQuestions {
         totalDistance.createQuestion();
         quiz.addQuestion(totalDistance);
 
-        NumericQuestion testingTriples = new PythTriplets();
-        testingTriples.createQuestion();
+        McqQuestion testingTriples = new PythTriplets();
+        testingTriples.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(testingTriples);
 
         McqQuestion testingSgCode = new SophieGermain();
         testingSgCode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(testingSgCode);
 
-        NumericQuestion testingAddPairs = new AddPairs();
-        testingAddPairs.createQuestion();
+        McqQuestion testingAddPairs = new AddPairs();
+        testingAddPairs.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(testingAddPairs);
 
         Factors testingFactorCode = new Factors();
@@ -195,7 +197,7 @@ public class DemoQuestions {
         quiz.addQuestion(testingFactorCode);
 
         Fibonacci testingFibonacciCode = new Fibonacci();
-        testingFibonacciCode.createQuestion();
+        testingFibonacciCode.createQuestion(NUM_ANSWERS);
         quiz.addQuestion(testingFibonacciCode);
 
         Primes testingPrimesCode = new Primes();

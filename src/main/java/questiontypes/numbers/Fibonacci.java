@@ -4,7 +4,6 @@ import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.FibSequence;
 import quizframework.Answer;
 import quizframework.McqQuestion;
-import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -53,7 +52,7 @@ public class Test {
 }
  </pre>
  */
-public class Fibonacci extends NumericQuestion {
+public class Fibonacci extends McqQuestion {
 
     private static final int FAKE_FIB_OFFSET = 15;
 
@@ -131,6 +130,11 @@ public class Fibonacci extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Long.toString(numCorrect));
+    }
+
+    @Override
+    public Answer createIncorrectAnswer() {
+        return Answer.makeIncorrectAnswer(Long.toString(QuizUtils.genRandomInt(CoreData.MIN_NUM, questionList.size())));
     }
 
     @Override

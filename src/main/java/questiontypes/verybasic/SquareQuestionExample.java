@@ -1,13 +1,24 @@
-package questiontypes.verybasic;/*
-Simple example question asking what is the square of a (random) number
- */
+package questiontypes.verybasic;
 import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
 import java.util.Random;
+/**
+ Simple example question asking what is the square of a (random) number
+ Code suitable for autograder:
+ <pre>
+ public class Test {
 
+    public static void main(String[] args) {
+        Square.numToSquare = 7;
+
+        System.exit(Square.answer() == 49 ? 0 : 1);
+    }
+}
+ </pre>
+ */
 public class SquareQuestionExample extends McqQuestion {
 
     private final Random rnd = new Random();

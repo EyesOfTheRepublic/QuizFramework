@@ -13,9 +13,8 @@ public class GenQuizData {
     private GenQuizData() {}
 
     public static final int NUM_ANSWERS = 6;
-    public static final String RESOURCES = "";
 
-    public static final String HEADER = """
+    public static final String PRE_AMBLE = """
             <p><b style='color:red'>Open whatever software tools - e.g. IntelliJ - you want to use BEFORE you start the test!</b></p> \
             <p style='color:red'>Otherwise you will lose test time while the tool(s) open! It could easily take 5mins or more to \
             open software if nobody has run it before on the machine you are using.</p> \
@@ -32,7 +31,7 @@ public class GenQuizData {
             <li>By submitting you state that you fully understand and are complying with the University's \
             <a href="https://hwb.swansea.ac.uk/academic-life/academic-misconduct/" target="_blank" rel="noopener">Academic Misconduct Policy</a> \
             (opens in a new window/tab)</li> \
-            </ul>
+            </ul>\
             <h2>Question Types</h2> \
             <p>This test contains two simple questions, two questions about <em>properties of numbers</em>, and \
             one question about <em>encryption/decryption</em>. \
@@ -72,7 +71,7 @@ public class GenQuizData {
 
     public static String TITLE = "CS-128 Programming Exam %d";
     public static String PRACTICE_TITLE = "CS-110 Programming Exam: Practice Version %d";
-    public static String PRE_AMBLE = """
+    public static String PRACTICE_PRE_AMBLE = """
             <h2>Practice Exam<h2> \
             <p>This is a practice exam, containing five questions - two simple questions, one about <em>rewriting</em>, \
             one about <em>checksums</em>, and one about <em>time</em>. You can find the preliminary information about the \
@@ -99,6 +98,11 @@ public class GenQuizData {
             <li>By submitting you state that you fully understand and are complying with the University's \
             <a href="https://hwb.swansea.ac.uk/academic-life/academic-misconduct/" target="_blank" rel="noopener">Academic Misconduct Policy</a> \
             (opens in a new window/tab)</li> \
+            <h2 style='color:red'>VITAL POINT</h2>\
+            <p style='color:red'>The questions are multiple choice so you can see if your code generates the correct answer before you submit it to autograder. So \
+            by all means answer the question on Canvas but the WHOLE POINT of this is to test that you can write the code. So you HAVE to submit \
+            working code to autograder to get the marks: just manually working out the solution and answering it on Canvas will NOT get you the marks \
+            for the question.</p>\
             <h2> Question Types</h2> \
             <p>You can find (and should already have read) background information on Term Rewriting, Checksums \
             and Time in the In-Class Test Information module on Canvas.</p> \

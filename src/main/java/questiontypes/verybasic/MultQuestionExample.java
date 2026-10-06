@@ -1,17 +1,26 @@
-package questiontypes.verybasic;/*
-A (trivial) multiplication question - asks what is the product of two (random) numbers. Generates one correct and a set of random
-incorrect answers.
- */
+package questiontypes.verybasic;
 import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
 
-import java.util.Random;
+/**
+A (trivial) multiplication question - asks what is the product of two (random) numbers. Generates one correct and a set of random
+incorrect answers.
+ <pre>
+public class Test {
+
+    public static void main(String[] args) {
+        Mult.val1 = 7;
+        Mult.val2 = 5;
+
+        System.exit(Mult.answer() == 35 ? 0 : 1);
+    }
+}
+ </pre>
+ */
 
 public class MultQuestionExample extends McqQuestion {
-
-    private final Random rnd = new Random();
 
     private long val1;
     private long val2;
@@ -49,13 +58,15 @@ public class MultQuestionExample extends McqQuestion {
 
     @Override
     public void createCalcData() {
-        val1 = rnd.nextInt(15);
-        val2 = rnd.nextInt(15);
+        val1 = QuizUtils.genRandomInt(5, 15);
+        do {
+            val2 = QuizUtils.genRandomInt(5, 15);
+        } while (val1 == val2);
     }
 
     @Override
     public int createQuestionPoints() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -71,7 +82,7 @@ public class MultQuestionExample extends McqQuestion {
 
     @Override
     public Answer createIncorrectAnswer() {
-        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(rnd.nextInt(30)),
+        return Answer.makeIncorrectAnswerWithFeedback(Long.toString(QuizUtils.genRandomInt(5, 15)),
                 "some incorrect feedback");
     }
 }

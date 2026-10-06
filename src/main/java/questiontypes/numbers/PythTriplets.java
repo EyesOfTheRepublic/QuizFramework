@@ -3,7 +3,7 @@ package questiontypes.numbers;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PythTripletsData;
 import quizframework.Answer;
-import quizframework.NumericQuestion;
+import quizframework.McqQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -54,7 +54,7 @@ public class Test {
 }
  </pre>
  */
-public class PythTriplets extends NumericQuestion {
+public class PythTriplets extends McqQuestion {
 
     private final ArrayList<Triplet> triples = new ArrayList<>();
 
@@ -122,6 +122,11 @@ public class PythTriplets extends NumericQuestion {
     @Override
     public Answer createCorrectAnswer() {
         return Answer.makeCorrectAnswer(Integer.toString(numCorrect));
+    }
+
+    @Override
+    public Answer createIncorrectAnswer() {
+        return Answer.makeIncorrectAnswer(Integer.toString(QuizUtils.genRandomInt(CoreData.MIN_NUM, pythList.size())));
     }
 
     @Override

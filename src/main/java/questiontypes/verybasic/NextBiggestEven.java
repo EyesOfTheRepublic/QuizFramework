@@ -11,11 +11,11 @@ import java.util.Random;
  <pre>
  public class Test {
 
- public static void main(String[] args) {
- NextBiggestEven.number = 205;
+     public static void main(String[] args) {
+         NextBiggestEven.number = 205;
 
- int givenAns = NextBiggestEven.answer();
- System.exit(givenAns == (NextBiggestEven.number % 2 == 0 ? NextBiggestEven.number + 2 : NextBiggestEven.number + 1) ? 0 : 1);
+         int givenAns = NextBiggestEven.answer();
+         System.exit(givenAns == (NextBiggestEven.number % 2 == 0 ? NextBiggestEven.number + 2 : NextBiggestEven.number + 1) ? 0 : 1);
  }
 
  }
