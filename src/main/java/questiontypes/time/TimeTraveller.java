@@ -59,9 +59,9 @@ public class TimeTraveller {
 public class TimeTraveller extends McqQuestion {
 
     private long numMillis;
-    private ArrayList<String> dateSeq = new ArrayList<>();
+    private final ArrayList<String> dateSeq = new ArrayList<>();
 
-    private TimeUtils timeUtils = new TimeUtils();
+    private final TimeUtils timeUtils = new TimeUtils();
 
     @Override
     public String createQuestionTitle() {
@@ -72,7 +72,7 @@ public class TimeTraveller extends McqQuestion {
     public String createQuestionText() {
         StringBuilder builder = new StringBuilder("""
                 **Time Traveller.** Suppose you are at time traveller and travel through the sequence of dates in the following list,
-                how many milliseconds would you have travelled through? Note that going backwards in time does not mean you 'subtract'
+                how many milliseconds would you have travelled through in total? Note that going backwards in time does not mean you 'subtract'
                 milliseconds - the time you travel through (forwards or backwards) always adds on to the time you have travelled through up to that point.
                 For example, if you travelled from 1st Jan 2021 to 1st Jan 2022, and then back to 1st Jan 2021 you would have travelled through two years
                 of time (note though that the question is asking for an answer in milliseconds).""")

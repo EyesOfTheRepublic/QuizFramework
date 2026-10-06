@@ -70,7 +70,7 @@ public class SophieGermain extends McqQuestion {
 
         final StringBuilder builder = new StringBuilder("""
                 **Sophie Germain.** A Sophie Germain prime number is a prime number p where 2 * p + 1 is
-                also prime. How many of the following are Sophie Germain numbers?
+                also prime. How many of the numbers in the array in the code below are Sophie Germain numbers?
                 """)
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final StringBuilder code = CodeUtils.questionCode( "SophieGermain", formatter.format(2), "int");

@@ -73,12 +73,12 @@ public class AddPairs extends NumericQuestion {
 
     @Override
     public String createQuestionTitle() {
-        return "How Many Pairs?";
+        return "Which Number?";
     }
 
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Add Pairs.** In the following list of numbers, every number EXCEPT ONE can be added to another number "
-                + "in the list to make " + sumTarget
+        final StringBuilder builder = new StringBuilder("**Add Pairs.** In the array of numbers in the code below, "
+                + "every number EXCEPT ONE can be added to another number in the list to make " + sumTarget
                 + ". What is that number? It is guaranteed that all numbers in the list are unique.")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 

@@ -54,8 +54,8 @@ public class Collatz extends McqQuestion {
         String questionText = "**Collatz Sequence.** What is the result of applying the following operation "
                 + steps + " times from a starting value of " + startingVal + "?"
                 + " If value is even, divide it by two; if the value is odd multiply it by three and add one."
-                + " for example, if starting value was 3 and the number of times was 2: step 1 - starting value is odd so set it to"
-                + " 10 (3*3+1); step 2 - value is now even so set it to 5 (10/2) - so final value is 5 after two steps.";
+                + " for example, if the starting value was 5 and the number of times was 2: step 1 - starting value is odd so set it to"
+                + " 16 (5*3+1); step 2 - value is now even so set it to 8 (16/2) - so final value is 8 after two steps.";
         final StringBuilder builder = new StringBuilder(questionText).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
         final StringBuilder code = CodeUtils.questionCode("Collatz",

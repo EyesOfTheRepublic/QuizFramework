@@ -1,11 +1,9 @@
 package questiontypes.numbers;
 
-import org.checkerframework.common.returnsreceiver.qual.This;
 import questiontypes.numbers.utils.CoreData;
 import questiontypes.numbers.utils.PrimeData;
 import quizframework.Answer;
 import quizframework.McqQuestion;
-import quizframework.NumericQuestion;
 import quizframework.utils.ArrayFormatter;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
@@ -65,7 +63,7 @@ public class McqPrimes extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Primes.** How many of the following numbers are prime?")
+        final StringBuilder builder = new StringBuilder("**Primes.** How many of the numbers in the array in the code below are prime?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final ArrayFormatter<Integer> formatter = new ArrayFormatter<>("public static int[] primes", dataSet);
         final StringBuilder code = CodeUtils.questionCode("Primes", formatter.format(2), "int");

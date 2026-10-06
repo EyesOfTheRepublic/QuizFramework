@@ -4,7 +4,6 @@ import quizframework.Answer;
 import quizframework.McqQuestion;
 import quizframework.utils.CodeUtils;
 import quizframework.utils.QuizUtils;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
@@ -37,8 +36,8 @@ public class SumNumbers extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Sum of Numbers.** What is the sum of 2 * i - 1 for i = 1 to "
-                + maxVal + "? For example, for n = 3 it is (2 * 1 - 1) + (2 * 2 - 1) + (2 * 3 - 1) = 1 + 3 + 5 = 9")
+        final StringBuilder builder = new StringBuilder("**Sum of Numbers.** What is the sum of 2 * i - 1 for i = 1 to n,"
+                + "where n=" + maxVal + "? For example, for n = 3 it is (2 * 1 - 1) + (2 * 2 - 1) + (2 * 3 - 1) = 1 + 3 + 5 = 9")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final StringBuilder code = CodeUtils.questionCode("SumNumbers",
                 new StringBuilder(CodeUtils.indentTextBlock(String.format("public static int sumNumbers = %d;", maxVal))),

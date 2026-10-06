@@ -65,7 +65,8 @@ public class RewritingToCompletion extends McqQuestion {
     @Override
     public String createQuestionText() {
         final StringBuilder builder =
-                new StringBuilder("**Rewrite to Completion.** How many times does ALL of term rewriting rule set 1 need to be run on the string  \n``"
+                //new StringBuilder("**Rewrite to Completion.** How many times does ALL of term rewriting rule set 1 need to be run on the string  \n``"
+                new StringBuilder("**Rewrite to Completion.** How many times do ALL of term rewriting rules need to be run on the string  \n``"
                         + sourceString + "``  \nbefore no more changes happen? ONLY count the number of times that applying"
                         + " the rules results in a change.")
                         .append(QuizUtils.CODE_QUESTION_BOILERPLATE);

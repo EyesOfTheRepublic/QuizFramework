@@ -36,25 +36,26 @@ public final class CodeUtils {
     public static final String CODE_FRAMEWORK = """
                 public class %s {
                 %s
-                    
+                
                      public static void main(String[] args) {
                          System.out.println(answer());
                      }
-                    
+                
                      public static %s answer() {
                          /* Write your code here - it MUST *return* the answer
-                         
+                
                             Do not change any of the names or values of the variables declared above or the main method
                             - though you can add other methods if you want (make sure you do not change the "signature"
                             of answer() - autograder is expecting a static method with that name and return type and
                             no parameters).
-                         
+                
                             Make sure you use the variables declared above in your calculation and DO NOT
                             use the values themselves directly. If you do that, your code will NOT WORK
                             when you submit it to autograder.
-                            
-                            Your code should not *change* the values of any of the variables declared above.
-                            
+                
+                            Your code should not *change* the values of any of the variables declared above - again,
+                            your code WILL NOT WORK on autograder if you do that.
+                
                             If you need your code to print anything out for, say, debugging - that's fine and
                             it will not affect autograder. But it is ESSENTIAL that this method - answer() - returns
                             the result of your calculation and does not just print it!

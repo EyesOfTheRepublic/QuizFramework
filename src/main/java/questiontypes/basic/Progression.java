@@ -47,10 +47,10 @@ public class Progression extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        String questionText = "**Numeric Progression.** What is the value of n when the sum of the sequence 2 * x + 3 * x + ... n * x "
-                + "become greater than threshold, where threshold = " + threshold + " ? "
+        String questionText = "**Numeric Progression.** What is the value of n when the sum of the sequence (2 * x) + (3 * x) + ... (n * x) "
+                + "become greater than the *threshold* " + threshold + " ? "
                 + "For example, if threshold = 40, then n = 5 because (2 * 3) + (3 * 3) + (4 * 3) + (5 * 3) = 42, which is the "
-                + "first value in the sequence that is > 40.";
+                + "first value in the sum of the sequence that is > 40.";
         final StringBuilder builder = new StringBuilder(questionText).append(QuizUtils.CODE_QUESTION_BOILERPLATE);
 
         final StringBuilder code = CodeUtils.questionCode("Progression",

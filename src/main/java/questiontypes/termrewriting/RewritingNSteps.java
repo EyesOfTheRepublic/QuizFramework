@@ -66,7 +66,8 @@ public class RewritingNSteps extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Rewrite N Times.** What is the result of running ALL of term rewriting rule set 1 for "
+        //final StringBuilder builder = new StringBuilder("**Rewrite N Times.** What is the result of running ALL of term rewriting rule set 1 for "
+        final StringBuilder builder = new StringBuilder("**Rewrite N Times.** What is the result of running ALL of term rewriting rules "
                 + numSteps + " times on the string  \n``"
                 + sourceString + "``?")
                 .append(QuizUtils.CODE_QUESTION_BOILERPLATE);

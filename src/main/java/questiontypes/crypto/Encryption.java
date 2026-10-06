@@ -57,7 +57,8 @@ public class Encryption extends McqQuestion {
 
     @Override
     public String createQuestionText() {
-        final StringBuilder builder = new StringBuilder("**Encryption.** What is the result of encrypting the string  \n``" + sourceString + "``  \nwith a transposition cypher using an array"
+        final StringBuilder builder = new StringBuilder("**Encryption.** What is the result of encrypting the string  \n``"
+                + sourceString + "``  \nwith a transposition cypher using an array"
                 + " with " + key + " columns?").append(QuizUtils.CODE_QUESTION_BOILERPLATE);
         final String codeTemplate = """
                public static String plainText = "%s";
