@@ -1,5 +1,6 @@
 package quizzes;
 
+import questiontypes.demo.AddNumberExample;
 import questiontypes.verybasic.MultQuestionExample;
 import questiontypes.demo.OddNumberExample;
 import questiontypes.verybasic.SquareQuestionExample;
@@ -19,12 +20,10 @@ public class WalkThroughQuiz {
         Quiz quiz = new Quiz("Simple Example Test",
                 "This is a test just to illustrate how the programming class test will work");
 
-        McqQuestion mult = new MultQuestionExample();
-        mult.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(mult);
-        McqQuestion square = new SquareQuestionExample();
-        square.createQuestion(GenQuizData.NUM_ANSWERS);
-        quiz.addQuestion(square);
+        McqQuestion addExample = new AddNumberExample();
+        addExample.createQuestion(GenQuizData.NUM_ANSWERS);
+        quiz.addQuestion(addExample);
+
         McqQuestion oddNumbers = new OddNumberExample();
         oddNumbers.createQuestion(GenQuizData.NUM_ANSWERS);
         quiz.addQuestion(oddNumbers);
