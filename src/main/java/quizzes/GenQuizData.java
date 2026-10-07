@@ -77,7 +77,7 @@ public class GenQuizData {
             """;
 
     public static String TITLE = "CS-128 Programming Exam %d";
-    public static String PRACTICE_TITLE = "CS-110 Programming Exam: Practice Version %d";
+    public static String PRACTICE_TITLE = "CS-128 Programming Exam: Practice Version %d";
     public static String PRACTICE_PRE_AMBLE = """
             <h2>Practice Exam<h2> \
             <p>This is a practice exam, containing five questions - two simple questions, one about <em>rewriting</em>, \
