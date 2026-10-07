@@ -32,7 +32,14 @@ public class GenQuizData {
             <a href="https://hwb.swansea.ac.uk/academic-life/academic-misconduct/" target="_blank" rel="noopener">Academic Misconduct Policy</a> \
             (opens in a new window/tab)</li> \
             </ul>\
-            <h2>Question Types</h2> \
+            <h2>Information for Invigilators</h2>\
+            <p>Dictionaries are permitted.</p>\
+            <p>Calculators are NOT permitted.</p>\
+            <p>This is an OPEN BOOK exam - students are permitted to access the internet to access existing information, but they are NOT permitted to \
+            communicate with anyone (verbally or electronically) and they are NOT permitted to use AI.</p>\
+            <p>The content of this exam paper has been thoroughly checked, however if you think you have spotted an error, please raise your \
+            hand and report it to an invigilator, to log the query. The question will not be corrected in the exam venue.</p>\
+            <h2>Question Types</h2>\
             <p>This test contains two simple questions, two questions about <em>properties of numbers</em>, and \
             one question about <em>encryption/decryption</em>. \
             <p>You can find (and should already have read) background information on Numbers and Encryption/Decryption \
